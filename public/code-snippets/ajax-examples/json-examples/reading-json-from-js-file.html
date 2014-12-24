@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <body>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js">
+        </script>
+        <script>
+            (function($){
+				//Reading from a javascript file
+                $.getJSON("json.js", function(data){
+                    $.each(data.items, function(i, item){
+                        $('<img />').attr("src", item.media.m).appendTo('body');
+                        if (i == 30) 
+                            return false;
+                    });
+                }); 
+            })(jQuery);
+        </script>
+    </body>
+</html>

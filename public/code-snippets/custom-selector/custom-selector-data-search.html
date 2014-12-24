@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <title>Custom Selectors</title>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+        <script src="/js/jquery-1.11.2.js"></script>
+        <script type="text/javascript">
+            // Wrap in self-invoking anonymous function:
+            (function($){
+                // Extend jQuery's native ':'
+                $.extend($.expr[':'], {
+                
+                    // New method, "data"
+                    data: function(a, i, m){
+                        var e = $(a).get(0), keyVal;
+                        
+                        // m[3] refers to value inside parenthesis (if existing) e.g. :data(___)
+                        if (!m[3]) {
+                        
+                            // Loop through properties of element object, find any jquery references:
+                            for (var x in e) {
+                                if ((/jQuery\d+/).test(x)) {
+                                    return true;
+                                }
+                            }
+                        }
+                        else {
+                            // Split into array (name,value):
+                            keyVal = m[3].split('=');
+                            
+                            // If a value is specified:
+                            if (keyVal[1]) {
+                            
+                                // Test for regex syntax and test against it:
+                                if ((/^\/.+\/([mig]+)?$/).test(keyVal[1])) {
+                                    return (new RegExp(keyVal[1].substr(1, keyVal[1].lastIndexOf('/') - 1), keyVal[1].substr(keyVal[1].lastIndexOf('/') + 1))).test($(a).data(keyVal[0]));
+                                }
+                                else {
+                                    // Test key against value:
+                                    return $(a).data(keyVal[0]) == keyVal[1];
+                                }
+                                
+                            }
+                            else {
+                            
+                                // Test if element has data property:
+                                if ($(a).data(keyVal[0])) {
+                                    return true;
+                                }
+                                else {
+                                    // If it doesn't remove data (this is to account for what seems
+                                    // to be a bug in jQuery):
+                                    $(a).removeData(keyVal[0]);
+                                    return false;
+                                }
+                                
+                            }
+                        }
+                        
+                        // Strict compliance:
+                        return false;
+                        
+                    }
+                    
+                });
+                
+                $(function(){
+                    $('#img1').data('dom', true).appendTo('body'); // Append to DOM
+
+                    console.log(1,$(':data(dom)')); // All elements with 'dom' flag
+                    console.log(2,$('div:data(dom)')); // All DIV elements with 'dom' flag
+                    console.log(3,$(':not(:data(dom))')); // All elements WITHOUT 'dom' flag
+                    console.log(4,$(':data'));       // All elements with data
+					console.log(5,$(':not(:data)')); // All elements without data
+                    
+					$('#img2').data('ABC', 123);
+					
+					console.log( $(':data(ABC=123)')); //#img2
+                });
+                
+            })(jQuery);
+        </script>
+    </head>
+    <body>
+    	<h1>http://james.padolsey.com/javascript/extending-jquerys-selector-capabilities/</h1>
+        <img src="" alt="" id="img1" />
+		<img src="" alt="" id="img2" />
+    </body>
+</html>

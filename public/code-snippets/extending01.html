@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <title>Extend and object</title>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    </head>
+    <body>
+        <script type="text/javascript">
+            
+            var object1 = {
+                apple: 0,
+                banana: {
+                    weight: 52,
+                    price: 100
+                },
+                cherry: 97
+            };
+            var object2 = {
+                banana: {
+                    price: 200
+                },
+                durian: 100
+            };
+			
+            /*
+             * merges the properies of object2 into object1, 
+             * with any matching properties in object2 overwriting the properties in object2
+             */
+            $.extend(object1, object2); 
+            console.dir(object1)
+            //object1 === {apple: 0, banana: {price: 200}, cherry: 97, durian: 100}
+            
+            
+			var object3 = {
+                apple: 0,
+                banana: {
+                    weight: 52,
+                    price: 100
+                },
+                cherry: 97
+            };
+            var object4 = {
+				apple:3,
+                banana: {
+                    price: 200
+                },
+                durian: 100
+            };
+            
+            var object5 = {};
+			
+			/*
+             * merges the properies of object3 and object4 into object5
+             * with any matching properties in object4 overwriting the properties in object3.
+             * we have also passed in the true argument which means it does a deep merge, mergeing any values stored in child objects
+             */
+            $.extend(true, object5, object3, object4); 
+            //object 1 & 2 unchanged;
+            //object3 === {apple: 0, banana: {weight: 52, price: 100}, cherry: 97, durian: 100}
+            console.dir(object3)
+        </script>
+    </body>
+</html>

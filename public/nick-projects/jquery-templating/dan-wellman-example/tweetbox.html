@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>jQuery, AJAX and Templating</title>
+        <link rel="stylesheet" href="tweetbox.css">
+        <!--[if lte IE 8]>
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+    </head>
+    <body>
+		<aside id="tweetbox">
+        	<div id="user">
+            	<h2><a href="http://twitter.com/danwellman" title="Visit Dan Wellman on Twitter">Dan Wellman</a></h2>
+            	<a href="http://twitter.com/danwellman" title="Dan Wellman"><img src="img/me.png" alt="Dan Wellman"></a>
+                <p>Husband, father, front-end developer and author. Writes for Nettuts and Packt Publishing. Works for <a href="http://twitter.com/designhaus" title="Design Haus">@designhaus</a> | jQuery fanatic :D</p>
+            </div>
+            <ul id="tools">
+            	<li><a href="#tweets" title="Recent Tweets" class="on">Tweets</a></li>
+                <li><a href="#friends" title="Recent Friends">Friends</a></li>
+                <li><a href="#follows" title="Recent Followers">Followers</a></li>
+            </ul>
+            <div id="feed">
+            	<div id="tweets">
+                	<noscript>This widget has super-awesome features which require the use of JavaScript. Please enable it for a better internet experience</noscript>
+                    <ul id="tweetList"></ul>
+                    
+					<script id="tweetTemplate" type="text/x-jquery-tmpl">
+						<li>
+							<p>
+								{{each twittext}}
+									{{if twitname}}
+										{{tmpl(twitname) "#atTemplate"}}
+									{{else}}
+										${tweet}
+									{{/if}}
+								{{/each}}
+								<a class="tweet-link" href="http://twitter.com/danwellman/status/${tweetlink}">${timestamp}</a>
+							</p>
+						</li>
+					</script>
+                    
+					<script id="atTemplate" type="text/x-jquery-tmpl">
+						<a href="http://twitter.com/${$item.data}">${$item.data}</a>
+					</script>
+					
+                </div>
+                <div id="friends">
+	                <ul id="friendList"></ul>
+                </div>
+                <div id="follows">
+                	<ul id="followList"></ul>
+                </div>
+                
+				<script id="ffTemplate" type="text/x-jquery-tmpl">
+					<li>
+						<p>
+							<a class="img-link" href="http://twitter.com/${screenname}"><img src="${img}" alt="${name}"></a>
+							<span class="username"><a href="http://twitter.com/${screenname}">${screenname}</a></span>
+							<span class="bio">${desc}</span>
+						</p>
+					</li>
+				</script>
+				
+            </div>
+        </aside>
+        <script type="text/javascript" src="http://libraries/jquery-1.5.1.js"></script>
+        <script type="text/javascript" src="http://libraries/jquery.tmpl.min.js"></script>
+        <!--[if IE]>
+        	<script src="http://libraries/fixSplit.js"></script>
+        <![endif]-->
+        <script src="tweetbox.js"></script>
+    </body>
+</html>

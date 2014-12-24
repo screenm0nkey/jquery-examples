@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Templating with Handlebars</title>
+  </head>
+  <body>
+    <ul id="placeholder"></ul>
+    <script type="text/javascript" src="http://libraries/jquery-1.6.1-min.js"></script>
+    <script type="text/javascript" src="http://libraries/handlebars.js"></script>
+    <script type="text/javascript">
+      log = console.log
+      $(function() {
+         var jqXHRget = $.get('handlebars-02.tmpl?bust' + (new Date()).getTime()),
+             jqXHRjson = $.getJSON('http://api.flickr.com/services/feeds/photos_public.gne?tags=london&tagmode=any&format=json&jsoncallback=?');
+        
+        Handlebars.registerHelper('myList', function(items, fn) {
+          var out = '';
+          for(var i = 0, l = items.length; i < l; i++) {
+            out = out + "<li>" + fn(items[i]) + "</li>";
+          }
+          return out;
+        });
+        
+        Handlebars.registerHelper('agree_button', function(items, fn) {
+           return "I agree. " + this.author_id + " " + this.title
+        });
+
+        jqXHRget.done(function(tmpl) {
+          jqXHRjson.done(function(json) {
+            var template = Handlebars.compile(tmpl);
+            console.log(json)
+            $("#placeholder").html(template(json));
+          });
+
+        });
+
+      });
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		ul, li {padding:0;margin:0;list-style:none;}
+		#scroll-container {width:300px; height:100px; overflow:hidden;border:solid 1px;margin:0 auto;position:relative;}
+		#scroll-container .scroller { width:1500px; position:absolute; } /* 1500 equals 15 times li width*/
+		#scroll-container .scroller li {float:left; display:inline;width:98px;height:98px;background:#ccc;border:solid 1px white;}
+		#scroll-container .scroller li.active {border:solid 1px red;}
+	</style>
+</head>
+<body>
+	<div>
+		<p>			<a id="scroll-prev" href="prev">Previous</a>			<a id="scroll-next" href="next">Next</a>		</p>
+		
+		<p>			<a class="change-width" href="100">Width 100px</a><br>
+			<a class="change-width" href="300">Width 300px</a><br>			<a class="change-width" href="500">Width 500px</a><br>			<a class="change-width" href="700">Width 700px</a><br>		</p>
+	</div>
+	
+	<div id="scroll-container">
+		<ul class='scroller'>
+			<li class="01"><a href="#">01</a></li>
+			<li class="02"><a href="#">02</a></li>
+			<li class="03"><a href="#">03</a></li>
+			<li class="04"><a href="#">04</a></li>
+			<li class="05"><a href="#">05</a></li>
+			<li class="06"><a href="#">06</a></li>			<li class="07"><a href="#">07</a></li>			<li class="08"><a href="#">08</a></li>			<li class="09"><a href="#">09</a></li>	
+		</ul>
+	</div>
+	<script type="text/javascript" src="http://libraries/jquery-1.4.4.min.js"></script>
+    <script type="text/javascript" src="basic-scroller.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            var dataObj = $('#scroll-container').continuousScroller().data('cscroll');
+            
+            $('.change-width').click(function(evt){
+                var width = parseInt($(this).attr('href'));
+                dataObj.changeWidth(width);
+				evt.preventDefault();
+            });
+        });
+    </script>
+</body>
+</html>

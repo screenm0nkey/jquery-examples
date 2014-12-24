@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>jQuery Methods: Events</title>
+    
+    <link rel="stylesheet" href="../css/default.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/3810.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="examples.css" type="text/css" media="screen" />
+    <script src="../scripts/jquery.js"></script>
+    <script src="examples.js"></script>
+    <script src="events.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="branding" class="clearfix">
+        <div id="chapter-number">5</div>
+        <h1>jQuery Methods</h1>
+      </div>
+
+      <div class="category">
+        <h2>Events</h2>
+
+        <div id="example-events-ready" class="example">
+          <h3>.ready()</h3>
+          <div class="content">
+            <div class="log"></div>
+          </div>
+        </div>
+
+        <div id="example-events-load" class="example">
+          <h3>.load()</h3>
+          <div class="content">
+            <img class="target" src="hat.gif" width="80" height="54" alt="Hat" />
+            <div class="log"></div>
+          </div>
+        </div>
+
+        <div id="example-events-error" class="example">
+          <h3>.error()</h3>
+          <div class="content">
+            <img class="target" src="../../../../jQuery Reference Guide/3810_code/3810_05_code/missing.gif" width="80" height="54" alt="Missing Image" />
+            <div class="log"></div>
+          </div>
+        </div>
+
+        <div id="example-events-mousedown" class="example">
+          <h3>.mousedown()</h3>
+          <div class="content">
+            <div class="target button">Click Here</div>
+            <div class="trigger button">Trigger</div>
+            <div class="log"></div>
+          </div>
+        </div>
+
+        <div id="example-events-mouseup" class="example">
+          <h3>.mouseup()</h3>
+          <div class="content">
+            <div class="target button">Click Here</div>
+            <div class="trigger button">Trigger</div>
+            <div class="log"></div>
+          </div>
+        </div>
+
+        <div id="example-events-click" class="example">
+          <h3>.click()</h3>
+          <div class="content">
+            <div class="target button">Click Here</div>
+            <div class="trigger button">Trigger</div>
+            <div class="log"></div>
+          </div>
+        </div>
+
+        <div id="example-events-dblclick" class="example">
+          <h3>.dblclick()</h3>
+          <div class="content">
+            <div class="target button">Click Here</div>
+            <div class="trigger button">Trigger</div>
+            <div class="log"></div>
+          </div>
+        </div>
+
+        <div id="example-events-toggle" class="example">
+          <h3>.toggle()</h3>
+          <div class="content">
+            <div class="target button">Click Here</div>
+            <div class="log"></div>
+          </div>
+        </div>
+
+        <div id="example-events-mouseover" class="example">
+          <h3>.mouseover()</h3>
+          <div class="content">
+            <div class="target button">Move Here</div>
+            <div class="trigger button">Trigger</div>
+            <div class="log"></div>
+          </div>
+        </div>
+
+        <div id="example-events-mouseout" class="example">
+          <h3>.mouseout()</h3>
+          <div class="content">
+            <div class="target button">Move Here</div>
+            <div class="trigger button">Trigger</div>
+            <div class="log"></div>
+          </div>
+        </div>
+
+        <div id="example-events-hover" class="example">
+          <h3>.hover()</h3>
+          <div class="content">
+            <div class="target button">Move Here</div>
+            <div class="log"></div>
+          </div>
+        </div>
+
+        <div id="example-events-mousemove" class="example">
+          <h3>.mousemove()</h3>
+          <div class="content">
+            <div class="target button">Move Here</div>
+            <div class="trigger button">Trigger</div>
+            <div class="log"></div>
+          </div>
+        </div>
+
+        <div id="example-events-focus" class="example">
+          <h3>.focus()</h3>
+          <div class="content">
+            <form>
+              <input class="target" type="text" value="Field 1" />
+              <input type="text" value="Field 2" />
+            </form>
+            <div class="trigger button">Trigger</div>
+            <div class="log"></div>
+          </div>
+        </div>
+
+        <div id="example-events-blur" class="example">
+          <h3>.blur()</h3>
+          <div class="content">
+            <form>
+              <input class="target" type="text" value="Field 1" />
+              <input type="text" value="Field 2" />
+            </form>
+            <div class="trigger button">Trigger</div>
+            <div class="log"></div>
+          </div>
+        </div>
+
+        <div id="example-events-change" class="example">
+          <h3>.change()</h3>
+          <div class="content">
+            <form>
+              <input class="target" type="text" value="nothing 1" />
+              <select class="target">
+                <option value="option1" selected="selected">Option 1</option>
+                <option value="option2">Option 2</option>
+              </select>
+            </form>
+            <div class="trigger button">Trigger</div>
+            <div class="log"></div>
+          </div>
+        </div>
+
+        <div id="example-events-select" class="example">
+          <h3>.select()</h3>
+          <div class="content">
+            <form>
+              <input class="target" type="text" value="The quick brown fox jumps over the lazy dog." />
+            </form>
+            <div class="trigger button">Trigger</div>
+            <div class="log"></div>
+          </div>
+        </div>
+
+        <div id="example-events-submit" class="example">
+          <h3>.submit()</h3>
+          <div class="content">
+            <form class="target" action="../../../../jQuery Reference Guide/3810_code/3810_05_code/foo.html">
+              <input type="text" />
+              <input type="submit" value="Go" />
+            </form>
+            <div class="trigger button">Trigger</div>
+            <div class="log"></div>
+          </div>
+        </div>
+
+        <div id="example-events-keydown" class="example">
+          <h3>.keydown()</h3>
+          <div class="content">
+            <form>
+              <input class="target" type="text" />
+            </form>
+            <div class="trigger button">Trigger</div>
+            <div class="log"></div>
+          </div>
+        </div>
+
+        <div id="example-events-keypress" class="example">
+          <h3>.keypress()</h3>
+          <div class="content">
+            <form>
+              <input class="target" type="text" />
+            </form>
+            <div class="trigger button">Trigger</div>
+            <div class="log"></div>
+          </div>
+        </div>
+
+        <div id="example-events-keyup" class="example">
+          <h3>.keyup()</h3>
+          <div class="content">
+            <form>
+              <input class="target" type="text" />
+            </form>
+            <div class="trigger button">Trigger</div>
+            <div class="log"></div>
+          </div>
+        </div>
+
+        <div id="example-events-resize" class="example">
+          <h3>.resize()</h3>
+          <div class="content">
+            <div class="trigger button">Trigger</div>
+            <div class="log"></div>
+          </div>
+        </div>
+
+        <div id="example-events-scroll" class="example">
+          <h3>.scroll()</h3>
+          <div class="content">
+            <div class="target" style="overflow: scroll; width: 200px; height: 100px;">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </div>
+            <div class="trigger button">Trigger</div>
+            <div class="log"></div>
+          </div>
+        </div>
+      
+      </div>
+
+    </div>
+  </body>
+</html>

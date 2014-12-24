@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script>
+            $(document).ready(function(){
+            
+                $("div").css("background", "#c8ebcc").filter(".middle").css("border-color", "red");
+                
+                $("p").filter(".selected, :first").css("background", "yellow");//Selects all paragraphs and removes those that aren't of class "selected" or the first one.
+            });
+        </script>
+        <style>
+            div {
+                width: 60px;
+                height: 60px;
+                margin: 5px;
+                float: left;
+                border: 2px white solid;
+            }
+        </style>
+    </head>
+    <body>
+        <div></div>
+        <div class="middle"></div>
+        <div class="middle"></div>
+        <div class="middle"></div>
+        <div class="middle"></div>
+        <div style="clear:both"></div>
+        <p>highlighted</p>
+        <p>nick</p>
+        <p class="selected">highlihed</p>
+        <p>nick</p>
+        <p>nick</p>
+    </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script>
+            $(document).ready(function(){
+            
+                function disp(divs){
+                    var a = [];
+                    for (var i = 0; i < divs.length; i++) {
+                        a.push(divs[i].innerHTML);
+                    }
+                    $("span").text(a.join(" "));
+                }
+                
+                disp($("div").get().reverse());
+                
+                console.log($("div").get().reverse());
+                console.log($("div"))
+                
+            });
+        </script>
+        <style>
+            span {
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        Reversed - <span></span>
+        <div>One</div>
+        <div>Two</div>
+        <div>Three</div>
+    </body>
+</html>

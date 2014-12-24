@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+        <title>jQuery Easy Fading by John Bloomfield</title>
+        <style type="text/css">
+            #tiles {
+                width: 380px;
+                height: 170px;
+            }
+            
+            div.tile {
+                float: left;
+                width: 80px;
+                height: 80px;
+                margin: 0 10px 10px 0;
+            }
+            
+            #links {
+                width: 380px;
+                text-align: left;
+                font-family: "Lucida Grande", Arial;
+                font-size: 10px;
+            }
+            
+            #links a, #links a:link, #links a:visited {
+                color: #666;
+                text-decoration: none;
+            }
+            
+            #links a:active, #links a:focus, #links a:hover {
+                outline: 0;
+                color: #999;
+                text-decoration: none;
+            }
+        </style>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $('#links a').click(function(){
+                    var color = $(this).attr('rel');
+                    //this says to fade all images with a div class of tile but NOT anyone that has a class of .green
+                    $('#tiles div.tile:not(.' + color + ') img').fadeTo("slow", 0.3); //#tiles div.tile:not(.green) img . the not selector is this :not(.' + color + ')
+                    //this makes the div with the class of green to fadeto 100%
+                    $('#tiles div.' + color + ' img').fadeTo("slow", 1); //#tiles div.green img 
+                });
+                return false;
+            });
+        </script>
+    </head>
+    <body>
+        <div id="tiles">
+            <div class="tile blue">
+                <img src="blue.gif" alt="Blue Tile" width="80" height="80" />
+            </div>
+            <div class="tile brown">
+                <img src="brown.gif" alt="Brown Tile" width="80" height="80" />
+            </div>
+            <div class="tile orange">
+                <img src="orange.gif" alt="Orange Tile" width="80" height="80" />
+            </div>
+            <div class="tile green">
+                <img src="green.gif" alt="Green Tile" width="80" height="80" />
+            </div>
+            <div class="tile brown">
+                <img src="brown.gif" alt="Brown Tile" width="80" height="80" />
+            </div>
+            <div class="tile green">
+                <img src="green.gif" alt="Green Tile" width="80" height="80" />
+            </div>
+            <div class="tile blue">
+                <img src="blue.gif" alt="Blue Tile" width="80" height="80" />
+            </div>
+            <div class="tile orange">
+                <img src="orange.gif" alt="Orange Tile" width="80" height="80" />
+            </div>
+        </div>
+        <div id="links">
+            <a href="#" title="blue" rel="blue">Blue</a>&nbsp;&nbsp;.&nbsp;&nbsp;<a href="#" title="Brown" rel="brown">Brown</a>&nbsp;&nbsp;.&nbsp;&nbsp;<a href="#" title="Orange" rel="orange">Orange</a>&nbsp;&nbsp;.&nbsp;&nbsp;<a href="#" title="Green" rel="green">Green</a>
+        </div>
+    </body>
+</html>

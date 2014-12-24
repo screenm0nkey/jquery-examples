@@ -1,0 +1,7 @@
+
+js/main.js
+----------------
+js/plug-ins/jquery.plugin-one.js
+js/plug-ins/jquery.plugin-two.js
+js/plug-ins/jquery.plugin-currys.js
+js/main.js

@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>Collapsible List</title>
+    <link rel="stylesheet" type="text/css" href="common.css">
+    <script src="../miscellaneous/jquery-1.3.2.min.js"></script>
+    <script>
+		$(function(){
+        $('li:has(ul)')
+          .click(function(event){
+            if (this == event.target) {
+              if ($(this).children().is(':hidden')) {
+                $(this)
+                  .css('list-style-image','url(minus.gif)')
+                  .children().slideDown();
+              }
+              else {
+                $(this)
+                  .css('list-style-image','url(plus.gif)')
+                  .children().slideUp();
+              }
+            }
+            return false; //return false as the value of the listener to prevent needless propagation
+          })
+          .css({cursor:'pointer',
+                'list-style-image':'url(plus.gif)'})
+          .children().hide();
+        
+		/*
+		We’ve set the list-styleimage style (which controls the item marker) of the active items to one of the plus or minus GIF images, and we don’t want that setting to be inherited by the list items that are children of those items. To prevent that inheritance, we explicitly set that list-style-image style property value to none for all leaf list items. Because we have set it directly on the items, it will take precedence over any inherited value.*/
+		$('li:not(:has(ul))').css({
+          cursor: 'default',
+          'list-style-image':'none'
+        });
+      });
+    </script>
+    
+    <style>
+      fieldset { width: 320px }
+    </style>
+  </head>
+
+  <body>
+    <fieldset>
+      <legend>Collapsible List &mdash; Take 4</legend>
+      <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>
+          Item 3
+          <ul>
+            <li>Item 3.1</li>
+            <li>
+              Item 3.2
+              <ul>
+                <li>Item 3.2.1</li>
+                <li>Item 3.2.2</li>
+                <li>Item 3.2.3</li>
+              </ul>
+            </li>
+            <li>Item 3.3</li>
+          </ul>
+        </li>
+        <li>
+          Item 4
+          <ul>
+            <li>Item 4.1</li>
+            <li>
+              Item 4.2
+              <ul>
+                <li>Item 4.2.1</li>
+                <li>Item 4.2.2</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Item 5</li>
+      </ul>
+    </fieldset>
+  </body>
+</html>

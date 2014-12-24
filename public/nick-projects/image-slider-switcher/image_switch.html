@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Image Switch</title>
+        <style type="text/css">
+            html, body {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                height: 100%;
+            }
+            
+            html {
+                background: transparent url(images/button.gif) repeat-x 0 100%;
+            }
+            
+            div#wrapper {
+                position: relative;
+                width: 700px;
+                margin: 0 auto;
+                text-align: center;
+            }
+            
+            div#image-container {
+                margin: 0 0 20px 0;
+                border: solid 5px #D6D6D6;
+            }
+            
+            div#thumbs {
+                position: relative;
+                margin: 0;
+                border: solid 5px #D6D6D6;
+                background: #FFFFFF;
+            }
+            
+            div#little-square {
+                position: relative;
+                background: #D6D6D6;
+                width: 20px;
+                height: 20px;
+            }
+        </style>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+        <script>
+            (function($){
+                $.switcher = {
+                    defaults: {
+                        bigContainer: "image-container",
+                        thumbs: "thumbs"
+                    }
+                };
+                
+                $.fn.extend({
+                    switcher: function(config){
+                        var config = $.extend({}, $.switcher.defaults, config);
+                        //console.log(config);
+                        configure(config);
+                        return this;
+                    }
+                });//$.fn.extend end
+                function configure(config){
+                    var str = "#" + config.bigContainer + " img"
+                    var $bigImage = $(str);
+                    
+					$bigImage.css("opacity", "0");
+                    $bigImage.stop(false, true).animate({
+                        opacity: "1"
+                    }, 500);
+                    str = "#" + config.thumbs + " > img";
+                    $thumbs = $(str);
+                    var width = 0;
+                    $thumbs.each(function(index){
+                        width += $(this).width();
+                        console.log(this, width);
+                    });
+					
+                    $("#" + config.thumbs).css("width", "700px");
+                    var $firstThumb = $($thumbs.get(0)).addClass("selected");
+                    $thumbs.css("cursor", "pointer").not(":first").css("opacity", "0.1");
+                    
+					var block = $("<div id=\"little-square\">&nbsp;</div>");
+                    $("#" + config.thumbs).before(block);
+                    $littleSquare = $("#little-square");
+                    var distance = $firstThumb.position()['left'] + ($firstThumb.width() - $littleSquare.width()) / 2 + "px";
+                    $littleSquare.stop(false, true).animate({
+                        left: distance
+                    });
+                    
+                    
+                    $thumbs.click(function(){
+                        var hasClass = $(this).hasClass("selected");
+                        if (!hasClass) {
+                            str = "#" + config.thumbs + " > img[class=selected]";
+                            $(str).removeClass("selected").stop(false, true).animate({
+                                opacity: "0.1"
+                            });
+                            $(this).addClass("selected");
+                            var ind = $(this).attr("src").indexOf("/img") + 1
+                            var sub = $(this).attr("src").substring(ind, 11);
+                            
+                            $bigImage.stop(false, true).animate({
+                                opacity: "0.1"
+                            }, 400, function(){
+                                $bigImage.attr({
+                                    src: "images/" + sub + "-lg.jpg",
+                                    title: "jQuery"
+                                });
+                            }).stop(false, true).animate({
+                                opacity: "1"
+                            }, 400);
+                            
+                            distance = $(this).position()['left'] + ($(this).width() - $("#little-square").width()) / 2 + "px";
+                            $littleSquare.stop(false, true).animate({
+                                left: distance
+                            });
+                        }
+                    })//$thumbs.click(function()
+                    $thumbs.hover(function(){
+                        //OVER
+                        var f = $(this).hasClass("selected"); //you could write $(this).is("[class=selected]");
+                        if (!f) {
+                            $(this).stop(false, true).animate({
+                                opacity: "1"
+                            }, 300);
+                        }
+                    }, function(){
+                        //OUT
+                        var f = $(this).hasClass("selected");
+                        if (!f) {
+                            $(this).stop(false, true).animate({
+                                opacity: "0.1"
+                            }, 300);
+                        }
+                    })//$thumbs.hover
+                }
+            })(jQuery)
+            
+            
+            
+            $(function(){
+                $("#switcher-container").switcher()
+            });
+        </script>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="switcher-container">
+                <div id="image-container">
+                    <img src="images/img1-lg.jpg" />
+                </div>
+                <div id="thumbs">
+                    <img src="images/img1-thumb.jpg" /><img src="images/img2-thumb.jpg" /><img src="images/img3-thumb.jpg" /><img src="images/img4-thumb.jpg" /><img src="images/img5-thumb.jpg" /><img src="images/img6-thumb.jpg" />
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <title>Overriding jQuery Methods</title>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+        <script type="text/javascript">
+            
+            // Create a closure so that we can define intermediary
+            // method pointers that don't collide with other items
+            // in the global name space.
+            (function(){
+                // Store a reference to the original remove method.
+                var originalRemoveMethod = jQuery.fn.remove;
+                
+                // Define overriding method.
+                jQuery.fn.remove = function(){
+                    // Log the fact that we are calling our override.
+                    console.log("Override method");
+                    
+                    // Execute the original method.
+                    originalRemoveMethod.apply(this, arguments);
+                }
+            })();
+            
+            
+            // When DOM is ready, initialize.
+            $(function(){
+            
+                $("a").attr("href", "javascript:void( 0 )").click(function(){
+                    // Remove the target link.
+                    $(this).remove();
+                    
+                    // Cancel default event.
+                    return (false);
+                });
+                
+            });
+        </script>
+    </head>
+    <body>
+        <h1> Override a jQuery Method</h1>
+        <p><a>Remove Me 1</a><a>Remove Me 2</a><a>Remove Me 3</a></p>
+    </body>
+</html>

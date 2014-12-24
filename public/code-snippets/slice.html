@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script>
+            $(document).ready(function(){
+            
+                function colorEm(){
+                    var $div = $("div");
+                    $div.css("background", "");
+                    var start = Math.floor(Math.random() * $div.length);
+                    var end = Math.floor(Math.random() * ($div.length - start)) + start + 1;
+                    
+                    if (end == $div.length) {
+                        end = undefined;
+                    }
+                    if (end) {
+                        var $temp = $div.slice(start, end).css("background", "yellow");
+                        console.log($temp);
+                    }
+                    else {
+                        $div.slice(start).css("background", "yellow");
+                        var $temp = $div.slice(start, end).css("background", "yellow");
+                        console.log($temp)
+                    }
+                    
+                    //$("span").text('$("div").slice(' + start + (end ? ', ' + end : '') + ').css("background", "yellow");');
+                }
+                
+                $("button").click(colorEm);
+                
+                $("p").slice(0, 3).hide();
+                
+            });
+        </script>
+        <style>
+            div {
+                width: 40px;
+                height: 40px;
+                margin: 10px;
+                float: left;
+                border: 2px solid blue;
+            }
+            
+            span {
+                color: red;
+                font-weight: bold;
+            }
+            
+            button {
+                margin: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <button>
+            Turn slice yellow
+        </button>
+        <span>Click the button!</span>
+        <div>
+        </div>
+        <div>
+        </div>
+        <div>
+        </div>
+        <div>
+        </div>
+        <div>
+        </div>
+        <div>
+        </div>
+        <div>
+        </div>
+        <div>
+        </div>
+        <div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <p class="1">Nick 1</p>
+        <p class="1">Nick 2</p>
+        <p class="1">Nick 3</p>
+        <p class="1">Nick 4</p>
+        <p class="1">Nick 5</p>
+    </body>
+</html>

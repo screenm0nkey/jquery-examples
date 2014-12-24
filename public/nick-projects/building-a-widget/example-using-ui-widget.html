@@ -1,0 +1,173 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <title>Building a widget with UI Widget library</title>
+        <link rel="stylesheet" href="style.css">
+        <script type="text/javascript" src="/js/jquery-1.11.2.js"></script>
+        <script type="text/javascript" src="/js/ui.draggable.js"></script>
+        <script type="text/javascript" src="/js/jquery.ui.core.js"></script>
+        <script type="text/javascript" src="/js/jquery.ui.widget.js"></script>
+        <script type="text/javascript">
+            $(function(){
+                var ChangeColor = {
+                    options: {
+                        level: 0,
+                        greenlevels: ['#000', '#010', '#020', '#030', '#040', '#050', '#060', '#070', '#080', '#090', '#0a0', '#0b0', '#0c0', '#0d0', '#0e0', '#0f0', '#fff'],
+                        state: false,
+                        timeoutId: 0,
+                        cycleCount: 0,
+                        $warning: ''
+                    },
+                    
+                    //_create called when invoked
+                    _create: function(){
+						var _this = this;
+                        this.options.$warning = this.element.find('.warning');
+						
+						//bind the click to the element container and use delegation
+                        this.element.bind('click', function(evt){
+                            evt.preventDefault();
+                            var funcName = $(evt.target).attr('href');
+                            _this[funcName] && _this[funcName](); 
+                        });
+						
+						this.options.$form.show().bind('submit', function(evt){
+							evt.preventDefault();
+							var $name = _this.options.$form.find('input[name]');
+							
+							if($name[0] && $name.val()!==''){
+								_this.options.name = $name.val().trim();
+								_this.element.find('.name').text(_this.options.name);
+								_this.options.$form.hide().unbind('submit');
+								$name.val('');
+								_this.element.removeAttr('id').draggable().appendTo('body').show();
+							}
+                        });
+						
+						
+                    },
+					
+                    getLevel: function(){
+                        return this.options.level;
+                    },
+                    
+                    setLevel: function(x){
+                        this.options.level = Math.floor(Math.min(this.options.greenlevels.length - 1, Math.max(0, x)));
+                        this.element.css({
+                            background: this.options.greenlevels[this.options.level]
+                        });
+
+						this.options.callback(this.options.name + ' Set Level ', this.options.level);//call back function - Tightly Coupled
+                    },
+                    
+                    on: function(){
+                        this.setLevel(15);
+                        this.options.state = true;
+                    },
+                    
+                    off: function(){
+                        this.setLevel(16);
+                        this.options.state = false;
+                        clearTimeout(this.options.timeoutId);
+                    },
+                    
+                    lighter: function(){
+                        (this.options.state) ? this.setLevel(this.getLevel() + 1) : this.warning(this);
+                    },
+                    
+                    darker: function(){
+                        (this.options.state) ? this.setLevel(this.getLevel() - 1) : this.warning(this);
+                    },
+                    
+                    cycle: function(){
+						var _this = this;
+                        (function innerCycle(){
+                            _this.options.cycleCount++;
+                            _this.setLevel(_this.options.cycleCount);
+                            if (_this.options.cycleCount === 16) {
+                                _this.options.cycleCount = 0;
+                            }
+							
+                            _this.options.timeoutId = setTimeout(innerCycle, 200);
+                        })()
+                    },
+					
+					stopCycle : function(){
+						if(this.options.timeoutId){
+							clearTimeout(this.options.timeoutId);
+						}
+					},
+					
+                    
+                    remove: function(){
+						console.log(this);
+						this.element.trigger({
+							type: 'deleted',
+                            name: this.options.name
+						});//Trigger event - Loosely Coupled 
+						this.stopCycle();
+						this.destroy();
+                       	this.element.remove();
+                    },
+                    
+                    warning: function(_this){
+                        _this.options.$warning.text('Please turn on first').show();
+                        setTimeout(function(){
+                            _this.options.$warning.hide();
+                        }, 500)
+                    }
+                };
+				//end of Widget functionality
+				
+				$.widget('ui.changeColor', ChangeColor);
+				
+				
+               $('#add-new').click(function(evt){
+                    evt.preventDefault();
+                    $('#template').clone().changeColor({
+                        callback: function(evt, level){
+                            console.log(evt, level);
+                        },
+                        $form: $('#name-it')
+                    });
+                });
+				
+				
+				$('#delete-blocks').click(function(evt){
+                    evt.preventDefault();
+                    $('.drag').changeColor('remove');
+                });
+				
+               //Trigger event - Loosely Coupled 
+				$(document).bind('deleted', function(evt){
+					console.log(evt.name, ' has been deleted');
+                });
+                
+            });
+        </script>
+    </head>
+    <body>
+         <a href="#" id="add-new">Add New Block</a>
+		 <a href="#" id="delete-blocks">Delete all Blocks</a>
+		
+		<form action="" name="" id="name-it">
+			<input type="text" name="name" id="">
+			<input type="submit" value="submit">
+		</form>
+		
+        <div class="drag" id="template">
+            <div class="warning"></div>
+            <div class="name"></div>
+            <ul>
+                <li><a href="on">On</a></li>
+                <li><a href="off">Off</a></li>
+                <li><a href="lighter">Lighter</a></li>
+                <li><a href="darker">Darker</a></li>
+				<li><a href="cycle">Cycle through colours</a></li>
+				<li><a href="stopCycle">Stop cycle</a></li>
+				<li><a href="remove">Delete</a></li>
+            </ul>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Jquery Extend</title>
+        <script src="jquery-1.3.1.min.js"></script>
+        <script>
+            (function($){
+            
+                //define jLoader object with some default config settings
+                $.jLoader = {
+                    defaults: {
+                        imgDir: "loaderImages/",
+                        imgContainer: "",
+                        imgTotal: 9,
+                        imgFormat: ".jpg",
+                        simpleFileNames: true
+                    }
+                };
+                
+
+				/*
+				 * extend jquery with the plugin
+				 * $.fn is the same as jQuery.prototype so $.fn.extend is the the same as $.fn.jLoader = function
+				 * The extend function takes the functions delared in the object argument and adds them to the
+				 * prototype
+				 */
+                $.fn.extend({
+                    jLoader: function(config, fileNames){
+                    
+                        //use defaults or properties supplied by user
+                        var config = $.extend({}, $.jLoader.defaults, config);
+						console.log(this,config);
+                        
+                        //get the id of the selected element
+                        config.imgContainer = this.attr("id");
+                        console.log(config.imgContainer);
+                        
+                        //use simpleLoad to load numerically named images or complexLoad for user-specified file names
+                        (config.simpleFileNames == true) ? simpleLoad(config) : complexLoad(config, fileNames);
+                        
+                        //return the jquery object for chaining
+                        return this;
+                    }
+                });
+                
+                //simple image load
+                function simpleLoad(config){
+                
+                    //loop through images and load sequentially
+                    for (var x = 1; x < config.imgTotal + 1; x++) {
+                    
+                        //create image
+                        $("<img />").attr({
+                            id: "image" + x,
+                            src: config.imgDir + x + config.imgFormat,
+                            title: "Image" + x
+                        })
+						.appendTo("#" + config.imgContainer).css({
+							width:'100px',
+							float:'left',
+							border:'solid green 1px'
+						})
+                    }
+                };
+                
+                //complex image load
+                function complexLoad(config, fileNames){
+                
+                    //loop through the array in the second argument
+                    for (var x = 0; x < fileNames.length; x++) {
+                        //create image
+                        $("<img />").attr({
+                            id: fileNames[x],
+                            src: config.imgDir + fileNames[x] + config.imgFormat,
+                            title: "The " + fileNames[x] + " nebula"
+                        }).appendTo("#" + config.imgContainer).css({
+                            width:'100px',
+							float:'left',
+							border: 'solid red 1px'
+                        });
+                    }
+                };
+                
+                })(jQuery);
+            
+            
+        </script>
+    </head>
+    <body>
+        <h1>http://net.tutsplus.com/tutorials/javascript-ajax/the-definitive-guide-to-creating-a-practical-jquery-plugin/</h1>
+        <div id="simpleImageContainer">
+        </div>
+        <div id="complexImageContainer">
+        </div>
+        <script>
+            $("#simpleImageContainer").jLoader();
+            $("#complexImageContainer").jLoader({
+                simpleFileNames: false,
+                imgContainer: "complexImageContainer"
+            }, ["ant", "boomerang", "catsEye", "crab", "helix", "horsehead", "redSpider", "ring", "witchHead"]);
+        </script>
+    </body>
+</html>

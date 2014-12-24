@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><head>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<style>
+div {
+	width: 80px;
+	height: 80px;
+	background: #abc;
+	position: relative;
+	border: 2px solid black;
+	margin: 20px 0px;
+	float: left;
+	left:0
+}
+div.protected {
+	border-color: red;
+}
+span {
+	display:block;
+	float:left;
+	width:20px;
+	height:20px;
+}
+</style>
+<script>
+ 		$(document).ready(function() {
+   			$("*").each(function() {
+				if($(this).hasClass("protected")) {
+					console.log(this);	
+					$(this).animate( { width: "300px"},1000);		
+				}
+			});
+ 		});
+	</script>
+</head>
+<body>
+<span></span>
+<div class="protected"></div>
+<span></span>
+<div></div>
+<span></span>
+<div></div>
+<span></span>
+<div class="protected"></div>
+</body>
+</html>

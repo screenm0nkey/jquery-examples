@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <base href="http://docs.jquery.com" /><script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script>
+            //<![CDATA[
+            window.onload = (function(){
+                try {
+                
+                    $("div[id]").one("click", function(){
+                        var _text = $(this).text() + " - " + $(this).attr("id");
+                        $(this).text(_text);
+                        console.log(this);
+                    });
+                    
+                } 
+                catch (e) {
+                }
+            });
+            //]]>
+        </script>
+        <style type="text/css">
+            /*<![CDATA[*/
+            html, body {
+                border: 0;
+                margin: 0;
+                padding: 0;
+            }
+            /*]]>*/
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div>no id</div>
+        <div id="hey">Click here</div>
+        <div id="there">Click here</div>
+        <div>nope</div>
+    </body>
+</html>

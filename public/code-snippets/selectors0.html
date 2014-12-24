@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Selectors</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
+<style type="text/css" media="screen">
+/* <![CDATA[ */
+.colourbg {
+	background:#00CC99;
+	display:block;
+	width:200px;
+}
+div, span {
+	display:block;
+	width:80px;
+	height:80px;
+	margin:5px;
+	background:#bbffaa;
+	float:left;
+	font-size:14px;
+}
+div#small {
+	width:60px;
+	height:25px;
+	font-size:12px;
+	background:#fab;
+}
+
+/* ]]> */
+</style>
+<script>
+  	$(document).ready(function() {
+		//$("*").filter("li").addClass("colourbg");
+		//$("ul li").addClass("colourbg");
+		//$("ul").find("li").addClass("colourbg");
+		//$("p > a").css("background", "yellow");
+		//$("p > a:odd").css("background", "green");
+		$("p > a:even").css("background", "green");
+		//$(".took").siblings(".mook").addClass("colourbg");
+		//
+		//$("#prev ~ div").css("border", "3px groove blue"); //will select all divs after #prev, NOT before!
+		//$("#prev ~").css("border", "3px solid red"); //will select all siblings after
+		//$("#prev").siblings("div").css("border", "3px solid red"); // this will select all div siblings of #prev
+		//
+		//$("ul li:lt(3)").css("background", "blue");
+		//$("ul li:gt(3)").css("background", "red");
+		//$("ul li:eq(6)").css("background", "green");
+
+
+		$("ul").each(function() {
+			//console.log(this);
+		});
+		$("ul").find("li").each(function() {
+			//console.log(this);
+			//$(this).addClass("colourbg");
+		});
+		
+		$("li.took").siblings().each(function() {
+			//console.log(this);
+		});
+		
+		$("ul li").each(function(i, item) {
+			console.log(i, item);
+		});
+		
+		
+
+	});
+  </script>
+</head>
+<body>
+<p>Contrary to popular belief, Lorem Ipsum is not <a href="#">simply</a> random text. It has roots in a piece of <a href="#">simply</a>classical Latin literature from 45 BC,<a href="#">simply</a> making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word <a href="#">simply</a>in classical literature, discovered<a href="#">simply</a> the undoubtable source. Lorem Ipsum <a href="#">simply</a>comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance.<a href="#">simply</a> The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
+
+<p>Contrary to popular belief, Lorem Ipsum is not <a href="#">simply</a> random text. It has roots in a piece of <a href="#">simply</a>classical Latin literature from 45 BC,<a href="#">simply</a> making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word <a href="#">simply</a>in classical literature, discovered<a href="#">simply</a> the undoubtable source. Lorem Ipsum <a href="#">simply</a>comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance.<a href="#">simply</a> The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
+
+<p>Nick</p>
+
+
+
+<p>
+<ul>
+  <li class="smoke"><a>1</a></li>
+  <li><a>2</a></li>
+  <li><a>3</a></li>
+  <li><a>4 not selected</a></li>
+  <li><a>5</a></li>
+</ul>
+</p>
+
+<p>$("ul + p")</p>
+<p>$("ul + p")</p>
+
+<ul>
+  <li><a>1</a></li>
+  <li class="took"><a>2</a></li>
+  <li><a>3</a></li>
+  <li class="mook"><a>4</a></li>
+  <li><a>5</a></li>
+</ul>
+
+<p>$("ul + p") is selcted becuase it follows a UL</p>
+<p>$("ul + p")</p>
+
+<div>div (doesn't match since before #prev)</div>
+<span id="prev">span#prev</span>
+<div>div sibling</div>
+<div>div sibling
+  <div id="small">div neice</div>
+</div>
+<span>span sibling (not div)</span>
+<div>div sibling</div>
+</body>
+</html>

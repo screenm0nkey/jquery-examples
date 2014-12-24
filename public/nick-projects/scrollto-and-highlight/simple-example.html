@@ -1,0 +1,37 @@
+<!DOCTYPE HTML><html lang="en-US"><head>	<meta charset="UTF-8">	<title></title>	<style type="text/css">		ul, li {padding:0;margin:0;list-style:none;}		#pane-target {width:300px; height:100px; overflow:hidden;border:solid 1px;}		li {float:left; display:inline;width:98px;height:98px;background:#ccc;border:solid 1px white;}		.links {background:#333; margin:10px; display:inline-block;}		.links a { color:#fff;}	</style>	<script type="text/javascript" src="http://libraries/jquery-1.4.2.min.js"></script>	<script type="text/javascript" src="jquery.scrollTo-1.4.2-min.js"></script>    <script type="text/javascript">
+        $(function(){            $.easing.elasout = function(x, t, b, c, d){
+                var s = 1.70158;
+                var p = 0;
+                var a = c;
+                if (t == 0) 
+                    return b;
+                if ((t /= d) == 1) 
+                    return b + c;
+                if (!p) 
+                    p = d * 0.3;
+                if (a < Math.abs(c)) {
+                    a = c;
+                    var s = p / 4;
+                }
+                else 
+                    var s = p / (2 * Math.PI) * Math.asin(c / a);
+                return a * Math.pow(2, -10 * t) * Math.sin((t * d - s) * (2 * Math.PI) / p) + c + b;
+            };			
+            var $paneTarget = $('#pane-target');
+            var count = 0
+            $('.links a').bind('click', function(evt){
+                evt.preventDefault();
+                count = ($(this).hasClass('right')) ? count + 3 : count - 3;
+                if (count <= 0) {
+                    count = 0
+                }
+                if (count > 6) {
+                    count = 6
+                }
+                console.log(count);
+                var $target = $paneTarget.find('li:eq(' + count + ')');
+                $paneTarget.stop().scrollTo($target, 800,{easing: 'elasout'});
+                
+            });
+        });
+    </script></head><body>	<div class="links">		<a class="left" href="left">left</a>		<a class="right" href="right">right</a>	</div>	<div id="pane-target">		<ul style="width:900px">			<li><a href="">1</a></li>			<li><a href="">2</a></li>			<li><a href="">3</a></li>			<li><a href="">4</a></li>			<li><a href="">5</a></li>			<li><a href="">6</a></li>			<li><a href="">7</a></li>			<li><a href="">8</a></li>			<li><a href="">9</a></li>		</ul>	</div></body></html>

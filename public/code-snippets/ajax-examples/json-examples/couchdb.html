@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <title>Getting JSON from CouchDB</title>
+    <script type="text/javascript" src="http://libraries/jquery-1.6.1-min.js"></script>
+    <script type="text/javascript">
+      log = console.log;
+      
+      // curl -X GET http://127.0.0.1:5984/mycouchshop/_design/products/_view/products. 
+      // curl -X GET http://127.0.0.1:5984/mycouchshop/_all_docs.
+      // curl -X POST http://127.0.0.1:5984/mycouchshop/ -d @person.json -H "Content-Type: application/json"
+
+      $(document).ready(function() {
+        function callback(json) {
+          var data = json.rows;
+          for(var i = data.length - 1; i >= 0; i--) {
+            console.log(data[i].key, '\t', data[i].value);
+          };
+        }
+
+        function getJSON(url) {
+          $.ajax({
+            url : url,
+            type : 'GET',
+            dataType : "jsonp",
+            success : callback
+          });
+        }
+        
+        getJSON('http://couchdb:5984/addressbook/_design/addressbook/_view/phonenumbers');
+        getJSON('http://couchdb:5984/mycouchshop/_design/peoples/_view/people');
+        getJSON('http://couchdb:5984/mycouchshop/_design/products/_view/products');
+        
+        
+        // $.getJSON('http://jquery:5984/mycouchshop/?callback=?', { key: 'value', otherKey: 'otherValue' }, function(data){console.log(data)});
+//         
+        // function postJSON() {
+          // $.ajax({
+            // url : 'http://couchdb:5984/mycouchshop/',
+            // data : {"forename": "Bob", "surname": "McHamster", "type": "person"}, 
+            // type : 'POST',
+            // contentType : "application/json",
+            // dataType : "json",
+            // success : function(xhr) {
+              // console.log(xhr);
+            // }
+          // });
+        // }
+//         
+        // postJSON();
+
+      });
+
+      // 
+    </script>
+  </head>
+  <body></body>
+</html>

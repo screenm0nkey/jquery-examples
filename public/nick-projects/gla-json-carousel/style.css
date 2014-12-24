@@ -1,0 +1,16 @@
+body{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;font-size:13px}
+ul,li,p{list-style:none;margin:0;padding:0}
+#container{position:relative;width:800px;margin:20px auto}
+#carousel #scroll-nav{position:absolute;top:380px;left:0}
+#carousel #scroll-nav a,#main-nav a{display:block;float:left;margin-right:50px}
+#carousel #pane-outer{position:absolute;border:solid;width:600px;top:40px;left:0}
+#carousel #pane-target{width:600px;height:300px;overflow:hidden}
+#carousel #pane-target ul{width:3000px;height:300px;clear:both}
+#carousel #pane-target ul li{float:left;width:198px;height:298px;border:1px solid #FFF;background:#CCC;color:#FFF;text-align:center;font-size:15px}
+#carousel #pane-target ul li p.unecc{font-size:18px}
+#carousel #pagination-nav{position:absolute;top:350px;display:none}
+#carousel #pagination-nav ul li{float:left;margin-right:10px;font-size:11px}
+#carousel #pagination-nav ul li.showing{margin-right:30px}
+#carousel #pagination-nav ul li.selected{font-weight:700}
+#carousel #pagination-nav ul li a{text-decoration:none;color:#03C}
+#carousel #pagination-nav ul li a:hover{text-decoration:underline}

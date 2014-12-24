@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		ul, li {padding:0;margin:0;list-style:none;}
+		#pane-target {width:300px; height:100px; overflow:hidden;border:solid 1px;}
+		li {float:left; display:inline;width:98px;height:98px;background:#ccc;border:solid 1px white;}
+		.links {background:#333; margin:10px; display:inline-block;}
+		.links a { color:#fff;}
+	</style>
+	<script type="text/javascript" src="http://libraries/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="jquery.scrollTo-1.4.2-min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            var $paneTarget = $('#pane-target');
+            var count = 0;
+            $('.links a').bind('click', function(evt){
+                evt.preventDefault();
+                count = ($(this).hasClass('right')) ? count + 1 : count - 1;
+                var $target = $paneTarget.find('li:eq(' + count + ')');
+                $paneTarget.stop().scrollTo($target, 300);
+            });
+        });
+    </script>
+</head>
+<body>
+	<div class="links">
+		<a class="left" href="left">left</a>
+		<a class="right" href="right">right</a>
+	</div>
+	<div id="pane-target">
+		<ul style="width:1500px">
+			<li><a href="">01</a></li>
+			<li><a href="">02</a></li>
+			<li><a href="">03</a></li>
+			<li><a href="">04</a></li>
+			<li><a href="">05</a></li>
+			<li><a href="">06</a></li>
+			<li><a href="">07</a></li>
+			<li><a href="">08</a></li>
+			<li><a href="">09</a></li>
+			<li><a href="">10</a></li>
+			<li><a href="">11</a></li>
+			<li><a href="">12</a></li>
+			<li><a href="">13</a></li>
+			<li><a href="">14</a></li>
+			<li><a href="">15</a></li>
+		</ul>
+	</div>
+</body>
+</html>

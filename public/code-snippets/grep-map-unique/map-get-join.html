@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    	<title>Map Get Join</title>
+        <style>
+            b, span, p, html body {
+                padding: .5em;
+                border: 1px solid;
+            }
+            
+            b {
+                color: blue;
+            }
+            
+            strong {
+                color: red;
+            }
+        </style>
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    </head>
+    <body>
+        <div>
+            <p><span><b>My parents are: </b></span></p>
+			
+			<a href="">1</a>
+			<a href="">2</a>
+			<a href="">3</a>
+		
+        </div>
+        <script>
+            /*
+             * As the return value of map() is a jQuery-wrapped array, it's very common to get() on the returned object to work with a basic array.
+             * get() returns DOM elements in the jQuery stack as an array
+             */
+            var parentEls = $("b").parents().map(function(){
+                console.log(this);
+                return this.tagName;
+            }).get().join(", ");
+            
+            
+            
+            $("b").append("<strong>" + parentEls + "</strong>");
+			
+			console.log($('a').get())
+        </script>
+    </body>
+</html>

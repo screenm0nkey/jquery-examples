@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script>
+        	log = console.log;
+            $(function(){
+                // SET values
+                $('input:checkbox,input:radio').attr('checked', 'checked');
+                
+				$("input").val(["check1", "check2", "radio2"]); //notice that checkbox3 is selected in the html but is not 
+				
+				$('input').removeAttr('checked');
+				$('input').attr('checked', '');
+				
+				// GET values
+				$(":checkbox").each(function(i,el){
+					if(el.checked){
+						log(el)
+					}
+				});
+				
+				$(":radio").each(function(i, el){
+					if(el.checked){
+						log(el)
+					}
+				});
+				
+				// Determining if a checkbox or radio button is checked or unchecked
+				log(3, $('input:checkbox').is(':checked'));
+				log(4, $('input:checkbox:checked').length);
+				
+            });
+        </script>
+        <style>
+            body {
+                color: blue;
+            }
+        </style>
+    </head>
+    <body>
+        <p>
+        	<input type="checkbox" name="checkboxname" value="check1"/> check1        	<input type="checkbox" name="checkboxname" value="check2"/> check2        	<input type="checkbox" name="checkboxname" value="check3" checked="checked"/> check3
+		</p>
+        
+		
+		<p>
+			<input type="radio" name="re" value="radio1"/> radio1        	<input type="radio" name="re" value="radio2"/> radio2        	<input type="radio" name="re" value="radio3"/> radio3
+		</p>
+    </body>
+</html>

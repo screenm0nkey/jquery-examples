@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<title>Better Coda Slider</title>
+<link rel="stylesheet" href="coda-slider.css" type="text/css" media="screen" title="no title" charset="utf-8">
+
+<script src="jquery-1.2.6.js"></script>
+<script src="jquery.scrollTo-1.3.3.js"></script> <!--This is the plugin by arial-->
+<script src="jquery.localscroll-1.2.5.js" charset="utf-8"></script> <!--This allows links in the copy to scroll the content-->
+<script src="jquery.serialScroll-1.2.1.js" charset="utf-8"></script> <!--This allows the left and right buttons and tabs along top to scroll-->
+<script src="coda-slider.js" charset="utf-8"></script>
+
+<script>
+/*
+	$(document).ready(function() {
+		var horizontal = true;
+		var $panels = $("#slider .panel");
+		//console.log($panels);
+		var $container = $("#slider .scrollContainer");
+		var $scroll = $("#slider .scroll").css("overflow","hidden");
+		
+		$scroll
+		.before('<img class="scrollButtons left" src="images/scroll_left.png" />')
+        .after('<img class="scrollButtons right" src="images/scroll_right.png" />');
+		
+		if(horizontal) {
+			$panels.css({
+				"float" : "left",
+				"position" : "relative"
+				});
+			
+			console.log("offsetWidth = ", $panels[0].offsetWidth );
+			console.log("width = ", $($panels[0]).width() );
+			$container.css("width", $panels[0].offsetWidth * $panels.length);
+			console.log($container.width())
+		}
+		
+		$("#slider .navigation a").click(selectNav);
+		
+		function selectNav() {
+			console.log("selectNav() ", this);
+			$(this).parents("ul:first").find("a").removeClass("selected").end().end().addClass("selected");
+		}
+		
+		var scrollOptions = {
+			target: $scroll,
+			items: $panels,
+			navigation: ".navigation a",
+			prev: "img.left",
+			next: "img.right",
+			axis: "xy",
+			duration: 500,
+			easing: "swing",
+			onAfter:trigger
+			//TODO finish!
+		};
+		
+		function trigger(data) {
+			console.log("trigger() ",data);
+			var el = $("#slider .navigation").find('a[href$="' + data.id + '"]').get(0);
+			selectNav.call(el);
+			//console.log(el)
+		}
+		
+		//console.log(window.location.hash.substr(1));
+		
+		if(window.location.hash) {
+			trigger({ id : window.location.hash.substr(1)});
+		} else {
+			$("#slider .navigation a:first").click();
+		}
+		
+		$("#slider").serialScroll(scrollOptions);
+		$.localScroll(scrollOptions);
+	});
+	*/
+</script>
+
+
+</head>
+<body>
+    <div id="wrapper">
+        <h1>jQuery Coda Slider</h1>
+    
+        <div id="intro">
+            <p>This technique demonstrates an accessible 'Coda'-like slider interface, but in addition, allows you to place links to the sliding content anywhere on the page and have the effect (and navigation) still work. <br /><a href="http://jqueryfordesigners.com/coda-slider-effect">Read the article, and see the screencast this demonstration relates to</a></p>
+        </div>
+    
+        <div id="slider">    
+            <ul class="navigation">
+                <li><a href="#sites">Sites</a></li>
+                <li><a href="#files">Files</a></li>
+                <li><a href="#editor">Editor</a></li>
+                <li><a href="#preview">Preview</a></li>
+                <li><a href="#css">CSS</a></li>
+                <li><a href="#terminal">Terminal</a></li>
+                <li><a href="#books">Books</a></li>
+            </ul>
+
+            <div class="scroll">
+                <div class="scrollContainer">
+                <div class="panel" id="sites"><h2>Sites</h2><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></div>
+                <div class="panel" id="files"><h2>Files</h2><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></div>
+
+                <div class="panel" id="editor"><h2>Editor</h2><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></div>
+                <div class="panel" id="preview"><h2>Preview</h2><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></div>
+                <div class="panel" id="css"><h2>CSS</h2><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></div>
+                <div class="panel" id="terminal"><h2>Terminal</h2><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. <a href="#sites">And some sites</a></p></div>
+
+                <div class="panel" id="books"><h2>Books</h2><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></div>
+                </div>
+            </div>
+
+            <div id="shade"></div>
+        </div>
+
+        <p>Lorem ipsum dolor sit amet, <a href="#books">books</a> consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco <a href="#sites">sites</a> laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure <a href="#terminal">terminal</a>  dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+        
+    </div>
+</body>
+</html>
+
+
+
+
+

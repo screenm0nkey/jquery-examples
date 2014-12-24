@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Link Fader</title>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript" src="jquery.linkFader.nick.js"></script>
+<style type="text/css">
+/*<![CDATA[*/
+* {
+	margin: 0;
+	padding: 0;
+} 
+a {
+	outline: none;
+}
+ul#awesome-menu {
+	width: 517px;
+	margin: 20px auto;
+	list-style: none;
+}
+	ul#awesome-menu li {
+		display: inline;
+	}
+		ul#awesome-menu li a {
+			display: block;
+			float: left;
+			height: 56px;
+			background-image: url(btn/menu-sprite.png);
+			text-indent: -9999px;
+		}
+			ul#awesome-menu li a.ninja 	  {width: 96px;	 background-position: 0 0;}
+			ul#awesome-menu li a.zombie   {width: 108px; background-position: -96px  0;}
+			ul#awesome-menu li a.robot 	  {width: 97px;	 background-position: -204px 0;}
+			ul#awesome-menu li a.assassin {width: 121px; background-position: -301px 0;}
+			ul#awesome-menu li a.jedi 	  {width: 94px;	 background-position: -422px 0;}
+				
+				ul#awesome-menu li a.ninja:hover	{background-position: 0 -56px;}
+				ul#awesome-menu li a.zombie:hover 	{background-position: -96px  -56px;}
+				ul#awesome-menu li a.robot:hover 	{background-position: -204px -56px;}
+				ul#awesome-menu li a.assassin:hover {background-position: -301px -56px;}
+				ul#awesome-menu li a.jedi:hover		{background-position: -422px -56px;}
+				
+				ul#awesome-menu li a.ninja.selected	   {background-position: 0 -112px;}
+				ul#awesome-menu li a.zombie.selected   {background-position: -96px  -112px;}
+				ul#awesome-menu li a.robot.selected    {background-position: -204px -112px;}
+				ul#awesome-menu li a.assassin.selected {background-position: -301px -112px;}
+				ul#awesome-menu li a.jedi.selected	   {background-position: -422px -112px;}
+/*]]>*/
+</style>
+</head>
+<body class="zombie">
+<ul id="awesome-menu">
+  <li><a href="/ninja.html" class="ninja" rel="0 0 0 -56">Ninja</a></li>
+  <li><a href="/zombie.html" class="zombie" rel="-96 0 -96 -56">Zombie</a></li>
+  <li><a href="/robot.html" class="robot" rel="-204 0 -204 -56">Robot</a></li>
+  <li><a href="/assassin.html" class="assassin" rel="-301 0 -301 -56">Assassin</a></li>
+  <li><a href="/jedi.html" class="jedi" rel="-422 0 -422 -56">Jedi</a></li>
+</ul>
+<script>
+//<![CDATA[
+	$(function() {
+		$('#awesome-menu a.'+$('body').attr('class')).addClass('selected');//this is only for the example
+		/*
+			When the 'click' property is set to true the plugin will stop the redirect working and will call the supplied function with the value of the clicked item. 
+			It will also set the class property of the clicked item to 'selected' and change the css.
+			Setting the 'click' to true would only be necessary when you have a one page site or you load all your content into an iFrame or div and the navigation remians static. 
+			
+			If the navigation appears on several pages then set the 'click' property to false and use something like the command below to set you menu item to selected 
+			$('#awesome-menu a.'+$('body').attr('class')).addClass('selected');
+		*/
+		
+		$('#awesome-menu').linkFader({
+			sizing:"px",
+			fadeIn:400,
+			fadeOut:200,
+			click:true, 
+			callback: aFunction /* Called when menu item is clicked. Only works when 'click' is set to true */
+		});
+		//
+		function aFunction(val) {
+			alert('Link clicked = ' + val);
+			//console.log($(val));
+		}
+	});
+	//]]>
+</script>
+</body>
+</html>

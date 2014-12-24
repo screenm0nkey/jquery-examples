@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Inline search</title>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+
+	$(document).ready(function(){
+		//this make the searc case-insensitive
+		$.extend($.expr[":"], {
+    		"containsNC": function(elem, i, match, array) {
+        		return (elem.textContent || elem.innerText || "").toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
+    		}
+		});
+
+
+
+		$.fn.search = function(searchElements) {
+			$(this).keyup(function() {
+				console.log($(this).val());
+				var searchString = $(this).val();
+				if(searchString.length > 0 ){
+					$(searchElements).hide();
+					$(searchElements + ":containsNC(" + searchString + ")").show();
+				} else {
+					$(searchElements).show();
+				}
+				
+			});
+		}
+	});
+	
+	$(document).ready(function(){
+		$("#inline-search").val("").search("select option");
+		$("#inline-search").val("").search("table td");
+	});
+
+</script>
+</head>
+
+<body>
+	<input id="inline-search" type="text" />
+    
+    <select style="width:200px" multiple="multiple">
+    	<option>Cit</option>
+        <option>Dog</option>
+        <option>Mouse</option>
+        <option>House</option>
+        <option>Shoe</option>
+        <option>Mousse</option>
+        <option>Car</option>
+        <option>Heart</option>
+   </select>
+   	
+    <br />
+	<br />
+
+   
+   <table border="1px" cellpadding="10px">
+   	<tr>
+   		<td>Cat</td>
+        <td>Dog</td>
+        <td>Mouse</td>
+        <td>House</td>
+        <td>Shoe</td>
+        <td>Mousse</td>
+        <td>Car</td>
+        <td>Heart</td>
+     </tr>
+   </table>
+</body>
+</html>

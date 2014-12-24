@@ -1,0 +1,43 @@
+.beautifulForm {
+	width:460px;
+}
+.beautifulForm p {
+	font-family:Verdana;
+	font-size:70%;
+	margin:10px 0 10px 10px;
+}
+.beautifulForm div {
+	border:1px solid red;
+	margin:5px;
+	padding:5px;
+	height:50px;
+}
+.beautifulForm p span, .beautifulForm label span {
+	color:#ff0000;
+}
+.beautifulForm fieldset {
+	border:none;
+	margin-bottom:20px;
+	padding:10px;
+}
+.beautifulForm legend {
+	font-family:Georgia;
+	font-size:110%;
+	padding:0 0 10px;
+}
+.beautifulForm label, .beautifulForm input, .beautifulForm select {
+	float:left;
+}
+.beautifulForm label, .beautifulForm input {
+	width:210px;
+	margin-bottom:10px;
+}
+.beautifulForm label {
+	font-family:Verdana;
+	font-size:70%;
+	padding-top:5px;
+}
+.beautifulForm input[type=radio], .beautifulForm input[type=checkbox] {
+	width:auto;
+	margin:5px 200px 10px 0;
+}

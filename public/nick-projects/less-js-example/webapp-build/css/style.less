@@ -1,0 +1,43 @@
+@import "classes.less";
+
+@colour1: #fff;
+@colour2: green;
+@colour3: #ccc;
+@colour4: purple;
+
+html {
+	height:100%;
+}
+body {
+    background: @colour3;
+	.linear-gradient(#333, #fff);
+}
+
+#header { 
+	position:relative;
+	top:100px;
+	left:100px;
+	padding:10px; 
+	width:100px; 
+	background:@colour2;
+	width:200px;
+	height:200px;
+	.resize(both);
+	.border-radius(15px); 
+	.transform(rotate(7deg)); 
+	.box-shadow(5px,5px,10px); 
+	a { color:@colour1;
+		span{ color:green; }
+		font-size:20px;
+	}
+	a:hover { color:@colour4; }
+}
+
+#hello {
+	background:@colour4;
+	width:200px;
+	height:200px;
+	margin:30px auto;
+	.triple-borders(purple, red, green);
+	.transform(rotate(7deg)); 
+}

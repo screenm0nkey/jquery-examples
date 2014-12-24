@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+        <title>Untitled Document</title>
+        <style type="text/css">
+            li {
+                cursor: pointer
+            }
+        </style>
+    </head>
+    <body>
+        <ul>
+            <li id="start">Start Animating</li>
+            <li id="reset">Stop Animating</li>
+            <li id="add">Add to Queue</li>
+        </ul>
+        <div id="box" style="width:150px; height:150px; background:#ff3300;">
+        </div>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+        <script type="text/javascript">
+            $('#start').click(function(){
+				nick();
+				animateBox();
+			});
+            
+            $('#reset').click(function(){
+                $('#box').queue('fx', []);
+            });
+            
+            $('#add').click(function(){
+                $('#box').queue(function(){
+                    $(this).animate({
+                        height: '-=25'
+                    }, 500);
+                    $(this).dequeue();
+                });
+            });
+            
+            function animateBox(){
+                $('#box').slideUp(2000).slideDown(2000).hide(2000).show(2000, animateBox);
+            }
+            
+            function nick(){
+                console.log($('#box').queue('fx'));
+                setTimeout(nick, 500);
+            }
+        </script>
+    </body>
+</html>

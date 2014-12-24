@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <title>Drag Controls for Oversized Content</title>
+        <style type="text/css">
+            #full-sized-area {
+                position: relative;
+                overflow: hidden;
+                width: 800px;
+                height: 400px;
+            }
+            
+            #full-sized-content, #full-sized-background {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+            
+            #drag-controls-area {
+                position: relative;
+                width: 300px;
+                height: 50px;
+            }
+            
+            #drag-controls {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 48px;
+                border: 1px solid white;
+				background:gold;
+            }
+            
+            #drag-controls.ui-draggable {
+                cursor: -moz-grab !important;
+                cursor: -webkit-grab !important;
+                cursor: e-resize;
+            }
+            
+            #drag-controls.ui-draggable-dragging {
+                cursor: -moz-grabbing !important;
+                cursor: -webkit-grabbing !important;
+                border-color: yellow;
+            }
+            
+            /* the below styles are specific to this example */
+            #full-sized-content {
+                font-size: 44px;
+                font-family: Helvetica, sans;
+                width: 1600px;
+                padding: 50px;
+                color: #fff;
+            }
+            
+            #drag-controls-area {
+                background-color: #00386d;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="full-sized-area">
+            <div id="full-sized-background">
+                <img src="http://farm3.static.flickr.com/2334/2279537269_a5394fb86a_z.jpg" style="width: 1100px; height: 350px;" alt="" />
+            </div>
+            <div id="full-sized-content">
+                This is some text in the foreground so you can see the parallax
+            </div>
+        </div>
+        <div id="drag-controls-area">
+            <div id="drag-controls">
+            </div>
+        </div>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <script type="text/javascript" src="http://libraries/jquery-ui-draggable.js"></script>
+        <script type="text/javascript">
+            $(function(){
+                var $fullArea = $('#full-sized-area');
+                var $fullContent = $('#full-sized-content', $fullArea);
+                
+                // find what portion of the content is displayed
+                var contentRatio = $fullArea.width() / $fullContent.width();
+                
+                // scale the controls box
+                var $controlsArea = $('#drag-controls-area');
+                var $controls = $('#drag-controls', $controlsArea);
+                $controls.css('width', $controlsArea.width() * contentRatio);
+                
+                // determine the scale difference between the controls and content
+                var scaleRatio = $controlsArea.width() / $fullContent.width();
+                
+                $fullBackground = $('#full-sized-background');
+                
+                // attach the draggable behavior
+                
+                
+                $controls.draggable({
+                    axis: 'x', // confine dragging to the x-axis
+                    containment: 'parent',
+                    drag: function(ev, ui){
+                        // move the full sized content
+                        var newContentPosition = -1 * ui.position.left / scaleRatio;
+                        $fullContent.css('left', newContentPosition);
+                        
+                        // move the background
+                        $fullBackground.css('left', newContentPosition * .4);
+                        
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>

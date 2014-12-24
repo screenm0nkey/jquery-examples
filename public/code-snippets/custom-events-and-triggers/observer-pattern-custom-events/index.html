@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>Custom Events</title>
+        <link rel="stylesheet" href="css/layout.css" type="text/css" media="all" charset="utf-8" />
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript" charset="utf-8">
+        </script>
+        <script src="js/jquery.colorblock.js" type="text/javascript" charset="utf-8"> </script>
+        <script src="js/jquery.colorobserver.js" type="text/javascript" charset="utf-8"> </script>
+       
+	    <script type="text/javascript" charset="utf-8">
+            $(document).ready(function(){
+                //you can see below chaining is working
+                $(".color_block").colorBlock({
+                    colors: ["purple", "red", "black", "green", "gold"]
+                }).css({
+                    border: 'solid brown'
+                });
+                
+                $("#observer-one").colorObserver({
+                    watchItems: 'div.color_block'
+                });
+                $("#observer-two").colorObserver({
+                    watchItems: $("div.color_block:lt(3)")
+                });
+				$("#observer-three").colorObserver({
+                    watchItems: $("div.color_block:gt(3)")
+                });
+				$("#observer-four").colorObserver({
+                    watchItems: $("div.color_block")
+                });
+                
+                
+            });
+        </script>
+    </head>
+    <body>
+        <div id="color_blocks">
+            <div class="color_block">
+            </div>
+            <div class="color_block">
+            </div>
+            <div class="color_block">
+            </div>
+            <div class="color_block">
+            </div>
+            <div class="color_block">
+            </div>
+            <div class="color_block">
+            </div>
+            <div class="color_block">
+            </div>
+            <div class="color_block">
+            </div>
+        </div>
+		
+        <div id="observer-one" class="observer">
+        </div>
+        <div id="observer-two" class="observer">
+        </div>
+		<div id="observer-three" class="observer">
+        </div>
+		<div id="observer-four" class="observer">
+        </div>
+    </body>
+</html>

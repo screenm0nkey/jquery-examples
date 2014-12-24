@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("div").css("background", "#b4b0da").filter(function(index){
+                    console.log(index, $(this));
+                    if (index == 1 || $(this).attr("id") == "fourth") {
+                        return this;
+                    }
+                    //return index == 1 || $(this).attr("id") == "fourth";
+                }).css("border", "3px double red");
+                
+                
+                $("div").css("background", "#b4b0da").filter("#third").css("border", "5px solid green");
+                
+            });
+        </script>
+        <style>
+            div {
+                width: 60px;
+                height: 60px;
+                margin: 5px;
+                float: left;
+                border: 3px white solid;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="first"></div>
+        <div id="second"></div>
+        <div id="third"></div>
+        <div id="fourth"></div>
+        <div id="fifth"></div>
+        <div id="sixth"></div>
+    </body>
+</html>

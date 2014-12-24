@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us">
+<head>
+	<title>OL Demo</title>
+	<script src="http://jquery.com/src/jquery.js"></script>
+	<script>
+	$(document).ready(function(){
+		$("li.item > ol").hide();
+		$("li.item").hover(function(){
+			$("ol",this).slideDown("fast");
+		},function(){
+		console.log(this);
+			$("ol",this).slideUp("fast");
+		});
+	});
+	</script>
+	<style>
+	body { font-family: Arial; font-size: 16px; }
+	ol { list-style: none; margin: 0; padding: 0; }
+	li.item { float: left; width: 150px; background: #F39; margin: 5px; }
+	li.item a { font-size: 18px; color: #FFF; margin: 4px; }
+	li.item ol { background: #FFF; margin: 3px; }
+	li.item ol a { font-size: 16px; color: #000; margin: 0; }
+	</style>
+</head>
+<body>
+<ol class="menu">
+	<li class="item"><a href="/">jQuery</a>
+	<ol>
+		<li><a href="/src/">Download</a></li>
+		<li><a href="/docs/">Documentation</a></li>
+		<li><a href="/blog/">Blog</a></li>
+	</ol></li>
+
+	<li class="item"><a href="/discuss/">Community</a>
+	<ol>
+		<li><a href="/discuss/">Mailing List</a></li>
+		<li><a href="/tutorials/">Tutorials</a></li>
+		<li><a href="/demos/">Demos</a></li>
+		<li><a href="/plugins/">Plugins</a></li>
+	</ol></li>
+
+	<li class="item"><a href="/dev/">Development</a>
+	<ol>
+		<li><a href="/src/">Source Code</a></li>
+		<li><a href="/dev/bugs/">Bug Tracking</a></li>
+		<li><a href="/dev/recent/">Recent Changes</a></li>
+	</ol></li>
+</ol>
+</body>
+</html>

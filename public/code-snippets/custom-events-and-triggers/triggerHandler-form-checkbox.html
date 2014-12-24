@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <title>jQuery Trigger and Default Behavior Demo</title>
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script type="text/javascript">
+            
+            // When the DOM is ready, initialize.
+            $(function(){
+            
+                $("input").click(function(objEvent){
+                    // Alert the checkboxed status.
+                    alert(this.checked);
+                });
+                
+                
+                $("p.trigger").click(function(objEvent){
+                    // Trigger click on the checkbox.
+                    $("input").click();
+                });
+                
+                //triggerHandler prevents the default behavoir from actioning
+                $("p.triggerHandler").click(function(objEvent){
+                    // Trigger click on the checkbox.
+                    $input = $('input');
+                    $input[0].checked = !$input[0].checked;//inherently check the checkbox
+                    //if we used trigger() here it would deselect the checkbox after it was checked above as that's the default behavior
+                    $input.triggerHandler('click');
+                }); 
+            });
+        </script>
+    </head>
+    <body>
+        <h1>jQuery Trigger and Default Behavior Demo</h1>
+        <h3>http://www.bennadel.com/blog/1525-jQuery-s-Event-Triggering-Order-Of-Default-Behavior-And-triggerHandler-.htm</h3>
+        <p>when the browser naturally handles the checkbox click event - <b>the checked attribute is toggled and then the event handlers are executed</b>.</p>
+        <p>It seems that when you trigger the click event on a checkbox, the default behavior (toggling the checked attribute) 
+		   takes place after event handlers fire</p>
+        <form>
+            <input type="checkbox" />
+            <p class="trigger" style="background:#333; color:#fff;padding:3px;display:inline-block;cursor:pointer"> click checkbox using trigger()</p>
+            <p class="triggerHandler" style="background:#333; color:#fff;padding:3px;display:inline-block;cursor:pointer">click checkbox using triggerHandler()</p>
+        </form>
+    </body>
+</html>

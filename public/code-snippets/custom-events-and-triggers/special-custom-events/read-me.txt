@@ -1,0 +1,3 @@
+hesitate.html/.js used jquery special events to create the functionality.
+hesitate-plugin/.js does the same thing but using a plug-in. 
+I did this to show how you might achieve the same functionality using special event and plugins

@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+    	<title>Passing data to an event handler</title>
+    </head>
+    <body>
+        <form action="trigger" method="post">
+            <input type="name">
+            <input type="age">
+            <input type="submit" value="submit">
+        </form>
+        <script src="http://code.jquery.com/jquery-latest.js">
+        </script>
+        <script>
+            
+            /*
+             * if (!event) event = window.event;
+             * var target = (event.target) ? event.target : event.srcElement;
+             */
+            
+			
+			//passing static data to the bind method which can be access via Event.data
+			//edata is passed to the event handler when triggered (dynamically)
+            jQuery('form').bind('submit', { msg: 'STATIC'}, function(e, edata){
+				if (edata) {
+					console.log(1, edata.name);
+				}
+                console.log(2, e, e.name, e.data.msg);
+                return false;
+            });
+            
+            
+            jQuery('form').bind('click', function(e){
+                console.log(3, e, e.name, e.type);
+                return false;
+            });
+            
+            
+            
+            //3 WAYS TO PASS DATA TO THE EVENT HANDLER 
+			//1. Passing extra arguments to trigger()
+            jQuery('form').trigger('submit', {
+                name: 'Peter',
+                surname: 'Donegan',
+                age: 41,
+                gender: 'M'
+            });
+            
+			
+            //2. Passing a custom event object to trigger()
+			//Passing an object literal is actually a shortcut to creating an instance of jQuery.Event
+            jQuery('form').trigger({
+                type: 'click',
+                name: 'Liz',
+                surname: 'Lowman',
+                age: 34,
+                gender: 'F'
+            });
+            
+			
+            /*
+             * 3. This is the alternative way to option 2 of passing a event object:
+             */
+            var e = jQuery.Event('submit'); // the new operator can be omitted
+            e.name = 'John';
+            e.surname = 'Doe';
+            e.age = 28;
+            e.gender = 'M';
+            jQuery('form').trigger(e);
+			
+			
+			//Just to check that even though it's the same event type it has a differnt event object
+			var e = jQuery.Event('submit'); // the new operator can be omitted
+            e.name = 'Terry';
+            e.surname = 'March';
+            e.age = 108;
+            e.gender = 'M';
+			e.dislikes = 'cat'
+            jQuery('form').trigger(e);
+            
+            
+			
+            
+           
+			
+			
+        </script>
+    </body>
+</html>

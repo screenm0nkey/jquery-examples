@@ -1,0 +1,138 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <title>Mobile Scroller</title>
+        <style type="text/css">
+            body{margin:0;padding:0}ul,li{padding:0;margin:0;list-style:none}#scroll-container{width:300px;height:100px;overflow:hidden;border:solid 1px;margin:10px auto;position:relative}#scroll-container .scroller{width:1500px;position:absolute}#scroll-container .scroller li{float:left;display:inline;width:98px;height:98px;background:#fff;border:solid 1px #dfdfdf}#scroll-container .scroller li.active{border:solid 1px red}#scroll-container .scroller li a{display:block;position:relative;text-decoration:none}#scroll-container .scroller li a img{border:0;width:98px;height:98px;margin:0 auto}#scroll-container .scroller li a img.ajax-loader{width:32px;height:32px;position:absolute;top:30px;left:30px}#scroll-prev,#scroll-next{display:block;float:left;margin-right:30px;padding:8px 12px;background:#333;color:#fff;text-decoration:none;cursor:pointer}#scroll-prev:hover,#scroll-next:hover{background:red}#content-loader{border:solid 3px #ccc;width:300px;height:300px;position:absolute;left:45%;top:120px}#content-loader img{width:300px;height:300px}#content-loader img.ajax-loader{width:32px;height:32px;position:absolute;top:135px;left:135px}#console-log-mobile{font-size:11px;position:absolute;right:10px;color:#333;font-family:consolas,sans-serif;line-height:18px;filter:alpha(opacity = 80);-moz-opacity:.8;opacity:.8;background:#fff;padding:10px;z-index:9999}#links{position:absolute;bottom:0;left:5px}#links p{margin-bottom:40px;overflow:auto}#links a{display:block;float:left;margin-right:30px;padding:3px 10px;background:#333;color:#fff;text-decoration:none;cursor:pointer}#links a:hover{background:red}
+        </style>
+    </head>
+    <body>
+        <div id="console-log-mobile"></div>
+        <div id="scroll-container">
+            <ul class='scroller'>
+                <li id="logo1" data-image="image01-col.svg.png" data-linked-image="bulb-accor.png">
+                    <a href="#">1</a>
+                </li>
+                <li id="logo2" data-image="image02-col.svg.png" data-linked-image="bulb-arup.png">
+                    <a href="#">2</a>
+                </li>
+                <li id="logo3" data-image="image03-col.svg.png" data-linked-image="bulb-bio.png">
+                    <a href="#">3</a>
+                </li>
+                <li id="logo4" data-image="image04-col.svg.png" data-linked-image="bulb-boomerang.png">
+                    <a href="#">4</a>
+                </li>
+                <li id="logo5" data-image="image05-col.svg.png" data-linked-image="bulb-cartoon-network.png">
+                    <a href="#">5</a>
+                </li>
+                <li id="logo6" data-image="image06-col.svg.png" data-linked-image="bulb-coca-cola.png">
+                    <a href="#">6</a>
+                </li>
+                <li id="logo7" data-image="image07-col.svg.png" data-linked-image="bulb-edf.png">
+                    <a href="#">7</a>
+                </li>
+                <li id="logo8" data-image="image08-col.svg.png" data-linked-image="bulb-everest.png">
+                    <a href="#">8</a>
+                </li>
+                <li id="logo9" data-image="image09-col.svg.png" data-linked-image="bulb-freesat.png">
+                    <a href="#">9</a>
+                </li>
+            </ul>
+        </div>
+        <div id="content-loader"></div>
+        <div id="links">
+            <p><a id="scroll-prev" href="prev" class="scroller">Previous</a><a id="scroll-next" href="next" class="scroller">Next</a></p>
+            <p><a class="scroller change-width" href="100">Width 100px</a><a class="scroller change-width" href="300">Width 300px</a><a class="scroller change-width" href="500">Width 500px</a><a class="scroller change-width" href="700">Width 700px</a></p>
+            <p><a class="scroller change-li-width" href="100">LI widths 100px</a><a class="scroller change-li-width" href="300">LI widths 300px</a><a class="scroller auto-resize" href="#">Auto Resize</a></p>
+            <p><a class="scroller set-elm" href="logo1">ID #01</a><a class="scroller set-elm" href="logo2">ID #02</a><a class="scroller set-elm" href="logo3">ID #03</a><a class="scroller set-elm" href="logo4">ID #04</a><a class="scroller set-elm" href="logo5">ID #05</a><a class="scroller set-elm" href="logo6">ID #06</a><a class="scroller set-elm" href="logo7">ID #07</a><a class="scroller set-elm" href="logo8">ID #08</a><a class="scroller set-elm" href="logo9">ID #09</a></p>
+        </div>
+        <script src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.js"></script>
+        <script type="text/javascript" src="jquery.mobile-scroller.js"></script>
+        <script type="text/javascript" src="jquery.mobile.content-loader.js"></script>
+        
+		
+		<script type="text/javascript">
+            $(function(){
+                var loaderObj = $('#content-loader').contentLoader({
+                    scroller: '#scroll-container', //being used with a scroller - false = stand alone
+                    imagePath: 'images/large-images/',
+                    imageArray: [], //['large-image-001.jpg', 'large-image-002.jpg']
+                    imagesInfo: ['large-image-', 'jpg', 3, 15],
+                    scrollerImageId: 'logo', //passes the id to the scroller i.e logo1, logo2, logo3
+                    autoScroll: true, //
+                    autoScrollInterval: 3000, //this only works if used as stand alone plugin
+                    imageFade: 300,
+                    activeClass: 'active',
+                    ajaxImgName: 'ajax-loader.gif',
+                    ajaxImgClass: 'ajax-loader',
+                    ajaxImageFade: 200
+                }).data('cnload');
+            });
+            
+            
+            
+            
+            $(function(){
+                //REMOVED properties
+                //resizeScroller;
+                //displayOneElement;
+                //initalWidth - REAPLCE WITH fixedWidthScroller
+                //autoScrollDelay
+                
+                var scrollObj = $('#scroll-container').continuousScroller({
+                    externalPluginId: '#content-loader',
+                    imagePath: 'images/',
+                    autoScroll: true, //auto scrolls though the images
+                    autoScrollInterval: 2000,
+                    //fixedWidthScroller: $(window).width()-50
+                    loadOnClick: true,
+                    callBack: testFunction,
+                    callBackOnLoad: true
+                }).data('cscroll');
+                
+                
+                
+                //EXAMPLES
+                //this is a call back function. 
+                function testFunction(){
+                    //console.log('callback function', this);//'this' will be the value of the active element
+                }
+                
+                
+                var timer;
+                $(window).bind('resize', function(){
+                    timer && clearTimeout(timer);
+                    timer = setTimeout(function(){
+                        //scrollObj.changeElementWidth($(window).width()-50);
+                    }, 300);
+                });
+                
+                
+                $('.change-width').click(function(evt){
+                    var width = parseInt($(this).attr('href'));
+                    scrollObj.changeScrollerWidth(width);
+                });
+                
+                
+                $('.change-li-width').click(function(evt){
+                    var width = parseInt($(this).attr('href'));
+                    scrollObj.changeElementWidth(width);
+                });
+                
+                $('.auto-resize').click(function(evt){
+                    scrollObj.autoResize();
+                });
+                
+                $('.set-elm').click(function(evt){
+                    var id = $(this).attr('href');
+                    scrollObj.setActiveElm(id);
+                    //scrollObj.clear();
+                });
+                
+                
+            });
+        </script>
+    </body>
+</html>

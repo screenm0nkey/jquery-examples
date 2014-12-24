@@ -1,0 +1,100 @@
+/* Nick Lowman reset based on Eric Meyer reset */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+html, body {
+    height: 100%; /* http://www.dave-woods.co.uk/?p=144 */
+    width: 100%;
+}
+
+html {
+    font-size: 100%;
+    overflow: -moz-scrollbars-vertical;
+}
+
+body {
+    font-size: 62.5% /* this sets the default font size as 10px */
+}
+
+ol, ul {
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+    content: '';
+    content: none;
+}
+
+/* remember to define focus styles! */:focus {
+    outline: 0;
+}
+
+/* remember to highlight inserts somehow! */
+ins {
+    text-decoration: none;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+em, i {
+    font-style: italic;
+}
+
+strong, b {
+    font-weight: bold;
+}
+
+dfn {
+    font-style: normal;
+}
+
+cite {
+    font-style: italic;
+}
+
+code, kbd, pre {
+    font-family: "Courier New", Courier, mono;
+    font-size: 1em;
+}
+
+abbr, acronym, dfn {
+    border: 0 none;
+    cursor: help;
+}
+
+/* use overflow:hidden on the container element before trying clearfix */
+.clearfix { *zoom:
+    1; /*IE7 and below*/
+}
+
+.clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
+    height: 0;
+    font-size: 0;
+    visibility: hidden;
+}
+
+

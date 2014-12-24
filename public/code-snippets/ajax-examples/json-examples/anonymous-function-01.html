@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>JSONP Example 2</title>
+        <script type="text/javascript" src="http://libraries/jquery-1.4.2.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?tags=love&tagmode=any&format=json&jsoncallback=?", function(data){
+                    //anonymous functions are given a temp name and bound to the DOM while executing
+                    var url = document.getElementsByTagName('head')[0].firstChild.src || '';
+                    var cb = (url.match(/callback=(\w+)/) || [])[1]; //get function name
+                    console.log(window[cb])
+                    
+                    $.each(data.items, function(i, item){
+                        console.log(item);
+                        $("<img/>").attr("src", item.media.m).appendTo("#images");
+                        if (i == 5) 
+                            return false;
+                    });
+                    console.timeEnd("do this");
+                });
+            });
+			
+        </script>
+        <style>
+            img {
+                height: 100px;
+                float: left;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="images"></div>
+    </body>
+</html>

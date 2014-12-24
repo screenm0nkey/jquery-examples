@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <script src="jquery-1.3.2.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                var counter = 0;
+                //notice here we use the live function. This means any element create now or later will have the click event function applied to it
+                $("button").live("click", function(){
+                    counter++;
+                    
+                    $(this).replaceWith("<button>" + $(this).text() + counter + "</button>"); //this replaces the button with a new button
+                    var btxt = $(this).text(); //get button text
+                    //
+                    var smith = $("<option>").val(btxt).text(btxt);
+                    $("body").append(smith); //appends the dom element right before the closing </body> tag
+                    $("option:last").wrap($("<select id=\"smith\">")); // we use to insert the element into the dom before we can run the wrap function on it.
+                    //
+                    var mike = $("<select id=\"mike\">").append($("<option>").val(btxt).text(btxt));
+                    $("body").prepend(mike);
+                    console.log($("select:first"));
+                    //
+                    var jane = $("<option>").val(btxt).text(btxt);
+                    $("#multi").append(jane);
+                    $("#multi").val(btxt).after("<p>" + btxt + "</p>");
+                    //
+                    var tracy = $("<select id='trac'>").prepend($("<option>").val(btxt).text(btxt));
+                    $("body").append(tracy);
+                });
+                
+            });
+        </script>
+        <style>
+            button {
+                display: block;
+                margin: 3px;
+                color: red;
+                width: 200px;
+            }
+            
+            div {
+                color: red;
+                border: 2px solid blue;
+                width: 200px;
+                margin: 3px;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <button>First</button>
+        <button>Second</button>
+        <button>Third</button>
+        <br>
+        <br>
+        <select id="multi" multiple="multiple"></select>
+        <br>
+        <br></body>
+</html>

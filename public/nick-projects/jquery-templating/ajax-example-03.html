@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Templating with AJAX</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <ul id="sara"></ul>
+    <script type="text/javascript" src="http://libraries/jquery-1.6.1-min.js"></script>
+    <script type="text/javascript" src="http://libraries/jquery.tmpl.min.js"></script>
+    <script type="text/javascript">
+      log = console.log
+      $(function() {
+        
+        /* Tried using promises and $.when but for some unknow reason jquery templates didn't like it at all*/
+        function getData(data) {
+          var jqXHRget = $.get(data.tmpl),
+              jqXHRjson = $.getJSON(data.url);
+              
+          jqXHRget.done(function(tmpl) {
+            jqXHRjson.done(function(json) {
+              data.callback(tmpl, json);
+            });
+          });
+        }
+
+
+        getData({
+          tmpl : 'london.tmpl',
+          url : 'http://api.flickr.com/services/feeds/photos_public.gne?tags=london&tagmode=any&format=json&jsoncallback=?',
+          callback : function(tmpl, json) {
+            var dataObj = [];
+            $.each(json.items, function(i, item) {
+              dataObj.push({
+                author : item.author,
+                link : item.link,
+                date : item.date_taken
+              });
+
+            });
+
+            $.template('london', tmpl);
+            $.tmpl('london', dataObj).appendTo('#sara');
+          }
+
+        })
+
+      });
+
+    </script>
+  </body>
+</html>

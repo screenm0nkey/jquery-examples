@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <body>
+        <div>javascript</div>
+        <div>
+            <span class="jQuery">SPAN</span>
+        </div>
+        <div>javascript</div>
+        <div>
+            <p class="jQuery">P</p>
+        </div>
+        <div>javascript</div>
+        <div>
+            <a href="#" class="jQuery">A</a>
+        </div>
+        <div>javascript</div>
+        <div>
+            <a href="#">A no class</a>
+        </div>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+        <script>
+            (function($){
+            
+                //// Select all div's, remove all div's that have a child element with class="jQuery"
+                $('div').each(function(){
+                    $('> *', this).filter('.jQuery').css('background-color', '#ff3300');
+                });
+                
+                $('div > *').filter('.jQuery').css('background-color', 'green');
+                
+                $('div:not(has(.jQuery))').css('background-color', 'orange');
+                
+            })(jQuery);
+        </script>
+    </body>
+</html>

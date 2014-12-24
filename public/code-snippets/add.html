@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script>
+            $(document).ready(function(){
+            
+                $("div").css("border", "2px solid red").add("p").css("background", "yellow");
+                var row = $("<p>").css("border", "2px solid red").css("background", "green");
+                $("div").appendTo(row); //at this point al the DIVs DOM elements will be removed from the DOM and inserted into the row element
+                $("body").append(row);
+                
+            });
+        </script>
+        <style>
+            div {
+                width: 60px;
+                height: 60px;
+                margin: 10px;
+                float: left;
+            }
+            
+            p {
+                clear: left;
+                font-weight: bold;
+                font-size: 16px;
+                color: blue;
+                margin: 0 10px;
+                padding: 2px;
+            }
+        </style>
+    </head>
+    <body>
+        <div>P</div>
+        <div>A</div>
+        <div>P</div>
+        <div>R</div>
+        <div>A</div>
+        <div>K</div>
+        <p>Added this... (notice no border)</p>
+    </body>
+</html>

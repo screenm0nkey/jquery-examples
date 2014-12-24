@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>jQuery's Filter Method Used With A Callback</title>
+<style type="text/css">
+ul {
+	list-style-type: none;
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+}
+li {
+	border: 1px solid #999999;
+	float: left;
+	height: 190px;
+	margin: 0px 20px 5px 0px;
+	padding: 5px 5px 5px 5px;
+}
+</style>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script>
+ 
+		// When the DOM is ready, populate the list.
+		$(function(){
+			var list = $( "ul" );
+			var listData = [];
+			var listTemplate = list.html();
+			
+ 
+			// Create a list item for each of our photos.
+			for (var i = 1 ; i <= 6 ; i++){
+				// Create a list item.
+				listData.push(
+					listTemplate.replace( "$$id$$", i )
+				);
+ 
+			}
+ 			
+			
+			// Now that our array contains the raw HTML of our
+			// photo list, let's join that into a single chunk
+			// of HTML and inject it as the contents of our UL
+			// list.
+			var html = listData.join( "" );
+			//console.log(html);
+			list.html( html );
+		});
+ 
+ 
+		// When the DOM is ready, initialize the forms and
+		// the event listeners.
+		$(function(){
+			var targetRating = $( "form select:first" );
+			var list = $( "ul" );
+			var listItems = list.find( "> li" );
+ 
+			// I update the display based on teh selected rating.
+			var updateDisplay = function(){
+				// First, show all list items. Once all items have
+				// been shows, we will then hide the ones that do
+				// NOT match the current rating.
+				console.log(listItems);
+				listItems.show();
+ 
+				// Now, check to see if we need to hid some of the
+				// list items. This will happen if the target
+				// rating has been selected (and is not zero).
+				if (parseInt( targetRating.val() )){
+ 
+					// Get all photos that don't match this rating.
+					// In order to do that, our filter() method is
+					// going to take a callback that checks the
+					// given photo's rating against the target
+					// rating the user selected.
+ 
+					listItems
+						.filter(function(){
+							var item = $( this );
+							var rating = item.find( "select" ).val();
+ 
+							// Return TRUE if this rating does NOT
+							// match the target rating.
+							return( rating != targetRating.val() );
+						})
+						.hide()
+					;
+ 
+				}
+			}
+ 
+			// Now that we have our display update method defind,
+			// let's hook up each select box to trigger that
+			// method such that the display is always fresh.
+			$( "select" )
+				.change( updateDisplay )
+				.keyup( updateDisplay )
+			;
+ 
+			// Call update display just to make sure we starte
+			// off with an accurate display.
+			updateDisplay();
+		});
+ 
+	</script>
+</head>
+<body>
+<h1> jQuery's Filter Method Used With A Callback </h1>
+<form>
+  <p> Please select rating:
+    <select>
+      <option value="0">Any</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+  </p>
+  <h2> The Photos </h2>
+  
+  <ul>
+    <!-- BEGIN: Template - will be replaced. -->
+    <li> <img src="../untitled/$$id$$.jpg" width="125" /><br />
+      Rating:
+      <select>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3" selected="true">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+    </li>
+    <!-- END: Template - will be replaced. -->
+  </ul>
+  
+</form>
+</body>
+</html>

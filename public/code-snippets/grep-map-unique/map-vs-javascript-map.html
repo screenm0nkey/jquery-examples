@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <title>Using map</title>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+        <script type="text/javascript">
+            log = console.log;
+        </script>
+        <script type="text/javascript">
+            $(function(){
+                // inline jQuery map returns jquery object
+                var $jqObj = $("#list li").map(function(index, el){
+                    return parseInt($(this).text(), 10);
+                });
+                log($jqObj.get());
+                
+                
+                // global jQuery map - returns array
+                var arr = $.map($("#list li"), function(el, index){
+                    return parseInt($(el).text(), 10);
+                });
+                log(arr);
+                
+                
+                // JavaScript map over array
+                arr = $("#list li").get().map(function(el, index){
+                    return parseInt($(el).text(), 10);
+                });
+                log(arr);
+                
+                
+                // JavaScript map over jQuery collection
+                arr = Array.prototype.map.call($("#list li"), function(el){
+                    return parseInt($(el).text(), 10);
+                });
+                log(arr);
+                
+                
+				
+                var holey = ["1", "2", null, ["4a", "4b"], "6"];
+                
+                arr = holey.map(function(el){
+                    return el;
+                });
+				log(arr);// ["1", "2", null, ["4a", "4b"], "6"]
+                
+                arr = $.map(holey, function(el){
+                    return el;
+                });
+				log(arr);// ["1", "2", "4a", "4b", "6"]
+            });
+        </script>
+    </head>
+    <body>
+        <ul id="list">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+    </body>
+</html>

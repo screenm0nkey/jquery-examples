@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Plug-ins | Dimensions</title>
+    
+    <link rel="stylesheet" href="../css/default.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="plugins.css" type="text/css" media="screen" />
+<script src="../scripts/jquery.js"></script>
+<script src="dimensions/dimensions.js"></script>
+<script src="dimplugin.js"></script>
+<script src="examples.js"></script>
+    
+<style type="text/css" media="screen">
+.dim-outer {
+  float: right;
+  font-size: 12px;
+  margin: 10px;
+  border: 5px solid #e3e3e3;
+  padding: 1em;
+  height: 200px;
+  width: 200px;
+  overflow: auto;
+  position: relative;
+}
+.dim-inner {
+  border: 1px solid #ccc;
+  background: #e3e3e3;
+  top: 20px;
+  position: relative;
+}  
+</style>    
+
+  </head>
+  <body class="dimensions">
+    <div id="container">
+      <div id="branding" class="clearfix">
+        <div id="chapter-number">17</div>
+        <h1>Plug-ins</h1>
+      </div>
+      <h2>Dimesions Plug-in</h2>
+      
+
+      <div class="dim-outer">
+        <p>This is the outer dimensions box. It has the following CSS rule:</p>
+<pre><code>.dim-outer {
+  height: 200px;
+  width: 200px;
+  margin: 10px;
+  padding: 1em;
+  border: 5px solid #e3e3e3;
+  overflow: auto;
+  font-size: 12px;
+}</code></pre>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <div class="dim-inner"> This is the inner dimensions box.
+        </div>
+      </div>
+      <div class="category">
+        <h2>Window &amp; Document Dimensions</h2>
+        <div id="example-dimensions-win-height-width" class="example">
+          <h3>$(window).height(), $('element').width()</h3>
+          <div class="content">
+            <div class="trigger button">Trigger</div>        
+            <div class="log"></div>
+          </div>
+        </div>
+        <div id="example-dimensions-doc-height-width" class="example">
+          <h3>$(document).height(), $(document).width()</h3>
+          <div class="content">
+            <div class="trigger button">Trigger</div>        
+            <div class="log"></div>
+          </div>
+        </div>
+        
+      </div> <!-- end category -->
+
+      <div class="category">
+        <h2>Element Dimensions</h2>
+        <div id="example-dimensions-height-width" class="example">
+          <h3>$('element').height(), $('element').width()</h3>
+          <div class="content">
+            <div class="trigger button">Trigger</div>        
+            <div class="log"></div>
+          </div>
+        </div>
+        <div id="example-dimensions-inner-height-width" class="example">
+          <h3>$('element').innerHeight(), $('element').innerWidth()</h3>
+          <div class="content">
+            <div class="trigger button">Trigger</div>        
+            <div class="log"></div>
+          </div>
+        </div>
+        <div id="example-dimensions-outer-height-width" class="example">
+          <h3>$('element').outerHeight(), $('element').outerWidth()</h3>
+          <div class="content">
+            <div class="trigger button">Trigger</div>        
+            <div class="log"></div>
+          </div>
+        </div>
+        
+      </div> <!-- end category -->
+
+      <div class="category">
+        <h2>scrollTop and scrollLeft</h2>
+        <div id="example-dimensions-scroll" class="example">
+          <h3>$('div.dim-outer').scrollTop(), $('div.dim-outer').scrollLeft()</h3>
+          <div class="content">
+            <div class="trigger button">Trigger</div>        
+            <div class="log"></div>
+          </div>
+        </div>
+        <div id="example-dimensions-doc-scroll" class="example">
+          <h3>$(document).scrollTop(), $(document).scrollLeft()</h3>
+          <div class="content">
+            <div class="trigger button">Trigger</div>        
+            <div class="log"></div>
+          </div>
+        </div>
+        
+      </div> <!-- end category -->
+      
+      <div class="category">
+        <h2>Offset</h2>
+        <div id="example-dimensions-offset" class="example">
+          <h3>$('div.dim-outer').offset()</h3>
+          <div class="content">
+            <div class="trigger button">Trigger</div>        
+            <div class="log"></div>
+          </div>
+        </div>
+        <div id="example-dimensions-offset-inner" class="example">
+          <h3>$('div.dim-inner').offset()</h3>
+          <div class="content">
+            <div class="trigger button">Trigger</div>        
+            <div class="log"></div>
+          </div>
+        </div>
+        
+      </div> <!-- end category -->
+    </div>
+  </body>
+</html>

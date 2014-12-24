@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+                    "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+  $(document).ready(function(){
+    
+    $(document).bind("click", function (e) {
+		console.log(e.target);
+      	$(e.target).closest("li").toggleClass("hilight");
+		return false;
+    });
+
+  });
+  </script>
+<style>
+li {
+	margin: 3px;
+	padding: 3px;
+	background: #EEEEEE;
+}
+li.hilight {
+	background: yellow;
+}
+</style>
+</head>
+<body>
+<ul>
+  <li><b>Click me!</b></li>
+  <li>You can also <b>Click me!</b></li>
+  <li>I'm in the li tag<p>Click me and look in the console. I'm a p tag</p></li>
+</ul>
+
+<p>Click me and look in the console. I'm a p tag</p>
+<a href="#">Click me and look in the console. I'm a a tag</a>
+</body>
+</html>

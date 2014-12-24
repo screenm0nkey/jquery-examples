@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script>
+            $(document).ready(function(){
+                function displayVals(){
+                    var singleValues = $("#single").val();
+                    var multipleValues = $("#multiple").val() || [];
+                    $("p").html("<b>Single:</b> " + singleValues + " <b>Multiple:</b> " + multipleValues.join(", "));
+                }
+				
+				$("select").change(displayVals);
+                $("#single").val("Single2").trigger('change'); //this selects them;
+                $("#multiple").val(["Multiple2", "Multiple3"]).trigger('change'); //this selects them;
+                
+                
+                
+            });
+        </script>
+        <style>
+            p {
+                color: red;
+                margin: 4px;
+            }
+            
+            b {
+                color: blue;
+            }
+        </style>
+    </head>
+    <body>
+        <p></p>
+        <select id="single">
+            <option>Single</option>
+            <option>Single2</option>
+            <option>Single3</option>
+            <option>Single4</option>
+        </select>
+        <select id="multiple" multiple="multiple">
+            <option>Multiple</option>
+            <option>Multiple2</option>
+            <option>Multiple3</option>
+            <option>Multiple4</option>
+            <option>Multiple5</option>
+            <option>Multiple6</option>
+        </select>
+    </body>
+</html>

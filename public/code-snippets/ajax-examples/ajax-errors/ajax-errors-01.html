@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <title>jQuery TEST AREA</title>
+        <style type="text/css">
+            body {
+                width: 600px;
+                margin: 0 auto;
+                font-family: Arial, Helvetica, sans-serif;
+				font-size:12px;
+            }
+			p {
+				margin:10px 0;
+			}
+        </style>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+        <script type="text/javascript" src="http://libraries/jquery.blockUI.js"></script>
+        <script type="text/javascript">
+            (function($){
+                $(function(){
+                    var output = $("#output");
+                    
+                    $("#mrform").submit(function(){
+                        var formData = $("form").serialize();
+                        output.append($("<p />", {
+                            "text": "About to post... " + formData
+                        }));
+                        console.log(formData)
+                        $.post('test1.php', formData);
+						$.post('error.php', formData);
+						$.post('test2.php', formData);
+                        
+                        return false;
+                    });
+                    
+                    
+                    
+                    
+                    $("#output").ajaxStart(function(){
+                        $('#mrform').block({
+                            message: 'hello'
+                        });
+                        $(this).empty().append($("<p />", {
+                            "text": "ajaxStart"
+                        }));
+                    });
+                    
+                    
+                    $("#output").ajaxSend(function(evt, xhr, opts, except){
+                        $(this).append($("<p />", {
+                            "text": "ajaxSend: " + opts.url
+                        }));
+                    });
+                    
+                    
+                    $("#output").ajaxComplete(function(evt, xhr, opts, except){
+                        $(this).append($("<p />", {
+                            "text": "ajaxComplete: " + opts.url
+                        }));
+                    });
+                    
+                    
+                    $("#output").ajaxSuccess(function(evt, xhr, opts, except){
+                        $(this).append($("<p />", {
+                            "text": "ajaxSuccess: " + opts.url
+                        }));
+                        
+                    });
+                    
+                    
+                    $("#output").ajaxError(function(evt, xhr, opts, except){
+                        $(this).append($("<p />", {
+                            "text": 'ajaxError: (' + xhr.status + ' ' + xhr.statusText + ') ' + opts.url
+                        }));
+                    });
+                    
+                    
+                    $("#output").ajaxStop(function(){
+                        $('#mrform').unblock();
+                        $(this).append($("<p />", {
+                            "text": "ajaxStop"
+                        }));
+                    });
+ 
+                });
+            })(jQuery)
+        </script>
+    </head>
+    <body>
+        <div id="output">
+            Output
+        </div>
+        <form id="mrform" action="/Pet/Edit" method="post">
+            <fieldset>
+                <legend>Fields</legend>
+                <div class="editor-label">
+                    <label for="Name">Name</label>
+                </div>
+                <div class="editor-field">
+                    <input id="Name" name="Name" type="text" value="Fred" />
+                </div>
+                <!-- Other Input Values -->
+                <div class="editor-label">
+                    <label for="Adopted">Adopted</label>
+                </div>
+                <div class="editor-field">
+                    <input checked="checked" id="Adopted" name="Adopted" type="checkbox" value="true" />
+                    <input name="Adopted" type="hidden" value="false" />
+                </div>
+                <p>
+                    <input type="submit" value="Save" />
+                </p>
+            </fieldset>
+        </form>
+    </body>
+</html>

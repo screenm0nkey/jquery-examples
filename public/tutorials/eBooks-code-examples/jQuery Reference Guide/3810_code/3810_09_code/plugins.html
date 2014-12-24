@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Plug-in API</title>
+    
+    <link rel="stylesheet" href="../css/default.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/3810.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="examples.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="plugins.css" type="text/css" media="screen" />
+    <script src="../scripts/jquery.js"></script>
+    <script src="examples.js"></script>
+    <script src="jquery.num-children.js"></script>
+    <script src="jquery.quadratic.js"></script>
+    <script src="plugins.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="branding" class="clearfix">
+        <div id="chapter-number">9</div>
+        <h1>Plug-in API</h1>
+      </div>
+
+      <div class="content" id="selector-plugin">
+        <ul>
+          <li>Item 1
+          <ul><li>Item A</li></ul>
+          </li>
+          <li>Item 2
+          <ul><li>Item A</li><li>Item B</li></ul>
+          </li>
+          <li>Item 3
+          <ul><li>Item A</li><li>Item B</li><li>Item C</li></ul>
+          </li>
+        </ul>
+      </div>
+
+      <div class="content" id="easing-plugin">
+        <div class="trigger button">Click Here</div>
+        <div class="stage default">
+          Default ("Swing") Easing
+          <div class="sprite"></div>
+        </div>
+        <div class="stage linear">
+          Linear Easing
+          <div class="sprite"></div>
+        </div>
+        <div class="stage quadratic">
+          Quadratic Easing
+          <div class="sprite"></div>
+        </div>
+      </div>
+
+      <div class="content" id="log-plugin">
+        <div class="trigger button">Click Here</div>
+        <div class="log"></div>
+      </div>
+
+    </div>
+  </body>
+</html>

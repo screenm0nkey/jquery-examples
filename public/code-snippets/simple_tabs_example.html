@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Simple Tabs</title>
+    <style type="text/css" media="screen">
+    <!--
+        body {
+            margin: 30px;
+            padding: 0;
+            font-size: 11px;
+            font-family: verdana, arial, sans-serif;
+        }
+    
+        ul.tabNavigation {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            padding-left:15px;
+            /*background-color:#f1f1f1;*/ /* un-comment to add a color behind tabs */
+            padding-top:8px;
+            padding-bottom:4px;
+            border-bottom:1px solid #fff;
+        }
+
+        ul.tabNavigation li {
+            display: inline;
+            margin-left:-2px;
+        }
+
+        ul.tabNavigation li a {
+            padding: 5px 10px;
+            background-color: #F1E8E2;
+            color: #333;
+            text-decoration: none;
+            border:1px solid #ccc;
+            -moz-border-radius-topleft: 4px; -webkit-border-top-left-radius: 4px;
+            -moz-border-radius-topright: 4px; -webkit-border-top-right-radius: 4px;
+            
+        }
+
+        ul.tabNavigation li a.selected, ul.tabNavigation li a.selected:hover {
+            background-color:#FFFFCC; /* selected tab color */
+            color: #333;
+            border-bottom:1px solid #ffffcc; /* selected tab color for border bottom */
+            padding: 5px 10px;
+            font-weight:bold;
+        }
+        
+        ul.tabNavigation li a:hover {
+            background-color: #DADADA;
+            color: #333;
+            border-bottom:1px solid #ccc;
+            padding: 5px 10px;
+        }
+        
+        ul.tabNavigation li a:focus {
+            outline: 0;
+        }
+
+        div.tabContentBox {
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color:#FFFFFF;
+            -moz-border-radius-bottomleft: 4px; -webkit-border-bottom-left-radius: 4px;
+            -moz-border-radius-bottomright: 4px; -webkit-border-bottom-right-radius: 4px;
+            background-color:#FFFFCC; /* selected tab content color */
+        }
+        
+    -->
+    </style>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript" charset="utf-8">
+    $(function() {
+
+        //tab 1
+        /*
+        var tabContainers = $('div#tabs1 > div');
+        tabContainers.hide().filter(':first').show();
+        $('div#tabs1 ul.tabNavigation a').click(function () {
+        tabContainers.hide();
+        tabContainers.filter('.' + this.hash.substring(1,this.hash.length)).show();
+        $('div#tabs1 ul.tabNavigation a').removeClass('selected');
+        $(this).addClass('selected');
+        return false;
+        }).filter(':first').click();
+            
+        //tab 2
+        var tabContainers = $('div#tabs2 > div');
+        tabContainers.hide().filter(':first').show();
+        $('div#tabs2 ul.tabNavigation a').click(function () {
+        tabContainers.hide();
+        tabContainers.filter('.' + this.hash.substring(1,this.hash.length)).show();
+        $('div#tabs2 ul.tabNavigation a').removeClass('selected');
+        $(this).addClass('selected');
+        return false;
+        }).filter(':first').click();
+        */
+
+        (function($) {
+            $.fn.simpleTabs = function() {
+                return this.each(function() {
+                    var $tabs = $(this).find('.tabNavigation a');
+
+                    var $tabContentBox = $(this).find('.tabContentBox');
+                    $tabContentBox.hide().filter(':first').show();
+                    $tabs.click(function() {
+                    console.log(this.hash.substring(1, this.hash.length));
+                        $tabContentBox.hide();
+                        $tabContentBox.filter('.' + this.hash.substring(1, this.hash.length)).show();
+                        $tabs.removeClass('selected');
+                        $(this).addClass('selected');
+                        return false;
+                    }).filter(':first').click();//trigger
+                });
+            };
+        })(jQuery);
+
+        $('#tabs1,#tabs2,#tabs3').simpleTabs();
+
+    });
+</script>
+
+</head>
+<body id="page">
+    <div id="tabs1">
+        <ul class="tabNavigation">
+            <li><a href="#tabs-1">First</a></li>
+            <li><a href="#tabs-2">Second</a></li>
+            <li><a href="#tabs-3">Third</a></li>
+        </ul>
+        <div class="tabs-1 tabContentBox">Lorem ipsum dolor sioris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+        <div class="tabs-2 tabContentBox">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div>
+        <div class="tabs-3 tabContentBox">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidao laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidao laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div>
+    </div>
+    
+    <br />
+    <br />
+    
+    <div id="tabs2">
+        <ul class="tabNavigation">
+            <li><a href="#tabs-1">First</a></li>
+            <li><a href="#tabs-2">Second</a></li>
+            <li><a href="#tabs-3">Third</a></li>
+        </ul>
+
+        <div class="tabs-1 tabContentBox">Lorem ipsum dolor sioris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+        <div class="tabs-2 tabContentBox">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+        </div>
+        <div class="tabs-3 tabContentBox">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidao laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidao laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div>
+    </div>
+    
+    <br />
+    <br />
+    
+    <div id="tabs3">
+        <ul class="tabNavigation">
+            <li><a href="#tabs-1">First</a></li>
+            <li><a href="#tabs-2">Second</a></li>
+            <li><a href="#tabs-3">Third</a></li>
+        </ul>
+
+        <div class="tabs-1 tabContentBox">Lorem ipsum dolor sioris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+        <div class="tabs-2 tabContentBox">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div>
+        <div class="tabs-3 tabContentBox">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidao laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidao laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div>
+    </div>
+    
+  </body>
+
+</html>
+
+
+
+
+

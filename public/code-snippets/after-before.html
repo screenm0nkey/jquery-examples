@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("p").after($("b"));
+                $("p").before($("b"));
+                
+                /* 
+                 A common idiom is to use the remove() and after() commands to effect a
+                 replacement operation. Consider the following:
+                 $("div.elementToReplace").after("<p>I am replacing the div</p>").remove();
+                 Because the after() function returns the original wrapped set containing the
+                 <div>, we can then remove it, resulting in a replacement of the original <div> with
+                 the newly created <p> element.
+                 */
+                $("div.elementToReplace").before("<p>I am replacing the div</p>").remove();
+                
+                var kev = $("div.martin").before("<p>I am before martin</p>");
+                console.log(kev);
+            });
+        </script>
+        <style>
+            p {
+                background: yellow;
+            }
+        </style>
+    </head>
+    <body>
+        <b>Hello
+            <br></b>
+        <p>I would like to say: </p>
+        <b>This is inside b tag
+            <br></b>
+        <p>Show me say: </p>
+        <div class="elementToReplace">This is a div</div>
+        <div class="martin">This is martin div</div>
+    </body>
+</html>

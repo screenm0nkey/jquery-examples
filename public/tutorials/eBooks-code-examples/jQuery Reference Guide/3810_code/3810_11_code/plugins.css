@@ -1,0 +1,32 @@
+.ajax-form {
+  float: right;
+  width: 400px;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #000;
+}
+
+.form-row {
+  margin-top: 5px;
+  clear: both;
+}
+
+.form-row label,
+.multi-label {
+  display: block;
+  float: left;
+  width: 110px;
+  text-align: right;
+  padding-right: .5em;
+  padding-top: .25em;
+}
+
+.multi label {
+  display: inline;
+  float: none;
+  width: auto;
+}
+
+.buttons {
+  text-align: center;
+}

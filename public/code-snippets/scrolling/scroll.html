@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+    <head>
+        <title>Dynamic scroller using jQuery</title>
+        <script src="http://code.jquery.com/jquery-latest.js">
+        </script>
+        <script src="jquery.easing.1.3.js">
+        </script>
+        <script>
+            <!--
+            
+            $(document).ready(function(){
+                var _c = $('#container').offset();
+                $('#scrolltop').css('left', (_c.left + 400) + 'px').fadeIn('slow');
+                //
+                $(window).resize(function(){
+                    var _c = $('#container').offset();
+                    console.log("resize " + _c.left);
+                    $('#scrolltop').css('left', (_c.left + 400) + 'px');
+                });
+                //
+                var i = 0;
+                $(window).scroll(function(){
+                    //console.log("$(window).scrollTop()=",$(window).scrollTop());
+                    $('#scrolltop').css('opacity', 1).stop().animate({
+                        top: $(window).scrollTop() + 21
+                    }, 500, 'swing');
+                });
+            });
+            
+            $(document).ready(function(){
+                function filter(string){
+                    console.log(string);
+                    return string.replace(/^\//, '').replace(/(index|default)\.[a-zA-Z]{3,4}$/, '').replace(/\/$/, '')
+                }
+                
+                $('a[href*=#]').each(function(){
+                    if (filter(location.pathname) == filter(this.pathname) && location.hostname == this.hostname && this.hash.replace(/#/, '')) {
+                        var $targetId = $(this.hash), $targetAnchor = $('[name=' + this.hash.slice(1) + ']');
+                        var $target = $targetId.length ? $targetId : $targetAnchor.length ? $targetAnchor : false;
+                        if ($target) {
+                            var targetOffset = $target.offset().top;
+                            $(this).click(function(){
+                                console.log(this, targetOffset);
+                                $('html, body').animate({
+                                    scrollTop: targetOffset
+                                }, 400, 'swing');
+                                return false;
+                            });
+                        }
+                    }
+                });
+            });
+            
+            
+            
+            
+            
+            -->
+        </script>
+        <style>
+            div#scrolltop {
+                top: 21px;
+                width: 26px;
+                height: 26px;
+                display: none;
+                position: absolute;
+            }
+        </style>
+    </head>
+    <body id="top">
+        <div id="container" style="border:5px solid #FF99CC">
+            <div id="scrolltop" style="border:4px;">
+                <strong><a href="#top"><strong>Top</strong></a></strong>
+            </div>
+            <a href="#bottom">Bottom</a>
+            <div id="header" class="home" style="width:200px; text-align:justify; margin-left:150px;">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec enim a ligula tempus dignissim. Proin risus odio, molestie auctor, scelerisque id, molestie ac, ligula. Fusce massa ligula, pellentesque et, lacinia vitae, tristique sit amet, leo. Sed blandit enim at velit venenatis vulputate. Cras eleifend aliquet dolor. Sed eleifend. Ut odio dui, accumsan quis, venenatis a, aliquam nec, metus. Etiam turpis. Praesent quam urna, sodales nec, bibendum quis, congue sed, est. Nunc posuere nisl at mauris. Nam semper fermentum lacus. Ut tristique. Phasellus nec neque sed ligula tempor convallis. Integer adipiscing ligula eget enim. Maecenas libero quam, euismod et, pharetra vitae, pellentesque nec, velit. Duis in tortor. Cras lectus. Aliquam ut eros eu eros consectetur varius. Etiam et leo ac nibh lacinia accumsan. 
+                Cras commodo orci venenatis lacus. Donec at metus sit amet nisl faucibus porttitor. Ut egestas. Sed gravida. Nulla pharetra. Praesent pharetra, justo ut commodo fringilla, metus sem ullamcorper elit, sed volutpat felis mi et est. Proin condimentum. Aenean vitae mi non risus tincidunt hendrerit. Quisque sit amet augue nec metus lacinia facilisis. Aliquam erat volutpat. Mauris nisi eros, scelerisque eu, venenatis a, lobortis cursus, felis. Aenean felis arcu, pellentesque in, ultricies nec, ornare vel, eros.  
+                Praesent gravida eros a velit. Proin est justo, condimentum in, rutrum pellentesque, placerat at, tortor. Vivamus vel turpis sit amet eros commodo blandit. Vivamus id massa. Donec tempus eleifend mauris. Donec varius ipsum sit amet tellus. Aenean urna mauris, tincidunt quis, semper eget, volutpat non, risus. Vivamus vitae mauris. Phasellus euismod nisl eget augue. Donec luctus orci non nisl. Donec felis neque, luctus ac, volutpat ut, rhoncus in, est. Integer condimentum nisi non nisl. Curabitur sed eros eget dolor convallis pellentesque. Aliquam tincidunt, elit et ultricies congue, sem est luctus orci, ac rutrum est tellus nec enim. In accumsan dapibus dolor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut ornare, turpis eu placerat adipiscing, risus lacus feugiat nulla, quis dictum libero sem eu risus. 
+                Fusce nec nibh sed massa tristique venenatis. Fusce posuere. Nulla enim. Quisque quis lectus ac ligula aliquam mollis. Morbi ipsum felis, varius ac, cursus et, convallis sit amet, velit. Aliquam nibh. Sed sed eros sed nisi tincidunt semper. Donec in purus. Etiam arcu orci, cursus ut, cursus sit amet, malesuada ac, tellus. Etiam tincidunt leo a purus. Nam posuere. Aliquam hendrerit.  
+                Vestibulum faucibus molestie felis. Vestibulum auctor laoreet nunc. Aenean magna. Integer massa. Vestibulum in nibh. Sed mattis congue sapien. Quisque ornare convallis dolor. Curabitur non enim. Quisque sit amet purus. Maecenas mollis. Curabitur varius egestas quam. Etiam vel tellus cursus arcu ornare adipiscing. 
+            </div>
+        </div>
+        <a name="bottom"></a>
+    </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Attribute Filters</title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" charset="utf-8"></script>
+        <script>
+            $(document).ready(function(){
+                /*
+                 $('a[href^=http]').each(function() {
+                 console.log(this);
+                 $(this).attr({ target: "_blank" });
+                 });
+                 
+                 $('a[href^=#]').each(function() {
+                 console.log(this);
+                 //$(this).attr({ target: "_blank" });
+                 });
+                 */
+                $('a[href^=#]:not(.ignore)').each(function(){ //select all links that start with # but not ones that have a class of .ignore
+                    console.log(this);
+                    //$(this).css('background', 'red');
+                    $(this).attr({
+                        target: "_blank"
+                    });
+                });
+                
+                //$("[name=mike]").css('background', 'red');
+                
+                $("input[id][name$='man']").val("only this one"); //this selects all inputs that have an id attribute but also a name attribute that starts with man
+            });
+        </script>
+    </head>
+    <body>
+        <p><a href="http://www.apple.com">apple</a></p>
+        <p><a href="http://www.msn.com">msn</a></p>
+        <p><a href="http://www.google.com">google</a></p>
+        <p><a href="#mike">Local</a></p>
+        <p><a href="#steve">Local</a></p>
+        <p><a href="#joe" class="ignore">Local class ignore</a></p>
+        <p><a href="#claire" class="ignore">Local class ignore</a></p>
+        <p>The actual searching is done by the JavaScript function, aptly named, search(). Though due to the way the DOM works, if we don't employ the jQuery function, text(), the box will also look at any HTML tags that happen to be in the table row, such as <td>. We will employ a little more functionality by not just searching for the exact string the user has typed, but rather if any of the words in the query are in a row. This is ideal because it allows for "lazy searching", the user isn't required to remember an exact string but rather just parts of it. The search() function takes a regular expression as its parameter, and so we must strip all white space from the</p>
+        <a name="mike">name = mike</a>
+        <p>The actual searching is done by the JavaScript function, aptly named, search(). Though due to the way the DOM works, if we don't employ the jQuery function, text(), the box will also look at any HTML tags that happen to be in the table row, such as <td>. We will employ a little more functionality by not just searching for the exact string the user has typed, but rather if any of the words in the query are in a row. This is ideal because it allows for "lazy searching", the user isn't required to remember an exact string but rather just parts of it. The search() function takes a regular expression as its parameter, and so we must strip all white space from the</p>
+        <input id="man-news" name="man-news" />
+        <input name="milkman" />
+        <input id="letterman" name="new-letterman" />
+        <input name="newmilk" />
+    </body>
+</html>

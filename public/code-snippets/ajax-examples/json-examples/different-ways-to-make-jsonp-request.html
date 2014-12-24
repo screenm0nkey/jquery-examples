@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Templating with AJAX</title>
+        <link rel="stylesheet" href="tweetbox.css"></head>
+    <body>
+        <ul id="sara"></ul>
+        <script type="text/javascript" src="http://libraries/jquery-1.5.1.js"></script>
+        <script type="text/javascript" src="http://libraries/jquery.tmpl.min.js"></script>
+        <script type="text/javascript">
+            
+            $(function(){
+                jqXHR = $.ajax({
+                    url: 'http://api.flickr.com/services/feeds/photos_public.gne?tags=london&tagmode=any&format=json&jsoncallback=?',
+                    dataType: 'json'
+                });
+                
+                jqXHR.done(function(data){
+                    $.each(data['items'], function(i, item){
+                        console.log(i, item)
+                    });
+                });
+                
+                
+                $.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?", {
+                    tags: "london",
+                    tagmode: "any",
+                    format: "json"
+                }, function(data){
+                    $.each(data.items, function(i, item){
+                        console.log(item)
+                    });
+                });
+            })
+        </script>
+        
+        <!-- 
+        	json response with anonymous call back 
+        -->
+        ({
+			"title": "Recent Uploads tagged london",
+			"link": "http://www.flickr.com/photos/tags/london/",
+		})
+		
+		
+		<!-- 
+			json response with anonymous named function</p> 
+		-->
+        funcName({
+			"title": "Recent Uploads tagged london",
+			"link": "http://www.flickr.com/photos/tags/london/",
+		})
+    </body>
+</html>

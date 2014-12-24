@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>jQuery lightbox clone - prettyPhoto - by Stephane Caron</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+        <script src="js/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
+        <script type="text/javascript" src="../jquery.image-preload.js"></script>
+    </head>
+	
+    <body>
+        <script type="text/javascript" charset="utf-8">
+            //EXAMPLE 2. Using array to load images
+            $.preloadImages({
+                imagePath: '../images/',
+                imagePathArray: ['img01.jpg', 'img02.jpg', 'img03.jpg', 'img04.jpg', 'img05.jpg'],
+				width:'100px'
+            }, function(imagesArray, pathErrors){
+                var $ul = $('<ul class="gallery clearfix">');
+                $.each(imagesArray, function(){
+                    var $a = $('<a>', {
+                        href: $(this).attr('src'),
+                        rel: 'prettyPhoto[gallery3]'
+                    });
+                    $a.append(this);
+                    $ul.append($a);
+                });
+                $('body').append($ul);
+				
+				//call pretty photo
+                $("a[rel^='prettyPhoto']").prettyPhoto({
+                    animationSpeed: 'slow',
+                    theme: 'light_square',
+                    slideshow: 2000,
+                    autoplay_slideshow: true
+                });
+            });
+        </script>
+    </body>
+</html>

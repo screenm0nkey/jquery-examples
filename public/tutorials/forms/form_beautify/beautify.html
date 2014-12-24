@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" media="screen" href="beautify.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Beautiful Forms</title>
+    <link rel="stylesheet" type="text/css" href="beautify.css">
+    <script src="jquery-1.3.2.min.js"></script>
+    <script>
+    $(document).ready(function() {
+		var beautify = {
+     	//initialisation
+  			init: function(id) {
+    			//cache the form
+    			var form = $("#" + id);
+     			
+				//get the fieldsets
+    			form.find("fieldset").each(function() {
+     
+      				var currentSet = $(this);
+       
+      			//insert each label:input pair into its own 'row' div
+      				currentSet.find("label").each(function() {
+        				var row = $("<div>"),
+          				label = $(this),
+          				input = $(this).next();
+        				label.appendTo(row);
+        				input.appendTo(row);
+        				row.appendTo(currentSet);
+						
+      				});
+    			});    
+  			}
+		};
+		//beautify.init("regForm");
+	});//document
+	
+	
+	$(document).ready(function() {
+		$.fn.newTarget = function() {
+			console.log(this);			
+			return this.each(function() { 
+				var row = $("<div>");
+				var parent = $(this).parent("fieldset"); //get the parent here becuase it won't work when the <label> elememnt is inserted into the new <div> DOM element;
+				var label = $(this);
+          		var	input = $(this).next();
+				label.appendTo(row);
+        		input.appendTo(row);
+				//if you look at the html at this point there will be no <label> or <input> because they have been inserted into the new <div> DOM element
+				row.appendTo(parent);
+				
+  			});
+		}
+		$("#regForm label").newTarget();
+	});//document
+    </script>
+  </head>
+  <body>
+    <form id="regForm" action="#" method="post" class="beautifulForm">
+      <p>Fields marked <span>*</span> are mandatory</p>
+      <fieldset>
+        <legend>Personal Details</legend>
+        <label for="fname">First name<span>*</span>:</label><input type="text" id="fname">
+        <label for="lname">Last name<span>*</span>:</label><input type="text" id="lname">
+        <label for="sname">Screen name<span>*</span>:</label><input type="text" id="sname">
+        <label for="pword">Password<span>*</span>:</label><input type="password" id="pword">
+        <label for="cpword">Confirm password<span>*</span>:</label><input type="password" id="cpword">
+        <label for="age">Age bracket:</label><select id="age"><option>12 to 16</option><option>17 to 24</option><option>25 to 40</option><option>41 to 65</option><option>66 plus</option></select>
+      </fieldset>
+      <fieldset>
+        <legend>Contact Details</legend>
+        <label for="email">Email address<span>*</span>:</label><input type="text" id="email">
+        <label for="cemail">Confirm email<span>*</span>:</label><input type="text" id="cemail">
+        <label for="mobile">Mobile:</label><input type="text" id="mobile">
+        <label for="home">Home:</label><input type="text" id="home">
+        <label for="work">Work:</label><input type="text" id="work">
+      </fieldset>
+      <fieldset>
+        <legend>Contact Preferences</legend>
+        <label for="mail">Email</label><input type="radio" id="mail" name="tel" value="email" checked="checked">
+        <label for="mobileTel">Mobile</label><input type="radio" id="mobileTel" name="tel" value="mobile">
+        <label for="homeTel">Home</label><input type="radio" id="homeTel" name="tel" value="home">
+        <label for="workTel">Work</label><input type="radio" id="workTel" name="tel" value="work">
+      </fieldset>
+      <fieldset>
+        <legend>Account Preferences</legend>
+        <label for="show">Show when logged in:</label><input type="checkbox" id="show" name="account" value="show">
+        <label for="contact">Allow other members to contact:</label><input type="checkbox" id="contact" name="account" value="contact">
+        <label for="notify">Send notification emails:</label><input type="checkbox" id="notify" name="account" value="notify">
+      </fieldset>
+      <fieldset>
+        <legend>About You</legend>
+        <label>Bio</label><textarea cols="24" rows="1"></textarea>
+      </fieldset>
+      <p><button type="submit">Submit</button></p>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<style>
+div.one, div.two {
+	width:200px;
+	height:200px;
+	background:#FF99FF;
+	margin:20px;
+	float:left;
+}
+div.four {
+	float:left;
+	width:173px;
+	height:173px; 
+	background: url(pngtest.png);
+}
+</style>
+<script type="text/javascript" src="jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="jquery.pngFix.min.js"></script>
+<script type="text/javascript">
+        $(document).ready(function(){
+			$('.two').pngFix();
+			$('#cont').pngFix();
+			$('.four').pngFix();
+        });
+    </script>
+</head>
+<body>
+<h1>http://jquery.andreaseberhard.de/</h1>
+<p>If your fixing a background image then you have to target the parent of the div which has a background image applied. tageting the div itself does't seem to work.</p>
+
+<div class="one">One<img src="pngtest.png" alt="hello" longdesc="http://hellodolly.com" /></div>
+<div class="two">Two<img src="pngtest.png" alt="hello" longdesc="http://hellodolly.com" /></div>
+
+<div id="cont">
+	<div class="four">Four This is a div-Container using a png as background ...</div>
+</div>
+
+<div class="four">Four This is a div-Container using a png as background ...</div>
+
+
+
+</body>
+</html>

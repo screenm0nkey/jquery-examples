@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Traversing</title>
+<style>
+	.highlight {
+		background-color:#FF9900;
+		border:1px solid #999999;
+		width:auto;
+	}
+</style>
+<script src="jquery-1.3.2.min.js"></script>
+<script>
+  $(document).ready(function(){
+		$('#example-traversing-filter2 li').filter(':gt(3):even').addClass('highlight');
+    });
+  </script>
+</head>
+
+<body>
+
+ <div id="example-traversing-filter2" class="example">
+          <h3>.filter(selector) - B</h3>
+          <div class="content">
+            <ul>
+              <li>list item 1</li>
+              <li>list item 2</li>
+              <li>list item 3</li>
+              <li>list item 4</li>
+              <li>Even starts here becuase gt(3) start from 0 so 3 = four elements 0,1,2,3</li>
+              <li>list item 6</li>
+              <li>list item 1</li>
+              <li>list item 2</li>
+              <li>list item 3</li>
+              <li>list item 4</li>
+            </ul>
+            <p>a paragraph</p>
+          </div>
+          <code>$('#example-traversing-filter2 li').filter(':gt(3):even').addClass('highlight');</code>
+        </div> 
+        
+</body>
+</html>

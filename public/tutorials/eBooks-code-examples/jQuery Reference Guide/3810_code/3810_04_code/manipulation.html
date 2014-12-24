@@ -1,0 +1,264 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>jQuery Methods: DOM Manipulation</title>
+    
+    <link rel="stylesheet" href="../css/default.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/3810.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="manipulation.css" type="text/css" media="screen" />
+    <script src="../scripts/jquery.js"></script>
+    <script src="examples.js"></script>
+    <script src="manipulation.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="branding" class="clearfix">
+        <div id="chapter-number">4</div>
+        <h1>DOM Manipulation</h1>
+      </div>
+      <div class="category">
+        <h2>General Attributes</h2>
+
+        <div id="example-manipulation-attr" class="example">
+          <h3>.attr(<em>attribute</em>)</h3>
+          <div class="content">
+            <div class="demo-container">
+              <div class="demo-box">Demonstration Box
+              </div>
+            </div>
+            <div class="trigger button">Trigger</div>
+            <div class="log"></div>
+          </div>
+        </div>
+
+        <div id="example-manipulation-toggle-class" class="example">
+          <h3>.toggleClass(<em>class</em>)</h3>
+          <div class="content">
+            <div class="demo-container">
+              <div class="demo-box">Demonstration Box
+              </div>
+            </div>
+            <div class="trigger button">Trigger</div>
+            <div class="log"></div>
+          </div>
+        </div>
+
+        <div id="example-manipulation-html" class="example">
+          <h3>.html()</h3>
+          <div class="content">
+            <div class="demo-container">
+              <div class="demo-box">Demonstration Box
+              </div>
+            </div>
+            <div class="trigger button">Trigger</div>
+            <div class="log"></div>
+          </div>
+        </div>
+
+        <div id="example-manipulation-val" class="example">
+          <h3>.val()</h3>
+          <div class="content">
+            <div class="demo-container">
+              <div class="demo-box">Demonstration Box
+                <input type="text" value="text input" />
+                <textarea rows="8" cols="40">text in a textarea</textarea>
+              </div>
+            </div>
+            <div class="trigger button">Trigger</div>
+            <div class="log"></div>
+          </div>
+        </div>
+
+      </div> <!-- end category -->
+
+      <div class="category">
+        <h2>DOM Insertion, Inside</h2>
+
+        <div id="example-manipulation-prepend" class="example">
+          <h3>.prepend()</h3>
+          <div class="content">
+            <div class="demo-container">
+              <div class="demo-box">Demonstration Box
+              </div>
+            </div>
+            <div class="trigger button">Trigger</div>
+            <code>$('div.demo-box').prepend('&lt;div class=&quot;insertion&quot;&gt;This text was &lt;strong&gt;inserted&lt;/strong&gt;&lt;/div&gt;');</code>
+          </div>
+        </div>
+
+        <div id="example-manipulation-prepend-to" class="example">
+          <h3>.prependTo()</h3>
+          <div class="content">
+            <div class="demo-container">
+              <div class="demo-box">Demonstration Box
+              </div>
+            </div>
+            <div class="trigger button">Trigger</div>
+            <code>$('&lt;div class=&quot;insertion&quot;&gt;This text was &lt;strong&gt;inserted&lt;/strong&gt;&lt;/div&gt;')
+              .prependTo('div.demo-box');</code>
+          </div>
+        </div>
+
+        <div id="example-manipulation-append" class="example">
+          <h3>.append()</h3>
+          <div class="content">
+            <div class="demo-container">
+              <div class="demo-box">Demonstration Box
+              </div>
+            </div>
+            <div class="trigger button">Trigger</div>
+            <code>$('div.demo-box').append('&lt;div class=&quot;insertion&quot;&gt;This text was &lt;strong&gt;inserted&lt;/strong&gt;&lt;/div&gt;');</code>
+          </div>
+        </div>
+
+        <div id="example-manipulation-append-to" class="example">
+          <h3>.appendTo()</h3>
+          <div class="content">
+            <div class="demo-container">
+              <div class="demo-box">Demonstration Box
+              </div>
+            </div>
+            <div class="trigger button">Trigger</div>
+            <code>$('&lt;div class=&quot;insertion&quot;&gt;This text was &lt;strong&gt;inserted&lt;/strong&gt;&lt;/div&gt;')
+              .appendTo('div.demo-box');</code>
+          </div>
+        </div>
+
+      </div> <!-- end category -->
+
+
+      <div class="category">
+        <h2>DOM Insertion, Outside</h2>
+
+        <div id="example-manipulation-before" class="example">
+          <h3>.before()</h3>
+          <div class="content">
+            <div class="demo-container">
+              <div class="demo-box">Demonstration Box
+              </div>
+            </div>
+            <div class="trigger button">Trigger</div>
+            <code>$('div.demo-box').before('&lt;div class=&quot;insertion&quot;&gt;
+              This text was &lt;strong&gt;inserted&lt;/strong&gt;&lt;/div&gt;');</code>
+          </div>
+        </div>
+
+        <div id="example-manipulation-insert-before" class="example">
+          <h3>.insertBefore()</h3>
+          <div class="content">
+            <div class="demo-container">
+              <div class="demo-box">Demonstration Box
+              </div>
+            </div>
+            <div class="trigger button">Trigger</div>
+            <code>$('&lt;div class=&quot;insertion&quot;&gt;
+              This text was &lt;strong&gt;inserted&lt;/strong&gt;&lt;/div&gt;')
+              .insertBefore('div.demo-box');</code>
+          </div>
+        </div>
+
+        <div id="example-manipulation-after" class="example">
+          <h3>.after()</h3>
+          <div class="content">
+            <div class="demo-container">
+              <div class="demo-box">Demonstration Box
+              </div>
+            </div>
+            <div class="trigger button">Trigger</div>
+            <code>$('div.demo-box').after('&lt;div class=&quot;insertion&quot;&gt; <br />
+             This text was &lt;strong&gt;inserted&lt;/strong&gt;&lt;/div&gt;');</code>
+          </div>
+        </div>
+
+        <div id="example-manipulation-insert-after" class="example">
+          <h3>.insertAfter()</h3>
+          <div class="content">
+            <div class="demo-container">
+              <div class="demo-box">Demonstration Box
+              </div>
+            </div>
+            <div class="trigger button">Trigger</div>
+            <code>$('&lt;div class=&quot;insertion&quot;&gt;
+              This text was &lt;strong&gt;inserted&lt;/strong&gt;&lt;/div&gt;')
+              .insertAfter('div.demo-box');</code>
+          </div>
+        </div>     
+      </div> <!-- end category -->
+
+            <div class="category">
+              <h2>DOM Insertion, Around</h2>
+
+              <div id="example-manipulation-wrap" class="example">
+                <h3>.wrap()</h3>
+                <div class="content">
+                  <div class="demo-container">
+                    <div class="demo-box">Demonstration Box
+                    </div>
+                  </div>
+                  <div class="trigger button">Trigger</div>
+                  <code>$('div.demo-box').wrap('&lt;div class=&quot;insertion&quot;&gt;&lt;/div&gt;');</code>
+                </div>
+              </div>
+            </div> <!-- end category -->
+
+           <div class="category">
+              <h2>DOM Copying</h2>
+
+              <div id="example-manipulation-clone" class="example">
+                <h3>.clone()</h3>
+                <div class="content">
+                  <div class="demo-container">
+                    <div class="demo-box">Demonstration Box
+                    </div>
+                  </div>
+                  <div class="trigger button">Trigger</div>
+                  <code>$('div.demo-box:last').clone()
+                    .insertAfter('div.demo-box:last');</code>
+                </div>
+              </div>
+              <div id="example-manipulation-clone-false" class="example">
+                <h3>.clone(false)</h3>
+                <div class="content">
+                  <div class="demo-container">
+                    <div class="demo-box">Demonstration Box
+                    </div>
+                  </div>
+                  <div class="trigger button">Trigger</div>
+                  <code>$('div.demo-box:last').clone(false)
+                    .insertAfter('div.demo-box:last');
+                    $('div.demo-box').append('&lt;p&gt;New Message&lt;/p&gt;);</code>
+                </div>
+              </div>
+            </div> <!-- end category -->
+
+            <div class="category">
+               <h2>DOM Removal</h2>
+
+               <div id="example-manipulation-empty" class="example">
+                 <h3>.empty()</h3>
+                 <div class="content">
+                   <div class="demo-container">
+                     <div class="demo-box">Demonstration Box
+                     </div>
+                   </div>
+                   <div class="trigger button">Trigger</div>
+                   <code>$('div.demo-box').empty();</code>
+                 </div>
+               </div>
+               <div id="example-manipulation-remove" class="example">
+                 <h3>.remove()</h3>
+                 <div class="content">
+                   <div class="demo-container">
+                     <div class="demo-box">Demonstration Box
+                     </div>
+                   </div>
+                   <div class="trigger button">Trigger</div>
+                   <code>$('div.demo-box').remove();</code>
+                 </div>
+               </div>
+             </div> <!-- end category -->
+
+    </div>
+  </body>
+</html>

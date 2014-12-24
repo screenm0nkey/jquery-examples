@@ -1,0 +1,179 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <title>Building a widget with jQuery</title>
+		<link rel="stylesheet" href="style.css">
+        <script type="text/javascript" src="http://libraries/jquery-1.4.2.min.js"></script>
+        <script type="text/javascript" src="http://libraries/jquery-ui-draggable.js"></script>
+        <script type="text/javascript">
+            $(function(){                
+                
+                var ChangeColor = function(elm, options){
+                    var base = this; //new empty object
+                    base.$elm = $(elm);
+                    base.elm = elm;
+                    base.opts = options;
+                    base.state = false;
+					base.timeoutId;
+					base.name='';
+					base.cycleCount = 0;
+					base.$warning = base.$elm.find('.warning');
+					base.$elm.data("changecolor", base); //set the data object
+					
+					//bind the click to the element container and use delegation. This function is called later.
+					base._create = function(){
+						base.$elm.bind('click', function(evt){
+							evt.preventDefault();
+							var funcName = $(evt.target).attr('href');
+							base[funcName] && base[funcName]();
+						});
+						
+                        base.opts.$form.show().bind('submit', function(evt){
+							evt.preventDefault();
+							var $name = base.opts.$form.find('input[name]');
+							
+							if($name[0] && $name.val()!==''){
+								base.name = $name.val().trim();
+								base.$elm.find('.name').text(base.name);
+								base.opts.$form.hide().unbind('submit');
+								$name.val('');
+								base.$elm.removeAttr('id').draggable().appendTo('body').show();
+							}
+                        });
+					}
+					
+					 base.getLevel = function(){
+                        return base.opts.level;
+                    }
+					
+                    base.setLevel = function(x){
+                        base.opts.level = Math.floor(Math.min(base.opts.greenlevels.length - 1, Math.max(0, x)));
+                        base.$elm.css({
+                            background: base.opts.greenlevels[base.opts.level]
+                        });
+						base.opts.callback(base.name + ' Set Level ', base.opts.level);//call back function - Tightly Coupled
+                    }
+                    
+                    base.on = function(){
+                        base.setLevel(15);
+                        base.state = true;
+                    }
+					
+                    base.off = function(){
+                        base.setLevel(16);
+                        base.state = false;
+						clearTimeout(base.timeoutId);
+                    }
+					
+                    base.lighter = function(){
+                        (base.state) ? base.setLevel(base.getLevel() + 1) : base.warning();
+                    }
+					
+                    base.darker = function(){
+                        (base.state) ? base.setLevel(base.getLevel() - 1) : base.warning();
+                    }
+					
+					base.cycle = function(){
+						(function innerCycle(){
+							base.cycleCount++;
+							base.setLevel(base.cycleCount);
+							if(base.cycleCount===16){
+								base.cycleCount =0;
+							}
+							base.timeoutId = setTimeout(innerCycle, 200);
+						})()
+					}
+					
+					base.stopCycle = function(){
+						if(base.timeoutId){
+							clearTimeout(base.timeoutId);
+						}
+					}
+					
+                    base.remove = function(){
+                        base.$elm.trigger({
+                            type: 'deleted',
+                            name: base.name
+                        });//Trigger event - Loosely Coupled 
+                        base.stopCycle();
+                        base.$elm.remove();
+                    }
+					
+                    base.warning = function(){
+                        base.$warning.text('Please turn on first').show();
+                        setTimeout(function(){
+                            base.$warning.hide()
+                        }, 500)
+                    }
+                    
+					base._create();
+                }
+                
+                
+                $.fn.changeColor = function(options){
+                    var opts = $.extend(true, {}, $.fn.changeColor.defaultOptions, options || {});
+                    return $(this).each(function(){
+                        (new ChangeColor(this, opts));
+                    });
+                }
+				
+                
+                $.fn.changeColor.defaultOptions = {
+					greenlevels : ['#000', '#010', '#020', '#030', '#040', '#050', '#060', '#070', '#080', '#090', '#0a0', '#0b0', '#0c0', '#0d0', '#0e0', '#0f0', '#fff'],
+                    level : 0
+				};
+				//end of Class Constructor Plugin Pattern
+				
+                
+                $('#add-new').click(function(evt){
+                    evt.preventDefault();
+                    $('#template').clone().changeColor({
+                        callback: function(evt, level){
+                            console.log(evt, level);
+                        },
+                        $form: $('#name-it')
+                    });
+                });
+				
+				
+				$('#delete-blocks').click(function(evt){
+                    evt.preventDefault();
+					//this functionality would not be necessary on the widget patter as the widget library would handle this
+                    $('.drag:not(#template)').each(function(){
+						$(this).data('changecolor').remove();
+					})
+                });
+				
+				//Trigger event - Loosely Coupled 
+				$(document).bind('deleted', function(evt){
+					console.log(evt.name, ' has been deleted');
+                });
+                
+            });
+        </script>
+    </head>
+    <body>
+         <a href="#" id="add-new">Add New Block</a>
+		 <a href="#" id="delete-blocks">Delete all Blocks</a>
+		
+		<form action="" name="" id="name-it">
+			<input type="text" name="name" id="">
+			<input type="submit" value="submit">
+		</form>
+		
+        <div class="drag" id="template">
+            <div class="warning"></div>
+            <div class="name"></div>
+            <ul>
+                <li><a href="on">On</a></li>
+                <li><a href="off">Off</a></li>
+                <li><a href="lighter">Lighter</a></li>
+                <li><a href="darker">Darker</a></li>
+				<li><a href="cycle">Cycle through colours</a></li>
+				<li><a href="stopCycle">Stop cycle</a></li>
+				<li><a href="remove">Delete</a></li>
+            </ul>
+        </div>
+    </body>
+</html>

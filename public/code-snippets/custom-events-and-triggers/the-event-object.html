@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>http://www.bennadel.com/blog/1787-My-Fundamental-Misunderstanding-Of-The-jQuery-Event-Object.htm</title>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+        <script type="text/javascript">
+            
+            //http://www.bennadel.com/blog/1787-My-Fundamental-Misunderstanding-Of-The-jQuery-Event-Object.htm
+            jQuery(function($){
+            
+				$("a").bind("click", {
+                    which: "a tag first -"
+                }, function(event){
+                    delayEvent(event);
+					event.preventDefault();
+                });
+			
+                // Bind click with extra event data.
+                $("p").bind("click", {
+                    which: "p tag second -"
+                }, function(event){
+                    delayEvent(event);
+                });
+                
+                
+                // Bind click with extra event data.
+                $("p").bind("click", {
+                    which: "p tag third -"
+                }, function(event){
+                    delayEvent(event);
+                });
+                
+				// Bind click with extra event data.
+                $("div").bind("click", {
+                    which: "div tag third -"
+                }, function(event){
+                    delayEvent(event);
+                });
+				
+				
+				
+				
+                
+                
+                //Passing an object into a function/method is done by reference, which is the same for the event object
+                //http://snook.ca/archives/javascript/javascript_pass
+                
+				
+				/*
+				 * The event object is the shared for both p tag click events whereas the a tag will get it's own event object
+				 * The only way to avoid this would be to create 'var which = event.data.which' which would then be in the scope of
+				 * the callback closure 'setTimeout(function()'. 
+				 */
+                var delayEvent = function(event){
+                    //var which = event.data.which;
+                    
+					// Output current event data.
+                    console.log("A:", event.data.which, event.timeStamp);
+                    
+                    // In half a second, check the EVENT object to see
+                    // what bound data is available.
+                    setTimeout(function(){
+                        console.log("B:", event.data.which, event.timeStamp);
+                    }, 500); 
+                };
+                
+            });
+        </script>
+    </head>
+    <body>
+        <div>        	<p style="cursor:pointer"><a href="#">Click here</a>. Holy cow! <b>Did you see thesky today?</b></p>        </div>
+    </body>
+</html>

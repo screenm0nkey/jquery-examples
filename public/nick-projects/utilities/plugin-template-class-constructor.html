@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <title>Building a widget with jQuery</title>
+        <link rel="stylesheet" href="style.css">
+        <script type="text/javascript" src="http://libraries/jquery-1.4.2.min.js"></script>
+        <script type="text/javascript">
+            var obj = (function(parent, $, window, document, undefined){
+                $(function(){
+                    var PluginName = function(elm, options){
+                        var base = this; //new empty object
+                        base.$elm = $(elm);
+                        base.elm = elm;
+                        base.opts = options;
+                        base.$elm.data("pluginName", base); //set the data object
+                        
+						//init function. This function is called later.
+                        base._create = function(){
+                        };
+                        
+                        //PUT BASE METHODS HERE 
+                        
+                        base._create();//call last
+                    };
+                    
+                    
+                    $.fn.pluginName = function(options){
+                        var opts = $.extend(true, {}, $.fn.pluginName.defaultOptions, options || {});
+                        return $(this).each(function(){
+                            (new PluginName(this, opts));
+                        });
+                    };
+                    
+                    
+                    $.fn.pluginName.defaultOptions = {
+                        option1: 'value',
+                        option2: 'value'
+                    };
+                    //end of Class Constructor Plugin Pattern
+                });
+            })(obj || {}, jQuery, this, this.document);
+        </script>
+    </head>
+    <body></body>
+</html>

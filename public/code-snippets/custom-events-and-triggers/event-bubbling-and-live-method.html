@@ -1,0 +1,71 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>jQuery Live() Method And Event Bubbling</title>
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+ 
+		google.load("jquery", "1.3.2");
+			google.setOnLoadCallback(function() { 
+				$(function(){
+	 
+				// Bind click events to links. This will bind a click
+				// handler to all current links as well as all new
+				// links added to the page.
+				
+				//what this does is bind the click event handler to the document root and check to see if click occurred on a link
+				$( "a" ).live( "click", function( event ) {
+					alert( "Link clicked!" );
+				});
+				
+
+				// this will stop the alert message above from the bubbling up to where the event is caught
+				$( "p" ).click( function(){
+					return( false );
+				});
+				
+				
+				
+				var counter = 0;
+				$('#addlink').click(function() {
+					var p = $('<p>');
+					p.html( (counter++) + $('p:first').html() );
+					$('p:last').after(p);
+				});
+				
+			
+
+	 
+			});
+		});
+ 
+	</script>
+</head>
+<body>
+ 
+	<h1>
+		jQuery Live() Method And Event Bubbling http://www.bennadel.com/blog/1751-jQuery-Live-Method-And-Event-Bubbling.htm
+	</h1>
+ 	
+	<h3>So when we click the button it will add the a-link and p-tag html and when we click the a-link it will alert( "Link clicked!" ) and then the page will refresh 
+	which doesn't happen to existing links even though it should.</h3>
+	
+	<h3>This is becuase the a-link uses the live() function to bind the event to it but the enclosing p-tag uses the standard bind function 
+	which means that only existing p-tags will produce an false event when clicked and as live() events are mapped to the root of the document and use event delegation when we click
+	an existing a-link the p-tag will stop the event bubbling up as it returns false.</h3>
+ 
+	<p>
+		I am a paragraph that contains a <a href="">link</a>.
+	</p>
+ 
+	<p>I am a paragraph that contains a <a href="">link</a>.</p>
+ 
+	<p>
+		I am a paragraph that contains a <a href="">link</a>.
+	</p>
+	
+	<input name="addlink" id="addlink" type="button" value="add more"/>
+ 
+</body>
+</html>

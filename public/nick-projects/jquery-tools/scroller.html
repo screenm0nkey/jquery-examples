@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <link rel="stylesheet" href="http://libraries/reset.css" />
+    <style type="text/css">
+        #wrapper {
+            width: 500px;
+            margin: 0 auto;
+            font-size: 1.2em;
+        }
+        
+        /*
+         root element for the scrollable.
+         when scrolling occurs this element stays still.
+         */
+        .scrollable {
+            /* required settings */
+            position: relative;
+            overflow: hidden;
+            width: 500px;
+            height: 75px;
+            border: solid 1px;
+        }
+        
+        /*
+         root element for scrollable items. Must be absolutely positioned
+         and it should have a extremely large width to accommodate scrollable items.
+         it's enough that you set width and height for the root element and
+         not for this element.
+         */
+        .scrollable .items {
+            /* this cannot be too large */
+            width: 20000em;
+            position: absolute;
+        }
+        
+        /*
+         a single item. must be floated in horizontal scrolling.
+         typically, this element is the one that *you* will style
+         the most.
+         */
+        .items ul {
+            float: left;
+            display: inline;
+        }
+        
+        ul > li {
+            float: left;
+            display: inline;
+            width: 100px;
+        }
+        
+        #nav a {
+            text-decoration: underline;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        #nav a.disabled {
+            visibility: hidden;
+        }
+    </style>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script src="http://cdn.jquerytools.org/1.2.5/jquery.tools.min.js"></script>
+    <script type="text/javascript" src="http://libraries/easing.js"></script>
+    <script>
+        // execute your scripts when the DOM is ready. this is mostly a good habit
+        $(function(){
+        
+            //initialize scrollable.			//miniumum requirement 	$(".scrollable").scrollable();
+            //http://flowplayer.org/tools/scrollable/index.html#story
+            $(".scrollable").scrollable({
+                keyboard: 'static', //arrows keys work
+                circular: false, //infinite loop
+                next: '.forwards',
+                prev: '.backwards',
+                speed: 1000,
+                clonedClass: 'cloned',
+                disabledClass: 'disabled',
+                easing: 'easeInOutQuint',//easing js
+                items: '.items',
+                verticle: false,
+                onBeforeSeek: function(){
+                    console.log('onBeforeSeek');
+                },
+                onSeek: function(){
+                    console.log('onSeek1');
+                },
+                onAddItem: function(){
+                    console.log('onAddItem');
+                }
+            });
+            
+            //SCRIPTING API
+            //http://flowplayer.org/tools/documentation/scripting.html
+            var api = $(".scrollable").data('scrollable');			console.dir(api);//display all the api functions			api.move(1);			api.onSeek(function(){				console.log('onSeek2');			});
+        });
+    </script>
+    <title>jQuery Tools example</title>
+</head>    <body>    	        <div id="wrapper">        	<div id="nav">        				<a class="forwards">Forward</a>        						<a class="backwards">Back</a>        			</div>        	        	<div class="scrollable">        	    <div class="items">        	        <ul>        	            <li><img src="http://farm1.static.flickr.com/143/321464099_a7cfcb95cf_t.jpg" /></li>        						<li><img src="http://farm4.static.flickr.com/3089/2796719087_c3ee89a730_t.jpg" /></li>        						<li><img src="http://farm1.static.flickr.com/79/244441862_08ec9b6b49_t.jpg" /></li>        						<li><img src="http://farm1.static.flickr.com/28/66523124_b468cf4978_t.jpg" /></li>        						<li><img src="http://farm1.static.flickr.com/164/399223606_b875ddf797_t.jpg" /></li>        	        </ul>        	        <ul>        	            <li><img src="http://farm1.static.flickr.com/143/321464099_a7cfcb95cf_t.jpg" /></li>        						<li><img src="http://farm4.static.flickr.com/3089/2796719087_c3ee89a730_t.jpg" /></li>        						<li><img src="http://farm1.static.flickr.com/79/244441862_08ec9b6b49_t.jpg" /></li>        						<li><img src="http://farm1.static.flickr.com/28/66523124_b468cf4978_t.jpg" /></li>        						<li><img src="http://farm1.static.flickr.com/164/399223606_b875ddf797_t.jpg" /></li>        	        </ul>        	        <ul>        	            <li><img src="http://farm1.static.flickr.com/143/321464099_a7cfcb95cf_t.jpg" /></li>        						<li><img src="http://farm4.static.flickr.com/3089/2796719087_c3ee89a730_t.jpg" /></li>        						<li><img src="http://farm1.static.flickr.com/79/244441862_08ec9b6b49_t.jpg" /></li>        						<li><img src="http://farm1.static.flickr.com/28/66523124_b468cf4978_t.jpg" /></li>        						<li><img src="http://farm1.static.flickr.com/164/399223606_b875ddf797_t.jpg" /></li>        	        </ul>        	               	    </div>        	</div>			<h1>http://flowplayer.org/tools/scrollable/index.html</h1>        </div>    </body></html>

@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <title>A pub/sub example using Ben Almans plugin</title>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            (function($){
+                //https://gist.github.com/661855
+
+                var o = $('<b/>');
+                
+                $.subscriptions = function(){
+                    console.dir(o.data('events'));
+                };
+                
+                $.subscribe = function(topic, fn){
+                    // Call fn, stripping out the 1st argument (the event object).
+                    function wrapper(){
+                        return fn.apply(this, Array.prototype.slice.call(arguments, 1));
+                    }
+                    
+                    // Add .guid property to function to allow it to be easily unbound. Note that $.guid is new in jQuery 1.4+, and $.event.guid was used before.
+                    wrapper.guid = fn.guid = fn.guid || ($.guid ? $.guid++ : $.event.guid++);
+                    o.bind(topic, wrapper);
+                };
+                
+                // Unsubscribe from a topic. Works exactly like unbind.
+                $.unsubscribe = function(){
+                    o.unbind.apply(o, arguments);
+                };
+                
+                // Publish a topic. Works exactly like trigger.
+                $.publish = function(){
+                    o.trigger.apply(o, arguments);
+                };
+                
+            })(jQuery);
+            
+            (function($){
+                var func01, func02;
+                func01 = function(){ console.log('Look at my lovely new shoes'); };
+				func02 = function(){ console.log('Also look at mine'); };
+				
+				//subscribe same as bind so the $.subscribe below is the same as $(document).bind('new-shoes', fn(){})
+                $.subscribe('new-shoes', func01);               
+                $.subscribe('new-shoes', func02);
+                
+                $.subscriptions();
+                
+                //publish same as trigger i.e. $(document).trigger('new-shoes');
+                $.publish('new-shoes');
+                $.unsubscribe('new-shoes', func01);
+                $.publish('new-shoes');
+                
+                $.subscriptions()
+            })(jQuery);
+        </script>
+    </head>
+    <body>
+        <p id="bottle">Bottle Green</p>
+    </body>
+</html>

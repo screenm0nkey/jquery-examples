@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Parent() and Parents()</title>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+	$(document).ready(function() {
+		console.log( $("span").parent() ); // [p]
+		console.log( $("span").parents() ); // [p, div.two, div.one, body, html]
+		console.log( $("span").parents().filter("div") ); // [div.two, div.one]
+		console.log( $("span").parents("div") ) // [div.two, div.one]
+		console.log( $("span").parents("div:eq(0)") ); //  [div.two]
+	});
+</script>
+
+</head>
+<body>
+<div class="one">
+  <div class="two">
+    <p><span>Some text</span></p>
+  </div>
+</div>
+</body>
+</html>

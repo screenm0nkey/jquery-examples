@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <title>Classes vs IDs</title>
+    <head>
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script>
+            $(document).ready(function(){
+            
+                // Example creating a list and filling it with items
+                //  and selecting each item once
+                
+                console.time('class');
+                var list = $('#list');
+                var items = '<ul>';
+                
+                for (i = 0; i < 1000; i++) {
+                    items += '<li class="item' + i + '">item</li>';
+                }
+                
+                items += '</ul>';
+                list.html(items);
+                
+                for (i = 0; i < 1000; i++) {
+                    var s = $('.item' + i);
+                }
+                console.timeEnd('class');
+                
+                list.empty();
+                
+                console.time('id');
+                var list = $('#list');
+                var items = '<ul>';
+                
+                for (i = 0; i < 1000; i++) {
+                    items += '<li id="item' + i + '">item</li>';
+                }
+                
+                items += '</ul>';
+                list.html(items);
+                
+                for (i = 0; i < 1000; i++) {
+                    var s = $('#item' + i);
+                }
+                console.timeEnd('id');
+                
+                
+                
+            });
+        </script>
+    </head>
+    <body>
+        <div id="list"></div>
+    </body>
+</html>

@@ -1,0 +1,1 @@
+..\..\..\requirejs\build\build.bat cssIn=../css/main.css out=../css/main.min.css

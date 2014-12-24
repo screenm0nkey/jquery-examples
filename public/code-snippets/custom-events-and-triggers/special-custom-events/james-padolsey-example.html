@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+        <title>ScrollStop with Special Events</title>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+		<script type="text/javascript">
+            (function($, window, document){
+                var special = jQuery.event.special;
+                var uid2 = 'D' + (+new Date() + 1);
+                
+                special.scrollstop = {
+                    latency: 300,
+                    setup: function(){
+                        var timer;
+                        var handler = function(evt){
+                            console.log(evt.type,'event', evt.timeStamp);
+                            var _this = this;
+                            var _args = arguments;
+                            
+                            if (timer) {
+                                clearTimeout(timer);
+                            }
+                            
+                            timer = setTimeout(function(){
+                                timer = null;
+                                evt.type = 'scrollstop';
+                                /*
+                                 * Let jQuery handle the triggering of "tripleclick" event handlers
+                                 * You can trigger the event on the element using the standard way to trigger an event by using "$(this).trigger('tripleclick')" but it passes a new event object.
+                                 * Using "jQuery.event.handle.apply(this, arguments);" passes the same event object so you could append values to it.
+                                 */
+                                jQuery.event.handle.apply(_this, _args);//_args = the event object
+                            }, special.scrollstop.latency);
+                        };
+                        
+                        //store the handler in a data object so it can be user later when unbound in the teardown function
+                        jQuery(this).bind('scroll', handler).data(uid2, handler);
+                    },
+                    
+                    teardown: function(){
+                        jQuery(this).unbind('scroll', jQuery(this).data(uid2));
+                    }
+                };
+                
+                
+                $(function(){
+                    $(window).bind('scrollstop', function(evt){
+                        console.log(evt.type.toUpperCase(), evt.timeStamp);
+                    });
+                });
+                
+            })(jQuery, this, this.document);
+        </script>
+    </head>
+    <body>
+    	<style type="text/css">
+    		body {
+                padding: 0;
+                margin: 0;
+                height: 2000px;
+            }
+    	</style>
+    </body>
+</html>

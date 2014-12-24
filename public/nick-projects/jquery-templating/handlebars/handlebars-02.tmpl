@@ -1,0 +1,42 @@
+<style type="text/css">
+  body{ font-size:10px;}
+  .floater { width: 100px; float: left; margin-right: 10px;}
+</style>
+
+<div class="floater">
+  <ul>
+    <li>1</li>
+	  {{#myList items}} 
+	    {{title}} - {{author}} 
+	  {{/myList}}
+	</ul>
+</div>
+
+
+<div class="floater">
+  <ul>
+  {{#each items}}
+    <li>{{agree_button}}</li>
+  {{/each}}
+  </ul>
+</div>
+
+
+
+<div class="floater">  
+  <ul>
+    <li>3</li>
+    {{#each items}} 
+      <li>{{this.title}}</li>
+    {{/each}}
+  </ul>
+</div>
+
+<div class="floater">
+  <ul>
+    <li>4</li>
+    {{#items}} <!-- notice no 'each' compared to example 2 -->
+      <li>{{title}}</li> <!-- notice no 'this.' compared to example 2-->
+    {{/items}}
+  </ul>
+</div>

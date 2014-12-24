@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <title>Image Loader</title>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+        <script type="text/javascript" src="jquery.prettyPhoto.js"></script>
+        <script type="text/javascript" src="jquery.image-preload.js"></script>
+        <script type="text/javascript">
+            /*
+             * EXAMPLE 1. Using xml to load images.
+             * First argument is a config objects which is only really necessary if your supplying an xml file.
+             * The first callback function will be invoked when all the images are loaded.
+             * The second callback function will be invoked when the image download count matches the 'callBackCount'
+             * value set in the config object
+             */
+            $.preloadImages({
+                ajax: true,
+                xmlPath: 'xml/local-images.xml',
+                callBackCount: 4
+            }, function(imagesArray, pathErrors){
+                console.log('EXAMPLE 1 - First function called after all images loaded\n ', imagesArray, '\n', pathErrors);
+            }, function(imagesArray, pathErrors){
+                console.log('EXAMPLE 1 - Second function called after 4 images loaded\n', imagesArray, '\n', pathErrors);
+            });
+            
+            
+            //EXAMPLE 2. Using array to load images. Same as above but no second fucntion is passed in
+            $.preloadImages({
+                imagePath: 'images/',
+                imagePathArray: ['img01.jpg', 'img02.jpg', 'img03.jpg', 'img04.jpg', 'img05.jpg'],
+				width:'100px'
+            }, function(imagesArray, pathErrors){
+                console.log('EXAMPLE 2\n', imagesArray, '\n', pathErrors);
+                $.each(imagesArray, function(){
+                    $('body').append(this);
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div id="info"></div>
+    </body>
+</html>

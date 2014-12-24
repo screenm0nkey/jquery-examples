@@ -1,0 +1,294 @@
+/*----------------------------------------
+Author:     	Nick Lowman
+Author URI: 	http://www.tui.co.uk/
+Project:		Greater London Authority	
+Notes: 			
+----------------------------------------*/
+
+
+/* DRUPAL OVERWRITE;
+----------------------------------------*/
+li.leaf, li.collapsed, .block ul, .block li {
+	list-style:none;
+	padding:0;
+	margin:0;
+}
+input#edit-submit, form#user-login-form div.form-item {
+	float:none;
+}
+
+/* TYPOGRAPHY - default font-size 12px;
+----------------------------------------*/
+p { 
+	font-size:12px;
+	line-height:18px;
+}
+h1 {
+	font-size:24px;	
+}
+h2 {
+	font-size:22px;	
+}
+h3 {
+	font-size:20px;	
+}
+h4 {
+	font-size:18px;	
+}
+h5 {
+	font-size:16px;	
+}
+h6 {
+	font-size:14px;	
+}
+a, a:link, a:visited {
+	outline:none;
+	text-decoration:none;
+}
+a:hover {
+	text-decoration: underline;
+}
+
+/* COLOURS
+----------------------------------------*/
+
+
+
+
+/* GENERIC CLASSES
+----------------------------------------*/
+.left{
+	float:left;
+}
+.right{
+	float:right;
+}
+.relative {
+	position:relative;
+}
+.absolute {
+	position:absolute;
+}
+.strong{
+	font-weight:bold;
+}
+
+
+
+
+/* LAYOUT
+----------------------------------------*/
+body {
+	background:#e5e5e5;
+	color:#000;
+	font-family:Arial, Helvetica, sans-serif;
+}
+	div#page {
+		background:#FFF;
+		margin:0 auto;
+		width:980px;
+	}
+
+
+
+/* HEADER
+ * header > logo-title > h1
+ * header > logo-title > info-and-slogan > user-info-region > block-user > content > form#user-login-form & ul.menu
+----------------------------------------*/
+div#header {
+	background:url(../images/site/header_bg.gif) scroll repeat-x bottom;
+	height:96px;
+	position:relative;
+	border:0px solid;
+}
+	div#logo-banner {
+		background:url(../images/site/banner_bg.gif) scroll repeat-x 0 0;
+		height:35px;
+		position:relative;
+	}
+		div#logo-banner a {
+			background:url(../images/site/gla_logo.gif) scroll no-repeat 0 0;
+			display:block;
+			height:35px;
+			position:absolute;
+			right:0;
+			text-indent:-3000px;
+			width:240px;
+		}
+	div#logo-title {
+	}
+		h1#site-name {
+			background:url(../images/site/climate_change_logo.gif) scroll no-repeat 0 0;
+			float:left;
+			height:27px;
+			margin:20px 0 0 20px;
+			text-indent:-2000px;
+			width:439px;
+		}
+		h1#site-name a {
+			color:#336633;
+			text-decoration:none;
+		}
+		div#info-and-slogan {
+			font-size:11px;
+			float:right;
+		}
+			div#user-info-region ul.menu {
+				margin:28px 12px 0 0;
+			}	
+			div#user-info-region ul.menu li {
+				color:#666;
+				float:left;
+				font-size:11px;
+				margin:0 6px 0 0;
+			}
+			div#user-info-region ul.menu li a {
+				color:#000;
+				font-family:Georgia, "Times New Roman", Times, serif;
+				font-size:12px;
+				text-decoration:none;
+			}
+			
+				div#user-info-region ul.menu li.first {
+					background:transparent url(../images/site/logged_in_divider.gif) no-repeat scroll 100% 0;
+					padding-right:7px;
+				}
+				div#user-info-region ul.menu li.last {
+					background:transparent url(../images/site/logout_arrow.gif) no-repeat scroll 100% 50%;
+					padding-right:15px;
+				}
+		
+			form#user-login-form {	
+			}
+				form#user-login-form div.item-list {
+					display:none;
+				}
+				input#edit-submit,
+				form#user-login-form div.form-item {
+					float:left;
+				}
+			
+
+/* header > navigation-bar-region > #block-menu-primary-links */
+/* header > navigation-bar-region > #block-search-0 */
+	div#navigation-bar-region {
+		background:transparent url(../images/site/navigation_bar_bg.gif)  repeat-x scroll 0 100%;/*left/right top/bottom*/
+		height:35px;
+		position:relative;
+	}
+		div#block-menu-primary-links {
+			display:inline;
+			float:left;
+			margin-left:11px;
+		}
+			div#block-menu-primary-links ul {
+				position:absolute;
+				bottom:0px;
+			}
+				div#block-menu-primary-links ul li {
+					background:transparent url(../images/site/primary_nav_divider.gif) no-repeat scroll 100% 0;
+					display:inline;
+					float:left;
+					font-weight:bold;
+					height:27px;
+					margin-left:8px;
+					padding-right:12px;
+				}
+					div#block-menu-primary-links ul li a {
+						color:#336699;
+						display:block;
+						font-size:13px;
+						padding-top:4px;
+						text-decoration:none;
+					}
+					div#block-menu-primary-links ul li.active-trail a {
+						color:#000;
+					}
+										
+		
+		div#block-search-0 {
+			float:right;
+		}
+		
+
+/* CAROUSEL
+----------------------------------------*/
+#drupal-cards {
+	display:none;
+}
+#carousel {
+	position:relative;
+}
+#carousel #scroll-nav {
+	margin:0 auto;
+	position:relative;
+	width:600px;
+}
+	#carousel #scroll-nav ul li {
+		float:left;
+	}
+		#carousel #scroll-nav ul li a {
+			display:block;
+			margin-right:30px;
+		}
+		
+	#carousel #pane-outer {
+		position:relative;
+		border:solid;
+		width:600px;
+		left:0;
+		margin:0 auto;
+	}
+		#carousel #pane-target {
+			width:600px;
+			height:300px;
+			overflow:hidden;
+		}
+			#carousel #pane-target ul {
+				width:3000px;
+				height:300px;
+				clear:both;
+			}
+				#carousel #pane-target ul li {
+					float:left;
+					width:198px;
+					height:298px;
+					border:1px solid #FFF;
+					background:#CCC;
+					color:#FFF;
+					text-align:center;
+					font-size:15px;
+					overflow:hidden;
+				}
+
+
+
+
+
+
+/* Drupal Developer Module
+----------------------------------------*/
+#block-menu-devel {
+	border-top:solid;
+}
+	#block-menu-devel h2 {
+		display:none;	
+	}
+	#block-menu-devel ul {
+		list-style:none;
+		clear:both;
+	}
+		#block-menu-devel ul li {
+			float:left;
+			margin-right:20px;
+		}
+			#block-menu-devel ul li a {
+				font-size:9px;
+				color:#000;
+			}
+
+
+
+
+
+

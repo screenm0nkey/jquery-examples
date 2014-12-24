@@ -1,0 +1,20 @@
+Scrolling Headline Reader
+- pulling data from AJAX request
+- animation
+  - hover to stop animation
+-click to go to story
+
+Featured Authors
+- auto-rotating
+
+Featured Book
+- user-driven carousel
+- enlarge thumbnail (animation)
+
+
+
+BUG FIXES
+
+mouseout / mouseenter not called reliably during slide animation
+
+load only gets called first time 

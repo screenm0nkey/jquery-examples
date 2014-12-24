@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <title>Log Plugin</title>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+        
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(function(){
+                $('p')
+					.log('BEGIN')
+					.html('<ul><li>Dynamic Text</li></ul>')
+					.log('After Add Dyanmic Text')
+					.find('li')
+						.log('After Find LI')
+						.animate({
+	                    	fontSize: "24px",
+	                   		marginLeft: "15px"
+	                	}, 1500)
+						.log('After Animate')
+						.animate({
+	                    	fontSize: "16px",
+	                    	marginLeft: "0px"
+	                	}, 1500)
+					.end()
+					.log('Reset back to P tag')
+					.log('END');
+            });
+            jQuery.fn.log = function(msg){
+                console.log("%s: %o", msg, this);
+                return this;
+            };
+        </script>
+    </head>
+    <body>
+        <p>Static Text</p>
+        <a href="http://jsbin.com/owuri/edit" target="_blank">View, Run, &amp; Edit Code</a>
+    </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <base href="http://docs.jquery.com" /><script src="http://code.jquery.com/jquery-latest.js"></script>
+        
+        <script>
+            window.onload = (function(){
+                try {
+                    $(document.body).click(function(evt){
+						console.log(evt.target, evt.currentTarget)
+                        $(document.body).append($("<div>"));
+                        var n = $("div").length;
+                        $("span").text("There are " + n + " divs." + "Click to add more.");
+                    }).trigger('click'); // trigger the click to start
+                } 
+                catch (e) {
+                }
+            });
+        </script>
+        <style>
+            body {
+                cursor: pointer;
+            }
+            
+            div {
+                width: 50px;
+                height: 30px;
+                margin: 5px;
+                float: left;
+                background: green;
+            }
+            
+            span {
+                color: red;
+            }
+        </style>
+        <style>
+            html, body {
+                border: 0;
+                margin: 0;
+                padding: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <span></span>
+    </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <title>iPad dynamic image insert test</title>
+    </head>
+    <body>
+        <div id="console-log-mobile"></div>
+        <script src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.js"></script>
+        <script type="text/javascript">
+            $(function(){
+                var log = logger;//console.log;
+                var logCounter = 0;
+                var $mobileOutput = $('#console-log-mobile');
+                var count = 0;
+                //var array = ['large-image-01.jpg', 'large-image-02.jpg', 'large-image-03.jpg', 'large-image-04.jpg', 'large-image-05.jpg', 'large-image-06.jpg', 'large-image-07.jpg', 'large-image-08.jpg', 'large-image-09.jpg', 'large-image-10.jpg', 'large-image-11.jpg', 'large-image-12.jpg', 'large-image-13.jpg', 'large-image-14.jpg', 'large-image-15.jpg']
+                //var array = ['large-image-01.jpg', 'large-image-02.jpg', 'large-image-03.jpg', 'large-image-04.jpg', 'large-image-05.jpg', 'large-image-01.jpg', 'large-image-02.jpg', 'large-image-03.jpg', 'large-image-04.jpg', 'large-image-05.jpg', 'large-image-01.jpg', 'large-image-02.jpg', 'large-image-03.jpg', 'large-image-04.jpg', 'large-image-05.jpg']
+                var array = ['bulb-accor.png', 'bulb-arup.png', 'bulb-bio.png', 'bulb-boomerang.png', 'bulb-cartoon-network.png', 'bulb-coca-cola.png', 'bulb-edf.png', 'bulb-everest.png', 'bulb-freesat.png', 'bulb-kia-oval.png', 'bulb-le-creuset.png', 'bulb-lg.png', 'bulb-nhs.png', 'bulb-orange.png', 'bulb-santander.png', 'bulb-water-aid.png'];
+                
+                function logger(){
+                    var args = 'Loader - ' + Array.prototype.slice.call(arguments).join("");
+                    logCounter++
+                    (logCounter === 100) && $mobileOutput.empty();
+                    $mobileOutput.html(args + '<br>' + $mobileOutput.html());
+                }
+                
+                
+                (function loadNext(){
+                    var path = 'images/large-images/' + array[count];
+                    
+                    log('LOAD ', path);
+                    
+                    var img = new Image();
+                    img.onload = function(evt){
+                        log('DONE ', path);
+                        document.body.appendChild(this)
+                        count++;
+                        loadNext();
+                    };
+					img.error = function(evt){
+                        log('ERROR ', path);
+         
+                    };
+                    img.width = 50;
+                    img.height = 50;
+                    img.src = path;
+                    
+                    
+                })();
+            });
+        </script>
+    </body>
+</html>

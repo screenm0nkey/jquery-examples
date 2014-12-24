@@ -1,0 +1,26 @@
+<!DOCTYPE HTML><html lang="en-US"><head>	<meta charset="UTF-8">	<title></title>	<style type="text/css">		body{			font-family:Arial, Helvetica, sans-serif;			font-size:11px;			color:#666;			text-align:justify;		}		div {			border:1px solid black;			padding: 10px 20px;			background:#fff;		}		div#wrapper {			overflow:hidden;			border:1px solid grey;		}		div.column {			width:200px;			float:left;			border:1px solid brown;			cursor:pointer;		}		div.float {			position:absolute;			border:1px solid brown;		}	</style>	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>    <script type="text/javascript">
+        (function($, window, document, undefined){
+            $ = jQuery;
+            			function ajaxFunc($elm, $float, cssObj){                $elm.height($elm.height()).empty().prepend("<img id='throbber' src='facebook.gif' />");                                $.ajax({                    url: 'test.php',                    cache: false,                    success: function(data){                        $elm.html(data).css(cssObj).animate({							height:'20px'						},1000);						$float.fadeOut()                    }                });            };
+            
+            $(function(){
+                var $float = $('<div class="float">').appendTo('body').hide();
+                
+                $('#wrapper').bind('click', function(e){
+                    var $col = $(e.target).closest('div.column');					
+                    $float						.hide()						.css({
+	                        width: $col.width() + 'px',
+	                        left: $col.offset().left + 'px',
+	                        top: $col.offset().top + 'px',
+	                        opacity: '0.8'
+                    	})						.empty()						.html($col.html())						.show();															//call ajax function					ajaxFunc($col,$float, {						color:$col.css('color')					});															
+                    $float.animate({
+                        "top": ($float.offset().top + 50) +"px",
+                        "left": ($float.offset().left + 50) +"px",
+                    }, 1000)
+                    
+                });
+            });
+        })(jQuery, this, this.document)
+        
+    </script></head><body>	<div>Now that the tooltip positioning is taken care of, it's time to hook it up to some events. If you read Binding Multiple Events to Reduce Redundancy with Event Delegation Tooltips, you may remember that I used the .bind() method and passed in three events: mouseover, mouseout, and mousemove. That seemed to work fine, but now that jQuery 1.4.2 has provided us with the more convenient .delegate() method, we can use that one instead. Jordan Boesch recently wrote a nice introductory article on Using Delegate and Undelegate in jQuery, so check that out if you're uncertain about what the method does. One thing I'd like to note about it, though, is that it's currently the only jQuery method (of its kind) that doesn't map the this keyword in the callback function to the current element within the matched set. In the code below, for example, the callback function for other methods would map this to the "#mytable" element; for .delegate(), the function maps to its first argument, "a" — when it is within "#mytable" and when it or one of its ancestors is the event.target element. I hope this little .delegate() excursion didn't confuse matters. Suffice it to say that the method allows us to use this  for the link we want to act on, instead of going through the rigamarole of checking for the event target ourselves as I did in my previous tooltip articles. </div>	<div id="wrapper">		<div class="column">Now that the tooltip positioning is taken care of, it's time to hook it up to some events. If you read Binding Multiple Events to Reduce Redundancy with Event Delegation Tooltips, you may remember that I used the .bind() method and passed in three events: mouseover, mouseout, and mousemove.</div>		<div class="column">Now that the tooltip positioning is taken care of, it's time to hook it up to some events. If you read Binding Multiple Events to Reduce Redundancy with Event Delegation Tooltips, you may remember that I used the .bind() method and passed in three events: mouseover, mouseout, and mousemove. Now that the tooltip positioning is taken care of, it's time to hook it up to some events. If you read Binding Multiple Events to Reduce Redundancy with Event Delegation Tooltips, you may remember that I used the .bind() method and passed in three events: mouseover, mouseout, and mousemove.</div>		<div class="column">Now that the tooltip positioning is taken care of, it's time to hook it up to some events. If you read Binding Multiple Events to Reduce Redundancy with Event Delegation Tooltips, you may now that the tooltip positioning is taken care of, it's time to hook it up to some events. If you read Binding Multiple Events to Reduce Redundancy with Event Delegation Tooltips, you may remember that I used the .bind() method and passed in three events: mouseover, mouseout, and mousemove.</div>	</div></body></html>

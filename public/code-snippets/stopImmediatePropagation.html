@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <title>Stop Immediate Propagation</title>
+		<script type="text/javascript" src="http://libraries/jquery-1.5.1.js"></script>
+        <script type="text/javascript">
+        	//stopImmediatePropagation stops the propagation of events bound to the same object 
+            $(function(){
+                $('#a').bind('click', function(evt){
+                    console.log('A'); 
+					evt.preventDefault();
+					evt.stopImmediatePropagation();
+                });
+                $('#a').bind('click', function(evt){
+                    console.log('B'); 
+                });
+                $('#a').bind('click', function(evt){
+                    console.log('C'); 
+                });
+            });
+			
+			//whereas stopPropagation will stop the event bubbling but won't stop the event from actioning on other functions bound to the element
+            $(function(){
+                $('#b').bind('click', function(evt){
+                    console.log('D'); 
+					evt.preventDefault();
+					evt.stopPropagation();
+                });
+                $('#b').bind('click', function(evt){
+                    console.log('E'); 
+                });
+                $('#b').bind('click', function(evt){
+                    console.log('F'); 
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <ul>
+            <li><a href="nick.com" id="a">This will log A</a></li>
+        </ul>
+        <ul>
+            <li><a href="nick.com" id="b">This will log D, E, F</a></li>
+        </ul>
+    </body>
+</html>

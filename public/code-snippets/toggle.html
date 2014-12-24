@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<base href="http://docs.jquery.com" />
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+window.onload = (function(){try{
+
+    $("button").click(function () {
+      $("p").toggle();
+    });
+	
+	$("td:parent").fadeTo(1500, 0.3); //this will only select td tags that contain something. It's differnt to using .parent();
+
+
+  }catch(e){}});</script>
+<style>
+td {
+	width:40px;
+	background:green;
+}
+html, body {
+	border:0;
+	margin:0;
+	padding:0;
+}
+</style>
+</head>
+<body>
+<button>Toggle</button>
+<p>Hello</p>
+<p style="display: none">Good Bye</p>
+<p>Visible</p>
+<p style="display: none">I'm hidden</p>
+<p style="display: none">I'm hidden</p>
+<p style="display: none">I'm hidden</p>
+
+
+<table border="1">
+  <tr>
+    <td>Value 1</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Value 1</td>
+    <td></td>
+  </tr>
+</table>
+this will only select td tags that contain something. It's differnt to using .parent();
+</body>
+</html>

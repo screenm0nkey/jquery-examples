@@ -1,0 +1,1 @@
+Also look at http://jquery/nick-projects/iframe-examples/bookmarklet-for-iframes/ which uses loader

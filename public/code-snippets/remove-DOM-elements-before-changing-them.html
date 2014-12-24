@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <title>Remove elements from the DOM before changing them</title>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+        <script type="text/javascript">
+            (function($){
+                $(function(){
+                  //http://jonraasch.com/blog/10-advanced-jquery-performance-tuning-tips-from-paul-irish
+                    var theForm = $('#myForm');
+                    var formParent = theForm.parent();
+                    
+                    theForm.remove();
+                    var inputArr = $('<input type="text"><input type="text"><input type="text">')
+                    
+                    inputArr.each(function(i, elm){
+                        console.log(i, elm);
+                        $(this).attr('value', i)
+                        theForm.append($(this));
+                    });
+                    
+                    formParent.append(theForm);
+                });
+            })(jQuery)
+        </script>
+        
+		<!--
+			I guess the above code works something like below where as long as you have a var pointer to something it will exist.
+			Below mike seems to point at nick when really it's point to the value 100 as proven when we delete nick
+		-->
+		<script type="text/javascript">
+            var nick, mike;
+            nick = 100;
+            mike = nick;
+            nick = null;
+            console.log(mike, nick);//100 , null
+        </script>
+    </head>
+    <body>
+    	<h1>http://jonraasch.com/blog/10-advanced-jquery-performance-tuning-tips-from-paul-irish</h1>
+        <div class="daddy">
+            <form action="#" id="myForm">
+                <input type="text" name="" id="" value="first">
+            </form>
+        </div>
+    </body>
+</html>

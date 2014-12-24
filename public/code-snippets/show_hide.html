@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<base href="http://docs.jquery.com" />
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+	$(document).ready(function() {
+		$("#showr").click(function() {
+			$("#blocks div:eq(0)").show(200,function() {
+				$(this).next().show(200,arguments.callee);
+			});
+		});
+		
+		$("#hidr").click(function() {
+			$("#blocks div:last").hide(200,function() {
+				$(this).prev().hide(200,arguments.callee);
+			});
+		});
+	});
+
+</script>
+<style>
+
+#blocks div {
+	background:#def3ca;
+	margin:3px;
+	width:80px;
+	display:none;
+	float:left;
+	text-align:center;
+}
+#blocks {
+	display:block;
+}
+
+html, body {
+	border:0;
+	margin:0;
+	padding:0;
+}
+</style>
+</head>
+<body>
+<button id="showr">Show</button>
+<button id="hidr">Hide</button>
+<div id="blocks">
+  <div class="mike">Hello,</div>
+  <div>how</div>
+  <div>are</div>
+  <div>you?</div>
+</div>
+</body>
+</html>

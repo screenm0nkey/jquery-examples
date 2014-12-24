@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <body>
+        <div>
+            Out And In Fade
+        </div>
+        <div>
+            Out And In Fade
+        </div>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+        <script>
+            (function($, window, document){
+            
+                $.fn.outAndInFade = function(customOptions){
+                    var options = $.extend({}, $.fn.outAndInFade.defaultOptions, customOptions || {});
+                    return this.each(function(){
+                        $(this).fadeOut().fadeIn('normal', function(){ // Callback for fadeIn()
+                            // Call complete() function, pass it "this"
+                            if ($.isFunction(options.complete)) {
+                                options.complete.apply(this);
+                            }
+                        });
+                    });
+                };
+                
+                $.fn.outAndInFade.defaultOptions = {
+                    complete: null // No default function
+                };
+				
+				
+                
+            })(jQuery, this, this.document);
+			
+            jQuery('div').outAndInFade({
+                // Change background-color of the element being animated on complete.
+                // Note: "this" will refer to the DOM element in the wrapper set.
+                complete: function(){
+                    $(this).css('background', '#ff9');
+                }
+            });
+        </script>
+    </body>
+</html>

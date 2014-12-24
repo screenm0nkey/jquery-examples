@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Attribute Selectors</title>
+<script src="jquery-1.3.2.min.js"></script>
+<script>
+    var navTimer = null;
+
+	$(document).ready(function() {
+		//$('a.shooter').css('background-color','red');
+		//$('ul, a').css('background-color','red'); //selects all a tags after the p tag
+     	//$('p ~ a').css('background-color','red'); //selects all 'a' tags after the p tag
+		//$('p + a').css('background-color','red'); //selects the first a tag after the p
+		$('div:has(strong a)').css('background-color','green'); //returns all divs that have a link in them which is bold
+		//$('a:not(.shooter)').css('background-color','yellow'); //selects all a tags except the one with class .shooter
+		
+		//$('ul li:first-child').css('background-color','red');
+		//$('ul li:first').css('background-color','green');
+		//$('ul li:nth-child(3n+4)').css('background-color','red').append("<span> - 2nd!</span>");
+
+		//$('ul li:nth-child(3n)').css('background-color','red');
+		//$('ul li:nth-child(3n)').append('<li>shitake</li>');
+		//$('ul li:contains(shitake)').css('background-color','red');
+	});
+  </script> 
+</head>
+
+<body>
+
+<p>Lorem Ipsum is simply dummy text of the <a href="#" class="shooter">printing and typesetting</a> industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets <strong><a href="#">printing and typesetting</a><br /></strong> containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+<a href="#">printing and typesetting</a><br />
+<a href="#">printing and typesetting</a><br />
+
+<div><p>Lorem Ipsum is simply dummy</p></div>
+<a href="#">printing and typesetting</a><br />
+<a href="#">printing and typesetting</a><br />
+
+<ul style="float:left;">
+	<li>Nick</li>
+    <li>Nick</li>
+    <li>Nick</li>
+    <li>Nick</li>
+    <li>Nick</li>
+    <li>Nick</li>
+    <li>Nick</li>
+    <li>Nick</li>
+    <li>Nick</li>
+    <li>Nick</li>
+</ul>
+<ul style="float:left;margin-left:50px">
+	<li>Nick</li>
+    <li>Nick</li>
+    <li>Nick</li>
+    <li>Nick</li>
+    <li>Nick</li>
+    <li>Nick</li>
+    <li>Nick</li>
+    <li>Nick</li>
+    <li>Nick</li>
+    <li>Nick</li>
+</ul>
+<ul style="float:left;margin-left:50px">
+	<li>Nick</li>
+    <li>Nick</li>
+    <li>Nick</li>
+    <li>Nick</li>
+    <li>Nick</li>
+    <li>Nick</li>
+    <li>Nick</li>
+    <li>Nick</li>
+    <li>Nick</li>
+    <li>Nick</li>
+</ul>
+
+<div style="clear:both"></div>
+
+<a href="#">printing and typesetting</a>
+
+<span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. <a href="#">Lorem Ipsum has been the industry's</a> standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+</span>
+
+<div><p>Lorem Ipsum is simply dummy text of the printing and <strong>typesetting</strong> industry. <strong><a href="#"></strong>Lorem Ipsum has been the industry's</a> standard dummy text ever since the 1500s,</p> when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets <p>containing Lorem Ipsum passages,</p> and more recently with desktop publishing<p> software like Aldus PageMaker including versions </p>of Lorem Ipsum.
+</div>
+
+</body>
+</html>

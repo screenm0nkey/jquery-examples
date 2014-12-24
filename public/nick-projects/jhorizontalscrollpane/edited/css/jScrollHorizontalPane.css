@@ -1,0 +1,111 @@
+
+.jScrollPaneContainer {position: relative; overflow: hidden; z-index: 1; }
+.jScrollPaneTrack { background:url("../images/our-channels-scroller-track.png") repeat scroll 0 0 transparent; bottom:0; cursor:pointer; left:0; position:absolute; width:100%; z-index:0;}
+.jScrollPaneTrackLeft{position:absolute; top:0; left:0; width:6px; background:url('../images/our-channels-scroller-track-left.png'); overflow:hidden; z-index:1;}
+.jScrollPaneTrackRight{position:absolute; top:0; right:0; width:6px; background:url('../images/our-channels-scroller-track-right.png'); overflow:hidden; z-index:1;}
+.jScrollIntervalTrack {position: absolute;}
+.jScrollPaneDrag {position: absolute; background:url('../images/our-channels-scroller-drag.png'); cursor: pointer; overflow: hidden; z-index:2;}
+.jScrollPaneDragLeft {position: absolute; width:10px; background:url('../images/our-channels-scroller-drag-left.png'); bottom: 0; left: 0; overflow: hidden;}
+.jScrollPaneDragRight {position: absolute; width:11px; background:url('../images/our-channels-scroller-drag-right.png'); bottom: 0; right: 0; overflow: hidden;}
+
+
+
+body {
+	font-size:1em;
+}
+
+/* 
+ * the ul.blocks width needs to be set inline as it's changed using javascript to match the amount of li elements
+ * which are loaded via ajax
+ */
+.scroll-holder {
+    position: relative;
+	left:100px;
+	top:100px;
+}
+
+#pane-01 {
+    background: #000;
+    position: relative;
+    z-index: 0;
+    padding: 40px 0 20px 20px;
+    width: 1020px
+}
+ul.blocks {
+    padding: 0;
+    /* width: 2000px; */
+    display: block;
+    height: 100px;
+	margin-top:0px;
+	overflow:hidden;
+}
+
+ul.blocks li {
+	background:gold;
+    width: 99px;
+    margin: 0 0 0 0px;
+    float: left;
+    display: block;
+    height: 100px;
+	border-right:1px solid;
+}
+.holder {
+    margin: 0;
+    display: block;
+    /* TEMP */
+    margin-bottom: 20px;
+}
+
+.scroll-pane {
+    background: #000;
+    float: left;
+	height: 150px;
+    width: 1000px; /* THIS SETS THE WIDTH OF THE SCROLLER */
+    padding: 0;
+    display: block;
+    _overflow: hidden;
+}
+
+
+#second-scroller .scroll-pane {
+	width: 800px; /* THIS SETS THE WIDTH OF THE SCROLLER */
+}
+
+#third-scroller .scroll-pane {
+	width: 200px; /* THIS SETS THE WIDTH OF THE SCROLLER */
+}
+
+.scroll-loader{
+	position:absolute;
+	background:url("../images/loader.gif") no-repeat scroll 50% 50% #000;
+	height:190px;
+	width:1040px;
+	z-index:10;
+	color:#fff;
+	display:block;
+}
+
+
+/*
+NAVIGATION
+*/
+
+#nav {
+	z-index:5;
+	position:absolute;
+	margin:10px 0 0 20px;
+}
+#nav li {
+	float:left;
+	display:inline;
+	margin-right:100px;
+}
+#nav li a {
+	color:#fff;
+}
+#nav li.active a {
+	color:#ff3300;
+}
+
+
+

@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <title>Custom Selectors</title>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+        <style type="text/css" media="screen">
+            .highlight {
+                background-color: yellow;
+                border: 1px yellow solid;
+            }
+        </style>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(function(){
+                $.expr[":"].containsNoCase = function(el, i, m){
+                    var search = m[3], test;
+                    if (!search) 
+                        return false;
+                    $(el).css('border', 'solid 1px');
+                    test = eval("/" + search + "/i").test($(el).text())
+                    debugger;
+                    return test;
+                };
+                
+                $("#select").click(function(){
+                    $("tr:containsNoCase(jquery)").addClass("highlight");
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <td>I</td>
+                <td>think</td>
+            </tr>
+            <tr>
+                <td>jQuery</td>
+                <td>is</td>
+            </tr>
+            <tr>
+                <td>cool!</td>
+                <td>Please</td>
+            </tr>
+            <tr>
+                <td>don't</td>
+                <td>misspell</td>
+            </tr>
+            <tr>
+                <td>JQuery</td>
+                <td>Jquery</td>
+            </tr>
+            <tr>
+                <td>Thank</td>
+                <td>you!</td>
+            </tr>
+        </table>
+        <button id="select">Select By Case Insensitive Contains</button>
+    </body>
+</html>

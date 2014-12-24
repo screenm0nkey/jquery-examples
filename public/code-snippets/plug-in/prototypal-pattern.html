@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <title>Prototypal Inheritance Plugin Pattern</title>
+    <style type="text/css">
+      .megaHover {
+        color:red;
+        font-weight:bold;
+      }
+      .imHovered {
+        color:green;
+        font-weight:bold;
+      }
+    </style>
+    <script type="text/javascript" src="http://libraries/jquery-1.6.1-min.js"></script>
+    <script type="text/javascript">
+      log = console.log;
+      dir = console.dir;
+      // http://www.slideshare.net/SlexAxton/how-to-manage-large-jquery-apps
+      // http://alexsexton.com/?p=51
+
+      (function($) {
+        var hoverClass = {
+          // only call the init function at object creation time
+          init: function(options, elm) {
+            if(arguments.length === 3 && arguments[2] === true) {
+              this.options = $.extend({}, this.options, options || {});
+              this.$elm = $(elm);
+              this.elm = elm;
+              this.eventify();
+              this.$elm.data('hoverClass', this);
+              this.init = function() {
+                //overwrite the init function once it's finsished setup to stop anyone calling it.
+                alert('NO!');
+              };
+            }
+          },
+          options: {
+            defaultName : 'nick',
+            hoverClass :  'megaHover'
+          },
+          eventify : function() {
+            var that = this;
+            this.$elm.hover( function() {
+              // this is equal to the dom element, NOT 'this' object
+              $(this).toggleClass(that.options.hoverClass);
+            });
+          },
+          logData : function() {
+            var data = this.$elm.data();
+            log(this.options)
+            for(var i in data) {
+              log(this.$elm, i, data[i]);
+            }
+          },
+          alerp: function() {
+            alert('ad')
+          }
+        };
+
+        // http://pastie.org/517177
+        $.plugin = function(name, object) {
+          $.fn[name] = function(options) {
+            var args = Array.prototype.slice.call(arguments, 1);
+            return this.each( function() {
+              var instance = $.data(this, name);
+              if (instance) {
+                instance[options].apply(instance, args);
+              } else {
+                instance = $.data(this, name, Object.create(object).init(options, this, true));
+              }
+            });
+          };
+        };
+        
+        $.plugin('hoverClass', hoverClass);
+
+        $( function() {
+          $('.link1').hoverClass({
+            'hoverClass':'imHovered'
+          });
+          $('.link2').hoverClass();
+
+          $('.link').each( function(i, elm) {
+            var elemHoverObj = $(this).data('hoverClass');
+            elemHoverObj.logData();
+          });
+        })
+      })(jQuery)
+    </script>
+  </head>
+  <body>
+    <a href="http://www.slideshare.net/SlexAxton/how-to-manage-large-jquery-apps">Slide 28</a>
+    <a href="#" class="link link1">I need a class 1</a>
+    <a href="#" class="link link2">I need a class 2</a>
+  </body>
+</html>

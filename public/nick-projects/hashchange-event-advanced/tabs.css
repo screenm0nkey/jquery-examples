@@ -1,0 +1,70 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+}
+
+.tabs ul {
+    height: 36px;
+    padding: 20px 20px 0 30px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.tabs ul li {
+    float: left;
+    width: 100px;
+    margin: 0 10px 0 0;
+    background-color: #cccccc;
+    border: solid 1px #000000;
+    position: relative;
+    z-index: 1;
+}
+
+.tabs ui li.active {
+    z-index: 3;
+}
+
+.tabs ul li a:link, .tabs ul li a:visited {
+    display: block;
+    text-align: center;
+    width: 100px;
+    height: 40px;
+    line-height: 36px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+    color: #ffffff;
+    letter-spacing: 1px;
+    outline: none;
+    float: left;
+    background: #888888;
+}
+
+.tabs ul li a:hover {
+    background-color: #000000;
+}
+
+.tabs ul li a.active, .tabs ul li a.active:visited {
+    color: #000000;
+    background-color: #cccccc;
+}
+
+.tabs .content {
+    width: 500px;
+    background: #cccccc;
+    padding: 15px;
+    margin: 0;
+}
+
+#show {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+}

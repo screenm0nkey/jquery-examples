@@ -1,0 +1,9 @@
+Chapter 1-6, 10, and appC contains the code files for the examples developed in the respective chapters.
+
+Folder bookstore contains the code files for examples developed in Chapter 7,8, and 9.
+
+Scripts folder contains the jQuery scripts, for version 1.1.3a. 
+
+For newer versions please check the website http://docs.jquery.com/Downloading_jQuery
+
+The latest jQuery file can be replaced with the jQuery.js file under the script folder.

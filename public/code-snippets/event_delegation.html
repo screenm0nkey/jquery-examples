@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <base href="http://docs.jquery.com" /><title>Event Delegation</title>
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script>
+            $(document).ready(function(){
+                $('table').click(function(event){
+                    var $thisCell, 
+						$tgt = $(event.target).closest('td');
+            
+                    if ($tgt && $tgt.is('td')) {
+                        $thisCell = $tgt;
+                    }
+                    else 
+                        if ($tgt.parents('td').length) {
+                            console.log($tgt.parents('td'), $tgt.parents('td').length);
+                            $thisCell = $tgt.parents('td:first');
+                        }
+                    $thisCell.css({
+                        backgroundColor: '#ffcccc'
+                    });
+                });
+            });
+            
+            $(document).ready(function(){
+                $('#list1').click(function(event){
+                    console.log(event.target);
+                    var $newLi = $('<li class="special">special and new <button>I am new</button></li>');
+                    var $tgt = $(event.target);
+                    if ($tgt.is('button')) {
+                        console.log($tgt.parent());
+                        $tgt.parent().after($newLi); //the teven target is the button and it's parent is the Li
+                    }
+                    // next 2 lines show that you've clicked on the ul
+                    var bgc = $(this).css('backgroundColor');
+                    console.log(bgc == '#ffcccc' || bgc == 'rgb(255, 204, 204)')
+                    $(this).css({
+                        backgroundColor: bgc == '#ffcccc' || bgc == 'rgb(255, 204, 204)' ? '#ccccff' : '#ffcccc'
+                    });
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <ul id="list1" class="eventlist">
+            <li>plain</li>
+            <li class="special">special 
+                <button> I am special</button>
+            </li>
+            <li>plain</li>
+        </ul>
+        <br>
+        <br>
+        <table border="1" cellspacing="5px" cellpadding="0" width="200px">
+            <tr>
+                <td>Mike</td>
+            </tr>
+            <tr>
+                <td>Steve</td>
+            </tr>
+            <tr>
+                <td class="button">
+                    <button>I am new</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Stuart</td>
+            </tr>
+            <tr>
+                <td>Janice</td>
+            </tr>
+        </table>
+    </body>
+</html>

@@ -1,0 +1,62 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
+    <script>
+        //Write your code when Document is loaded
+        $(document).ready(function() {
+            //$('input[type=checkbox]:not(:checked)').css('border','solid'); //view in ie as styling doesn't work in firefox
+			$(":checkbox").css('border','solid green');
+			$(":checkbox:not(:checked)").css('border','solid red');
+			//$('div input:last-child').css('background-color','red');
+			//$('ul input:last').css('background-color','green');
+			
+			$(":checkbox").click(function() {
+				$(":checkbox").css('border','solid green');
+				$(":checkbox:not(:checked)").css('border','solid red');
+			});
+        });
+    </script>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+
+        <div id="testCheck">
+        <input type="checkbox" value="1" />
+        <input type="checkbox" value="2" />
+        <input type="checkbox" checked="checked" value="3" />
+        <input type="checkbox" value="4" />
+        <input type="checkbox" checked="checked" value="5" />
+        <input type="checkbox" checked="checked" value="6" />
+        <input type="checkbox" checked="checked" value="7" />
+        <input type="checkbox" checked="checked" value="8" />
+    </div>
+    <input id="testChk" type="button" value="Submit" />
+
+    <table id="testTB">
+        <thead>
+            <tr>
+             <th>test</th>
+             <th>chk boxes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>test</td><td><input type="checkbox" checked="checked" value="1" /></td></tr>
+            <tr><td>test</td><td><input type="checkbox" checked="checked" value="2" /></td></tr>
+            <tr><td>test</td><td><input type="checkbox" checked="checked" value="3" /></td></tr>
+            <tr><td>test</td><td><input type="checkbox" checked="checked" value="4" /></td></tr>
+            <tr><td>test</td><td><input type="checkbox" checked="checked" value="5" /></td></tr>
+            <tr><td>test</td><td><input type="checkbox" checked="checked" value="6" /></td></tr>
+        </tbody>
+    </table>
+    <input id="tblSub" type="button" value="Submit" />
+    </div>
+    </form>
+</body>
+</html>

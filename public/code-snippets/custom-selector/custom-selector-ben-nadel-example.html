@@ -1,0 +1,74 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <title>How To Build A Custom Selector In jQuery</title>
+        <script src="/public/js/jquery-1.11.2.js"></script>
+
+        <script>
+        	/*
+        	 * Define the custom selector. This is an alternative way to create a selector filter.
+        	 * Normally you would use $.expr[":"].hasTitle
+        	 */
+   			$.extend(jQuery.expr.filters, {
+				hasTitle:hasTitle
+			});
+			
+            //As this is a function declaration it will be hoisted to the top of the fucntion scope so can be defined anywhere.
+            function hasTitle(objNode, intStackIndex, arrProperties, arrNodeStack){
+                // Create an array to hold the arguments passed to
+                // the custom jquery selector. The first several
+                // data items are just meta-data about the selector.
+                // The list of arguments gets passed as a string -
+                // we are eval'ing it into an array.
+                
+                var arrArguments = eval("([" + arrProperties[3] + "])");
+                
+                // Create a jQuery version of this node.
+                var jThis = $(objNode);
+                
+                // Check to see if this node has any of the given
+                // titles. If so, return true (we only need to find
+                // one of the titles to qualify).
+                for (var i = 0; i < arrArguments.length; i++) {
+                    // Check for title equality.
+                    if (jThis.attr("title") == arrArguments[i]) {
+                    
+                        // We found a title match, return true to
+                        // indicate that this node should be included
+                        // in the returned jQuery stack.
+                        return (true);
+                    }
+                }
+                
+                // If we have made it this far, then we found no
+                // match. Return false to indicate that this node
+                // did not match our selector.
+                return (false);
+            }
+            
+            
+            
+            // Once the page has loaded, get the matching
+            // nodes based on title.
+            
+            $(function(){
+                var jGirls = $("li:hasTitle( 'foo', 'bar' )");
+                // Alert girl names.
+                jGirls.each(function(intI){
+                    //alert( $( this ).text() );
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <h1> How To Build A Custom Selector In jQuery</h1>
+        <ul>
+            <li title="foo">Sarah</li>
+            <li title="bar">Kim</li>
+            <li title="foo">Molly</li>
+            <li title="shi">Claire</li>
+            <li title="shi">Liz</li>
+            <li title="bar">Michelle</li>
+        </ul>
+    </body>
+</html>

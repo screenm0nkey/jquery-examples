@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Tabbed navigation</title>
+<link rel="stylesheet" type="text/css" href="tabbed.css">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
+
+<script>
+	$(document).ready(function() {
+		$(".tab_content").hide();
+		$("ul.tabs li:first").addClass("active");
+		$(".tab_content:first").show();
+		
+		$("ul.tabs li").click(function() {
+			$("ul.tabs li").removeClass("active");
+			$(this).addClass("active");
+			$(".tab_content").hide();
+			
+			var activeTab = $(this).find("a").attr("href");
+			$(activeTab).fadeIn();
+			return false
+		});
+	});
+
+</script>
+</head>
+
+<body>
+
+<div class="container">
+
+	<h1>Simple Tabs w/ CSS &amp; jQuery</h1>
+  <ul class="tabs">
+      	<li><a href="#tab1">Gallery</a></li>
+        <li><a href="#tab2">Submit</a></li>
+        <li><a href="#tab3">Resources</a></li>
+        <li><a href="#tab4">Contact</a></li>
+
+  </ul>
+    
+    <div class="tab_container">
+    
+        <div id="tab1" class="tab_content">
+            <h2>Gallery</h2>
+            <a href="http://www.designbombs.com/light/simona-munteanu/"><img src="http://www.designbombs.com/wp-content/themes/DesignBombs/images/gallery/simonamunteanu_thumb.gif" alt="" /></a>
+            <h3><a href="http://www.designbombs.com">www.DesignBombs.com</a></h3>
+            <p>Saw polecat than took bankrupt good hillbilly stew, crazy, fancy and hillbilly heap rodeo, pappy. Thar range saw me him sherrif nothin' shiney dirt, pigs sheep city-slickers everlastin' shotgun driveway. Promenade catfight fart fiddle jiggly gonna tarnation, fence, what quarrel dirty, if. Pot grandma crop kinfolk jezebel diesel coonskin hoosegow wirey fixin' shack good roped in. Reckon stew tax-collectors, grandpa tobaccee hayseed good wash tired caboodle burnin' landlord. </p>
+
+            
+            <p>Smokin' driveway wrestlin' go darn truck moonshine wirey cow grandpa saw, coonskin bull, java, huntin'. </p>
+            
+            <p>Stinky yonder pigs in, rustle kinfolk gonna marshal sittin' wagon, grandpa. Ya them firewood buffalo, tobaccee cabin.</p>
+        </div>
+        
+        
+        <div id="tab2" class="tab_content">
+            <h2>Submit</h2>
+            <a href="http://www.designbombs.com/blog/sketch-blog/"> <img src="http://www.designbombs.com/wp-content/themes/DesignBombs/images/gallery/sketchblog_thumb.gif" alt="" /></a>
+            <h3><a href="http://www.designbombs.com">www.DesignBombs.com</a></h3>
+
+            <p>Grandma been has bankrupt said hospitality fence everlastin' wrestlin' rodeo redblooded chitlins marshal. Boobtube soap her hootch lordy cow, rattler. </p>
+            
+            <p>Rottgut havin' ignorant go, hee-haw shiney jail fetched hillbilly havin' cipherin'. Bacon no cowpoke tobaccee horse water rightly trailer tools git hillbilly. </p>
+            
+            <p>Jezebel had whiskey snakeoil, askin' weren't, skanky aunt townfolk fetched. Fit tractor, them broke askin', them havin' rattler fell heffer, been tax-collectors buffalo. Quarrel confounded fence wagon trailer, moonshine wuz, city-slickers fixin' cow. </p>
+        </div>
+        <div id="tab3" class="tab_content">
+            <h2>Resources</h2>
+          	<a href="http://www.designbombs.com/fashion/lukas-mynus/"><img src="http://www.designbombs.com/wp-content/themes/DesignBombs/images/gallery/mynus_thumb.gif" alt="" /></a>
+
+            <h3><a href="http://www.designbombs.com">www.DesignBombs.com</a></h3>
+            <p>Dirt tools thar, pot buffalo put jehosephat rent, ya pot promenade. Come pickled far greasy fightin', wirey, it poor yer, drive jig landlord. Rustle is been moonshine whomp hogtied. Stew, wirey stew cold uncle ails. Slap hoosegow road cooked, where gal pot, commencin' country. Weren't dogs backwoods, city-slickers me afford boxcar fat, dumb sittin' sittin' drive rustle slap, tornado. Fuss stinky knickers whomp ain't, city-slickers sherrif darn ignorant tobaccee round-up old buckshot that. </p>
+            
+            <p>Deep-fried over shootin' a wagon cheatin' work cowpoke poor, wuz, whiskey got wirey that. Shot beer, broke kickin' havin' buckshot gritts. Drunk, em moonshine his commencin' country drunk chitlins stole. Fer tonic boxcar liar ass jug cousin simple, wuz showed yonder hee-haw drive is me. Horse country inbred wirey, skanky kinfolk. Rattler, sittin' darn skanky fence, shot huntin'.</p> 
+            
+        </div>
+        <div id="tab4" class="tab_content">
+            <h2>Contact</h2>
+            <a href="http://www.designbombs.com/illustrations/esteban-munoz/"> <img src="http://www.designbombs.com/wp-content/themes/DesignBombs/images/gallery/estebanmunoz_thumb.gif" alt="" /></a>
+
+            <h3><a href="http://www.designbombs.com">www.DesignBombs.com</a></h3>
+            <p>Grandma been has bankrupt said hospitality fence everlastin' wrestlin' rodeo redblooded chitlins marshal. Boobtube soap her hootch lordy cow, rattler. </p>
+            
+            <p>Rottgut havin' ignorant go, hee-haw shiney jail fetched hillbilly havin' cipherin'. Bacon no cowpoke tobaccee horse water rightly trailer tools git hillbilly. </p>
+            
+            <p>Jezebel had whiskey snakeoil, askin' weren't, skanky aunt townfolk fetched. Fit tractor, them broke askin', them havin' rattler fell heffer, been tax-collectors buffalo. Quarrel confounded fence wagon trailer, moonshine wuz, city-slickers fixin' cow. </p>
+        </div>
+    </div>
+</div>
+
+<div style="clear: both; display: block; padding: 10px 0; text-align:center;"><a href="http://www.sohtanaka.com/web-design/simple-tabs-w-css-jquery">Simple Tabs w/ CSS &amp; jQuery</a> by Soh Tanaka. Check out his <a href="http://www.sohtanaka.com/web-design-blog/">Web Design Blog</a> for more tutorials!</div>
+
+
+
+
+</body>
+</html>

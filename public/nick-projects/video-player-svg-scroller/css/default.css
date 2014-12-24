@@ -1,0 +1,40 @@
+body { font-family:arial, Helvetica, sans-serif; color:#000; background:#e2e0e0 url(../images/generic/bg_bio.png) 0 0 repeat-x; font-size: 62.5%; }
+a:hover { color:#a7cf38; }
+
+#container { font-size:1.2em; background:url("../images/generic/background.jpg") no-repeat scroll center 0 transparent; height:100%; width:100%; min-height:700px; position:relative; }
+
+header{ }
+header h1 { position:absolute; top:10px; left:10px  }
+header h1 a { display:block; background: url(../images/generic/logo.png) no-repeat; height:61px; width:90px; }
+/*#menu-hand-container child of header */
+#switch-container { position:relative; width:980px; margin:0 auto; }
+#switch-container .switch { display:block; position:absolute; right:0; width:124px; height:73px; background: url(../images/generic/menu-hand.png) no-repeat; }
+
+#wrapper { width:980px; margin:0 auto; position:relative; overflow:hidden;}
+
+
+#main { position:absolute; bottom:0; width:980px; height:520px; top:0px; } 
+#video video { margin: 10px auto; width: 320px; display:none; }
+
+#video video.active { display:block; }
+
+
+footer{  width:745px; bottom:0; height:50px; margin:30px auto; padding-left:30px;}
+footer ul { position:relative; margin:0 auto; width:715px;  }
+footer ul li { float:left; display:inline; margin-left:9px; }
+footer ul li a { display:block; color:#b0b0b1; font-weight:bold; font-size:1.1em; padding:0 10px 0 0; text-transform:lowercase; text-decoration:none; background:url(../images/generic/footer-dot.png) no-repeat 100% 55%; }
+footer ul li.last a { background:none; }
+footer ul li.active a { color:#a7cf38; }
+footer ul.bottom { width:840px; margin:3px auto; height:20px; }
+footer ul.bottom li { margin-right:6px; }
+footer ul.bottom li a {  font-size:0.833em; background:none; }
+footer ul.bottom li.twitter { position:absolute; width:37px; height:36px; top:-14px; left:-39px; }
+footer ul.bottom li.twitter a { display:block; background:url(../images/generic/twitter.png) no-repeat; width:37px; height:36px;}
+footer ul.bottom li p { font-size:0.833em; color:#b7b7b7;  }
+
+
+
+
+
+
+

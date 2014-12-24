@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <style>
+            body {
+                font-size: 16px;
+            }
+            
+            ul {
+                float: left;
+                margin: 0 30px;
+                color: blue;
+            }
+            
+            #results {
+                color: red;
+            }
+            
+            p {
+                color: red;
+            }
+        </style>
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("p").append($("input").map(function(){
+                    return $(this).attr("name") + "=" + $(this).val();
+                }).get().join(",_, "));
+            });
+            
+            
+            $(document).ready(function(){
+                var mappedItems = $("li").map(function(index){
+                    var replacement = $("<li>").text($(this).text()); //this is currently a jQuery object
+                    console.log(replacement);
+                    replacement = replacement.get(0); //it's now a DOM element which it needs to be otherwise it doesn't work
+                    console.log(replacement);
+                    
+                    if (index === 0) {
+                        // make the first item all caps
+                        $(replacement).text($(replacement).text().toUpperCase());
+                    }
+                    else 
+                        if (index == 1 || index == 3) {
+                            // delete the second and fourth items
+                            replacement = null;
+                        }
+                        else 
+                            if (index == 2) {
+                                // make two of the third item and add some text
+                                replacement = [replacement, $("<li>").get(0)];
+                                console.log("\t", replacement);
+                                $(replacement[0]).append("<b> - A</b>");
+                                $(replacement[1]).append("Extra <b> - B</b>");
+                            }
+                    // replacement will be an dom element, null, 
+                    // or an array of dom elements
+                    return replacement;
+                });
+                $("#results").append(mappedItems);
+            });
+            
+            
+            $(document).ready(function(){
+                var users = [{
+                    id: 1,
+                    name: "RedWolves"
+                }, {
+                    id: 2,
+                    name: "Ron DeVera"
+                }, {
+                    id: 3,
+                    name: "Jon Skeet"
+                }];
+                
+                var billy = $.map(users, function(u){
+                    console.log("\t=", u.name);
+                    return u.id;
+                });
+                console.log(billy)
+            });
+            
+            
+            $(document).ready(function(){
+                var charlie = 1010;
+                var myCars = new Array("Saab", 1, "BMW", 15, charlie).join(' ');
+                console.log(myCars);
+                var moreCars = ["Saab", 1, "BMW", 15, charlie].join(' ');
+                console.log(myCars);
+            });
+            
+            
+            $(document).ready(function(){
+                var myPanels = $('a').map(function(){
+                    return this.hash || null;
+                }).get().join(',');
+                
+                console.log(myPanels);
+            });
+        </script>
+    </head>
+    <body>
+        <p><b>Values: </b></p>
+        <form>
+            <input type="text" name="name" value="John"/>
+            <input type="text" name="password" value="password"/>
+            <input type="text" name="url" value="http://ejohn.org/"/>
+        </form>
+        <ul>
+            <li>First</li>
+            <li>Second</li>
+            <li>Third</li>
+            <li>Fourth</li>
+            <li>Fifth</li>
+        </ul>
+        <ul id="results">
+        </ul>
+        <a href="#one">one</a>
+        <a href="http://two.com">two</a>
+        <a href="#three">three</a>
+        <a href="#four">four</a>
+    </body>
+</html>

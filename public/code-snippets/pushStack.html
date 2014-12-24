@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Using PushStack In jQuery Plugins</title>
+	<script src="http://www.google.com/jsapi"></script>  
+   
+   <script>
+   	// http://code.google.com/apis/ajaxlibs/documentation/index.html  
+   	google.load("jquery", "1.3.2"); 
+	//
+    google.setOnLoadCallback(function() {  
+		$(document).ready(function() {
+			$( "li.start" )
+				.near()
+				.css( "font-style", "italic" )
+				.loggy()
+			.end()
+				.loggy()
+				.css( "font-weight", "bold" );
+		}); 
+	});  
+            
+  </script> 
+  <script type="text/javascript">
+ 
+		// This plugin gets the PREV and NEXT siblings of the
+		// elements in the current collection and pushes it
+		// onto the stack so that end() will return to original
+		// collection.
+		
+		jQuery.fn.loggy = function() {
+			console.log(this);
+			return this;
+		}
+ 
+		jQuery.fn.near = function(){
+			// Get a new collection of elements consisting of the
+			// merging of the PREV and NEXT elements.
+			var newCollection = this.prev().add( this.next() );
+ 
+			// When we return this new collection, push it onto
+			// the stack. This will appropriate set the prevObject
+			// proprety of the new collection.
+			
+			return( newCollection );
+		};
+ 
+ 
+	</script>
+</head>
+<body>
+ 
+	<h1>
+		Using PushStack In jQuery Plugins
+	</h1>
+ 
+	<ol>
+		<li>
+			First list item.
+		</li>
+		<li class="start">
+			Second list item.
+		</li>
+		<li>
+			Third list item.
+		</li>
+	</ol>
+ 
+</body>
+</html>

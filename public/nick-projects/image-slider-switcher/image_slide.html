@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Image Slider</title>
+        <style type="text/css">
+            html, body {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                height: 100%;
+            }
+            
+            html {
+                background: transparent url(images/button.gif) repeat-x 0 100%;
+            }
+            
+            div#wrapper {
+                position: relative;
+                width: 700px;
+                margin: 0 auto;
+                text-align: center;
+            }
+            
+            div#image-container {
+                margin: 0 0 20px 0;
+                border: solid 5px #D6D6D6;
+            }
+            
+            div#thumbs-container {
+                position: relative;
+                width: 100px;
+                height: 100px;
+                margin: 0 auto;
+                border: 3px solid #CCFF66;
+                overflow: hidden;
+            }
+            
+            div#nav {
+                margin: 0 0 10px 0;
+            }
+            
+            div#thumbs {
+                position: relative;
+                width: 600px;
+                z-index: 2;
+            }
+            
+            div#thumbs img {
+                float: left;
+            }
+        </style>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+        <script>
+            $(function(){
+                var posX = 0;
+                currentPath = "";
+                
+                $("div a").click(function(){
+                    var id = $(this).attr("href");
+                    if (id == "next") {
+                        if (posX > -500) {
+                            //with negative numbers -100 is greater than -500
+                            move(-100);
+                        }
+                    }
+                    else {
+                        if (posX < 0) {
+                            move(100);
+                        }
+                    }
+                    return false;
+                });
+                
+                function move(dist){
+                    posX += dist;
+                    var moveX = posX + "px"
+                    $("#thumbs").animate({
+                        left: moveX
+                    }, 400)
+                    console.log(posX);
+                }
+                
+                //"images/" + sub +"-lg.jpg",
+                currentPath = $("#thumbs > img:first").attr("src").substring(7, 11);
+                $("#thumbs > img").click(function(){
+                    var src = $(this).attr("src").substring(7, 11);
+                    if (src != currentPath) {
+                        var newPath = "images/" + src + "-lg.jpg"
+                        $("#image-container img").animate({
+                            opacity: "0"
+                        }, 400, function(){
+                            $("#image-container img").attr({
+                                src: newPath
+                            });
+                        }).animate({
+                            opacity: "1"
+                        }, 400);
+                        currentPath = src;
+                    }
+                }).css("cursor", "pointer");
+            });
+            
+        </script>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="image-container">
+                <img src="images/img1-lg.jpg" />
+            </div>
+            <div id="nav">
+                <a href="previous">Previous</a>
+                <a href="next">Next</a>
+            </div>
+            <div id="thumbs-container">
+                <div id="thumbs">
+                    <img src="images/img1-thumb.jpg" width="100" height="100" /><img src="images/img2-thumb.jpg" width="100" height="100" /><img src="images/img3-thumb.jpg" width="100" height="100" /><img src="images/img4-thumb.jpg" width="100" height="100" /><img src="images/img5-thumb.jpg" width="100" height="100" /><img src="images/img6-thumb.jpg" width="100" height="100" />
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

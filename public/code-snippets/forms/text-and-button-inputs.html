@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script>
+            $(function(){
+                log = console.log;
+                
+                $('#formee').bind({
+                    'submit': function(){
+                        //validate here
+                        console.log('validate');
+                        return false;
+                    }
+                });
+				
+                
+                $("input[type='text']").change(function(){
+                    console.log($(this).val());
+                });
+                
+                $('#button').attr('disabled', 'disabled');
+                //document.getElementById('button').disabled = true;
+                
+                $('[type=submit]').removeAttr('disabled');
+                // document.getElementById('button').disabled = false;
+                
+                
+				
+                // disable input fields 
+                $.fn.disable = function(val){
+                    return this.each(function(){
+                        if (typeof this.disabled !== "undefined") {
+                            this.disabled = val;
+                        }
+                    });
+                };
+                $("input[type=text]:first").disable(true);
+                
+                //TEST FOR DISABLED
+                log($('input:last').is(':disabled'));
+                log($('input:disabled'));
+                // also try $('input:enabled').length
+				
+				
+				// SET value
+				$('#name2').val('not disabled')
+				//document.getElementById('name2').value='not disabled';
+            });
+        </script>
+    </head>
+    <body>
+        <form action="" name="formee" id="formee" method="post">
+            <input name="name1" id="name1" type="text" value="disabled" />
+            <input name="name2" id="name2" type="text" />
+            <input type="submit" value="Submit">
+            <input type="button" value="button" id="button"></form>
+    </body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Form Plug-in</title>
+    
+    <link rel="stylesheet" href="../css/default.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/3810.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="examples.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="plugins.css" type="text/css" media="screen" />
+    <script src="../scripts/jquery.js"></script>
+    <script src="jquery.form.js"></script>
+    <script src="examples.js"></script>
+    <script src="formplugin.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="branding" class="clearfix">
+        <div id="chapter-number">11</div>
+        <h1>Form Plug-in</h1>
+      </div>
+      
+      <div class="ajax-form">
+
+        <form id="test-form" name="test-form" action="submit.php" method="post">
+          <div class="form-row">
+            <label for="city">City</label>
+            <input type="text" id="city" name="city" size="20" />
+          </div>
+          <div class="form-row">
+            <label for="state">State</label>
+            <input type="text" id="state" name="state" size="5" value="MI" />
+          </div>
+          <div class="form-row">
+            <label for="comment">Comments</label>
+            <textarea id="comment" name="comment" rows="8" cols="30"></textarea>
+          </div>
+
+          <div class="form-row">
+            <label for="sacks">Villages sacked</label>
+            <select name="villages" id="villages">
+              <option value="0">none</option>
+              <option value="5" selected="selected">1-5</option>
+              <option value="10">6-10</option>
+              <option value="20">11-20</option>
+              <option value="50">21-50</option>
+              <option value="100">51-100</option>
+              <option value="more">over 100</option>
+            </select>
+          </div>
+
+          <div class="form-row multi">
+            <span class="multi-label">Preferred tactic</span>
+            <input type="radio" name="tactic" value="loot" id="loot" checked="checked" /><label for="loot">loot</label>
+            <input type="radio" name="tactic" value="pillage" id="pillage" /><label for="pillage">pillage</label>
+            <input type="radio" name="tactic" value="burn" id="burn" /><label for="burn">burn</label>
+          </div>
+
+          <div class="form-row multi">
+            <span class="multi-label">Viking gear</span>
+            <input type="checkbox" name="gear[helmet]" value="yes" id="helmet" checked="checked" /><label for="helmet">horned helmet</label>
+            <input type="checkbox" name="gear[longboat]" value="yes" id="longboat" /><label for="pillage">longboat</label>
+            <input type="checkbox" name="gear[goat]" value="yes" id="goat" checked="checked"/><label for="goat">magic goat</label>
+          </div>
+
+          <div class="form-row buttons">
+            <input type="submit" id="submit" name="submit" value="Send" />
+            <input type="button" id="more" name="more" value="More Options" />
+          </div>
+        </form>
+        <div class="log"></div>
+      
+      </div>
+
+      <div class="category">
+        <h2>Retrieving Form Values</h2>
+
+        <div id="example-form-to-array" class="example">
+          <h3>.formToArray()</h3>
+          <div class="content">
+            <div class="trigger button">Trigger</div>        
+            <div class="log"></div>
+          </div>
+        </div>
+
+        <div id="example-form-serialize" class="example">
+          <h3>.formSerialize()</h3>
+          <div class="content">
+            <div class="trigger button">Trigger</div>        
+            <div class="log"></div>
+          </div>
+        </div>
+
+        <div id="example-field-serialize" class="example">
+          <h3>.fieldSerialize()</h3>
+          <div class="content">
+            <div class="trigger button">Trigger</div>        
+            <div class="log"></div>
+          </div>
+        </div>
+
+        <div id="example-field-value" class="example">
+          <h3>.fieldValue()</h3>
+          <div class="content">
+            <div class="trigger button">Trigger</div>        
+            <div class="log"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="category">
+        <h2>Form Manipulation</h2>
+
+        <div id="example-clear-form" class="example">
+          <h3>.clearForm()</h3>
+          <div class="content">
+            <div class="trigger button">Trigger</div>        
+          </div>
+        </div>
+
+        <div id="example-clear-fields" class="example">
+          <h3>.clearFields()</h3>
+          <div class="content">
+            <div class="trigger button">Trigger</div>        
+          </div>
+        </div>
+
+        <div id="example-reset-form" class="example">
+          <h3>.resetForm()</h3>
+          <div class="content">
+            <div class="trigger button">Trigger</div>        
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </body>
+</html>

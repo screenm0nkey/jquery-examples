@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+    	<title>Bind Once</title>
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+            
+                var n = 0;
+                $("div").one("click", function(){
+                    var index = $("div").index(this);
+                    console.log(index);
+                    $(this).css({
+                        borderStyle: "inset",
+                        cursor: "auto"
+                    });
+					
+                    $("p").text("Div at index #" + index + " clicked." + "  That's " + (++n) + " total clicks.");
+                });
+                
+            });
+        </script>
+        <style type="text/css">
+            div {
+                width: 60px;
+                height: 60px;
+                margin: 5px;
+                float: left;
+                background: green;
+                border: 10px outset;
+                cursor: pointer;
+            }
+            
+            p {
+                color: red;
+                margin: 0;
+                clear: left;
+            }
+        </style>
+    </head>
+    <body>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <p>Click a green square...</p>
+    </body>
+</html>

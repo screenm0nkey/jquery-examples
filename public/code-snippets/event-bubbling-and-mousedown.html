@@ -1,0 +1,84 @@
+<!-- http://www.bennadel.com/blog/1754-Track-Document-Level-Clicks-With-jQuery-MouseDown-Events.htm --> <!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Track Document-Level Clicks With jQuery MouseDown Events</title>
+        <script src="http://www.google.com/jsapi"></script>
+        <script>
+            // http://code.google.com/apis/ajaxlibs/documentation/index.html  
+            google.load("jquery", "1.3.2");
+            //
+            google.setOnLoadCallback(function(){
+            
+                jQuery(function($){
+                    var eventType = "mousedown";
+                    var popup = $("#popup");
+                    
+                    
+                    // Bind the catching event to the document so that we
+                    // can catch any events that bubble up (which would
+                    // represent a de-focusing of the pop-up window) such
+                    // that we can close the pop-up.
+                    $(document).bind(eventType, function(){
+                        // Hide the popup.
+						console.log('hide popup');
+                        popup.hide();
+                    });
+                    
+                    
+                    // Bind the catching event to the pop-up itself so
+                    // that it can stop propagation of the event up to
+                    // the document (where the event would take on a
+                    // very different meaning - closing the pop-up).
+                    popup.bind(eventType, function(event){
+                        event.stopPropagation();
+                    });
+                    
+                    
+                    // Hook up the pop-up trigger link to open up the
+                    // pop-up window when it is clicked.
+                    $("#popup-trigger").attr("href", "javascript:void( 0 )").click(function(event){
+                        // Show or hide the popup window.
+                        $("#popup").toggle();
+                        
+                        // Cancel default event.
+                        return (false);
+                    });
+                    
+                    
+                    // Hook up the other link to do some processing when
+                    // it is clicked; the actually processing here is not
+                    // relevant, only that it cancels the default event.
+                    $("#other-link").attr("href", "javascript:void( 0 )").click(function(event){
+                        // ...
+                        // ... do some non-link processing ...
+                        return (false);
+                    });
+                    
+                });
+            });
+        </script>
+        <style type="text/css">
+            #popup {
+                background-color: #F0F0F0;
+                border: 1px solid #CCCCCC;
+                display: none;
+                height: 100px;
+                left: 50%;
+                margin: -55px 0px 0px -155px;
+                padding: 5px 5px 5px 5px;
+                position: absolute;
+                width: 300px;
+                top: 50%;
+                z-index: 1000;
+            }
+        </style>
+    </head>
+    <body>
+        <h1> Track Document-Level Clicks With jQuery MouseDown Events</h1>
+        <p><a id="popup-trigger">Show the pop-up window!</a></p>
+        <p> I am <a id="other-link">some other link</a>.</p>
+        <div id="popup">
+            Hello! I am a pop-up window.
+        </div>
+    </body>
+</html>

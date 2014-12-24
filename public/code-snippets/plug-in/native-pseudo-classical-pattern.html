@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <title>Native /PseudoClassical plug-in pattern</title>
+    <style type="text/css">
+      .megaHover {
+        color:red;
+        font-weight:bold;
+      }
+      .imHovered {
+        color:green;
+        font-weight:bold;
+      }
+    </style>
+    <script type="text/javascript" src="http://libraries/jquery-1.6.1-min.js"></script>
+    <script type="text/javascript">
+      log = console.log;
+      dir = console.dir;
+
+      function HoverClass(options, elm) {
+        this.init(options, elm);
+      }
+
+      HoverClass.prototype = {
+        init: function(options, elm) {
+          this.options = $.extend({}, this.options, options || {});
+          this.$elm = $(elm);
+          this.elm = elm;
+          this.eventify();
+          this.$elm.data('hoverClass', this);
+        },
+        options: {
+          defaultName : 'nick',
+          hoverClass :  'megaHover'
+        },
+        eventify : function() {
+          var that = this;
+          this.$elm.hover( function() {
+            $(this).toggleClass(that.options.hoverClass);
+          });
+        },
+        logData : function() {
+          var data = this.$elm.data();
+          for(var i in data) {
+            log(this.$elm, i, data[i]);
+          }
+          //log(this.$elm.data()) //will show the hoverClass object and the events object
+        }
+      };
+
+      (function($) {
+        $.fn.extend({
+          hoverClass: function(options) {
+            return this.each( function() {
+              // create a new instance of our object
+              new HoverClass(options, this);
+            });
+          }
+        });
+
+        $( function() {
+          $('.link1').hoverClass({
+            'hoverClass':'imHovered'
+          });
+          $('.link2').hoverClass();
+
+          $('.link').each( function(i, elm) {
+            var elemHoverObj = $(this).data('hoverClass');
+            elemHoverObj.logData()
+          });
+        })
+      })(jQuery)
+    </script>
+  </head>
+  <body>
+    <a href="http://www.slideshare.net/SlexAxton/how-to-manage-large-jquery-apps">Slide 28</a>
+    <a href="#" class="link link1">I need a class 1</a>
+    <a href="#" class="link link2">I need a class 2</a>
+  </body>
+</html>

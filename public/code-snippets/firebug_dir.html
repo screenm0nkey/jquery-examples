@@ -1,0 +1,39 @@
+
+<body>
+<div id="mike">click or hover over this text</div>
+<div id="stu">click or hover over this text</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script>
+(function($){
+	$('div').bind('click mouseleave', function(event){
+		//console.log(event.type);
+	});
+	
+	$('#mike').bind('mouseenter', function(event){
+		//console.log(event.type);
+	});
+	
+	$('#stu').css({
+		position :'absolute',
+		top: '0px',
+		left: '0px'
+	}).animate({ top: "100px" }, 1000);
+	
+	//this outputs DOM data about the jQuery Object
+	//console.dir( $('#mike') ); 
+	
+	// this outputs DOM data about the DOM Element
+	//console.dir( $('#mike').get(0) ); 
+	
+	// this outputs events attached to all divs in the DOM
+	//console.dir($('div').data('events')); 
+	
+	// this outputs events attached to the selected DOM element
+	console.dir($('#stu').data('events')); 
+	
+	//console.dirxml(document.getElementById('mike'));
+})(jQuery);
+</script>
+</body>
+</html>

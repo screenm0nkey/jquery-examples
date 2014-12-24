@@ -1,0 +1,31 @@
+  <p class="info">
+    <td colspan="5" class="info">
+      {{title}} <br />
+      {{link}} <br />
+      {{modified}}
+    </td>
+  </p>
+  
+  <table>
+    <thead>
+      <th>Title</th>
+      <th>Date taken</th>
+      <th>Author id</th>
+      <th>Link</th>
+      <th>Description</th>
+    </thead>
+    <tbody>
+      {{#items}}
+        <tr>
+          <td max-width="300px">{{title}}</td>
+          <td>{{date_taken}}</td>
+          <td>{{author_id}}</td>
+          <td><a href="{{link}}">Link</a></td>
+          <td>{{{description}}} <br /> {{../generator}}</td>
+        </tr>
+        <tr>
+        	<td class="div" colspan="5"></td>
+        </tr>
+      {{/items}}
+    </tbody>
+  </table>

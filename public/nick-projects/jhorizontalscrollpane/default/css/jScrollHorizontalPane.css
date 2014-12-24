@@ -1,0 +1,195 @@
+
+.jScrollPaneContainer {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.jScrollPaneTrack {
+    position: absolute;
+    cursor: pointer;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: #aaa;
+}
+
+.jScrollIntervalTrack {
+    position: absolute;
+}
+
+.jScrollPaneDrag {
+    position: absolute;
+    background: #666;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.jScrollPaneDragLeft {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+.jScrollPaneDragRight {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    overflow: hidden;
+}
+
+a.jScrollArrowLeft {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+    text-indent: -2000px !important;
+    overflow: hidden;
+    /*background-color: #666;*/
+    height: 9px;
+    width: 10px;
+}
+
+a.jScrollArrowLeft:hover {
+    /*background-color: #f60;*/
+}
+
+a.jScrollArrowRight {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    right: 0;
+    text-indent: -2000px !important;
+    overflow: hidden;
+    /*background-color: #666;*/
+    height: 9px;
+    width: 10px;
+}
+
+a.jScrollArrowRight:hover {
+    /*background-color: #f60;*/
+}
+
+a.jScrollActiveArrowButton, a.jScrollActiveArrowButton:hover {
+    /*background-color: #f00;*/
+}
+
+
+
+
+
+
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font: normal 12px / 1.2em Arial, Helvetica, sans-serif;
+    margin: 20px;
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+h1 {
+    font: bold 22px / 1.2em Arial, Helvetica, sans-serif;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font: normal 18px / 1.2em Arial, Helvetica, sans-serif;
+    margin-bottom: 4px;
+}
+
+h3 {
+    font: bold 14px / 1.2em Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.contents {
+    display: block;
+    width: 700px;
+    height: 200px;
+    background: #CC66FF;
+}
+
+ul.blocks {
+    padding: 0;
+    width: 2000px;
+    display: block;
+    height: 200px;
+}
+
+ul.blocks li {
+    width: 200px;
+    margin: 0 0 0 0px;
+    float: left;
+    display: block;
+    height: 200px;
+}
+
+.holder {
+    margin: 0;
+    display: block;
+    /* TEMP */
+    margin-bottom: 20px;
+}
+
+.scroll-pane {
+    width: 200px;
+    background: #ccc;
+    float: left;
+    padding: 0;
+}
+
+#pane1 {
+    height: 100px;
+    width: 250px;
+    padding: 0;
+    display: block;
+    _overflow: hidden;
+}
+
+#pane5 {
+    height: 200px;
+    width: 1000px;/* 40% */
+    padding: 0;
+    display: block;
+    _overflow: hidden;
+}
+
+a.jScrollArrowLeft {
+    background: red url(basic_arrow_up.gif) no-repeat 0 0;
+}
+
+a.jScrollArrowLeft:hover {
+    background-position: 0 -15px;
+}
+
+a.jScrollArrowRight {
+    background: red url(basic_arrow_down.gif) no-repeat 0 0;
+}
+
+a.jScrollArrowRight:hover {
+    background-position: 0 -15px;
+}
+
+a.jScrollActiveArrowButton, a.jScrollActiveArrowButton:hover {
+    background-position: 0 -30px;
+}
+
+.orange-bar .jScrollPaneTrack {
+    background: #f60;
+}
+
+.orange-bar .jScrollPaneDrag {
+    background: #00f url(drag_grab.gif) no-repeat 50% 50%;
+}
+
+.orange-bar .scroll-pane {
+    background: #69f;
+}

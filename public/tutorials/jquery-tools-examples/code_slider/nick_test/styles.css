@@ -1,0 +1,85 @@
+/* Basic Example CSS */
+body { font-family: Arial, Helvetica, sans-serif; }
+h3 { color: #666; }
+body > .wrapper { width: 500px; margin: 50px auto 0; }
+
+/* ===== Tabs CSS ===== */
+div.tabPanes > div { display: none; } /* initially all panes are hidden */
+div.tabPanes { border: solid 1px #e6e1f1; padding: 0 15px; background: url(tab-gradient.png) repeat-x; }
+ul.tabs { list-style: none; margin: 0 0 0 20px; padding: 0; overflow: hidden; }
+ul.tabs li { float: left; margin-left: 2px; }
+ul.tabs li a {
+	display: block;
+	float: left;
+	padding: 10px 15px;
+	color: #999;
+	text-decoration: none;
+	font-size: 11px;
+}
+ul.tabs li a:hover { background: #666; }
+ul.tabs li a.current { font-weight: bold; }
+ul.tabs li a:hover,
+ul.tabs li a.current { color: #454545; background: url(tab-gradient.png) repeat-x; }
+
+/* ===== Tooltip CSS ===== */
+div.tooltip { 
+	display: none; /* initially tooltips are hidden */
+	padding: 10px;
+	background: #222;
+	color: #fff;
+	font-size: 13px;
+	font-style: italic;
+}
+
+/* ===== Scrollable CSS ===== */
+/* Primary Container */
+div.scrollable { position: relative; width: 500px; height: 52px; overflow: hidden; }
+
+/* Items Container */
+div.scrollable div.items { width: 20000em; position: absolute; clear: both; }
+
+/* Individual Item Containers */
+div.scrollable div.items div {
+	float: left;
+	width: 468px;
+	height: 50px;
+	padding: 0 15px;
+	border: solid 1px #e6e1f1;
+	background: url(tab-gradient.png) repeat-x;
+}
+
+/* Next and Previous buttons */
+a.prev, a.next {
+	display:block;
+	float:right;
+	padding: 5px 4px;
+	cursor:pointer;
+	font-size: 13px;
+	color: #999;
+}
+a.prev:hover, a.next:hover { color: #333; }
+
+/* Disabled Next or Previous button */
+a.disabled { visibility: hidden !important; }
+
+/* Navigation Container */
+div.navi { padding-left: 20px; }
+
+/* Navigation Links */
+div.navi a {
+	float: left;
+	margin-left: 2px;
+	padding: 10px 15px;
+	color: #999;
+	text-decoration: none;
+	font-size: 11px;
+}
+div.navi a.active { font-weight: bold; }
+div.navi a:hover,
+div.navi a.active { color: #454545; background: url(tab-gradient.png) repeat-x; }
+
+
+/* ===== CSS Rounded Corners ===== */
+div.tabPanes { -moz-border-radius: 8px; -webkit-border-radius: 8px; }
+div.tooltip,
+div.scrollable div.items div { -moz-border-radius: 8px; -webkit-border-radius: 8px; }

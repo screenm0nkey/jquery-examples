@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Siblings</title>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="immed-siblings.js"></script>
+<script>
+
+$(document).ready(function(){
+	$("#three").siblings(".hello").addClass("mike")
+	$("#nick").siblings("a").addClass("mike")
+});
+
+</script>
+<style>
+<!--
+.mike {
+	background:#33CC66;
+	width:150px;
+}
+p, h1, a, li {
+	font-size:15px;
+	font-weight:normal;
+	margin:0;
+}
+-->
+</style>
+</head>
+<body>
+<ul>
+  <li class="hello">li.hello</li>
+  <li class="hello">li.hello</li>
+  <li>Item 1</li>
+  <li>Item 5</li>
+  <li class="hello">li.hello</li>
+  <li class="hello">li.hello</li>
+  <li class="hello" id="three">Starts Here #Three</li>
+  <li class="hello">li.hello</li>
+  <li>Item 5</li>
+  <li class="hello">li.hello</li>
+  <li class="hello">li.hello</li>
+</ul>
+
+<div>
+  <p>1</p>
+  <h1>3</h1>
+  <p id="nick">5</p>
+  <a class="shooter">Link</a><br />
+  <a class="shooter">Link</a>
+  <p>7</p>
+  <a class="shooter">Link</a><br />
+  <a class="shooter">Link</a><br />
+  <a class="shooter">Link</a>
+</div>
+
+</body>
+</html>

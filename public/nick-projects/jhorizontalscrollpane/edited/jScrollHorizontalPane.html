@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html>    <head>        <title>jScrollHorizontalPane - basic examples</title>        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />        <link rel="stylesheet" href="http://libraries/reset.css" />        <link rel="stylesheet" type="text/css" media="all" href="css/jScrollHorizontalPane.css" />        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>        <script type="text/javascript" src="js/jScrollHorizontalPane.js"></script>		<script type="text/javascript" src="js/jquery.ajaxScrollPane.js"></script>    </head>    <body>    							<!--SCROLLER CONTAINER-->        <div id="first-scroller" class="scroll-holder"><!--Must have a class of .scroll-holder-->			<!--NAVIGATION-->	        <ul id="nav" class="scroll-nav"> <!--Must have a class of .scroll-nav-->				<li><a href="one.php">Nav One</a></li>	            <li><a href="two.php" class="scroll-startup-link">Nav Two</a></li> <!--Must specifiy a link which will load at startup-->				<li><a href="three.php">Nav Three</a></li>	        </ul>				            <div class="scroll-loader"></div><!--Must have a class of .scroll-loader-->						<!--SCROLLER-->            <div id="pane-01">                <div class="scroll-pane"> <!--Must have a class of .scroll-pane. ID can be anything-->                    <ul class="blocks"><!--classes applied to UL can be anything as they are copied in the code-->                    	<li>&nbsp;</li><!--it needs at least one li-->                    </ul>                 </div>            </div>        </div>				<div class="clearfix; border:solid 1px">&nbsp;</div>		        <div id="second-scroller" class="scroll-holder">	        <ul id="nav" class="scroll-nav"> 				<li><a href="one.php" class="scroll-startup-link">Nav Four</a></li>	            <li><a href="two.php">Nav Five</a></li> 				<li><a href="three.php">Nav Five</a></li>	        </ul>		            <div class="scroll-loader"></div>            <div id="pane-01">                <div class="scroll-pane">                     <ul class="blocks">                    	<li>&nbsp;</li>                    </ul>                 </div>            </div>        </div>				<div class="clearfix; border:solid 1px">&nbsp;</div>				<div id="third-scroller" class="scroll-holder">	        <ul id="nav" class="scroll-nav"> 				<li><a href="one.php">Nav Four</a></li>	            <li><a href="two.php">Nav Five</a></li> 				<li><a href="three.php" class="scroll-startup-link">Nav Five</a></li>	        </ul>		            <div class="scroll-loader"></div>            <div id="pane-01">                <div class="scroll-pane">                     <ul class="blocks">                    	<li>&nbsp;</li>                    </ul>                 </div>            </div>        </div>						<!--All 'must have' classes above can be overridden with these options-->        <script type="text/javascript">
+        $(function(){
+            //Apart from path all the following options are defaults
+            $('#first-scroller').configurejScroll({
+                path: 'ajax/',
+                fadeOut: 1000,
+                scrollPane: '.scroll-pane',
+                scrollLoader: '.scroll-loader',
+                scrollNav: '.scroll-nav',
+                scrollLink: '.scroll-startup-link',
+                scrollLinkClass: 'active',
+                errorMessage: "THERE'S BEEN AN AJAX ERROR",
+                //
+                scrollbarHeight: 10,
+                scrollbarMargin: 0,
+                scrollbarHeight: 15,
+                dragMinWidth: 20,
+                maintainPosition: false,
+                reset: true
+            });						$('#second-scroller').configurejScroll({                path: 'ajax/'            });			
+			$('#third-scroller').configurejScroll({                path: 'ajax/'            });
+        });
+        </script>    </body></html>

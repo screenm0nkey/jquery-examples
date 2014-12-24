@@ -1,0 +1,55 @@
+http://jonraasch.com/blog/10-advanced-jquery-performance-tuning-tips-from-paul-irish
+http://www.slideshare.net/paul.irish/perfcompression?from=ss_embed
+
+Store plug-in options as a data object of the plugin function
+
+Cache the lenght during loops
+
+Cache selections in variables
+
+Use documentFragment to append new content
+
+Append content outside of loop
+
+Dont repeat yourself
+
+Append style tags when styling 15 or more elements. When styling a few elements it is best to simply use jQuery's css() method, however when styling 15 or more elements it is more efficient to append a style tag to the DOM:
+"$('<style type="text/css"> div.class { color: red; }</style>').appendTo('head')";
+
+Avoid anonymous functions and use an object instead - slide 14
+
+use appendTo rather than append as that way you get to hold your element - slide 16
+
+never do this $('div.mike', '#container') and always do this $('#container').find('div.mike);
+
+sizzle selector engine works right to left and bottom up so use be more specific on your right and less on your left
+i.e. not 'div.data .gonzalez'  but '.data td.gonzalez'. Of course using an id is better.
+
+A flatter DOM helps so move to HTML5
+
+Avoid universal selector *
+
+Use event delegation and try and use delegate over live as live binds all listeners to the document element 
+
+The DOM is slow so detach an element bfore working on it - slide 39
+
+Use a style tag rather than using $.css()
+
+check to make sure element exists .length
+
+use first() and last() instead of :first and last - slide 50
+
+use $.data(elem, key, value) instead of $(elem).data(key, value);
+
+Use var as little as possible when delcaring variables
+
+add a no-js to the html element and then remove it first with your js - slide 58
+(function(B){
+	B.className=B.className.replace(/\bno-js\b/,'js');
+})(document.documentElement)
+
+
+Lazy load content for speed and SEO benefits
+   $('#forms').load('content/headerForms.html', function() {  
+        // Code here runs once the content has loaded               
+   });  

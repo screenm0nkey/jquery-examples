@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+        <meta charset=utf-8 />
+        <title>Event Oriented Programming: Old Style</title>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(function(){
+                $('#coffee').change(function(e){
+                    var updatedPrice = parseFloat($(this).val());
+                    
+                    if (!isNaN(updatedPrice)) {
+                        if ($('#extraShot').is(':checked')) {
+                            updatedPrice += extraShotPrice();
+                        }
+                        
+                        if ($('#syrup').is(':checked')) {
+                            updatedPrice += syrupPrice();
+                        }
+                        
+                        if ($('#soyMilk').is(':checked')) {
+                            updatedPrice += soyMilkPrice();
+                        }
+                        
+                        $('#totalPrice').text(updatedPrice); 
+                    }
+                });
+               
+                $('#extras input').change(function(e){
+                    $('#coffee').trigger('change'); 
+                });
+                
+            });
+            
+            
+            
+            function extraShotPrice(){
+				aaanick = 10;
+                var price = 0.25;
+                console.log('Extra Shot $0.25');
+                return price;
+            }
+            
+            
+            
+            function syrupPrice(){
+                var price = 0;
+                var day = new Date().getDay();
+                switch (day) {
+                    case 0:
+                    case 6:
+                        price = 0.50;
+                        console.log('Syrup (Sat/Sun) $0.50');
+                        break; 
+                    case 1:
+                    case 5:
+                        price = 1.00;
+                        console.log('Syrup (Mon/Fri) $1.00');
+                        break; 
+                    case 2:
+                    case 3:
+                    case 4:
+                        price = 0.25;
+                        console.log('Syrup (Tue/Wed/Thu) $0.25');
+                        break;   
+                }
+                return price; 
+            }
+            
+            
+            function soyMilkPrice(){
+                var price = 0;
+                var month = new Date().getMonth();
+                if (month === 11) {
+                    price = 0.50;
+                    console.log('Soy Milk (Dec) $0.50');
+                }
+                else {
+                    price = 1.00;
+                    console.log('Soy Milk (Jan/Feb/Mar/Apr/May/Jun/Jul/Sep/Nov) $1.00');
+                }
+                return price;
+            }
+        </script>
+    </head>
+    <body>
+        <h3>Welcome to *$s</h3>
+        <div id="extras">
+            <input id="extraShot" type="checkbox">
+            Extra Shot ($0.25)
+            <input id="syrup" type="checkbox">
+            Syrup (varies)
+            <input id="soyMilk" type="checkbox">
+            Soy Milk (varies)
+        </div>
+        <div>
+            <select id="coffee" size="5">
+                <option value="2.00">Caffe Latte ($2.00)</option>
+                <option value="2.50">Caffe Mocha ($2.50)</option>
+                <option value="2.20">Cappuccino ($2.20)</option>
+                <option value="1.45">Espresso ($1.45)</option>
+            </select>
+        </div>
+        <div>
+            Total Price: <strong>$<span id="totalPrice">0.00</span></strong>
+        </div>
+    </body>
+</html>

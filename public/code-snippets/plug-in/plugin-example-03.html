@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <body>
+        <ul>
+            <li><a href="#">Nick</a></li>
+            <li><a href="#">Lowman</a></li>
+            <li><a href="#">Works</a></li>
+            <li><a href="#">in</a></li>
+            <li><a href="#">London</a></li>
+        </ul>
+        <script src="jquery-1.3.1.min.js"></script>
+        <script type="text/javascript">
+            console.time("formatLink");
+            
+            var $c = $('ul:first');
+            var $d = $('<div>');
+            for (i = 0; i < 1000; i++) {
+                $c.clone().appendTo($d);
+            }
+            $('body').append($d);
+            
+            (function($){
+                $.fn.formatLink = function(options){
+                    var options = $.extend({}, $.fn.formatLink.defaultOptions, options || {});
+                    
+                    return this.each(function(){
+                        $(this).css({
+                            backgroundColor: options.bgColor,
+                            display: options.display
+                        });
+                    });
+                };
+                
+                $.fn.formatLink.defaultOptions = {
+                    bgColor: '#ff3300',
+                    display: 'inline-block'
+                }
+                
+            })(jQuery);
+            
+            
+            jQuery('ul>li').formatLink({
+                bgColor: 'gold'
+            });
+            console.timeEnd("formatLink");
+        </script>
+    </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+                    "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  
+  <script>
+  $(document).ready(function(){
+    
+    var len = $(".hilite").siblings()
+                          .css("color", "red")
+						  .css("backgroundColor", "yellow")
+                          .length;
+    $("b").text(len);
+
+  });
+  </script>
+  <style>
+  
+</style>
+</head>
+<body>
+  <ul>
+    <li>One</li>
+    <li>Two</li>
+    <li class="hilite">Three - <code>this is not selected because we chose all siblings of .hilite</code></li> <!--this wont be selected as -->
+    <li>Four</li>
+  </ul>
+  <ul>
+    <li>Five</li>
+    <li>Six</li>
+    <li>Seven</li>
+  </ul>
+  <ul>
+    <li>Eight</li>
+    <li class="hilite">Nine <code>but these are all selcted becuase there are tow items with the class .hilite</code></li>
+    <li>Ten</li>
+    <li class="hilite">Eleven</li>
+  </ul>
+  <p>Unique siblings: <b></b></p>
+</body>
+</html>

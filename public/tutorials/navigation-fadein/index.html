@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" 
+	"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title></title>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
+
+<script>
+
+//<![CDATA[
+
+
+$(document).ready(function () {
+
+	//Append a div with hover class to all the LI
+	$('#navMenu li').append('<div class="hover"><\/div>');
+
+
+	$('#navMenu li').hover(
+		
+		//Mouseover, fadeIn the hidden hover class	
+		function() {
+			$(this).children('div').fadeIn('1000');	
+		
+		}, 
+	
+		//Mouseout, fadeOut the hover class
+		function() {
+		
+			$(this).children('div').fadeOut('1000');	
+		
+	}).click (function () {
+	
+		//Add selected class if user clicked on it
+		$('#navMenu li').removeClass('selected');
+		$(this).addClass('selected');
+		
+	});
+
+});
+
+//]]>
+
+</script>
+
+<style type="text/css">
+
+body {
+	background:#222;	
+}
+
+#navMenu {
+	margin:0; 
+	padding:0;
+	list-style:none;	
+	font-family:arial;
+	text-align:center;
+	line-height:60px;
+}
+
+	#navMenu li {
+		float:left;	
+		background:url(default.jpg) no-repeat center center;	/* default background image	*/
+		width:120px;							/* width and height of the menu item */
+		height:70px;
+		border-left:1px solid #111;				/* simulate pixel perfect using border */
+		border-right:1px solid #333;
+		border-top:1px solid #555;
+		border-bottom:1px solid #333;
+		position:relative;			/* must set it as relative, because .hover class top and left with absolute position will be positioned according to li.	*/
+	}
+
+	#navMenu li a {
+		z-index:20;		/* z-index must be higher than .hover class */
+		display:block;	/* display as block and set the height according to the height of the menu to make the whole LI clickable	*/
+		height:70px;
+		position:relative;
+		font-weight:bold;
+		text-decoration:none;
+		color:#FFFFFF;
+	}
+
+ 	#navMenu li .hover {
+		background:url(over.jpg) no-repeat center center;		/* mouseover image	*/
+		position:absolute;	/* must be postion absolute 	*/
+		width:120px;	/*	width, height, left and top to fill the whole LI item	*/
+		height:70px;
+		left:0; 
+		top:0;	
+		z-index:0;		/* display under the Anchor tag	*/
+		display:none;	/* hide it by default	*/
+	}	
+
+	#navMenu li.selected {
+		background:url(selected.jpg) no-repeat center center;	/* selected image	*/
+	}
+
+
+</style>
+</head>
+<body>
+
+<ul id="navMenu">
+	<li><a href="#">Test 1</a></li>
+	<li><a href="#">Test 2</a></li>
+	<li><a href="#">Test 3</a></li>
+	<li><a href="#">Test 4</a></li>
+	<li><a href="#">Test 5</a></li>
+	<li><a href="#">Test 6</a></li>
+</ul>
+
+
+</body>
+</html>

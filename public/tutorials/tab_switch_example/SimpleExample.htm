@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="jquery.tabSwitch.js"></script>
+<style>
+	ul{
+		clear: both;
+		list-style-type: none;
+		height: 30px;
+	}
+	li{
+		float: left;
+		margin: 10px 10px;
+	}
+</style>
+<script>
+	//http://www.hieu.co.uk/blog/index.php/tabswitch/example/
+	$(function(){
+		//$('.SlideTab').tabSwitch('create',{width: 400, height: 400});
+		$('.SlideTab').tabSwitch('create', {type: 'table', height: 300, width: 440, cols: 3});
+		//
+		$('.tabSelect').click(function(e){
+			$('.SlideTab').tabSwitch('moveTo',{index: parseInt($(this).attr("rel"))});
+			e.preventDefault();
+		});
+		//
+		$('.Nav').click(function(e){
+			$('.SlideTab').tabSwitch('moveStep',{step: parseInt($(this).attr("rel"))});
+			e.preventDefault();
+		});
+	});
+</script>
+</head>
+<body>
+	<ul>
+		<li><a class="Nav" rel="-1" href="#">&#171;</a></li>
+		<li><a class="tabSelect" href="#Tab0" rel="0">Tab 1</a></li>
+		<li><a class="tabSelect" href="#Tab1" rel="1">Tab 2</a></li>
+		<li><a class="tabSelect" href="#Tab2" rel="2">Tab 3</a></li>
+		<li><a class="tabSelect" href="#Tab3" rel="3">Tab 4</a></li>		
+		<li><a class="tabSelect" href="#Tab4" rel="4">Tab 5</a></li>		
+		<li><a class="Nav" rel="1" href="#">&#187;</a></li>
+	</ul>
+	<div class="SlideTab" id="Tab0" style="background:#FF66FF">
+		<h3>Tab 1</h3>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam enim ligula, eleifend ut, luctus eget, eleifend a, diam. Proin ut libero in tortor interdum placerat. Fusce varius vehicula elit. Mauris malesuada tortor a massa. Fusce adipiscing egestas felis. Proin ornare sem ut turpis. Cras ultricies mauris gravida magna. Phasellus ac ligula. Donec quis sem. Nam ornare volutpat quam. Praesent egestas sapien non eros. In quis velit. Vestibulum eleifend, justo at egestas faucibus, justo erat tristique orci, eget hendrerit diam sem sed urna. Sed tincidunt, lectus a posuere blandit, nulla risus sollicitudin neque, non tincidunt turpis ante eget erat. Duis scelerisque purus nec lacus. Nulla facilisi. Nam vel enim eu odio sagittis pulvinar. Morbi eu odio. Sed eget enim vitae libero vulputate porttitor. Sed non arcu.
+	</div>
+	<div class="SlideTab" id="Tab1" style="background:#FFFF99">
+		<h3>Tab 2</h3>
+		Nam dui odio, condimentum vel, semper in, blandit vel, nisi. Aenean et sem nec lorem tincidunt tincidunt. Cras mi. Fusce odio magna, molestie eget, auctor non, suscipit et, felis. Nam ultricies, dui tristique mollis lacinia, magna diam aliquam orci, non pretium turpis purus nec arcu. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sit amet augue ut dui vestibulum consequat. Sed sed tellus quis est pellentesque mollis. Phasellus nulla elit, faucibus eget, faucibus non, pretium vel, ligula. Vestibulum tristique enim et sapien. Mauris a nisl id tortor sollicitudin fermentum. Nulla mattis porta lectus. Aliquam at erat.
+	</div>
+	<div class="SlideTab" id="Tab2" style="background:#666633">
+		<h3>Tab 3</h3>
+		Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Fusce consectetur, erat eget egestas scelerisque, nisi risus viverra erat, sed iaculis est metus in diam. In tempor adipiscing velit. Morbi fermentum mollis libero. Pellentesque ornare. Cras elementum, eros at interdum fringilla, est orci tincidunt purus, a convallis sem mi a eros. Maecenas metus mauris, pharetra et, venenatis ornare, euismod id, felis. Nam id nibh a mi dignissim tristique. Aenean at lectus a neque tincidunt rutrum. Pellentesque id sem vitae enim interdum elementum. Morbi metus enim, tempus vel, laoreet sed, scelerisque non, quam. Cras egestas congue leo. Donec placerat, enim sit amet ullamcorper pharetra, libero massa rutrum augue, vitae tincidunt tellus lacus eu purus.
+	</div>
+	<div class="SlideTab" id="Tab3" style="background:#9900CC">
+		<h3>Tab 4</h3>
+		Curabitur vehicula mauris at quam. Pellentesque vel neque id ligula rutrum aliquet. In eget magna. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla facilisis luctus sapien. Donec non dui ut lectus tincidunt facilisis. Vivamus varius cursus justo. Vivamus ac diam vel mauris pretium lacinia. Donec eu est. Praesent erat dolor, egestas at, tempor a, consectetur et, metus. In lorem purus, vehicula at, bibendum in, scelerisque et, augue. Morbi tristique, nulla eget elementum malesuada, purus dolor viverra erat, et rutrum libero eros nec sapien. Maecenas semper ultrices nisi.
+	</div>
+	<div class="SlideTab" id="Tab4" style="background:#00FFCC">
+		<h3>Tab 5</h3>
+		Aliquam nulla. Cras sed lacus a massa adipiscing laoreet. Cras eu libero. Mauris eleifend. Ut augue sem, consectetur pulvinar, facilisis non, dignissim at, risus. Nam pretium, massa non ornare adipiscing, tellus enim faucibus sem, sit amet porta mauris sapien vitae nibh. Proin malesuada felis eget purus. Duis non augue in metus volutpat porta. Ut elementum. Suspendisse ut quam sed sapien mattis fermentum. Aliquam facilisis, mauris id pulvinar gravida, libero eros consequat nisi, ac ullamcorper augue diam sit amet nunc. Pellentesque mattis placerat justo. Aliquam aliquet consectetur mauris. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed tincidunt mollis diam. Suspendisse potenti. Aliquam mollis odio sed diam malesuada sodales. Suspendisse ipsum. Phasellus sapien. 		
+	</div>				
+</body>

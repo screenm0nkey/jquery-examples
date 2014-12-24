@@ -1,0 +1,1 @@
+http://net.tutsplus.com/tutorials/javascript-ajax/spotlight-jquery-replacetext/

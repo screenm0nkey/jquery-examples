@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>andself</title>
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script>
+            $(document).ready(function(){
+            
+                $("div").find("p").andSelf().addClass("border"); //selects the div as well as the p element
+                $("div").find("p").addClass("background");
+                
+            });
+        </script>
+        <style>
+            p, div {
+                margin: 5px;
+                padding: 5px;
+            }
+            
+            .border {
+                border: 2px solid red;
+            }
+            
+            .background {
+                background: yellow;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <p>First Paragraph</p>
+            <p>Second Paragraph</p>
+        </div>
+    </body>
+</html>

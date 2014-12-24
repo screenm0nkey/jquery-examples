@@ -1,0 +1,26 @@
+#tweetbox { display:block; width:300px; padding:10px; border:1px solid #aaa; -moz-border-radius:5px; border-radius:5px; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; background-color:#eee; }
+#tweetbox img { display:block; }
+#tweetbox a { outline:none; color:green; }
+#user { margin-bottom:10px; float:left; }
+#user h2 { margin:0 0 10px 0; position:relative; font-size:18px; }
+#user img { display:block; float:left; }
+#user p { width:230px; margin:0; position:relative; float:left; font-size:10px; color:#333; }
+#user img { display:block; margin-right:10px; border:3px solid #333; }
+#tools { margin:0; *margin-bottom:-10px; padding:0; clear:both; list-style-type:none; }
+#tools li { float:left; }
+#tools a { display:block; height:20px; padding:3px 24px; border:1px solid #aaa; border-bottom:none; -moz-border-radius:5px 5px 0 0; border-radius:5px 5px 0 0; margin-right:-1px; position:relative; font-size:14px; outline:none; background-color:#d6d6d6; background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0.5, #E8E8E8), color-stop(0, #DBDBDB), color-stop(0.5, #D6D6D6)); background-image: -moz-linear-gradient(center top, #E8E8E8 50%, #DBDBDB 0%, #D6D6D6 50%); }
+a { text-decoration:none; color:#333; }
+#tools .on { height:21px; margin-top:-1px; top:1px; }
+#feed { width:298px; border:1px solid #aaa; clear:both; background-color:#d6d6d6; }
+#feed > div { display:none; }
+noscript { display:block; padding:10px; font-size:13px; color:#333; }
+
+#feed ul { padding:0; margin:0; }
+#feed li { padding:0; border-bottom:1px solid #aaa; list-style-type:none; font-size:11px; }
+#feed li:last-child, #feed li:last-child p { border-bottom:none; }
+#feed p { padding:10px; margin:0; border-bottom:1px solid #eee; background-image:-webkit-gradient(linear, left bottom, left top, color-stop(0.48, #c2c2c2), color-stop(0.71, #d6d6d6)); background-image:-moz-linear-gradient(center bottom, #c2c2c2 48%, #d6d6d6 71%); }
+#feed p:after { content:""; display:block; width:100%; height:0; clear:both; }
+.tweet-link { display:block; margin-top:5px; color:#777; }
+.img-link { display:block; margin:4px 10px 0 0; float:left; }
+#feed .username a { font-size:14px; font-weight:bold; }
+#feed .bio { display:block; margin-top:10px; }

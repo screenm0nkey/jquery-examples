@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>Image Hover Test</title>
+
+	<style type="text/css">
+	  li { width: 100px; height: 100px; background: #ccc; margin: 50px; cursor: pointer; }
+	  li > img { width: 100px; height: 100px; }
+	  #box { width: 200px; height: 200px; background: #ffd0d0; position: absolute; top: 0; left: 0; display: none;}
+	  #inner { width: 100px; height: 100px; background: #ccd0d0; position: absolute; top: 50; left: 50;}
+	</style>
+</head>
+<body>
+  <div id="box"><div id="inner">Nick</div></div>
+	<ul class="contAssetList">
+		<li class="assetImage"><img src="img.jpg" alt="img" /></li>
+		<li class="assetImage"><img src="img.jpg" alt="img" /></li>
+		<li class="assetImage"><img src="img.jpg" alt="img" /></li>
+		<li class="assetImage"><img src="img.jpg" alt="img" /></li>
+		<li class="assetImage"><img src="img.jpg" alt="img" /></li>
+	</ul>
+
+  <script type="text/javascript" src="/js/jquery-1.11.2.js"></script>
+  <script type="text/javascript" src="plugin.js"></script>
+  <script>
+	  $(window).load( function() {
+		  $('.contAssetList').imageHover({
+			  showDelay : 300,
+			  $box : '#box',
+			  linkClass : '.assetImage'
+		  })
+	  });
+  </script>
+</body>
+</html>
+
+
+

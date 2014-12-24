@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+                    "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  
+  <script>
+  $(document).ready(function(){
+    $("input:not(:checked)").css("background-color", "yellow"); //this will select the input tag that is not checked
+	$("input:not(:checked) + span").css("background-color", "blue"); //this will select the span tag following any input that is not checked
+    $("input").attr("disabled", "disabled");
+	$("p#mike strong").parent().css("background-color", "red"); //so this selects the storng tag inside p#mike and then select p#mike as it's the parent
+  });
+  </script>
+  
+</head>
+<body>
+  <div>
+    <input type="checkbox" name="a" />
+    <span>Mary</span>
+  </div>
+  <div>
+    <input type="checkbox" name="b" />
+    <span>lcm</span>
+  </div>
+  <div>
+    <input type="checkbox" name="c" checked="checked" />
+    <span>Peter</span>
+    
+    <p id="mike">asdad<strong>adasd</strong>asd</p>
+  </div>
+</body>
+</html>

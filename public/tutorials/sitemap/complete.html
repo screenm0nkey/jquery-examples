@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Interactive Sitemaps</title>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$("head").append('<link rel="stylesheet" href="sitemap.css" />');
+				
+				$("#sitemap").find("ul").parent("li").children("a").each(function(){
+					$(this).addClass("disclosure").addClass("disclosureactive");
+					counter = 0;
+					$(this).parent("li").children("ul").children("li").each(function(i){
+						counter = counter + 1;
+					});
+					ulwidth = counter*100;
+					ulmargin = 0-((ulwidth/2)-50);
+					imgwidth = (counter-1)*100;
+					$(this).parent("li").children("ul").css({width:ulwidth, marginLeft:ulmargin});
+					$(this).parent("li").children("ul").append("<img class='topbit' src='bordertop.gif' width='"+imgwidth+"' height='1' />");
+				});
+				
+				$("#sitemap").find("ul").parent("li").children("a").click(function(){
+					$(this).parent("li").children("ul").addClass("target");
+					$(this).parent("li").parent("ul").children("li").children("ul").not(".target").hide().parent("li").children("a").addClass("disclosureactive");
+					$(this).parent("li").children("ul").removeClass("target");
+					$(this).parent("li").children("ul").slideToggle("slow");
+					$(this).toggleClass("disclosureactive");
+					return false;
+				});	
+			});
+		</script>
+		<style>
+
+		</style>
+	</head>
+	<body>
+		<ul id="sitemap">
+			<li><a href="#" title="Click here for...">Home</a>
+				<ul>
+					<li><a href="#" title="Click here for...">About Us</a></li>
+					<li><a href="#" title="Click here for...">Equipment</a>
+						<ul>
+							<li><a href="#" title="Click here for...">Equipment 1</a></li>
+							<li><a href="#" title="Click here for...">Equipment 2</a></li>
+							<li><a href="#" title="Click here for...">Equipment 3</a></li>
+						</ul>
+					</li>
+					<li><a href="#" title="Click here for...">Services</a>
+						<ul>
+							<li><a href="#" title="Click here for...">Service 1</a></li>
+							<li><a href="#" title="Click here for...">Service 2</a>
+								<ul>
+									<li><a href="#" title="Click here for...">Example 1</a>
+										<ul>
+											<li><a href="#" title="Click here for...">Case Study</a></li>
+										</ul>
+									</li>
+									<li><a href="#" title="Click here for...">Example 2</a></li>
+								</ul>
+							</li>
+							<li><a href="#" title="Click here for...">Service 3</a></li>
+							<li><a href="#" title="Click here for...">Service 4</a></li>
+						</ul>
+					</li>
+					<li><a href="#" title="Click here for...">Contact Us</a></li>
+				</ul>
+			</li>		
+		</ul>
+	</body>
+</html>

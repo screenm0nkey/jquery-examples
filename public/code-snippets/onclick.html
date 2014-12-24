@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>My First jQuery</title>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<style type="text/css">
+	#box {
+		width:300px;
+		height:300px;
+		background:#FF3300;
+		display:none;
+		}
+	
+	p a {
+		color:red;
+		}
+	</style>
+    
+   <script>
+   
+   $(function() {
+   		$('a').click(function() {
+			$('#box').show(4000);
+			$('p a').css('color','blue');
+   		});
+   });
+   
+   </script>
+</head>
+
+<body>
+<div id="box"></div>
+<a href="#">click me</a>
+<br />
+<p>
+
+ is a long established fact that a reader will be <a href="#">distracted</a> by the readable content of a page when looking at its <a href="#">layout</a>. The point of using Lorem Ipsum is that it has a more-or-less normal <a href="#">distribution</a> of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+</p>
+</body>
+</html>

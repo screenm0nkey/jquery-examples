@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Speed Test</title>
+   <script src="http://www.google.com/jsapi"></script>  
+   <script>
+   	// http://code.google.com/apis/ajaxlibs/documentation/index.html  
+   	google.load("jquery", "1.3.2");
+    google.setOnLoadCallback(function() {  
+		$(document).ready(function() {
+			console.time('create list');
+			var conc = "";
+			for (i=0; i<1000; i++){
+    			conc+="<li>This is list item " + i + "</li>";
+			}
+			var list = $("<ul>").append(conc);  //$("<ul>") will create a dom element with both opening and closing tags and then append the string of li's
+			list.appendTo("body"); //we then insert it into the DOM using the appendTo. notice we reference the body tag in the appendTo but we could have used #smoke
+			console.timeEnd('create list');
+		
+			
+		}); //document.ready
+	});  
+            
+  </script>  
+</head>
+
+<body id="smoke">
+</body>
+</html>

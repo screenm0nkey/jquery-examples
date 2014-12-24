@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Jquery Extend</title>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+        <script type="text/javascript">
+            
+            // Define the jQuery plugin.
+            jQuery.fn.Test = function(objOptions){
+            
+                // Use the passed-in option to override any default
+                // option that are provided by the plugin.
+                var objSettings = jQuery.extend({}, jQuery.fn.Test.Default, objOptions);
+                
+                // Alert the final data value.
+                alert(objSettings.Data);
+                
+                // Return this for method chaining.
+                return (this);
+            }
+            
+            // Define the jQuery method's default properties.
+            jQuery.fn.Test.Default = {
+                Data: "Default data"
+            };
+            
+            
+            // When the document has loaded, run the plugin.
+            $(function(){
+                $(document).Test({});
+                
+            });
+        </script>
+    </head>
+    <body>
+       
+    </body>
+</html>

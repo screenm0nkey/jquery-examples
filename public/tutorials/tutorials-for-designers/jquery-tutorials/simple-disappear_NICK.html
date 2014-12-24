@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Disappear</title>
+
+<script src="jquery.js"></script>
+
+<script>
+	$(document).ready(function() {
+		$('img.delete').click(function(){
+			var parentTag = $(this).parent();
+			console.log(parentTag);
+			$(parentTag).animate({
+				opacity: 'hide'
+			},1500 );
+		});
+	});
+</script>
+
+<style type="text/css">
+body {
+	margin: 10px auto;
+	width: 470px;
+}
+h3 {
+	margin: 0;
+	padding: 0 0 .3em;
+}
+p {
+	margin: 0;
+	padding: 0 0 .5em;
+}
+.pane {
+	background: #edf5e1;
+	padding: 10px 20px 10px;
+	position: relative;
+	border-top: solid 2px #c4df9b;
+}
+.pane .delete {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+<div class="pane">
+	<h3>Sample heading</h3>
+	<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi malesuada, ante at feugiat tincidunt, enim massa gravida metus, commodo lacinia massa diam vel eros. Proin eget urna. Nunc fringilla neque vitae odio. Vivamus vitae ligula.</p>
+	<img src="images/btn-delete.gif" alt="delete" class="delete" />
+</div>
+<div class="pane">
+	<h3>Sample heading</h3>
+	<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi malesuada, ante at feugiat tincidunt, enim massa gravida metus, commodo lacinia massa diam vel eros. Proin eget urna. Nunc fringilla neque vitae odio. Vivamus vitae ligula.</p>
+	<img src="images/btn-delete.gif" alt="delete" class="delete" />
+</div>
+<div class="pane">
+	<h3>Sample heading</h3>
+	<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi malesuada, ante at feugiat tincidunt, enim massa gravida metus, commodo lacinia massa diam vel eros. Proin eget urna. Nunc fringilla neque vitae odio. Vivamus vitae ligula.</p>
+	<img src="images/btn-delete.gif" alt="delete" class="delete" />
+</div>
+<div class="pane">
+	<h3>Sample heading</h3>
+	<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi malesuada, ante at feugiat tincidunt, enim massa gravida metus, commodo lacinia massa diam vel eros. Proin eget urna. Nunc fringilla neque vitae odio. Vivamus vitae ligula.</p>
+	<img src="images/btn-delete.gif" alt="delete" class="delete" />
+</div>
+<div class="pane">
+	<h3>Sample heading</h3>
+	<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi malesuada, ante at feugiat tincidunt, enim massa gravida metus, commodo lacinia massa diam vel eros. Proin eget urna. Nunc fringilla neque vitae odio. Vivamus vitae ligula.</p>
+	<img src="images/btn-delete.gif" alt="delete" class="delete" />
+</div>
+</body>
+</html>

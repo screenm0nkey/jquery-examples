@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        <title>Nick's Menu</title>
+        <link rel="stylesheet" href="jquery.menuslider.css" />
+        <style type="text/css">
+            #header {
+                position: absolute;
+                left: 200px;
+				top:0px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div id="header">
+                <ul id="jqMenuSlider">
+                    <li><a href="#" rel="0">Home</a></li>
+                    <li><a href="#" rel="58">Tutorials</a>
+                        <ul>
+                            <li><a href="http://www.b3ta.com" rel="0">Sub Nav Link</a></li>
+                            <li><a href="http://www.b3ta.com" rel="58">Sub Nav Link</a></li>
+                            <li><a href="http://www.b3ta.com" rel="380">Sub Nav Link</a></li>
+                            <li><a href="http://www.b3ta.com" rel="220">Sub Nav Link</a></li>
+                            <li><a href="http://www.b3ta.com" rel="298">Sub Nav Link</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" rel="136">Resources</a>
+                        <ul>
+                            <li><a href="http://www.b3ta.com" rel="380">Sub Nav Link</a></li>
+                            <li><a href="http://www.b3ta.com" rel="380">Sub Nav Link</a></li>
+                            <li><a href="http://www.b3ta.com" rel="380">Sub Nav Link</a></li>
+                            <li><a href="http://www.b3ta.com" rel="380">Sub Nav Link</a></li>
+                            <li><a href="http://www.b3ta.com" rel="380">Sub Nav Link</a></li>
+                            <li><a href="http://www.b3ta.com" rel="380">Sub Nav Link</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" rel="220">About Us</a></li>
+                    <li><a href="#" rel="298">Advertise</a></li>
+                </ul>
+            </div>
+        </div>
+		
+        <script type="text/javascript" src="jquery-1.4.2.min.js"></script>
+        <script type="text/javascript" src="jquery.menuslider.js"></script>
+        <script type="text/javascript">
+            jQuery('#jqMenuSlider').menuSlider({
+                bgImage: 'sprite.gif',
+                imageWidth: 488, //total sprites image width in pixels
+				spriteHeight:30, //single sprite image height in pixels
+				click: true //whether you want a click state. if your happy with just having a hover then set to false
+            });
+        </script>
+		
+		<style>
+			/*Add this is you want to show navigation when javascript is disabled*/
+			ul#jqMenuSlider{
+				display:block;
+			}
+		</style>
+    </body>
+</html>

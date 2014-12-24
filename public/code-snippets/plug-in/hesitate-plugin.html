@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Building A Custom jQuery Event Type: Hesitate</title>
+        <style type="text/css">
+            a {
+                float: left;
+                margin-right: 15px;
+            }
+        </style>
+        <script type="text/javascript" src="http://libraries/jquery-1.4.2.min.js"></script>
+        <script type="text/javascript">
+            (function($, window, document, undefined){
+                log = console.log;
+                $.fn.hesitate = function(options){
+                    var options = $.extend(true, {}, $.fn.hesitate.defaultOptions, options || {});
+                    
+                    var prepareHesitate = function(event){
+                        var $target = $(this);
+                        $target.data("hesitate.timer", setTimeout(function(){
+                            removeHesitate(event);
+                            $target.triggerHandler("hesitate");
+                        }, options['delay']));
+                    };
+                    
+                    var removeHesitate = function(event){
+                        removeHesitateTimer($(this));
+                    };
+                    
+                    var removeHesitateTimer = function(target){
+                        clearTimeout(target.data("hesitate.timer"));
+                        target.removeData("hesitate.timer");
+                    };
+                    
+                    return this.each(function(){
+                        $(this).bind({
+                            "hesitate": function(){
+                                $(this).children().stop().animate({
+                                    width: 200
+                                }, {
+                                    duration: 200
+                                });//you don't have to supply the duration name property
+                            },
+                            "mouseout": function(){
+                                $(this).children().stop().animate({
+                                    width: 100
+                                }, {
+                                    duration: 200
+                                });
+                            },
+                            "mouseenter": prepareHesitate, //mouseenter and mouseleave are special events built into jQuery
+                            "mouseleave": removeHesitate,
+                            "click": removeHesitate
+                        });
+                    });
+                };
+                
+                $.fn.hesitate.defaultOptions = {
+                    delay: 500
+                }
+            })(jQuery, this, this.document);
+        </script>
+        <script type="text/javascript">
+            $(function(){
+                $("a:has( > img )").hesitate({
+                    delay: 300
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <h5> Building A Custom jQuery Event Type: Hesitate</h5>
+        <p><a href="##"><img src="girl.jpg" width="100" /></a><a href="##"><img src="girl.jpg" width="100" /></a><a href="##"><img src="girl.jpg" width="100" /></a></p>
+    </body>
+</html>

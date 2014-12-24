@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    </head>
+    <body>
+        <span></span>
+		<p>
+            <div id="foo">Foo</div>
+            <div id="bar">Bar</div>
+        </p>
+        <p>
+            <div id="foo2">Foo2</div>
+            <div id="bar2">Bar2</div>
+        </p>
+        <script>
+        	log=console.log;
+            
+            //EVENT.DATA binding static data when the event is bound
+            //http://api.jquery.com/bind/
+            
+			/*
+			 * message 1 will become part of the closure for the two functions below
+			 */
+            var message1 = 'Spoon!';
+			
+            $('#foo').bind('click', function(){
+                log(message1);
+            });
+            
+            message1 = 'Not in the face!';
+            $('#bar').bind('click', function(){
+                log(message1);
+            });
+			
+            
+			/*
+			 * message 2 will take a local varaible state below
+			 */
+            var message2 = 'Spoon!';
+            $('#foo2').bind('click', {
+                msg: message2
+            }, function(event){
+                log(event.data.msg);
+            });
+            
+            message2 = 'Not in the face!';
+            $('#bar2').bind('click', {
+                msg: message2
+            }, function(event){
+                log(event.data.msg);
+            });
+        </script>
+    </body>
+</html>

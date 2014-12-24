@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            div {
+                color: red;
+            }
+        </style>
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    </head>
+    <body>
+        <p>First</p>
+        <p>Second</p>
+        <p>Third</p>
+        <p>Fourth</p>
+        <script>
+            
+            (function(){
+                debugger;
+                var elems = document.getElementsByTagName("p"); // returns a nodeList
+                console.log(jQuery.isArray(elems)); //false
+                var arr = jQuery.makeArray(elems);
+                console.log(jQuery.isArray(arr)); //array
+                arr.reverse(); // use an Array method on list of dom elements
+                $(arr).appendTo(document.body);
+            })()
+        </script>
+    </body>
+</html>

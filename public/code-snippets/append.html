@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+                    "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  
+  <script>
+  	$(document).ready(function(){
+    	$("p:first").append("<strong>Hello</strong>");
+		
+		$("p.steve").append($("a"));
+		
+		var toAppend = $("a.appendMe")[2];
+		$("p.appendToMe").append(toAppend);
+		//$(toAppend).appendTo("p.appendToMe"); is the same thing
+  	});
+  </script>
+  <style>
+  	p { background:yellow; }
+	p.steve { background:orange; }
+  </style>
+</head>
+<body>
+	
+    <a class="appendMe" href="#">Link 1</a>
+   <a class="appendMe" href="#">Link 2</a>
+   <a class="appendMe" href="#">Link 3</a>
+   <a class="appendMe" href="#">Link 4</a>
+   <a class="appendMe" href="#">Link 5</a>
+   
+  <p>I would like to say: </p> 
+  
+  it look like this <pre>&lt;p&gt;I would like to say: &lt;strong&gt;Hello&lt;strong&gt;&lt;p&gt;</pre>
+  
+  <p class="steve"></p>
+  <p class="steve"></p>
+  <p class="steve"></p>
+  <p class="appendToMe"></p>
+</body>
+</html>

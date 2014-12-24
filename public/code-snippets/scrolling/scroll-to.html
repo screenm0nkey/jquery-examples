@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<style>
+li {
+padding-bottom: 500px;
+}
+</style>
+<ul>
+  <li><a href="#" class="next">Next</a></li>
+  <li><a href="#" class="next">Next</a>/<a href="#" class="prev">Previous</a></li>
+  <li><a href="#" class="next">Next</a>/<a href="#" class="prev">Previous</a></li>
+  <li><a href="#" class="prev">Previous</a></li>
+</ul>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script>
+	(function($){
+		$('.next').click(function(){	
+			console.log($(this).parent().next().find('a').offset().top)		
+			$('html, body').animate({
+				scrollTop: $(this).parent().next().find('a').offset().top //this refers to the element which received the click .next
+				},1000);
+			return false;	
+		});
+		
+					
+		$('.prev').click(function(){
+			$('html, body').animate({
+				scrollTop: $(this).parent().prev().find('a').offset().top
+				},1000);
+			return false;
+		});
+	})(jQuery);
+</script>
+</body>
+</html>

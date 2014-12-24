@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <body>
+        <div id="poo">
+            You light me up on wednesday<p>jQuery gives me <strong>more <span>power</span>
+                </strong>than any other web tool!</p>
+            You light me up on wednesday<p>jQuery gives me <strong>more <span>power</span>
+                </strong>than any other web tool!</p>
+            <p>jQuery gives me <strong>more <span>power</span>
+                </strong>than any other web tool!</p>You light me up on wednesday
+        </div>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+        <script>
+            (function($){
+                var $sho = $('div#poo').find('*').andSelf().contents().filter(function(){
+                    return this.nodeType == Node.TEXT_NODE;
+                })
+				
+				//
+                console.log($sho);	
+				
+				$sho.each(function(i, text){
+                    console.log(i, text)
+                    text.nodeValue = text.nodeValue + ' SHOOT ';
+                });
+            })(jQuery);
+        </script>
+    </body>
+</html>

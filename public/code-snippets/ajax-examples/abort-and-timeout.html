@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+	<head>
+		<meta charset="UTF-8">
+		<title>Abort and Timeout</title>
+		<script type="text/javascript" src="http://libraries/jquery-1.6.1-min.js"></script>
+		<script type="text/javascript">
+			log = console.log();
+			
+			//first example uses timeout, which I think does exatly the same the example below using abort
+			$.ajax({
+				url: 'long-sleep.php', // 10 second delay
+				type: 'GET', //POST
+				cache: false,
+				timeout: 1000, 
+				success: function(msg) {
+					console.log(msg)
+				},
+				error: function(jqXHR, textStatus, errorThrown) {
+					console.log('timeout error')
+				},
+				complete: function(jqXHR, textStatus) {
+					console.log('timeout complete')
+				}
+			});
+			
+			// 
+			var jqXHR = $.ajax({
+				url: 'long-sleep.php',
+				type: 'POST', //POST
+				cache: false,
+				success: function(msg) {
+					console.log(msg)
+				},
+				error: function(jqXHR, textStatus, errorThrown) {
+					console.log('abort error')
+				},
+				complete: function(jqXHR, textStatus) {
+					console.log('abort complete')
+				}
+			});
+			
+			setTimeout(function(){jqXHR.abort()},3000)
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

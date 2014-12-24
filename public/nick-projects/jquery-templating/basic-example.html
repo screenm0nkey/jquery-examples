@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Templating</title>
+        <link rel="stylesheet" href="tweetbox.css"></head>
+    <body>
+        <div id="mike"></div>
+        <ul id="sara"></ul>
+        <script type="text/javascript" src="http://libraries/jquery-1.5.1.js"></script>
+        <script type="text/javascript" src="http://libraries/jquery.tmpl.min.js"></script>
+        <script type="text/javascript">
+            var data = [{
+                name: "Nick Lowman",
+                age: 40
+            }, {
+                name: "Liz Lowman",
+                age: 35
+            }];
+            
+            var template = '<p>${name}, ${age}</p>';
+            $.template('person', template);
+            $.template('another', '<li>${name}</li><li>${age}</li>');
+            
+            $.tmpl('person', data).appendTo('#mike');
+            $.tmpl('another', data).appendTo('#sara');
+
+        </script>
+    </body>
+</html>

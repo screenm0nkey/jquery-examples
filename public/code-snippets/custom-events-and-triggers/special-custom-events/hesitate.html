@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Building A Custom jQuery Event Type: Hesitate</title>
+        <style type="text/css">
+            
+            a {
+                float: left;
+                margin-right: 15px;
+            }
+        </style>
+		<script type="text/javascript" src="http://libraries/jquery-1.4.2.min.js"></script>
+        <script type="text/javascript" src="hesitate.js"></script>
+        <script type="text/javascript">
+            jQuery.event.special.hesitate.duration = 500;
+            
+            jQuery(function($){
+                var links = $("a:has( > img )");
+                
+                // Set HREF and bind "hesitate" event.
+                links.attr("href", "javascript:void( 0 )")
+				.bind("hesitate", function(){
+                    $(this).children().stop().animate({width: 200}, {duration: 500});//you don't have to supply the duration name property
+                }).bind("mouseout", function(){
+                    $(this).children().stop().animate({width: 100}, {duration: 200});
+                });
+                
+            });
+        </script>
+    </head>
+    <body>
+        <h1> Building A Custom jQuery Event Type: Hesitate</h1>
+        <p>
+        	<a href="##"><img src="girl.jpg" width="100" /></a>
+			<a href="##"><img src="girl.jpg" width="100" /></a>
+			<a href="##"><img src="girl.jpg" width="100" /></a>
+		</p>
+    </body>
+</html>

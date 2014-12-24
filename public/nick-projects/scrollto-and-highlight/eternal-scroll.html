@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		ul, li {padding:0;margin:0;list-style:none;}
+		#scroll-container {width:300px; height:100px; overflow:hidden;border:solid 1px;margin:0 auto;position:relative;}
+		#scroll-container .scroller { position:absolute; }
+		#scroll-container .scroller li {float:left; display:inline;width:98px;height:98px;background:#ccc;border:solid 1px white;}
+		.links {background:#333; margin:10px; display:inline-block;}
+		.links a { color:#fff;}
+	</style>
+	<script type="text/javascript" src="http://libraries/jquery-1.4.4.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+			var direction;
+            var $container = $('#scroll-container');
+			var $scroller = $container.find('.scroller');
+			
+            $('#links a').bind('click', function(evt){
+                evt.preventDefault();
+                direction[$(this).attr('class')].apply(this);
+            });
+			
+			direction = {
+				prev:function(){
+					console.log(this, '\nMove contianer to the RIGHT');
+					var $elm = $scroller.find('li:last');
+					$elm.detach().prependTo($scroller).end();
+					$scroller.css({left:'-100px'});
+					$scroller.animate({left:'+=100'}, {
+						duration:300
+					});
+				},
+				next:function(){
+					console.log($scroller, '\nMove contianer to the LEFT');
+					$scroller.animate({left:'-=100'}, {
+						duration:300,
+						complete:function(){
+							$scroller.find('li:first').detach().appendTo($scroller);
+							$scroller.css({left:'0px'});
+						}
+					});
+					
+				}
+			};
+			
+            
+        });
+    </script>
+</head>
+<body>
+	<div id="links">
+		<a class="prev" href="prev">Previous</a>
+		<a class="next" href="next">Next</a>
+	</div>
+	
+	<div id="scroll-container">
+		<ul class='scroller' style="width:600px">
+			<li class="01"><a href="">01</a></li>
+			<li class="02"><a href="">02</a></li>
+			<li class="03"><a href="">03</a></li>
+			<li class="04"><a href="">04</a></li>
+			<li class="05"><a href="">05</a></li>
+			<li class="06"><a href="">06</a></li>			<!-- <li><a href="">07</a></li>			<li><a href="">08</a></li>			<li><a href="">09</a></li>			<li><a href="">10</a></li>			<li><a href="">11</a></li>			<li><a href="">12</a></li>			<li><a href="">13</a></li>			<li><a href="">14</a></li>			<li><a href="">15</a></li> -->
+		</ul>
+	</div>
+</body>
+</html>

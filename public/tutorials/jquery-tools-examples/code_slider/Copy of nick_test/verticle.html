@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- DOCTYPE is always recommended. see: http://www.quirksmode.org/css/quirksmode.html -->
+<!--
+	This is the jQuery Tools standalone demo, the fastest way to get started.
+	You can freely copy things on your site. All demos can be found here:
+
+	http://flowplayer.org/tools/demos/
+
+	- cdn.jquerytools.org is available until the end of 2010 for testing	
+	- css files should not be referenced from flowplayer.org when in production
+	
+	Enjoy!
+-->
+<!-- standalone page styling -->
+
+<!--
+	this setup has plugins or effects that are not included in the default jquery.tools.min.js 
+	distribution. either use this full version from the CDN or download a custom combination from:
+
+	http://flowplayer.org/tools/download.html#combine
+-->
+<script src="jquery.tools.min.js"></script>
+<!-- without body tag IE may have unprodictable behaviours -->
+<body>
+<!-- styling -->
+<link rel="stylesheet" type="text/css" href="scrollable-vertical.css" />
+<!-- HTML structures -->
+<div class="navi"></div>
+<div id="actions"> <a class="prevPage">&laquo; Back</a> <a class="nextPage">More pictures &raquo;</a> </div>
+<!-- root element for scrollable -->
+<div class="scrollable vertical">
+  <!-- root element for the items -->
+  <div class="items">
+    <div> <img src="http://farm1.static.flickr.com/3650/3323058611_d35c894fab_m.jpg" />
+      <h3>1. Barcelona Pavilion</h3>
+      <strong> The German Pavilion in Barcelona, designed by Ludwig Mies van der Rohe 
+      and built for the International Exposition in 1929. </strong>
+      <p> The Pavilion was not only a pioneer for construction forms with a fresh, disciplined
+        understanding of space, but also for modeling new opportunities for an exciting 
+        association of free art and architecture. </p>
+      <p> <a href="#">Read more</a> &nbsp; <a href="#">Show in map</a> </p>
+    </div>
+    <div> <img src="http://farm1.static.flickr.com/3635/3323893254_3183671257_m.jpg" />
+      <h3>2. Barcelona Pavilion</h3>
+      <strong> The German Pavilion in Barcelona, designed by Ludwig Mies van der Rohe 
+      and built for the International Exposition in 1929. </strong>
+      <p> The Pavilion was not only a pioneer for construction forms with a fresh, disciplined
+        understanding of space, but also for modeling new opportunities for an exciting 
+        association of free art and architecture. </p>
+      <p> <a href="#">Read more</a> &nbsp; <a href="#">Show in map</a> </p>
+    </div>
+    <div> <img src="http://farm1.static.flickr.com/3624/3323893148_8318838fbd_m.jpg" />
+      <h3>3. Barcelona Pavilion</h3>
+      <strong> The German Pavilion in Barcelona, designed by Ludwig Mies van der Rohe 
+      and built for the International Exposition in 1929. </strong>
+      <p> The Pavilion was not only a pioneer for construction forms with a fresh, disciplined
+        understanding of space, but also for modeling new opportunities for an exciting 
+        association of free art and architecture. </p>
+      <p> <a href="#">Read more</a> &nbsp; <a href="#">Show in map</a> </p>
+    </div>
+    <div> <img src="http://farm1.static.flickr.com/28/66523124_b468cf4978_m.jpg" />
+      <h3>4. Barcelona Pavilion</h3>
+      <strong> The German Pavilion in Barcelona, designed by Ludwig Mies van der Rohe 
+      and built for the International Exposition in 1929. </strong>
+      <p> The Pavilion was not only a pioneer for construction forms with a fresh, disciplined
+        understanding of space, but also for modeling new opportunities for an exciting 
+        association of free art and architecture. </p>
+      <p> <a href="#">Read more</a> &nbsp; <a href="#">Show in map</a> </p>
+    </div>
+    <div> <img src="http://farm1.static.flickr.com/164/399223606_b875ddf797_m.jpg" />
+      <h3>5. Barcelona Pavilion</h3>
+      <strong> The German Pavilion in Barcelona, designed by Ludwig Mies van der Rohe 
+      and built for the International Exposition in 1929. </strong>
+      <p> The Pavilion was not only a pioneer for construction forms with a fresh, disciplined
+        understanding of space, but also for modeling new opportunities for an exciting 
+        association of free art and architecture. </p>
+      <p> <a href="#">Read more</a> &nbsp; <a href="#">Show in map</a> </p>
+    </div>
+    <div> <img src="http://farm1.static.flickr.com/163/399223609_db47d35b7c_m.jpg" />
+      <h3>6. Barcelona Pavilion</h3>
+      <strong> The German Pavilion in Barcelona, designed by Ludwig Mies van der Rohe 
+      and built for the International Exposition in 1929. </strong>
+      <p> The Pavilion was not only a pioneer for construction forms with a fresh, disciplined
+        understanding of space, but also for modeling new opportunities for an exciting 
+        association of free art and architecture. </p>
+      <p> <a href="#">Read more</a> &nbsp; <a href="#">Show in map</a> </p>
+    </div>
+    <div> <img src="http://farm1.static.flickr.com/135/321464104_c010dbf34c_m.jpg" />
+      <h3>7. Barcelona Pavilion</h3>
+      <strong> The German Pavilion in Barcelona, designed by Ludwig Mies van der Rohe 
+      and built for the International Exposition in 1929. </strong>
+      <p> The Pavilion was not only a pioneer for construction forms with a fresh, disciplined
+        understanding of space, but also for modeling new opportunities for an exciting 
+        association of free art and architecture. </p>
+      <p> <a href="#">Read more</a> &nbsp; <a href="#">Show in map</a> </p>
+    </div>
+    <div> <img src="http://farm1.static.flickr.com/40/117346184_9760f3aabc_m.jpg" />
+      <h3>8. Barcelona Pavilion</h3>
+      <strong> The German Pavilion in Barcelona, designed by Ludwig Mies van der Rohe 
+      and built for the International Exposition in 1929. </strong>
+      <p> The Pavilion was not only a pioneer for construction forms with a fresh, disciplined
+        understanding of space, but also for modeling new opportunities for an exciting 
+        association of free art and architecture. </p>
+      <p> <a href="#">Read more</a> &nbsp; <a href="#">Show in map</a> </p>
+    </div>
+    <div> <img src="http://farm1.static.flickr.com/153/399232237_6928a527c1_m.jpg" />
+      <h3>9. Barcelona Pavilion</h3>
+      <strong> The German Pavilion in Barcelona, designed by Ludwig Mies van der Rohe 
+      and built for the International Exposition in 1929. </strong>
+      <p> The Pavilion was not only a pioneer for construction forms with a fresh, disciplined
+        understanding of space, but also for modeling new opportunities for an exciting 
+        association of free art and architecture. </p>
+      <p> <a href="#">Read more</a> &nbsp; <a href="#">Show in map</a> </p>
+    </div>
+    <div> <img src="http://farm1.static.flickr.com/50/117346182_1fded507fa_m.jpg" />
+      <h3>10. Barcelona Pavilion</h3>
+      <strong> The German Pavilion in Barcelona, designed by Ludwig Mies van der Rohe 
+      and built for the International Exposition in 1929. </strong>
+      <p> The Pavilion was not only a pioneer for construction forms with a fresh, disciplined
+        understanding of space, but also for modeling new opportunities for an exciting 
+        association of free art and architecture. </p>
+      <p> <a href="#">Read more</a> &nbsp; <a href="#">Show in map</a> </p>
+    </div>
+    <div> <img src="http://farm1.static.flickr.com/3629/3323896446_3b87a8bf75_m.jpg" />
+      <h3>11. Barcelona Pavilion</h3>
+      <strong> The German Pavilion in Barcelona, designed by Ludwig Mies van der Rohe 
+      and built for the International Exposition in 1929. </strong>
+      <p> The Pavilion was not only a pioneer for construction forms with a fresh, disciplined
+        understanding of space, but also for modeling new opportunities for an exciting 
+        association of free art and architecture. </p>
+      <p> <a href="#">Read more</a> &nbsp; <a href="#">Show in map</a> </p>
+    </div>
+    <div> <img src="http://farm1.static.flickr.com/3023/3323897466_e61624f6de_m.jpg" />
+      <h3>12. Barcelona Pavilion</h3>
+      <strong> The German Pavilion in Barcelona, designed by Ludwig Mies van der Rohe 
+      and built for the International Exposition in 1929. </strong>
+      <p> The Pavilion was not only a pioneer for construction forms with a fresh, disciplined
+        understanding of space, but also for modeling new opportunities for an exciting 
+        association of free art and architecture. </p>
+      <p> <a href="#">Read more</a> &nbsp; <a href="#">Show in map</a> </p>
+    </div>
+  </div>
+</div>
+<!-- javascript coding -->
+<script>
+// execute your scripts when DOM is ready. this is a good habit
+$(function() {		
+		
+	// initialize scrollable 
+	$("div.scrollable").scrollable({
+		vertical:true, 
+		size: 1
+		
+	// use mousewheel plugin
+	}).mousewheel();	
+	
+	$("div.navi a").each(function(i) { 
+			  $(this).html('Tab ' + (i+1)); 
+			  console.log($(this));
+			}); 
+});
+</script>

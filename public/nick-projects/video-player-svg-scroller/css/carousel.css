@@ -1,0 +1,65 @@
+
+
+/* ------------------------------------------ HOMEPAGE ------------------------------------------ */
+#clients #carousel li { list-style:none; float:left; width:70px; height:70px; padding-top:10px; }
+#clients #carousel li a { width:50px; height:50px; display:block; margin:0 auto; background:url(../images/generic/carousel-logos.png) no-repeat; }
+#clients #carousel li.bio a { background-position:0 -50px; }
+#clients #carousel li.arup a { background-position:-50px -50px; }
+#clients #carousel li.freesat a { background-position:-100px -50px; }
+#clients #carousel li.ladbrokes a { background-position:-150px -50px; }
+#clients #carousel li.nhs a { background-position:-200px -50px; }
+#clients #carousel li.cartoon a { background-position:-250px -50px; }
+#clients #carousel li.santander a { background-position:-300px -50px; }
+#clients #carousel li.lg a { background-position:-350px -50px; }
+#clients #carousel li.orange a { background-position:-400px -50px; }
+#clients #carousel li.ibis a { background-position:-450px -50px; }
+#clients #carousel li.purves a { background-position:-500px -50px; }
+#clients #carousel li.oval a { background-position:-550px -50px; }
+#clients #carousel li.coke a { background-position:-600px -50px; }
+#clients #carousel li.boomerang a { background-position:-650px -50px; }
+#clients #carousel li.easyjet a { background-position:-700px -50px; }
+#clients #carousel li.creuset a { background-position:-750px -50px; }
+#clients #carousel li.trust a { background-position:-800px -50px; }
+#clients #carousel li.accor a { background-position:-850px -50px; }
+#clients #carousel li.pringles a { background-position:-900px -50px; }
+#clients #carousel li.wateraid a { background-position:-950px -50px; }
+#clients #carousel li.edf a { background-position:-1000px -50px; }
+#clients #carousel li.connect a { background-position:-1050px -50px; }
+#clients #carousel li.everest a { background-position:-1100px -50px; }
+
+#clients #carousel li.bio a:hover { background-position:0 0px; }
+#clients #carousel li.arup a:hover { background-position:-50px 0px; }
+#clients #carousel li.freesat a:hover { background-position:-100px 0px; }
+#clients #carousel li.ladbrokes a:hover { background-position:-150px 0px; }
+#clients #carousel li.nhs a:hover { background-position:-200px 0px; }
+#clients #carousel li.cartoon a:hover { background-position:-250px 0px; }
+#clients #carousel li.santander a:hover { background-position:-300px 0; }
+#clients #carousel li.lg a:hover { background-position:-350px 0; }
+#clients #carousel li.orange a:hover { background-position:-400px 0; }
+#clients #carousel li.ibis a:hover { background-position:-450px 0; }
+#clients #carousel li.purves a:hover { background-position:-500px 0; }
+#clients #carousel li.oval a:hover { background-position:-550px 0; }
+#clients #carousel li.coke a:hover { background-position:-600px 0; }
+#clients #carousel li.boomerang a:hover { background-position:-650px 0; }
+#clients #carousel li.easyjet a:hover { background-position:-700px 0; }
+#clients #carousel li.creuset a:hover { background-position:-750px 0; }
+#clients #carousel li.trust a:hover { background-position:-800px 0; }
+#clients #carousel li.accor a:hover { background-position:-850px 0; }
+#clients #carousel li.pringles a:hover { background-position:-900px 0; }
+#clients #carousel li.wateraid a:hover { background-position:-950px 0; }
+#clients #carousel li.edf a:hover { background-position:-1000px 0; }
+#clients #carousel li.connect a:hover { background-position:-1050px 0; }
+#clients #carousel li.everest a:hover { background-position:-1100px 0; }
+#clients #carousel li.on { width:200px; height:70px; }
+#clients #carousel li.bio a.on { background-position:0px 0px; }
+
+
+/* ------------------------------------------ JAVASCRIPT CAROUSEL ------------------------------------------ */
+#clients { position:absolute; z-index:5; width:870px; bottom:0; left:55px; }
+#clients  #carousel { width:810px; margin:0 auto; position:relative; z-index:5; margin-left:280px; }
+.carousel-wrapper { width:771px; overflow:hidden; margin:0 auto; position:relative; z-index:5; height:80px; }
+.carousel-wrapper #carousel { width:810px; overflow:hidden; margin:0px; padding:0; position:relative; }
+.carousel-next, .carousel-prev { position:absolute; top:16px; right:20px; display:block; width:15px; height:35px; cursor:pointer; background:url('../images/generic/carousel-prev-next.png') no-repeat -16px 12px ; overflow:hidden; }
+.carousel-prev { left:18px;  background-position:0 12px; }
+.carousel-stop { position:absolute; top:20px; left:-25px; display:block;}
+#clients .white-square { width:82px; height:75px; background:url(../images/generic/carousel-centre.png) no-repeat; position:absolute; bottom:7px; left:387px; z-index:4; }

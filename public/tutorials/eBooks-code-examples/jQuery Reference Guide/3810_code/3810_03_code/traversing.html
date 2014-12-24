@@ -1,0 +1,443 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>DOM Traversing</title>
+    
+    <link rel="stylesheet" href="../css/default.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/3810.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="examples.css" type="text/css" media="screen" />
+    <script src="../scripts/jquery.js"></script>
+    <script src="examples.js"></script>
+    <script src="traversing.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="branding" class="clearfix">
+        <div id="chapter-number">3</div>
+        <h1>DOM Traversing</h1>
+      </div>
+    <div id="foo">
+      <ul>
+        <li>list item 1</li>
+        <li>list item 2</li>
+        <li>list item 3</li>
+      </ul>
+      <p>a paragraph</p>
+</div>
+      <div class="category">
+        <h2>DOM Traversing</h2>
+
+        <div id="example-traversing-filter1" class="example">
+          <h3>.filter(selector) - A</h3>
+          <div class="content">
+            <ul>
+              <li>list item 1</li>
+              <li>list item 2</li>
+              <li>list item 3</li>
+              <li>list item 4</li>
+              <li>list item 5</li>
+              <li>list item 6</li>
+            </ul>
+            <p>a paragraph</p>
+          </div>
+          <code>$('#example-traversing-filter1 li').filter(':even').addClass('highlight');</code>
+        </div>      
+
+        <div id="example-traversing-filter2" class="example">
+          <h3>.filter(selector) - B</h3>
+          <div class="content">
+            <ul>
+              <li>list item 1</li>
+              <li>list item 2</li>
+              <li>list item 3</li>
+              <li>list item 4</li>
+              <li>list item 5</li>
+              <li>list item 6</li>
+            </ul>
+            <p>a paragraph</p>
+          </div>
+          <code>$('#example-traversing-filter2 li').filter(':gt(0):even').addClass('highlight');</code>
+        </div>      
+
+        <div id="example-traversing-filter3" class="example">
+          <h3>.filter(selector) - C</h3>
+          <div class="content">
+            <ul>
+              <li>list item 1</li>
+              <li>list item 2</li>
+              <li>list item 3</li>
+              <li>list item 4</li>
+              <li>list item 5</li>
+              <li>list item 6</li>
+            </ul>
+            <p>a paragraph</p>
+          </div>
+          <code>$('#example-traversing-filter3 li').filter(':even:gt(0)').addClass('highlight');</code>
+        </div>      
+
+        <div id="example-traversing-functionfilter1" class="example">
+          <h3>.filter(function) - A</h3>
+          <div class="content">
+            <ul>
+              <li><strong>list</strong> item 1 - one strong</li>
+              <li><strong>list</strong> item <strong>2</strong> - two <span>strongs</span></li>
+              <li>list item 3</li>
+            </ul>
+            <p>a paragraph</p>
+          </div>
+<code>$('#example-traversing-functionfilter2 li').filter(function(index) {
+  return $("strong", this).length == 1;
+}).addClass('highlight');</code>
+        </div>      
+
+        <div id="example-traversing-functionfilter2" class="example">
+          <h3>.filter(function) - B</h3>
+          <div class="content">
+            <ul>
+              <li><strong>list</strong> item 1 - one strong</li>
+              <li><strong>list</strong> item <strong>2</strong> - two <span>strongs</span></li>
+              <li>list item 3</li>
+              <li>list item 4</li>
+              <li>list item 5</li>              
+              <li>list item 6</li>
+            </ul>
+            <p>a paragraph</p>
+          </div>
+<code>$('#example-traversing-functionfilter2 li').filter(function(index) {
+  return index % 3 == 2;
+}).addClass('highlight');</code>
+        </div>      
+
+        <div id="example-traversing-not1" class="example">
+          <h3>.not(selector) - A</h3>
+          <div class="content">
+            <ul>
+              <li>list item 1</li>
+              <li>list item 2</li>
+              <li>list item 3</li>
+              <li>list item 4</li>
+              <li>list item 5</li>
+            </ul>
+            <p>a paragraph</p>
+          </div>
+          <code>$('#example-traversing-not1 li').not(':even').addClass('highlight');</code>
+        </div>      
+
+        <div id="example-traversing-not2" class="example">
+          <h3>.not(selector) - B</h3>
+          <div class="content">
+            <ul>
+              <li>list item 1</li>
+              <li>list item 2</li>
+              <li>list item 3</li>
+              <li>list item 4</li>
+              <li>list item 5</li>
+            </ul>
+            <p>a paragraph</p>
+          </div>
+          <code>$('#example-traversing-not2 li').not(':odd:first').addClass('highlight');</code>
+        </div>      
+
+        <div id="example-traversing-not3" class="example">
+          <h3>.not(selector) - C</h3>
+          <div class="content">
+            <ul>
+              <li>list item 1</li>
+              <li>list item 2</li>
+              <li>list item 3</li>
+              <li>list item 4</li>
+              <li>list item 5</li>
+            </ul>
+            <p>a paragraph</p>
+          </div>
+          <code>$('#example-traversing-not3 li').not(':first:odd').addClass('highlight');</code>
+        </div>      
+
+        <div id="example-traversing-notelement" class="example">
+          <h3>.not(element)</h3>
+          <div class="content">
+            <ul>
+              <li>list item 1</li>
+              <li>list item 2</li>
+              <li id="notli">list item 3</li>
+              <li>list item 4</li>
+              <li>list item 5</li>
+            </ul>
+            <p>a paragraph</p>
+          </div>
+          <code>$('#example-traversing-notelement li').not(document.getElementById('notli')).addClass('highlight');</code>
+        </div>      
+
+        <div id="example-traversing-contains" class="example">
+          <h3>.contains("text")</h3>
+          <div class="content">
+            <ul>
+              <li>list item 1</li>
+              <li>list <strong>item</strong> 2</li>
+              <li>list item 3</li>
+              <li>list item 4</li>
+              <li>list item 5</li>
+            </ul>
+            <p>a paragraph</p>
+          </div>
+          <code>$('#example-traversing-contains li').contains('item 2').addClass('highlight');</code>
+        </div>      
+        
+        <div id="example-traversing-eq" class="example">
+          <h3>.eq()</h3>
+          
+          <div class="content">
+            <ul>
+              <li>list item 1</li>
+              <li>list item 2</li>
+              <li>list item 3</li>
+              <li>list item 4</li>
+              <li>list item 5</li>
+            </ul>
+          </div>
+          <code>$('#example-traversing-eq li').eq(2).addClass('highlight');</code>
+        </div>      
+
+        <div id="example-traversing-lt" class="example">
+          <h3>.lt()</h3>
+          <div class="content">
+            <ul>
+              <li>list item 1</li>
+              <li>list item 2</li>
+              <li>list item 3</li>
+              <li>list item 4</li>
+              <li>list item 5</li>
+            </ul>
+          </div>
+          <code>$('#example-traversing-lt li').lt(2).addClass('highlight');</code>
+        </div>      
+
+        <div id="example-traversing-gt" class="example">
+          <h3>.gt()</h3>
+          <div class="content">
+            <ul>
+              <li>list item 1</li>
+              <li>list item 2</li>
+              <li>list item 3</li>
+              <li>list item 4</li>
+              <li>list item 5</li>
+            </ul>
+          </div>
+          <code>$('#example-traversing-gt li').gt(2).addClass('highlight');</code>
+        </div>      
+
+        <div id="example-traversing-add" class="example">
+          <h3>.add(selector)</h3>
+          <div class="content">
+            <ul>
+               <li>list item 1</li>
+               <li>list item 2</li>
+               <li>list item 3</li>
+            </ul>
+            <p>a paragraph</p>
+          </div>
+          <code>$('#example-traversing-add li').add('p').addClass('highlight');</code>
+        </div>      
+
+        <div id="example-traversing-addhtml" class="example">
+          <h3>.add(html)</h3>
+          <div class="content">
+            <ul>
+              <li>list item 1</li>
+              <li>list item 2</li>
+              <li>list item 3</li>
+            </ul>
+            <p>please</p>
+          </div>
+          <code>$('#example-traversing-addhtml li').add('&lt;p&gt;please&lt;/p&gt;').addClass('highlight');</code>
+        </div>      
+
+        <div id="example-traversing-addelements" class="example">
+          <h3>.add(elements)</h3>
+          <div class="content">
+            <ul>
+              <li>list item 1</li>
+              <li>list item 2</li>
+              <li>list item 3</li>
+            </ul>
+            <p id="addp">a paragraph</p>
+          </div>
+          <code>$('#example-traversing-addelements li').add(document.getElementById('addp')).addClass('highlight');</code>
+        </div>      
+
+        <div id="example-traversing-is" class="example">
+          <h3>.is(selector)</h3>
+          <div class="content">
+            <ul>
+              <li>list item 1</li>
+              <li>list item 2</li>
+              <li>list item 3</li>
+              <li>list item 4</li>
+              <li>list item 5</li>
+            </ul>
+          </div>
+          <code>if ( $('#example-traversing-is strong').parents('div:eq(0)').is('.wrap-paragraphs') ) {
+  $('strong', this).addClass('highlight');
+}</code>
+        </div>      
+
+        <div id="example-traversing-find" class="example">
+          <h3>.find(selector)</h3>
+          <div class="content">
+            <ul class="level-1">
+              <li class="item-i">I</li>
+              <li class="item-ii">II
+                <ul class="level-2">
+                  <li class="item-a">A</li>
+                  <li class="item-b">B
+                    <ul class="level-3">
+                      <li class="item-1">1</li>
+                      <li class="item-2">2</li>
+                      <li class="item-3">3</li>
+                    </ul>
+                  </li>
+                  <li class="item-c">C</li>
+                </ul>
+              </li>
+              <li class="item-iii">III</li>
+            </ul>
+          </div>
+          <code>$('#example-traversing-find li.item-ii').find('li').addClass('highlight');</code>
+        </div>      
+
+        <div id="example-traversing-children" class="example">
+          <h3>.children(selector)</h3>
+          <div class="content">
+            <ul class="level-1">
+              <li class="item-i">I</li>
+              <li class="item-ii">II
+                <ul class="level-2">
+                  <li class="item-a">A</li>
+                  <li class="item-b">B
+                    <ul class="level-3">
+                      <li class="item-1">1</li>
+                      <li class="item-2">2</li>
+                      <li class="item-3">3</li>
+                    </ul>
+                  </li>
+                  <li class="item-c">C</li>
+                </ul>
+              </li>
+              <li class="item-iii">III</li>
+            </ul>
+          </div>
+          <code>$('#example-traversing-children ul.level-2').children().addClass('highlight');</code>
+        </div>      
+
+        <div id="example-traversing-parents" class="example">
+          <h3>.parents(selector)</h3>
+          <div class="content">
+            <ul class="level-1">
+              <li class="item-i">I</li>
+              <li class="item-ii">II
+                <ul class="level-2">
+                  <li class="item-a">A</li>
+                  <li class="item-b">B
+                    <ul class="level-3">
+                      <li class="item-1">1</li>
+                      <li class="item-2">2</li>
+                      <li class="item-3">3</li>
+                    </ul>
+                  </li>
+                  <li class="item-c">C</li>
+                </ul>
+              </li>
+              <li class="item-iii">III</li>
+            </ul>
+          </div>
+          <code>$('#example-traversing-parents li.item-a').parents('ul').addClass('highlight');</code>
+        </div>      
+
+        <div id="example-traversing-parent" class="example">
+          <h3>.parent(selector)</h3>
+          <div class="content">
+            <ul class="level-1">
+              <li class="item-i">I</li>
+              <li class="item-ii">II
+                <ul class="level-2">
+                  <li class="item-a">A</li>
+                  <li class="item-b">B
+                    <ul class="level-3">
+                      <li class="item-1">1</li>
+                      <li class="item-2">2</li>
+                      <li class="item-3">3</li>
+                    </ul>
+                  </li>
+                  <li class="item-c">C</li>
+                </ul>
+              </li>
+              <li class="item-iii">III</li>
+            </ul>
+          </div>
+          <code>$('#example-traversing-parent li.item-a').parent().addClass('highlight');</code>
+        </div>      
+
+        <div id="example-traversing-siblings" class="example">
+          <h3>.siblings(selector)</h3>
+          <div class="content">
+            <ul>
+              <li>list item 1</li>
+              <li>list item 2</li>
+              <li class="third-item">list item 3</li>
+              <li>list item 4</li>
+              <li>list item 5</li>
+            </ul>
+          </div>
+          <code>$('#example-traversing-siblings .third-item').siblings().addClass('highlight');</code>
+        </div>      
+
+        <div id="example-traversing-prev" class="example">
+          <h3>.prev(selector)</h3>
+          <div class="content">
+            <ul>
+              <li>list item 1</li>
+              <li>list item 2</li>
+              <li class="third-item">list item 3</li>
+              <li>list item 4</li>
+              <li>list item 5</li>
+            </ul>
+          </div>
+          <code>$('#example-traversing-prev .third-item').prev().addClass('highlight');</code>
+        </div>      
+
+        <div id="example-traversing-next" class="example">
+          <h3>.next(selector)</h3>
+          <div class="content">
+            <ul>
+              <li>list item 1</li>
+              <li>list item 2</li>
+              <li class="third-item">list item 3</li>
+              <li>list item 4</li>
+              <li>list item 5</li>
+            </ul>
+          </div>
+          <code>$('#example-traversing-next .third-item').next().addClass('highlight');</code>
+        </div>      
+
+        <div id="example-traversing-end" class="example">
+          <h3>.end()</h3>
+          <div class="content">
+            <ul class="first">
+              <li class="foo">list item 1</li>
+              <li>list item 2</li>
+              <li class="bar">list item 3</li>
+            </ul>
+            <ul class="second">
+              <li class="foo">list item 1</li>
+              <li>list item 2</li>
+              <li class="bar">list item 3</li>
+            </ul>
+          </div>
+          <code>$('#example-traversing-end ul.first').find('.foo').addClass('highlight').end().find('.bar').addClass('highlight');</code>
+        </div>      
+
+      </div> <!-- end category -->
+    </div> <!-- end container -->
+  </body>
+</html>

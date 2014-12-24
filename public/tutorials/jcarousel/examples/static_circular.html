@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us">
+    <head>
+        <title>jCarousel Examples</title>
+        <link href="../style.css" rel="stylesheet" type="text/css" />
+        <!--
+        jQuery library
+        --><script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+		<script type="text/javascript" src="../lib/easing.js"></script>
+        <!--
+        jCarousel library
+        --><script type="text/javascript" src="../lib/jquery.jcarousel.js"></script>
+        <!--
+        jCarousel skin stylesheet
+        -->
+        <link rel="stylesheet" type="text/css" href="../skins/tango/skin.css" />
+        
+		
+		
+		<script type="text/javascript">
+            jQuery(document).ready(function(){
+                jQuery('#mycarousel').jcarousel({
+                    wrap: 'circular',
+                    scroll: 1,
+                    visible: 5
+                });
+            });
+        </script>
+		
+		
+		
+    </head>
+    <body>
+        <div id="wrap">
+            <h1>jCarousel</h1>
+            <h2>Riding carousels with jQuery</h2>
+            <h3>Circular carousel</h3>
+            <p>This example shows a simple circular carousel.</p>
+            <ul id="mycarousel" class="jcarousel-skin-tango">                <li>                    <img src="images/thumbs/thumb01.jpg" width="75" height="75" alt="" />                </li>                <li>                    <img src="images/thumbs/thumb02.jpg" width="75" height="75" alt="" />                </li>                <li>                    <img src="images/thumbs/thumb03.jpg" width="75" height="75" alt="" />                </li>                <li>                    <img src="images/thumbs/thumb04.jpg" width="75" height="75" alt="" />                </li>                <li>                    <img src="images/thumbs/thumb05.jpg" width="75" height="75" alt="" />                </li>                <li>                    <img src="images/thumbs/thumb06.jpg" width="75" height="75" alt="" />                </li>                <li>                    <img src="images/thumbs/thumb07.jpg" width="75" height="75" alt="" />                </li>                <li>                    <img src="images/thumbs/thumb08.jpg" width="75" height="75" alt="" />                </li>                <li>                    <img src="images/thumbs/thumb09.jpg" width="75" height="75" alt="" />                </li>                <li>                    <img src="images/thumbs/thumb10.jpg" width="75" height="75" alt="" />                </li>                <li>                    <img src="images/thumbs/thumb11.jpg" width="75" height="75" alt="" />                </li>                <li>                    <img src="images/thumbs/thumb12.jpg" width="75" height="75" alt="" />                </li>            </ul>
+        </div>
+    </body>
+</html>

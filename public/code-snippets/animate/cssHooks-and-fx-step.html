@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <title>CSS Hooks and the animate FX queue</title>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+        <script type="text/javascript">
+            
+            (function($){
+                // backgroundPosition[X,Y] get hooks
+                var $div = $('<div style="background-position: 3px 5px">');
+                $.support.backgroundPosition = $div.css('backgroundPosition') === "3px 5px" ? true : false;
+                $.support.backgroundPositionXY = $div.css('backgroundPositionX') === "3px" ? true : false;
+                $div = null;
+                
+                var xy = ["X", "Y"];
+                
+                // helper function to parse out the X and Y values from backgroundPosition
+                function parseBgPos(bgPos){
+                    console.log('Parse values = ', bgPos);
+                    var parts = bgPos.split(/\s/), values = {
+                        "X": parts[0],
+                        "Y": parts[1]
+                    };
+                    return values;
+                }
+                
+				//if the browser support backgroundPositionX & Y then do the following
+                if (!$.support.backgroundPosition && $.support.backgroundPositionXY) {
+                    $.cssHooks.backgroundPosition = {
+                        get: function(elem, computed, extra){
+                            return $.map(xy, function(l, i){
+                                return $.css(elem, "backgroundPosition" + l);
+                            }).join(" ");
+                        },
+                        set: function(elem, value){
+                            $.each(xy, function(i, l){
+                                var values = parseBgPos(value);
+                                elem.style["backgroundPosition" + l] = values[l];
+                            });
+                        }
+                    };
+                }
+                
+                if ($.support.backgroundPosition && !$.support.backgroundPositionXY) {
+                    $.each(xy, function(i, l){
+                        $.cssHooks["backgroundPosition" + l] = {
+                            get: function(elem, computed, extra){
+                                console.log('GET', '\nElement = ', elem, 'Element = \nElement = ', computed, '\nExtra = ', extra);
+                                var values = parseBgPos($.css(elem, "backgroundPosition"));
+                                return values[l];
+                            },
+                            set: function(elem, value){
+                                console.log('SET', '\nElement = ', elem, 'Value = \nElement = ', value);
+                                var values = parseBgPos($.css(elem, "backgroundPosition")), isX = l === "X";
+                                var val = (isX ? value : values["X"]) + " " + (isX ? values["Y"] : value);
+                                elem.style.backgroundPosition = val;
+                            }
+                        };
+                        
+                        $.fx.step["backgroundPosition" + l] = function(fx){
+                            console.log("backgroundPosition" + l, '\nfxObject.elem =', fx.elem, '\nfxObject.now =', fx.now + '\nfxObject.end =', fx.end + '\nfxObject.unit =', fx.unit);
+                            $.cssHooks["backgroundPosition" + l].set(fx.elem, fx.now + fx.unit); //THIS IS THE SAME AS $(fx.elem).css("backgroundPosition" + l, fx.now + fx.unit);
+                        };
+                    });
+                }  
+            })(jQuery);
+        </script>
+        <script type="text/javascript">
+            $(function(){
+                $('body').css({
+                    'backgroundPositionY': '-77px'
+                });
+				
+                $('body').stop().delay(900).animate({
+                    'backgroundPositionX': "255px",
+                    'backgroundPositionY': "255px"
+                }, 500);
+                
+            });
+        </script>
+    </head>
+    <body>
+    	<style type="text/css">
+    		body {
+                background: url(image.png) no-repeat;
+            }
+    	</style>
+    </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <title>Stop Propagation</title>
+		<script type="text/javascript" src="http://libraries/jquery-1.5.1.js"></script>
+        <script type="text/javascript">
+            $(function(){
+                $('#a').bind('click', function(evt){
+                    console.log('A'); //THIS WILL NOT LOG!! Stopping the propagation will prevent it from bubbling up
+                });
+                $('#b').bind('click', function(evt){
+                    console.log('B'); //this will log
+					//notice that even though the click occured on '#c', stopping the deault action on '#b' stops the action from occuring on '#c'
+                    evt.preventDefault();
+					evt.stopPropagation();
+                });
+                $('#c').bind('click', function(evt){
+                    console.log('C'); //this will log
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <ul id="a">
+            <li>
+                <ul>
+                    <li id="b">
+                        <ul>
+                            <li><a href="nick.com" id="c">Monkey</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </body>
+</html>

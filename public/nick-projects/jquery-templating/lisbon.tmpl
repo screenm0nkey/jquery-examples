@@ -1,0 +1,10 @@
+{{each items}}
+	{{if title}}
+		<p><a href="mailto:${author}">${title}</a><br><a href="${link}">${link}</a><br>${date_taken}</p>
+	{{else}}
+		<p>No Name</p>
+	{{/if}}
+{{/each}}
+
+
+

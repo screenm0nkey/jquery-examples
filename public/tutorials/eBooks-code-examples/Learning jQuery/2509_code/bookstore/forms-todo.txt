@@ -1,0 +1,22 @@
+CONTACT FORM
+
+summary of validation / client-side v server-side
+class-based validation
+changing display of labels based on required fields
+Checkbox Manipulation (How did you hear about us?) toggle all on/off
+checkbox - show/hide
+blur validation of required fields
+validation of email address 
+submit validation
+
+SEARCH
+
+label as field value, remove on blur and submit
+autocomplete
+
+SHOPPING CART
+calculate totals - on change do math
+input masking - on keypress do regex
+edit shipping info - press 'edit' button to load shipping info form; press 'save button' to ajax submit form
+
+

@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+    <head>
+        <title>jQuery UI Sortable - Drop placeholder</title>
+        <style type="text/css">
+            body {
+                background-color: #111;
+                color: white;
+                font-family: Arial, "MS Trebuchet", sans-serif;
+            }
+            
+            #sortable {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                width: 300px
+            }
+            
+            #sortable li {
+                margin: 0 5px 5px 5px;
+                padding: 5px 20px;
+                font-size: 1.2em;
+                height: 1.5em;
+                background-color: #678;
+                cursor: move;
+            }
+            
+            #sortable li.highlight {
+                height: 1.5em;
+                line-height: 1.2em;
+                background-color: #C00;
+                background-image: none;
+                border: none;
+            }
+        </style>
+		
+        <script type="text/javascript" src="http://libraries/jquery-1.4.2.js"></script>
+		<script type="text/javascript" src="http://libraries/jquery-ui-1.8.2.min.js"></script>
+        <script type="text/javascript">
+            
+            $(function(){
+                $("#sortable").sortable({
+                    placeholder: 'highlight',
+                    change: function(event, ui){
+                        console.log(event, event.type);
+                    }
+                });
+                $("#sortable").disableSelection();
+            });
+        </script>
+    </head>
+    <body>
+        <ul id="sortable">
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+            <li>Item 4</li>
+            <li>Item 5</li>
+            <li>Item 6</li>
+            <li>Item 7</li>
+        </ul>
+    </body>
+</html>

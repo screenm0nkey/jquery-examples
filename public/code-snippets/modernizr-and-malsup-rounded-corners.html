@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <title>TEST AREA</title>
+        <style type="text/css">
+        	#main {
+        		background:#ff3300;
+				width:200px;
+				height:200px;
+        	}
+            .borderradius {
+                -moz-border-radius: 25px; /* FF1+ */
+                -webkit-border-radius: 25px; /* Saf3+, Chrome */
+                border-radius: 25px; /* Opera 10.5, IE 9 */
+            }
+        </style>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+		<script type="text/javascript" src="http://libraries/modernizr-1.5.js"></script>
+        <script type="text/javascript">
+            (function($){
+                $(function(){
+                    if (!Modernizr.borderradius) {
+                        $.getScript("http://github.com/malsup/corner/raw/master/jquery.corner.js", function(){
+                            $("#main").corner("10px");
+                        });
+                    }
+                });
+            })(jQuery)
+        </script>
+    </head>
+    <body>
+        <div id="main" class="borderradius">
+        </div>
+    </body>
+</html>

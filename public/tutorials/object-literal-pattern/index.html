@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <title>Object Literal Example</title>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="reset.css" />
+        <link rel="stylesheet" type="text/css" href="object-literal.css" />
+    </head>
+    <body>
+        <h1>This is My Nifty Feature</h1>
+        <div id="myFeature">
+            <ul class="sections">
+                <li><h2><a href="/section/1">Section 1</a></h2>
+                    <ul>
+                        <li><h3><a href="/section/1/content/1">Section 1 Title 1</a></h3><p>The excerpt content for Content Item 1</p></li>
+                        <li><h3><a href="/section/1/content/2">Section 1 Title 2</a></h3><p>The excerpt content for Content Item 2</p></li>
+                        <li><h3><a href="/section/1/content/3">Section 1 Title 3</a></h3><p>The excerpt content for Content Item 3</p></li>
+                    </ul>
+                </li>
+                <li><h2><a href="/section/2">Section 2</a></h2>
+                    <ul>
+                        <li><h3><a href="/section/2/content/1">Section 2 Title 1</a></h3><p>The excerpt content for Content Item 1</p></li>
+                        <li><h3><a href="/section/2/content/2">Section 2 Title 2</a></h3><p>The excerpt content for Content Item 2</p></li>
+                        <li><h3><a href="/section/2/content/3">Section 2 Title 3</a></h3><p>The excerpt content for Content Item 3</p></li>
+                    </ul>
+                </li>
+                <li><h2><a href="/section/3">Section 3</a></h2>
+                    <ul>
+                        <li><h3><a href="/section/3/content/1">Section 3 Title 1</a></h3><p>The excerpt content for Content Item 1</p></li>
+                        <li><h3><a href="/section/3/content/2">Section 3 Title 2</a></h3><p>The excerpt content for Content Item 2</p></li>
+                        <li><h3><a href="/section/3/content/3">Section 3 Title 3</a></h3><p>The excerpt content for Content Item 3</p></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <script src="object-literal.js"></script>
+        <script>
+            $('document').ready(function(){
+                myFeature.init({'nick':'lowman'});
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <body>
+    	<h1><a href="http://api.jquery.com/contents/">http://api.jquery.com/contents/</a></h1>
+        <p>I love using jQuery!</p>
+        <p>I love <strong>really</strong> using jQuery!</p>
+        
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+        <script>
+            (function($){
+				console.log(1, $('p').contents());
+                // Alerts "I love using jQuery!" because no HTML elements exist
+                console.log(2, $('p:first').contents().get(0).nodeValue);
+                
+                // Alerts "I love"
+                console.log(3, $('p:last').contents().get(0).nodeValue);
+                console.log(4, $('p:last').contents())
+                
+                // Alerts "really" but is an HTML element, not text node
+                console.log(5, $('p:last').contents().eq(1).text());
+                
+                // Alerts "using jQuery!"
+                console.log(6, $('p:last').contents().get(2).nodeValue);
+            })(jQuery);
+        </script>

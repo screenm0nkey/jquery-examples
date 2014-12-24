@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="http://libraries/jquery.1.2.6.js"></script>
+<script src="jquery.ui.js"></script>
+<script src="jquery.scrollTo-1.3.3.js"></script>
+<script>
+	$(function() {
+		$("#questions > li a").click(function() {
+			
+			var id = $(this).attr("href");
+			debugger;
+			$.scrollTo(id, {duration: 800, axis:"y", onAfter:function(){
+             // step 9
+            	$(id).effect("highlight", {color: "#99c0e1"}, 2000); }
+        	});
+			return false;
+		});
+		
+
+		$(".return-to-top").click(function() {
+			$.scrollTo("body",{duration: 800, axis:"y"});
+		});
+	});
+</script>
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<div style="width:600px; margin:0 auto;">
+<ul id="questions">
+  <li id="q1"><a href="#a1" onClick="return false;">Question 1?</a></li>
+  <li id="q2"><a href="#a2" onClick="return false;">Question 2?</a></li>
+  <li id="q3"><a href="#a3" onClick="return false;">Question 3?</a></li>
+  <li id="q4"><a href="#a4" onClick="return false;">Question 4?</a></li>
+  <li id="q5"><a href="#a5" onClick="return false;">Question 5?</a></li>
+</ul><!-- /questions -->
+
+<div id="a1" class="faq-a">
+	<h2>Question 1?</h2>
+
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nisi purus, placerat quis feugiat nec, viverra a nibh. Pellentesque sit amet nibh ipsum. Vivamus commodo aliquet justo vitae rutrum. Maecenas nunc eros, mattis ut porttitor non, dapibus eget justo. Aliquam pellentesque molestie mauris. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla id justo at lacus hendrerit euismod. Aliquam ultrices magna in ligula laoreet mollis.</p>
+  
+  <p>Suspendisse semper urna sed neque auctor sollicitudin. Maecenas convallis est quis dui volutpat a iaculis orci placerat. Vivamus tempor aliquet viverra. Praesent in purus ullamcorper purus porta consequat. Vestibulum varius varius dolor, ut malesuada leo malesuada sit amet. Ut eget ligula nec lectus vehicula lobortis vitae ac orci. Nullam placerat pharetra vestibulum. Mauris semper, augue eu vestibulum commodo, diam sapien bibendum mauris, at ornare felis diam non massa. Morbi vitae nunc nunc, quis ullamcorper odio. Aliquam pulvinar nisl tellus, id vehicula urna. </p>
+  <a href="#" class="return-to-top">Return to top</a>
+</div><!-- /a1 -->
+
+<div id="a2" class="faq-a">
+	<h2>Question 2?</h2>
+
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tristique, enim vel dignissim scelerisque, lectus metus suscipit eros, nec fermentum tellus metus et arcu. Nulla facilisi. Praesent gravida odio quis leo aliquet ullamcorper. Maecenas sagittis porta mollis. Etiam ac nulla lacus. Sed ac ipsum enim, sit amet faucibus elit. Aliquam tortor orci, egestas at adipiscing sed, semper quis arcu. Suspendisse imperdiet vulputate pellentesque. Mauris ut elit eget arcu ullamcorper euismod vel et eros. Suspendisse pulvinar massa pulvinar dolor faucibus ultrices. In elit mauris, molestie at dapibus quis, aliquet sed magna. Mauris pharetra est eu eros fermentum luctus.</p>
+
+  
+  <p>Integer et lorem felis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam eget risus eget purus sodales ultricies. Donec aliquet nisi eget nunc auctor sed pulvinar justo vehicula. Suspendisse porta porta facilisis. Nullam blandit, eros eget consectetur ornare, velit nibh mattis lacus, ac vestibulum lacus nunc in est. Curabitur eros mi, scelerisque eget blandit eu, elementum at diam. </p>
+   <a href="#" class="return-to-top">Return to top</a>
+
+</div><!-- /a2 -->
+
+<div id="a3" class="faq-a">
+  <h2>Question 3?</h2>
+  
+  <p>Curabitur nisl lorem, sodales vel hendrerit vitae, luctus sit amet lorem. Fusce iaculis, enim sit amet semper condimentum, enim leo aliquam dui, non euismod elit sem eget nisi. Fusce euismod lorem et mauris tempus ac ultrices sapien porta. Nunc commodo mauris eu nisl luctus eu fringilla lectus tempus. Nulla vehicula nunc in nibh sagittis ornare. Ut sed elit lectus, a sodales elit. Nulla facilisi. Duis laoreet, mauris et tempor consequat, orci risus cursus ligula, nec sagittis augue sapien non libero. Aenean id fringilla sapien. Maecenas ultricies suscipit aliquam.</p>
+  
+  <p>Nunc nisi tortor, molestie vel facilisis nec, cursus vel elit. Curabitur non sapien a velit vulputate aliquet. In gravida egestas sapien non euismod. Nullam consequat, nunc in consequat suscipit, orci justo malesuada libero, et lacinia metus risus sed risus. Suspendisse ultrices sagittis nulla quis lacinia. Ut rutrum auctor vehicula. Suspendisse a urna eros, non lacinia eros. In hac habitasse platea dictumst. Pellentesque quis tempor lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. </p>
+ <a href="#" class="return-to-top">Return to top</a>
+</div><!-- /a3 -->
+
+<div id="a4" class="faq-a">
+  <h2>Question 4?</h2>
+  
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a tincidunt magna. Vivamus aliquet imperdiet diam, eu blandit turpis tempus ut. Aliquam id iaculis dui. In hendrerit, enim ut fermentum consectetur, nisl elit pharetra massa, tincidunt tristique ipsum nisl non dui. Maecenas lobortis semper rutrum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed erat erat, interdum at pharetra ut, varius sit amet lectus. Cras id ipsum sem, vel eleifend nibh. Quisque augue arcu, dapibus rutrum commodo in, rutrum ac ligula.</p>
+  
+  <p>Proin enim nibh, ultrices a mollis ac, porta a turpis. Vestibulum consectetur tempus augue, eget placerat quam volutpat a. Nulla facilisi. Vestibulum sagittis venenatis neque, et feugiat nibh porta nec. Aliquam adipiscing aliquam felis in scelerisque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus et eros sit amet odio fringilla convallis sed eu lorem. Vestibulum sed commodo orci. Sed interdum fermentum molestie. Duis gravida nulla malesuada libero aliquet vitae posuere metus commodo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
+ <a href="#" class="return-to-top">Return to top</a>
+</div><!-- /a4 -->
+
+<div id="a5" class="faq-a">
+  <h2>Question 5?</h2>
+  
+  <p>Suspendisse arcu orci, auctor non ultricies ut, porttitor a tellus. Quisque elementum ornare sagittis. Nulla ullamcorper mauris vitae felis adipiscing fringilla. In vitae lacus sit amet lorem pulvinar pretium at id nunc. Fusce risus lacus, congue vel mattis a, aliquam vitae mi. Praesent tortor arcu, vehicula sit amet pulvinar ut, egestas id nunc. Nam hendrerit felis sit amet lectus molestie consectetur. Pellentesque venenatis vulputate est a eleifend. Donec adipiscing iaculis pretium. Nam cursus sollicitudin mauris, sed pulvinar nunc vulputate nec. Sed vitae arcu elit.</p>
+
+  
+  <p>Mauris vel neque quam, ac tincidunt velit. Cras orci urna, pellentesque et dapibus vel, tristique tempus orci. Donec luctus blandit nisl, id eleifend lorem condimentum id. Proin non ligula risus. Suspendisse pulvinar, lacus vitae venenatis blandit, lacus nisl consequat neque, sit amet sagittis libero mauris vitae est. Praesent varius iaculis dapibus. Nunc sed sem ac metus tempus faucibus. Nulla euismod aliquam condimentum. </p>
+<a href="#">Return to top</a>
+</div><!-- /a5 -->
+
+
+</div>
+</body>
+</html>

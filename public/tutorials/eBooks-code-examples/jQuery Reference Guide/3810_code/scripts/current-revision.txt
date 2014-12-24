@@ -1,0 +1,9 @@
+This file will help us keep track of the current revision number of the jquery source code.
+
+DATE UPLOADED     REVISION
+
+12/9/06           680
+1/10/07           1.1a
+1/11/07           1.1b
+1/17/07           1.1 (1106)
+2/10/07           1.1.1 (1316)

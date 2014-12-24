@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Breaking Out Of jQuery's Each() Method</title>
+        <script type="text/javascript" src="http://libraries/jquery-1.4.2.min.js"></script>
+        <script type="text/javascript">
+            var event = jQuery.event;
+            
+            var $selected = event.special.specialClick = {
+                setup: function(data, namespaces){
+                    console.log('setup ', this, data, namespaces);
+                    event.add(this, 'click', $selected.handler);
+                    return false;
+                },
+                teardown: function(namespaces){
+                    console.log('teardown ', this, namespaces);
+                    event.remove(this, 'click', $selected.handler);
+                    return false;
+                },
+                handler: function(){
+                    $(this).triggerHandler('specialClick');
+                }
+            };
+        </script>
+        <script type="text/javascript">
+            $(function(){
+                $('#nick').bind('specialClick.namespace', {
+                    name: 'nick'
+                }, function(){
+                    console.log(3, 'Triggered specialClick');
+                    $(this).unbind('specialClick.namespace')
+                });
+            })
+        </script>
+    </head>
+    <body>
+        <div id="nick">Click Me</div>
+    </body>
+</html>

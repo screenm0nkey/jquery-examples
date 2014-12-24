@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+        <script type="text/javascript">
+            var obj = (function(parent, $, window, document){
+                /*
+                 * http://starter.pixelgraphics.us
+                 * Also see the twitter-tool-example-using-events example which shows a better way of using this particular style
+                 */
+                var FormatLink = function(elm, options){
+                    //'this' is an empty object which is returned when a function contructor is invoked
+                    var base = this;
+                    base.$elm = $(elm);
+                    base.elm = elm;
+                    base.$elm.data("formatLink", base);
+                    //init function
+                    (function(){
+                        base.options = $.extend({}, FormatLink.defaultOptions, options || {});
+                        
+                        base.$elm.css({
+                            backgroundColor: base.options.bgColor,
+                            display: base.options.display
+                        });
+                    })();
+                };
+                
+                FormatLink.defaultOptions = {
+                    bgColor: '#ff3300'
+                };
+                
+                $.fn.formatLink = function(options){
+                    return this.each(function(){
+                        (new FormatLink(this, options));
+                    });
+                };
+                
+                $.fn.getformatLink = function(){
+                    this.data("formatLink");
+                };
+                
+                //DOM ready
+                $(function(){
+                    var $c = $('ul:first'), $d = $('<div>');
+                    
+                    for (i = 0; i < 1000; i++) {
+                        $c.clone().appendTo($d);
+                    }
+                    
+                    $d.appendTo('body');
+                    
+                    $('ul>li').formatLink({
+                        bgColor: 'brown'
+                    });
+                });
+            })(obj || {}, jQuery, this, this.document);
+            
+            
+            
+            console.timeEnd("formatLink");
+        </script>
+    </head>
+    <body>
+        <ul>
+            <li><a href="#">Nick</a></li>
+            <li><a href="#">Lowman</a></li>
+            <li><a href="#">Works</a></li>
+            <li><a href="#">in</a></li>
+            <li><a href="#">London</a></li>
+        </ul>
+    </body>
+</html>

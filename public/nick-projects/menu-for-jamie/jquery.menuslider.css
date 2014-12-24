@@ -1,0 +1,54 @@
+ul#jqMenuSlider {
+    display: none;
+	padding:0;
+	margin:0;
+}
+
+div#jqMenuSliderWrap ul#jqMenuSlider {
+    list-style: none;
+    float: left;
+	padding:0;
+	margin:0;
+}
+
+div#jqMenuSliderWrap ul#jqMenuSlider li {
+    float: left;
+    position: relative;
+    float: left;
+	list-style: none;
+	padding:0;
+	margin:0;
+}
+
+div#jqMenuSliderWrap ul#jqMenuSlider li a {
+    position: relative;
+    color: #fff;
+    display: block;
+    text-decoration: none;
+	list-style: none;
+	padding:0;
+	margin:0;
+}
+
+div#jqMenuSliderWrap ul#jqMenuSlider li ul {
+    position: absolute;
+    left: 0;
+    display: none;
+    float: left;
+	list-style: none;
+	padding:0;
+	margin:0;
+}
+
+div#jqMenuSliderWrap ul#jqMenuSlider li ul li {
+    clear: both;
+	list-style: none;
+	padding:0;
+	margin:0;
+}
+
+div#jqMenuSliderWrap ul#jqMenuSlider li a span {
+    font-size: 1px;
+    left: -9999px;
+    position: relative;
+}

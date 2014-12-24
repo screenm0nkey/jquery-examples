@@ -1,0 +1,34 @@
+/* These are common styles */
+body {
+    font-size: 12px;
+    line-height: 21px;
+    background: #dfdfdf url(img/body.png) bottom center;
+    font-family: "Helvetica Neue", Helvetica, Arial, Verdana, sans-serif;
+    color: #0a0a0a;
+}
+
+@font-face {
+    font-family: Inconsolata;
+    src: url("fonts/Inconsolata.ttf");
+}
+
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#wrapper {
+    margin: 0;
+}
+
+#grid {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 796px;
+    background-image: url("i/grid.png");
+    z-index: 100;
+}

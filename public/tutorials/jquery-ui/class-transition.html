@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+        <script type="text/javascript" src="http://libraries/jquery.effects.core-1.8.5.js"></script>
+		<style>
+    	.toggler { width: 500px; height: 200px; position: relative; }
+		#button { padding: .5em 1em; text-decoration: none; }
+		#effect {position: relative; overflow:hidden;  }
+		.newClass { width: 240px;  padding: 1em; letter-spacing: 0; font-size: 1.2em; margin: 0; background:red; border:1px solid green; }
+		.anotherNewClass { text-indent: 40px; letter-spacing: .4em; width: 410px; height: 200px; padding: 30px; margin: 10px; font-size: 1.6em; background:green; border:5px solid red; color:#fff;}
+    </style>
+	
+    <script>
+        $(function(){
+            $("#button").click(function(){
+                $(".newClass").switchClass("newClass", "anotherNewClass", 1000);
+                $(".anotherNewClass").switchClass("anotherNewClass", "newClass", 1000);
+                return false;
+            });
+        });
+    </script>
+    </head>
+    <body>
+    
+	<div>
+		Class Transitions
+<p>The jQuery UI effects core extends the base class API to be able to animate between classes. This is a very powerful way script complex animations because these effects analyze the differences between the  style attributes of the classes and automatically builds parallel animations to transform between the various style attributes that are different. Any style attribute that contains a numeric value will be animated, from hex colors to dimensions, padding, margins, border thickness, positioning, font size, line-height and more will automatically animate.
+</p>
+<p>addClass - Adds a class to elements with an animated transition between the states.</p>
+<p>removeClass - Adds a class to elements with an animated transition between the states.</p>
+<p>toggleClass - Adds a class if it is not present, and removes the class if it is present with an animated transition.</p>
+<p>switchClass - Switches between one class and another with an animated transition.</p>
+	</div>
+	<a href="#" id="button" class="ui-state-default ui-corner-all">Run Effect</a>
+    <div class="demo">
+        <div class="toggler">
+            <div id="effect" class="newClass"> Etiam libero neque, luctus a, eleifend nec, semper at, lorem. Sed pede. </div>
+        </div>
+    </div>
+  
+</html>

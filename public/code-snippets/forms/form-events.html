@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Traversing</title>
+        <style>
+            .highlight {
+                background-color: #FF9900;
+                border: 1px solid #999999;
+                width: auto;
+            }
+        </style>
+        <style>
+            div {
+                color: red;
+            }
+        </style>
+       <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("input[type='text']").change(function(){
+                    alert($(this).val());
+                    // check input ($(this).val()) for validity here
+                });
+            });
+            
+            $(document).ready(function(){
+                $("select").change(function(){
+                    var str = "";
+                    $("select option:selected").each(function(){
+                        str += $(this).text() + " ";
+                    });
+                    $("div").text(str);
+                }).change();
+            });
+            
+            $(document).ready(function(){
+                $.fn.disable = function(val){
+                    return this.each(function(){
+                        if (typeof this.disabled != "undefined") {
+                            this.disabled = val;
+                        }
+                    });
+                };
+                
+                $("input[type=text]").disable(false);
+            });
+        </script>
+    </head>
+    <body>
+        <form action="#" method="get" id="mrform">
+            <input name="name" id="name" type="text" />
+            <input name="name1" id="name1" type="text" />
+            <input name="name2" id="name2" type="text" />
+            <input name="name3" id="name3" type="text" />
+            <input name="name4" id="name4" type="text" />
+        </form>
+        <form action="#" method="get" id="mrsform">
+            <select name="sweets" multiple="multiple">
+                <option>Chocolate</option>
+                <option selected="selected">Candy</option>
+                <option>Taffy</option>
+                <option selected="selected">Caramel</option>
+                <option>Fudge</option>
+                <option>Cookie</option>
+            </select>
+        </form>
+        <div></div>
+    </body>
+</html>

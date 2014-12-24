@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>jQuery's Filter Method Used With A Callback</title>
+<style type="text/css">
+ul {
+	list-style-type: none;
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+}
+li {
+	border: 1px solid #999999;
+	float: left;
+	height: 190px;
+	margin: 0px 20px 5px 0px;
+	padding: 5px 5px 5px 5px;
+}
+</style>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script>
+		// When the DOM is ready, populate the list.
+		$(function(){
+			var $list = $('ul');
+			var array = [];
+			var html = $list.html();
+			
+			for(var i=1; i < 7; i++) {
+				array.push(html.replace('$$id$$',i))
+			}
+			//console.log(array.join(""));
+			$list.html(array.join(""));
+		});
+		
+		$(function(){
+			var $select = $('select:first');
+			var $listItems = $('ul').find('li');
+			var updateDisplay = function() {
+				$listItems.show();
+				console.log($select.val());
+				if(parseInt($select.val())) {
+					$listItems.filter(function(){
+						//returning true keeps them in the stack
+						var $li = $(this);
+						debugger;
+						var rating = $select.val();
+						return (rating!=$li.find('select').val());
+					}).hide();
+				}
+			}
+			
+			$("select").change( updateDisplay ).keyup( updateDisplay );
+			updateDisplay();
+		});
+ 
+	</script>
+</head>
+<body>
+<h1> jQuery's Filter Method Used With A Callback </h1>
+<form>
+  <p> Please select rating:
+    <select>
+      <option value="0">Any</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+  </p>
+  <h2> The Photos </h2>
+  
+  <ul>
+    <!-- BEGIN: Template - will be replaced. -->
+    <li> <img src="$$id$$.jpg" width="125" /><br />
+      Rating:
+      <select>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3" selected="true">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+    </li>
+    <!-- END: Template - will be replaced. -->
+  </ul>
+  
+</form>
+</body>
+</html>

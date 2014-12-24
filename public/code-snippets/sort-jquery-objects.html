@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <title>Sorting jQuery Objects</title>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(function(){
+                // Give the jQuery prototype the sort method:
+                jQuery.fn.sort = Array.prototype.sort;
+                
+                // Sort the list-items:
+                var ul = jQuery('ul');
+                
+                ul.children().sort(function(a, b){
+                    return jQuery(a).text() > jQuery(b).text() ? 1 : -1;
+                }).appendTo(ul); // re-append to parent, in the sorted order
+            });
+        </script>
+    </head>
+    <body>
+        <ul>
+            <li>Tiger</li>
+            <li>Dog</li>
+            <li>Python</li>
+            <li>Cat</li>
+            <li>Anaconda</li>
+            <li>Monkey</li>
+        </ul>
+    </body>
+</html>

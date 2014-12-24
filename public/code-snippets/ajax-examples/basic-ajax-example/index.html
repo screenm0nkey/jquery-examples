@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Untitled Document</title>
+        <script type="text/javascript" src="http://libraries/jquery-1.4.2.min.js"></script>
+        </script>
+        <script>
+            $(document).ready(function(){
+                $('#submit').click(function(){
+                    var name = $('#name').val(); // Jeffrey
+                    $.ajax({
+                        url: 'pageToLoad.php',
+                        data: 'firstName=' + name + "&js=1",
+                        type: 'GET',
+                        
+                        success: function(results){
+                            console.log(results);
+                            $('#ajaxdiv').empty().append(".ajax = " + results);
+                        }
+                    });
+                    return false;
+                });
+            });
+            
+            $(document).ready(function(){
+                $("a").click(function(){
+                    $('<div id="info" />').load('movies.html #movies', function(){
+                        $(this).hide().appendTo('#ajaxdiv').slideDown(1000);
+                    });
+                    return false;
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <p>Open firebug and read the post requests</p>
+        <p><a href="#">This loads data from a div in another file using ajax</a></p>
+        <div id="container">
+            <form method="get" action="pageToLoad.php">
+                <input type="text" name="name" id="name" value="Jeffrey" />
+                <input type="submit" name="submit" id="submit" value="Go" />
+            </form>
+        </div>
+        <!--end container-->
+        <div id="getdiv">
+        </div>
+        <div id="loaddiv">
+        </div>
+        <div id="ajaxdiv">
+        </div>
+        <script>
+            $.get('pageToLoad.php', '', function(responseText){
+                $('#getdiv').empty().text(".get = " + responseText);
+            });
+            //
+            $('#loaddiv').load('pageToload.php').wrap("<strong><em>").css("border", "1px solid purple");
+        </script>
+    </body>
+</html>

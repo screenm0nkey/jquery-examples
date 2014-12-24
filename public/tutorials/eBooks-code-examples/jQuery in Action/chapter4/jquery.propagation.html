@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html id="greatgreatgrandpa">
+  <head>
+    <title>DOM Level 2 Propagation Example</title>
+    <script src="../scripts/jquery-1.2.1.js">
+    </script>
+    <script>
+      $(function(){
+        $('*').bind('click',function(event) {
+          var current = this;
+          say('Bubbling for ' + current.tagName + '#'+ current.id + ' target is ' + event.target.id);
+		  event.stopPropagation(); 
+        }).css('cursor','pointer').css('border','solid');
+      });
+
+      function say(text) {
+        $('#console').append('<div>'+text+'</div>');
+      }
+    </script>
+  </head>
+
+  <body id="greatgrandpa">
+    <div id="grandpa">
+      <div id="pops">
+        <a href="http://www.apple.com"><img id="vstar" src="vstar.jpg"/></a>
+      </div>
+    </div>
+    <div id="console"></div>
+  </body>
+</html>

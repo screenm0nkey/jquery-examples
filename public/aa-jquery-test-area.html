@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script src="/public/js/jquery-1.11.2.js"></script>
+<script src="/public/js/jquery.ui.widget.js"></script>
+<script>
+
+  $.widget( "nmk.progressbar", {
+    options: {
+      value: 0
+    },
+
+    _create: function() {
+      this.element.addClass( "progressbar" );
+      this._update();
+    },
+
+    _setOption: function( key, value ) {
+      this.options[ key ] = value;
+      this._update();
+    },
+
+    _update: function() {
+      var progress = this.options.value + "%";
+      this.element.text( progress );
+      if ( this.options.value == 100 ) {
+        this._trigger( "complete", null, { value: 100 } );
+      }
+    },
+
+
+    // Create a public method.
+    mypublicmethod: function( value ) {
+      console.log(value)
+      // No value passed, act as a getter.
+      if ( value === undefined ) {
+        return this.options.value;
+        // Value passed, act as a setter.
+      } else {
+        this.options.value = this._constrain( value );
+        this._update();
+      }
+    },
+
+    // Create a private method.
+    _constrain: function( value ) {
+      if ( value > 100 ) {
+        value = 100;
+      }
+
+      if ( value < 0 ) {
+        value = 0;
+      }
+
+      return value;
+    }
+  });
+
+  var $bar = $( "<div />" ).appendTo( "body").progressbar({
+    value: 20
+  }).on('progressbarcomplete', function (event, data) {
+    debugger
+  })
+
+  // Get the current value.
+  $bar.progressbar( "mypublicmethod" );
+
+  // Update the value.
+  $bar.progressbar( "mypublicmethod", 99 );
+
+  // Get the current value again.
+  $bar.progressbar( "mypublicmethod" );
+
+  $bar.progressbar( "mypublicmethod", 100 );
+</script>
+</body>
+</html>

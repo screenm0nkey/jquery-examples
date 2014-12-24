@@ -1,0 +1,1571 @@
+/*****************************/
+/* Tabasco css file         */
+/***************************/
+
+html, body {
+    height: 100%;
+}
+
+html {
+	background: #000000 url(../../../flickr/images/lyt-background.jpg) no-repeat fixed center bottom;
+}
+body {
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	font-family: "Helvetica Neue", Helvetica, Tahoma, Geneva, Arial, sans-serif;
+	font-size: 100%;
+	line-height: 1.25;
+	color: #ffffff;
+}
+
+
+/*****************************/
+/* Typography               */
+/***************************/
+a, a:link, a:visited {
+	outline:none;
+	color:inherit;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+a.underline {
+	text-decoration: underline;
+}
+h1 {
+	font-size:1.5em;
+	font-weight:bold;
+}
+h2 {
+	font-size:1.25em;
+	font-weight:bold;
+}
+h3 {
+	font-size:1.125em;
+	font-weight:bold;
+}
+h4 {
+	font-size:1em;
+	font-weight:bold;
+}
+h5 {
+	font-size:0.875em;
+	font-weight:bold;
+}
+h2 {
+	background: transparent url(../../../flickr/images/lyt-square-dot.gif) no-repeat 1px center;
+	padding-left:20px;
+	font-size:1.25em;
+	margin:2px 0;
+}
+ul, ol {
+	padding:0;
+	margin:0;
+}
+li {
+	margin:1em 2em;
+}
+p, ul, ol, label {
+	font-size:0.75em;
+	margin:1em 0;
+}
+ul p, ul ul, ul ol, ul label,
+ol p, ol ul, ol ol, ol label {
+	font-size:1em;
+}
+input,
+textarea {
+	font-size:0.75em;
+	font-family: "Helvetica Neue", Helvetica, Tahoma, Geneva, Arial, sans-serif;
+}
+th p {
+	font-size:0.625em;
+}
+sup {
+	vertical-align: top;
+}
+.small {
+	font-size:0.8333em;
+}
+.smallest {
+	font-size:0.625em;
+}
+/*****************************/
+/* Some custom bits         */
+/***************************/
+img {
+	border: none;
+	display:block;
+}
+img.thumb,
+.thumb img {
+	border:3px solid #ffffff;
+}
+a.arrow {
+	padding-right: 8px;
+	background: transparent url(../../../flickr/images/lyt-link-arrow.gif) no-repeat 100% 60%;
+}
+.covered {
+	background:none;
+	display:block;
+	width:100%;
+	overflow:hidden;
+	text-indent:-9999px;
+}
+.hidden {
+	display:none;
+}
+table {
+	border-collapse:collapse;
+}
+table th,
+table td {
+	padding:0;
+}
+ul.error {
+	display:block;
+	padding:1em 0;
+	background:#f0baba;
+	border:2px solid #ff0000;
+	margin:1em !important;
+}
+ul.error li{
+	margin:0 2em;
+	font-weight:bold;
+	color:#ff0000;
+}
+span.valid {
+	padding:1px 1em;
+	background:#66ff99;
+	border:1px solid green;
+	margin:0 0.5em;
+	font-weight:bold;
+	color:green;
+}
+span.invalid {
+	padding:1px 1em;
+	background:#f0baba;
+	border:1px solid red;
+	margin:0 0.5em;
+	font-weight:bold;
+	color:red;
+}
+
+
+
+/*****************************/
+/* Layout                  */
+/***************************/
+h1 {
+	margin:0;
+	padding:0;
+	position:absolute;
+	top:1px;
+	left:16px;
+	z-index:1;
+}
+
+
+
+#page {
+	background: transparent url(../../../flickr/images/lyt-page-background.png) repeat-y center 0;
+	width:970px;
+	padding:0 10px;
+	margin:0 auto;
+	text-align:left;
+	min-height: 100%;
+}
+
+
+#wrapper {
+	width:100%;
+	overflow:hidden;
+	border-top:3px solid #c32000;
+	position:relative;
+	padding-bottom:30px;
+}
+#user {
+	height:53px;
+}
+#user ul {
+	list-style-type:none;
+	padding:0;
+	margin:0;
+	width:181px;
+	height:21px;
+	background: transparent url(../../../flickr/images/lyt-regbox.gif) no-repeat center 0;
+	float:right;
+	text-align:center;
+}
+#user li {
+	list-style-type:none;
+	display:inline;
+	font-weight:bold;
+	margin:0 0.5em;
+	padding:0;
+}
+#navigation {
+	height:87px;
+}
+#navigation ul{
+	list-style-type:none;
+	float:right;
+	margin:0;
+	padding:0;
+	width:620px;
+	display:block;
+	overflow:visible;
+}
+#navigation li {
+	list-style-type:none;
+	float:left;
+	margin:0;
+	padding:0;
+	overflow:visible;
+	position:relative;
+}
+#navigation a {
+	background: transparent url(../../../flickr/images/lyt-navigation.gif) no-repeat 0 0;
+	display:block;
+	height:28px;
+	text-indent:-9999px;
+}
+
+#nav-home a { width:78px; background-position: 0 0;}
+#nav-home a:hover, #nav-home a:active, #nav-home.selected a{ background-position: 0 -28px; }
+#nav-discover a { width:179px; background-position: -78px 0; }
+#nav-discover a:hover, #nav-discover a:active, #nav-discover.selected a{ background-position: -78px -28px; }
+#nav-talk a { width:141px; background-position: -257px 0; }
+#nav-talk a:hover, #nav-talk a:active, #nav-talk.selected a{ background-position: -257px -28px; }
+#nav-whatshot a { width:111px; background-position: -398px 0; }
+#nav-whatshot a:hover, #nav-whatshot a:active, #nav-whatshot.selected a{ background-position: -398px -28px; }
+#nav-cookbook a { width:111px; background-position: -509px 0; }
+#nav-cookbook a:hover, #nav-cookbook a:active, #nav-cookbook.selected a{ background-position: -509px -28px; }
+
+#navigation ul ul {
+	background: #560003;
+	float:none;
+	width:auto;
+	position:absolute;
+	overflow:hidden;
+	top:28px;
+	z-index:1;
+	left:0;
+	padding-left:15px;
+}
+#navigation ul ul li {
+	background: transparent url(../../../flickr/images/lyt-menu-spacer.gif) no-repeat 6px 6px;
+	float:none;
+	margin:0;
+	margin-left:-18px;
+	padding:0;
+	padding-left:18px;
+	padding-right:18px;
+	font-weight:bold;
+}
+#navigation ul ul a {
+	background: none;
+	display:inline;
+	height:auto;
+	text-indent:0;
+}
+#navigation.activated ul ul{
+	display:none;
+}
+#navigation.activated .selected ul{
+	background:none;
+	display:block;
+	width:400px;
+	top:34px;
+	padding-left:0;
+}
+#navigation.activated .selected ul li{
+	display:inline;
+	float:left;
+}
+#navigation.activated #nav-discover.selected ul { left:12px; }
+#navigation.activated #nav-whatshot.selected ul { left:-361px; }
+#navigation.activated #nav-cookbook.selected ul { left:-250px; }
+#navigation ul ul .selected a {
+	color:#d62300;
+}
+#navigation ul ul .selected a:hover {
+	text-decoration:none;
+}
+
+#join {
+	background: transparent url(../../../flickr/images/lyt-joinbox-background.gif) no-repeat left bottom;
+	width:156px;
+	height:118px;
+	padding:20px 50px 0 120px;
+	float:left;
+}
+#join h2 {
+	margin-top:0;
+}
+#main {
+	float:right;
+	display:inline;
+	width:600px;
+	margin-right:19px;
+	margin-bottom:50px;
+	position:relative;
+	border:1px solid #be0000;
+	background: #900d06 url(../../../flickr/images/lyt-main-background.png) repeat-x 0 100%;
+}
+
+
+/*
+a.hot-nights {
+    position: absolute;
+    width:619px;
+    height:450px;
+    left:0;
+    top:0;
+    background: url(/images/img-home-tabasco-pizzahut.jpg) no-repeat top left;  
+}
+*/
+
+#main .content p,
+#main .content ol,
+#main .content ul {
+	margin:1em 20px;
+}
+#main .content h3,
+#main .content h4,
+#main .content h5 {
+	margin:0.5em 20px;
+}
+#hover {
+	position:absolute;
+	overflow:hidden;
+	top:-1px;
+	left:-1px;
+	width:335px;
+	height:147px;
+}
+#hover .content {
+	width:240px;
+	height:137px;
+	padding:10px 65px 0 30px;
+	background: transparent url(../../../flickr/images/lyt-main-overlay.png) no-repeat 0 0;
+}
+#hover .content h2.covered {
+	margin:0 -12px;
+}
+#hover .content h3 {
+	color:#fbc5a5;
+	margin:0 0 5px 0;
+}
+#hover .content p {
+	color:#df7927;
+	margin:0;
+}
+
+#ctl00_MainContent_pnlJoinClub 
+{
+    
+}
+
+/* registration thankyou hover box */
+#RegJoin {
+    margin: 20px 0 0 10px;
+}
+#RegJoin .content {
+	width:240px;
+	height:137px;
+	padding:10px 65px 0 30px;
+	background: transparent url(../../../flickr/images/hover-regjoin.gif) no-repeat top left;
+}
+#RegJoin .content h2.covered {
+	margin:0 -12px;
+}
+#RegJoin .content h3 {
+	color:#fbc5a5;
+	margin:0.25em 0 0.5em;
+}
+#RegJoin .content p {
+	color:#ffcc00;
+	margin:0;
+}
+
+#main #RegJoin h2.covered {
+    background: url("../../../flickr/images/tit-tabasco-fan-club.png") no-repeat;
+    }
+
+#main #VoucherPrint .rounded strong {
+    float:left;
+    margin: 10px 0 0 30px;
+    }
+
+
+#main #VoucherPrint .rounded img {
+    float:right;
+    margin: 10px 30px 0 0;
+    }
+
+
+
+#side-recipe,
+#side-forum {
+	margin:40px 0 0 20px;
+	width:290px;
+	clear:left;
+	float:left;
+	display:inline;
+}
+#side-recipe .content,
+#side-forum .content{
+	width:100%;
+	overflow:hidden;
+	background: transparent url(../../../flickr/images/lyt-side-background.jpg) repeat-x left top;
+	border-top: #6a0a0a 1px solid;
+	border-bottom: #6a0a0a 1px solid;
+}
+#side-recipe .content {
+	padding:8px 0;
+}
+#side-recipe .thumb {
+	float:left;
+	display:inline;
+	margin-left:2px;
+}
+#side-recipe p {
+	margin:0 45px 0 75px;
+	padding-top:10px;
+}
+#side-forum {
+	margin-top:20px;
+	margin-bottom:50px;
+}
+#side-forum p {
+	margin:14px 20px;
+}
+#side-forum p span {
+	color:#ac0101;
+}
+#bottom {
+	width:100%;
+	overflow:hidden;
+	clear:both;
+	background-color:#450002;
+	padding:10px 0 20px;
+	border-bottom: #6a0a0a 1px solid;
+}
+#bottom .box {
+	width:290px;
+	display:inline;
+	overflow:hidden;
+}
+#bottom h2 {
+	margin-bottom:7px;
+}
+#bottom img{
+	border:3px solid #ffffff;
+}
+#bottom p {  
+    color: #86696A;
+    margin-bottom:0;
+}
+#bottom-left {
+	float:left;
+	margin-left:20px;
+}
+#bottom-center {
+	float:left;
+	margin-left:30px;
+}
+#bottom-right {
+	float:right;
+	margin-right:20px;
+}
+#bottom-flickr ul {
+	list-style-type:none;
+	padding:0;
+	margin:0;
+	width:300px;
+	height:133px;
+	overflow:hidden;
+}
+#bottom-flickr li {
+	float:left;
+	margin:0 12px 7px 0;
+}
+#bottom-flickr li img {
+	width:57px;
+	height:57px;
+}
+
+#footer {
+	text-align: center;
+	color: #86696a;
+}
+#footer ul {
+	margin:7px 0;
+	padding:0;
+}
+#footer ul li {
+	display:inline;
+	margin:0 8px;
+}
+#main div.rounded {
+	margin:11px;
+	background: transparent url(../../../flickr/images/lyt-main-rounded-background.png) no-repeat 0 0;
+	padding-top:15px;
+}
+#main div.rounded .container{
+	background: transparent url(../../../flickr/images/lyt-main-rounded-background.png) no-repeat -578px 100%;
+	padding-bottom:15px;
+	padding-top:1px;
+}
+#main div.straight {
+	margin:0;
+	padding:0;
+	background-color: #450002;
+}
+#main h2.covered {
+	width:500px;
+	margin:0.5em 10px;
+	height:45px;
+	background: transparent no-repeat 0 0;
+}
+
+
+/*****************************/
+/* Form styling             */
+/***************************/
+fieldset {
+	border:none;
+	padding:0 10px;
+	margin:0;
+}
+fieldset .input-text label {
+	display:block;
+	margin:0 0 0.25em;
+}
+fieldset .input-text input,
+fieldset .input-textarea textarea {
+	color:#666666;
+	border:1px solid #220000;
+	padding:3px;
+	width:250px;
+}
+
+fieldset .input-submit input {
+	border:none;
+	background: transparent url(../../../flickr/images/lyt-link-arrow.gif) no-repeat right center;
+	color:#ffffff;
+	cursor:pointer;
+}
+
+fieldset .input-text,
+fieldset .input-submit,
+fieldset .input-check,
+fieldset .input-textarea  {
+	float:left;
+}
+fieldset .input-text {
+	margin-bottom:12px;
+}
+fieldset .right {
+	float:right;
+}
+fieldset .side input {
+	float:left;
+}
+fieldset .side div {
+	float:left;
+}
+fieldset br {
+	clear:both;
+	width:100%;
+	display:block;
+	padding:10px;
+}
+
+
+/*****************************/
+/* Titles                   */
+/***************************/
+
+#main .sub-home h2.covered { background-image: url(../../../flickr/images/tit-tabasco-fan-club.png); }
+#main .sub-register h2.covered { background-image: url(../../../flickr/images/tit-register.png); }
+#main .sub-login h2.covered { background-image: url(../../../flickr/images/tit-login.png); }
+#main .sub-forgot h2.covered { background-image: url(../../../flickr/images/tit-forgot-your-password.png); }
+#main .sub-discover h2.covered { background-image: url(../../../flickr/images/tit-discover-tabasco.png); }
+#main .sub-products h2.covered { background-image: url(../../../flickr/images/tit-tabasco-products.png); }
+#main .sub-howhot h2.covered { background-image: url(../../../flickr/images/tit-how-hot.png); }
+#main .sub-history h2.covered { background-image: url(../../../flickr/images/tit-history.png); }
+#main .sub-stockists h2.covered { background-image: url(../../../flickr/images/tit-stockists.png); }
+#main .sub-talk h2.covered { background-image: url(../../../flickr/images/tit-talk-tabasco.png); }
+#main .sub-whatshot h2.covered { background-image: url(../../../flickr/images/tit-whats-hot.png); }
+#main .sub-cookbook h2.covered { background-image: url(../../../flickr/images/tit-cookbook.png); }
+#main .sub-breakfast h2.covered { background-image: url(../../../flickr/images/tit-cookbook.png); }
+#main .sub-promotions h2.covered { background-image: url(../../../flickr/images/tit-promotions.png); }
+
+
+/*****************************/
+/* Specific                 */
+/***************************/
+#main .sub-products ul{
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	height:290px;
+	padding-bottom:280px;
+}
+#main .sub-products li {
+	list-style-type:none;
+	float:left;
+	margin:0;
+	padding:0;
+	position:relative;
+}
+#main .sub-products a {
+	background-image: url(../../../flickr/images/products-selection.jpg);
+	background-repeat: no-repeat;
+	display:block;
+	height:290px;
+	text-decoration:none;
+}
+
+#main .sub-products li p { margin:0 !important; padding:0 !important; }
+#main .sub-products li p strong { display:block; margin:0.5em 0; }
+#main .sub-products li a .text { display:none; width:0; }
+#main .sub-products li a:hover .text { display:block; position:absolute; top:290px; width:560px; padding:20px 20px; }
+
+#prod-1 a { width:96px; background-position: 0 0;}
+#prod-1 a:hover { background-position: 0 -290px; }
+#prod-1 a:hover .text { left:0; }
+#prod-2 a { width:88px; background-position: -96px 0; }
+#prod-2 a:hover { background-position: -96px -290px; }
+#prod-2 a:hover .text { left:-96px; }
+#prod-3 a { width:88px; background-position: -184px 0; }
+#prod-3 a:hover { background-position: -184px -290px; }
+#prod-3 a:hover .text { left:-184px; }
+#prod-4 a { width:92px; background-position: -272px 0; }
+#prod-4 a:hover { background-position: -272px -290px; }
+#prod-4 a:hover .text { left:-272px; }
+#prod-5 a { width:106px; background-position: -364px 0; }
+#prod-5 a:hover { background-position: -364px -290px; }
+#prod-5 a:hover .text { left:-364px; }
+#prod-6 a { width:130px; background-position: -470px 0; }
+#prod-6 a:hover { background-position: -470px -290px; }
+#prod-6 a:hover .text { left:-470px; }
+
+#main .sub-howhot .graph {
+	background: transparent url(../../../flickr/images/howhot-graph.png) no-repeat 0 0;
+	height:330px;
+}
+#main .sub-howhot .graph .rounded {
+	margin: 0 0 0 360px;
+	font-size: 0.916em;
+}
+#main .sub-howhot .graph ol,
+#main .sub-howhot .graph p {
+	margin: 1em 10px;
+}
+#main .sub-howhot .graph ol {
+	list-style-type:none;
+	padding: 0;
+}
+#main .sub-howhot .graph li {
+	list-style-type:none;
+	margin: 1em 0;
+	padding: 0 0 0 22px;
+}
+#main .sub-howhot .graph li.first { background: transparent url(../../../flickr/images/howhot-bullets.gif) no-repeat 0 3px; }
+#main .sub-howhot .graph li.second { background: transparent url(../../../flickr/images/howhot-bullets.gif) no-repeat 0 -47px; }
+#main .sub-howhot .graph li.third { background: transparent url(../../../flickr/images/howhot-bullets.gif) no-repeat 0 -97px; }
+#main .sub-howhot .graph li.fourth { background: transparent url(../../../flickr/images/howhot-bullets.gif) no-repeat 0 -147px; }
+
+#main .sub-stockists table {
+	background-color:#490601;
+	width:100%;
+}
+#main .sub-stockists tr td {
+	background-color:#490601;
+}
+#main .sub-stockists tr.odd td {
+	background-color:#551111;
+}
+#main .sub-stockists td img {
+	margin: 0 auto;
+}
+#main .sub-stockists .col-header {
+	width:1%;
+}
+#main .sub-stockists .col-products {
+	background-color:#280000;
+	width:12%;
+}
+#main .sub-stockists  th {
+	vertical-align:top;
+}
+#main .sub-stockists  th p {
+	position:relative;
+	padding:2px 2px 5px;
+	margin:0;
+	text-align:center;
+}
+#main .sub-stockists  th img {
+	margin:0;
+	margin-left:14px;
+	position:relative;
+}
+#main .sub-stockists span {
+	display:block;
+	width:34px;
+	height:22px;
+	line-height:22px;
+	top:-63px;
+	right:1px;
+	position:absolute;
+	background: transparent url(../images/stockists-weight-back.gif) no-repeat 0 0;
+}
+#main #courses {
+	background: transparent url(../../../flickr/images/img-cookbook.jpg) no-repeat 0 0;
+	padding:140px 130px 8px 250px;
+	margin:0;
+	list-style-type:none;
+	display:inline-block; /* ie haslayout fix */
+}
+#main #courses li{
+	margin:0;
+	padding:0;
+}
+#main #courses li a{
+	background-image: url(../../../flickr/images/cookbook-menu.gif);
+	background-repeat: no-repeat;
+	display:block;
+	width:220px;
+	text-indent:-9999px;
+}
+#main #course-breakfast a { height:56px; background-position: 0 0;}
+#main #course-breakfast a:hover, #main #course-breakfast a:active { background-position: -220px 0;}
+#main #course-starter a { height:49px; background-position: 0 -56px;}
+#main #course-starter a:hover, #main #course-starter a:active { background-position: -220px -56px;}
+#main #course-main a { height:46px; background-position: 0 -105px;}
+#main #course-main a:hover, #main #course-main a:active { background-position: -220px -105px;}
+#main #course-desert a { height:50px; background-position: 0 -151px;}
+#main #course-desert a:hover, #main #course-desert a:active { background-position: -220px -151px;}
+#main #course-snacks a { height:46px; background-position: 0 -201px;}
+#main #course-snacks a:hover, #main #course-snacks a:active { background-position: -220px -201px;}
+#main #course-drinks a { height:53px; background-position: 0 -247px;}
+#main #course-drinks a:hover, #main #course-drinks a:active { background-position: -220px -247px;}
+
+#main .sub-cookbook h2{
+	margin-bottom:0;
+}
+#main .sub-cookbook h3{
+	color: #fbc5a5;
+	margin-top:0;
+}
+#main .sub-breakfast #recipies { background: transparent url(../../../flickr/images/cookbook-breakfast.jpg) no-repeat 0 0; }
+#main .sub-starter #recipies { background: transparent url(../../../flickr/images/cookbook-starter.jpg) no-repeat 0 0; }
+#main .sub-main #recipies { background: transparent url(../../../flickr/images/cookbook-main.jpg) no-repeat 0 0; }
+#main .sub-desert #recipies { background: transparent url(../../../flickr/images/cookbook-desert.jpg) no-repeat 0 0; }
+#main .sub-snacks #recipies { background: transparent url(../../../flickr/images/cookbook-snacks.jpg) no-repeat 0 0; }
+#main .sub-drinks #recipies { background: transparent url(../../../flickr/images/cookbook-drinks.jpg) no-repeat 0 0; }
+
+#main #recipies {
+	padding:30px 0;
+	min-height:350px;
+	height:auto !important;
+	height:350px;
+}
+#main #recipies .rounded {
+	background-position: -328px 0;
+	margin: 0 350px 0 0;
+}
+#main #recipies .rounded  .container{
+	background-position: 100% 100%;
+}
+#main #recipies ul,
+#main #recipies p {
+	margin: 1em 20px;
+}
+#main #recipies ul {
+	list-style-type:none;
+	padding: 0;
+}
+#main #recipies li {
+	list-style-type:none;
+	margin: 0 0 10px 0;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #6A0A0A;
+}
+#main #recipies .comments {
+	color:#ac0101;
+	display: block;
+}
+
+#main div.content div#recipes div.rounded div.container ul li strong {
+    font-weight: normal !important;
+}
+
+#main #recipies .description {
+	color:#a6a1a1;
+}
+#main #recipies span {
+	font-size:0.916em;
+}
+#main #recipe {
+	overflow:hidden;
+	width:100%;
+}
+#main #recipe .content{
+	padding:10px 0;
+	width:340px;
+	float:left;
+}
+#main #recipe .image{
+	padding:5px;
+	float:right;
+}
+#main #recipe li {
+	margin-top:0;
+	margin-bottom:0;
+}
+#main #review h5,
+#main #reviews h5 {
+	margin-top:1.5em;
+	border-bottom: #ffffff 1px solid;
+	padding-bottom:0.5em;
+}
+#main #review fieldset {
+	padding:0 20px;
+}
+#main #review fieldset div {
+	float:none;
+	background:#450002;
+}
+#main #review textarea {
+	width:552px;
+	height:100px;
+}
+#main #review .input-submit {
+	text-align:right;
+	padding:1px 3px;
+}
+
+#main .sub-promotions h2{
+	margin-bottom:0;
+}
+#main .sub-promotions h3{
+	color: #fbc5a5;
+	margin-top:0;
+}
+#main .sub-promotions img.expiry{
+	position:absolute;
+	top:0;
+	right:0;
+	z-index:1;
+}
+
+
+/*****************************/
+/* Plugins CSS              */
+/***************************/
+
+/* http://www.search-this.com/2007/05/23/css-the-star-matrix-pre-loaded/ */
+/* http://www.search-this.com/2007/06/04/css-the-star-matrix-pre-loaded-part-2/ */
+.rating {
+	overflow:hidden;
+	width:85px;
+	height:15px;
+	margin:0 0 20px 0;
+	padding:0;
+	list-style:none;
+	clear:both;
+	position:relative;
+	background: url(../images/lyt-stars.gif) no-repeat 0 0;
+}
+ul.rating li {
+	cursor: pointer;
+	float:left;
+	text-indent:-999em;
+}
+ul.rating li a {
+	position:absolute;
+	left:0;
+	top:0;
+	width:17px;
+	height:15px;
+	text-decoration:none;
+	z-index: 200;
+}
+ul.rating li.one a {left:0}
+ul.rating li.two a {left:17px;}
+ul.rating li.three a {left:34px;}
+ul.rating li.four a {left:51px;}
+ul.rating li.five a {left:68px;}
+.nostar {background-position:0 0}
+.onestar {background-position:0 -15px}
+.twostar {background-position:0 -30px}
+.threestar {background-position:0 -45px}
+.fourstar {background-position:0 -60px}
+.fivestar {background-position:0 -75px}
+
+ul.rating li a:hover {
+	z-index:2;
+	width:85px;
+	height:15px;
+	overflow:hidden;
+	left:0;
+	background: url(../images/lyt-stars.gif) no-repeat 0 0;
+}
+ul.rating li.one a:hover {background-position:0 -90px;}
+ul.rating li.two a:hover {background-position:0 -105px;}
+ul.rating li.three a:hover {background-position:0 -120px}
+ul.rating li.four a:hover {background-position:0 -135px}
+ul.rating li.five a:hover {background-position:0 -150px}
+
+
+
+
+
+#OB_overlay {
+	position: fixed;
+	z-index:100;
+	top: 0px;
+	left: 0px;
+	height:100%;
+	width:100%;
+	background-color:#000;
+}
+#OB_window {
+	position: fixed;
+	z-index: 102;
+	display:block;
+	text-align:left;
+	top:50%;
+	left:50%;
+}
+#OB_window iframe{
+	width:640px;
+	height:550px;
+}
+
+
+/* Rating */
+.ratingStar {
+    font-size: 0pt;
+    width: 17px;
+    height: 17px;
+    margin: 10px 0 0 0;
+    padding: 0px;
+    cursor: pointer;
+    display: block;
+    background-repeat: no-repeat;
+}
+
+.ratingIntro
+{
+	float: left;
+	width: 200px;
+	
+}
+.filledRatingStar {
+    background-image: url(../images/FilledStar.gif);
+
+}
+
+.emptyRatingStar {
+    background-image: url(../images/EmptyStar.gif);
+}
+
+.savedRatingStar {
+    background-image: url(../images/SavedStar.gif);
+}
+
+
+
+
+/* CSS styles added by Andrew */
+
+#main ul#whats-hot 
+{
+    float:left;
+	list-style-type: none;
+	margin:0;
+	padding:0;
+}
+
+#main ul#whats-hot li {
+    margin:0;
+    float:left;
+}
+
+#main ul#whats-hot li a {
+    display: block; 
+	text-indent:-9999px;
+}
+
+#main li.broadcast-media a {
+    background: url("../../../flickr/images/whatshot.jpg") 0 0;
+    width:234px;
+    height:258px;
+}
+
+#main li.print a {
+    background: url("../../../flickr/images/whatshot.jpg") -234px 0;
+    width:139px;
+    height:258px;
+}
+
+#main li.news-releases a {
+    background: url("../../../flickr/images/whatshot.jpg") -373px 0;
+    width:227px;
+    height:258px;
+}
+
+#main li.desktop-wallpaper a {
+    background: url("../../../flickr/images/whatshot.jpg") 0 -258px;
+    width:300px;
+    height:203px;
+}
+
+#main li.image-gallery a {
+    background: url("../../../flickr/images/whatshot.jpg") -300px -258px;
+    width:300px;
+    height:203px;
+}
+
+/* Merge this with your other style on line 521 */
+#main .sub-whatshot h2.covered { position: absolute; }
+
+/* Add this to your titles group at line 510 */
+#main .sub-desktopwallpaper h2.covered { background-image: url(../../../flickr/images/tit-desktopwallpaper.png); }
+#main .sub-newsreleases h2.covered { background-image: url(../../../flickr/images/tit-newsreleases.png); } 
+#main .sub-tradeinfo h2.covered { background-image: url(../../../flickr/images/tit-trade-info.png); } 
+#main .sub-contactus h2.covered { background-image: url(../../../flickr/images/tit-contact-us.png); } 
+#main .sub-terms h2.covered { background-image: url(../../../flickr/images/tit-terms.png); }
+#main .sub-privacy h2.covered { background-image: url(../../../flickr/images/tit-privacy.png); } 
+
+/* This overrides your width for the whatshot list and moves it to the left more. Move to line 275 */
+#navigation.activated #nav-whatshot.selected ul { width: 477px; left:-244px; }
+
+/* Desktop Wallpaper page */
+
+#main .wallpaper {
+    float: left;
+    width: 272px;
+    margin: 0 0 20px 20px;
+}
+
+#main .wallpaper strong {
+    margin-bottom: 5px;
+    float: left;
+}
+
+#main .wallpaper img {float:left;}
+
+#main .wallpaper ul {
+    list-style-type: none;
+    float: left;
+    margin: 10px 0 0 10px;
+}
+
+#main .wallpaper ul li {
+    margin: 0 0 0 0;
+}
+
+/* End Desktop Wallpaper page */
+
+/* News release */
+
+#news-releases 
+{
+    float: left;
+    margin: 0 0 10px 0;
+}
+   
+.news-release {
+    float: left;
+    margin: 0 0 0 0;
+    padding: 0 10px 0 10px;
+}
+
+.news-release-last {
+    margin: 0 0 10px 0;
+}
+
+.news-release strong {
+    margin: 10px 0 10px 0 !important;
+}
+
+
+.news-release a {
+    display:block;
+    float:left;
+}
+
+.news-release a:hover {
+    background-color: #450002;
+    text-decoration: none;
+}
+
+span.left {
+    float: left;
+    display: block;
+    width: 32px;
+    margin: 10px 0 0 10px;
+}
+
+span.right {   
+    width: 495px;
+    float:left;
+    font-size:12px;
+    margin: 10px 0 0 20px !important;
+    padding-right: 10px;
+}
+
+span.content {
+    display:block;
+    margin: 10px 0 10px 0;
+}
+
+span.download {   
+    margin: 10px 0 10px 0;
+    float:left;
+    font-weight: bold;
+}
+
+/* End News release */
+
+#admin-left {
+	background: transparent url(../../../flickr/images/lyt-joinbox-background.gif) no-repeat left bottom;
+	width:156px;
+	height:118px;
+	padding:20px 50px 0 120px;
+	float:left;
+}
+#admin-left h2 {
+	margin-top:0;
+}
+
+
+/* Fancybox styles */
+
+div#fancy_overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #000;
+	display: none;
+	z-index: 30;
+}
+
+div#fancy_wrap {
+	text-align: left;
+}
+
+div#fancy_loading {
+	position: absolute;
+	height: 40px;
+	width: 40px;
+	cursor: pointer;
+	display: none;
+	overflow: hidden;
+	background: transparent;
+	z-index: 100;
+}
+
+div#fancy_loading div {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 40px;
+	height: 480px;
+	background: transparent url('../images/fancybox/fancy_progress.html') no-repeat;
+}
+
+div#fancy_loading_overlay {
+	position: absolute;
+	background-color: #FFF;
+	z-index: 30;
+}
+
+div#fancy_loading_icon {
+	position: absolute;
+	background: url(../images/fancy_loading.html) no-repeat;
+	z-index: 35;
+	width: 16px;
+	height: 16px;
+}
+
+div#fancy_outer {
+	position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 90;
+    padding: 18px 18px 33px 18px;
+    margin: 0;
+    overflow: hidden;
+    background: transparent;
+    display: none;
+}
+
+div#fancy_inner {
+	position: relative;
+	width:100%;
+	height:100%;
+	border: 1px solid #BBB;
+	background: #FFF;
+}
+
+div#fancy_content {
+	margin: 0;
+	z-index: 100;
+	position: absolute;
+}
+
+div#fancy_div {
+	background: #000;
+	color: #FFF;
+	height: 100%;
+	width: 100%;
+	z-index: 100;
+}
+
+img#fancy_img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	border:0; 
+	padding: 0; 
+	margin: 0;
+	z-index: 100;
+	width: 100%;
+	height: 100%;
+}
+
+div#fancy_close {
+	position: absolute;
+	top: -12px;
+	right: -15px;
+	height: 30px;
+	width: 30px;
+	background: url(../images/fancy_closebox.gif) top left no-repeat;
+	cursor: pointer;
+	z-index: 181;
+	display: none;
+}
+
+#fancy_frame {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	display: none;
+}
+
+#fancy_ajax {
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+    background-color: #280000;
+}
+
+#fancy_ajax h2 {
+    background:none;
+    font-size: 15px;
+    color: #fff;
+    margin: 20px 0 0 20px;
+}
+
+#fancy_ajax ol {
+    color: #fff;
+    margin: 0 0 20px 20px;
+    float: left;
+}
+
+#fancy_ajax ol li {
+    color: #fff;
+}
+
+a#fancy_left, a#fancy_right {
+	position: absolute; 
+	bottom: 0px; 
+	height: 100%; 
+	width: 35%; 
+	cursor: pointer;
+	z-index: 111; 
+	display: none;
+	/*background-image: url(data:image/gif;base64,AAAA);*/
+	outline: none;
+}
+
+a#fancy_left {
+	left: 0px; 
+}
+
+a#fancy_right {
+	right: 0px; 
+}
+
+span.fancy_ico {
+	position: absolute; 
+	top: 50%;
+	margin-top: -15px;
+	width: 30px;
+	height: 30px;
+	z-index: 112; 
+	cursor: pointer;
+	display: block;
+}
+
+/* The styles below were commented out and new ones added after to make the arrows stay visible on the flickr gallery */
+
+/*
+span#fancy_left_ico {
+	left: -9999px;
+	background: transparent url(/images/fancy_left.gif) no-repeat;
+}
+span#fancy_right_ico {
+	right: -9999px;
+	background: transparent url(/images/fancy_right.gif) no-repeat;
+}
+*/
+
+span#fancy_left_ico {
+	left: 20px;
+	background: transparent url(../images/fancy_left.gif) no-repeat;
+}
+
+span#fancy_right_ico {
+	right: 20px;
+	background: transparent url(../images/fancy_right.gif) no-repeat;
+}
+
+a#fancy_left:hover {visibility: visible;}
+a#fancy_right:hover {visibility: visible;}
+
+.fancy_bigIframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: transparent;
+}
+
+div#fancy_bg {
+	position: absolute;
+	top: 0; left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 70;
+	border: 0;
+	padding: 0;
+	margin: 0;
+}
+	
+div.fancy_bg {
+	position: absolute;
+	display: block;
+	z-index: 70;
+	border: 0;
+	padding: 0;
+	margin: 0;
+}
+
+div.fancy_bg_n {
+	top: -18px;
+	width: 100%;
+	height: 18px;
+	/* background: transparent url('/images/fancybox/fancy_shadow_n.png') repeat-x;*/
+}
+
+div.fancy_bg_ne {
+	top: -18px;
+	right: -13px;
+	width: 13px;
+	height: 18px;
+	/*background: transparent url('/images/fancybox/fancy_shadow_ne.png') no-repeat;*/
+}
+
+div.fancy_bg_e {
+	right: -13px;
+	height: 100%;
+	width: 13px;
+	/*background: transparent url('/images/fancybox/fancy_shadow_e.png') repeat-y;*/
+}
+
+div.fancy_bg_se {
+	bottom: -18px;
+	right: -13px;
+	width: 13px;
+	height: 18px;
+	/*background: transparent url('/images/fancybox/fancy_shadow_se.png') no-repeat;*/
+}
+
+div.fancy_bg_s {
+	bottom: -18px;
+	width: 100%;
+	height: 18px;
+	/*background: transparent url('/images/fancybox/fancy_shadow_s.png') repeat-x;*/
+}
+
+div.fancy_bg_sw {
+	bottom: -18px;
+	left: -13px;
+	width: 13px;
+	height: 18px;
+	/* background: transparent url('/images/fancybox/fancy_shadow_sw.png') no-repeat;*/
+}
+
+div.fancy_bg_w {
+	left: -13px;
+	height: 100%;
+	width: 13px;
+	/* background: transparent url('/images/fancybox/fancy_shadow_w.png') repeat-y;*/
+}
+
+div.fancy_bg_nw {
+	top: -18px;
+	left: -13px;
+	width: 13px;
+	height: 18px;
+	/* background: transparent url('/images/fancybox/fancy_shadow_nw.png') no-repeat; */
+}
+
+div#fancy_title {
+	position: absolute;
+	bottom: -33px;
+	left: 0;
+	width: 100%;
+	z-index: 100;
+	display: none;
+}
+
+div#fancy_title div {
+	color: #FFF;
+	font: bold 12px Arial;
+	padding-bottom: 3px;
+}
+
+div#fancy_title table {
+	margin: 0 auto;
+}
+
+div#fancy_title table td {
+	padding: 0;
+	vertical-align: middle;
+}
+
+td#fancy_title_left {
+	height: 32px;
+	width: 15px;
+	background: transparent url(../images/fancy_title_left.gif) repeat-x;
+}
+td#fancy_title_main {
+	height: 32px;
+	background: transparent url(../images/fancy_title_main.gif) repeat-x;
+}
+td#fancy_title_right {
+	height: 32px;
+	width: 15px;
+	background: transparent url(../images/fancy_title_right.gif) repeat-x;
+}
+
+/* Products page */
+
+#main .sub-products2 h2.covered { background-image: url(../../../flickr/images/tit-tabasco-products.png);}
+
+ul.productNav {
+    list-style: none;
+    margin: 0 !important;
+    float: left;
+    padding: 0;
+}
+
+ul.productNav li {
+    display: inline;
+    float: left;
+    margin:0;
+}
+
+ul.productNav li a:focus {
+	outline: 0;
+}
+
+div.tabs > div {
+	padding: 25px 25px 10px 25px;
+	float: left;
+}
+
+div.tabs > div h2 {
+	margin-top: 0;
+}
+
+ul.productNav li span {
+    display:none;
+} 
+
+ul.productNav li a {
+	display: block;
+	height: 290px;
+	float: left;
+	background: url(../../../flickr/images/products-selection.jpg) no-repeat 0 0;
+}
+
+ul.productNav li.product-1 a { background-position: 0 0; width:96px; }
+ul.productNav li.product-1 a:hover, ul.productNav li.product-1 a.selected { background-position: 0 -290px; }
+ul.productNav li.product-2 a { background-position: -96px 0; width: 88px; }
+ul.productNav li.product-2 a:hover, ul.productNav li.product-2 a.selected { background-position: -96px -290px; } 
+ul.productNav li.product-3 a { background-position: -184px 0; width:88px; }
+ul.productNav li.product-3 a:hover, ul.productNav li.product-3 a.selected { background-position: -184px -290px; }
+ul.productNav li.product-4 a { background-position: -272px 0; width:92px; }
+ul.productNav li.product-4 a:hover, ul.productNav li.product-4 a.selected { background-position: -272px -290px; }
+ul.productNav li.product-5 a { background-position: -364px 0; width:106px; }
+ul.productNav li.product-5 a:hover, ul.productNav li.product-5 a.selected { background-position: -364px -290px; }
+ul.productNav li.product-6 a { background-position: -470px 0; width:130px; }
+ul.productNav li.product-6 a:hover, ul.productNav li.product-6 a.selected { background-position: -470px -290px; }
+
+div.tabs h3 {margin: 0 0 20px 0 !important;}
+div.tabs div p {margin: 0 0 16px 0 !important;}
+
+a.popup {text-decoration: underline;}
+
+div#OB_close {
+	position: absolute;
+	top: 10px;
+	right: 65px;
+	height: 30px;
+	width: 30px;
+	background: url(../images/fancy_closebox.gif) top left no-repeat;
+	cursor: pointer;
+	z-index: 181;
+}
+
+div#OB_close span {
+    display:none;
+}
+
+.button {
+	border:none;
+	color:#ffffff;
+	cursor:pointer;
+	margin: 0 5px;
+}
+
+.btn-validate {
+    border: none !important;
+    color: #fff !important;
+    background: #420002 url(../../../flickr/images/lyt-link-arrow.gif) no-repeat right center;
+    cursor:pointer;
+}
+
+a.link {
+    border:none;
+	padding: 0 10px 0 0;
+	background: transparent url(../../../flickr/images/lyt-link-arrow.gif) no-repeat right center;
+	color:#ffffff;
+	cursor:pointer;
+}
+

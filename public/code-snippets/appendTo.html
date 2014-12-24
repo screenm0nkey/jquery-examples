@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+                    "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  
+  <script>
+  $(document).ready(function(){
+    $("span").appendTo("#foo"); // check append() examples
+	$("p").append("<strong>Hello</strong>");
+
+  });
+  </script>
+  <style>#foo { background:yellow; }
+  p { background:yellow; }
+  </style>
+</head>
+<body>
+This operation is, essentially, the reverse of doing a regular $(A).append(B), in that instead of appending B to A, you're appending A to B.
+
+  <span>I have nothing more to say... </span>
+  <span>OR DO I?</span>
+  <div id="foo">FOO! </div>
+  
+  <p>I would like to say: </p>
+
+</body>
+</html>
