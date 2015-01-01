@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Subclassing</title>
+    <style>
+        .target {
+            position: relative;
+            background: green;
+            padding: 5px;
+            height: 100px;
+            width: 100px;
+            color:white;
+        }
+    </style>
+    <script src="/public/js/jquery-1.11.2.js"></script>
+    <script src="/public/js/jquery.ui.all-1.11.2.js"></script>
+</head>
+<body>
+
+<div class="target" id="experiment2">Click</div>
+<button id="home2">Home</button>
+
+<script>
+    $.widget('custom.superbox', {
+        _create: function(){
+            var self = this;
+            this.element.click(function(){
+                self.move();
+            });
+            console.log('superbox', this);
+        },
+        move: function() {
+            this.element.css (this._newPoint());
+        },
+        _newPoint: function() {
+            return {top: this._distance(), left: this._distance()};
+        },
+        _distance: function() {
+            return Math.round (Math.random()*this.options.distance);
+        },
+        options: {
+            distance: 200
+        }
+    });
+
+    $.widget ('custom.supersuperbox', $.custom.superbox, {
+        // overriding and new methods
+        _create: function() {
+            // this calls superbox._create
+            this._super();
+            console.log('supersuperbox', this);
+        },
+        move: function(){
+            this.element.animate(this._newPoint(), this.options.speed);
+        },
+        home: function(){
+            this.element.animate({top:0, left:0}, this.options.speed);
+        },
+        options: {
+            speed: 'normal'
+        }
+    });
+
+    $.widget('custom.superboxwithtext', $.custom.supersuperbox, {
+        _create: function() {
+            // this calls supersuperbox._create
+            this._super();
+            console.log('superboxwithtext', this);
+        },
+        move: function(){
+            this.options.count = this.options.count || 0;
+            ++this.options.count;
+            this.element.text('Move number '+this.options.count);
+            this._super();
+        }
+    });
+</script>
+
+<script>
+
+    $(function(){
+        $('#experiment2').superboxwithtext();
+        $('#home2').click(function(){
+            $('#experiment2').superboxwithtext('home');
+        });
+    });
+
+
+</script>
+</body>
+</html>

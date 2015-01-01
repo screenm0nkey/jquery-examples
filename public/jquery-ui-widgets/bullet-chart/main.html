@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bullet</title>
+    <link rel="stylesheet" href="bulletchart.css">
+</head>
+<body>
+
+<chart></chart>
+
+<script src="/js/jquery-1.11.2.js"></script>
+<script src="/js/jquery.ui.all-1.11.2.js"></script>
+<script src="widget.js"></script>
+<script>
+    $(function () {
+        $('chart').bulletchart();
+
+        window.$data = $('chart').data('ntBulletchart');
+        console.log(window.$data)
+        console.log(window.$data.options)
+    })
+</script>
+</body>
+</html>

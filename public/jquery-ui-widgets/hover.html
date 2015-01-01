@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Hover</title>
+</head>
+<body>
+<div class='textline'></div>
+
+<script src="/public/js/jquery-1.11.2.js"></script>
+<script src="/public/js/jquery.ui.all-1.11.2.js"></script>
+<script>
+    (function ($) {
+
+        $.widget('nt.textline', {
+            options: {
+                title: { short: 'XXX', long: 'XXXXXXXXXXXX'},
+                text: 'Some text'
+            },
+
+            widgetEventPrefix: 'textline:',
+
+            _create: function () {
+                this.element.addClass('textline');
+
+                // chart container
+                this._container = $('<div class="textline-container"></div>')
+                        .appendTo(this.element);
+
+                this._setOptions({
+                    title: this.options.title,
+                    text: this.options.text
+                });
+                this._on(this.element,
+                        {
+                            mouseenter:"_hover",
+                            mouseleave:"_hover"
+                        });
+
+            },
+
+            _destroy: function () {
+                this.element.removeClass('textline');
+                this.element.empty();
+                this._super();
+            },
+
+            _setOption: function (key, value) {
+                var self = this,
+                        prev = this.options[key],
+                        fnMap = {
+                            'title': function () {
+                                createTitle(value, self);
+                            },
+                            'text': function () {
+                                createText(value, self);
+                            }
+                        };
+
+                // base
+                this._super(key, value);
+
+                if (key in fnMap) {
+                    fnMap[key]();
+
+                    // Fire event
+                    this._triggerOptionChanged(key, prev, value);
+                }
+            },
+
+            _triggerOptionChanged: function (optionKey, previousValue, currentValue) {
+                this._trigger('setOption', {type: 'setOption'}, {
+                    option: optionKey,
+                    previous: previousValue,
+                    current: currentValue
+                });
+            },
+            _hover: function (e) {
+                var title = $(this.element).find('.title');
+
+                if(e.type == "mouseenter")
+                {
+                    title.text(this.options.title.long);
+                }
+
+                if(e.type == "mouseleave")
+                {
+                    title.text(this.options.title.short);
+                }
+
+            }
+        });
+
+        function createTitle(title, widget) {
+
+            // Clear existing
+            widget._container.find('.title').remove();
+
+            var t = $('<div class="title"></div>')
+                    .text(title.short);
+
+            widget._container.append(t);
+
+        }
+
+        function createText(text, widget) {
+
+            // Clear existing
+            widget._container.find('.text').remove();
+
+            var t = $('<div class="text"></div>')
+                    .text(text);
+
+            widget._container.append(t);
+
+        }
+
+    })(jQuery);
+    $('.textline').textline({});
+
+</script>
+</body>
+</html>

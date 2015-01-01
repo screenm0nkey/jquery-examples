@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+http://learn.jquery.com/jquery-ui/widget-factory/how-to-use-the-widget-factory/
+
+<script src="/public/js/jquery-1.11.2.js"></script>
+<script src="/public/js/jquery.ui.all-1.11.2.js"></script>
+
+<script data-type="widget">
+    // this widget can be accessed via $.custom.progressbar
+
+    $.widget( "custom.progressbar", {
+        options: {
+            value: 0
+        },
+        _create: function() {
+            this.options.value = this._constrain(this.options.value);
+            this.element.addClass( "progressbar" );
+            this.refresh();
+        },
+
+        //gets called once per option
+        _setOption: function( key, value ) {
+            if ( key === "value" ) {
+                value = this._constrain( value );
+            }
+            this._super( key, value );
+        },
+
+        // gets called when setting options i.e. {value : 100, smell : 10}
+        _setOptions: function( options ) {
+            debugger
+            this._super( options );
+            this.refresh();
+        },
+
+        // public method created for this plugin
+        refresh: function() {
+            var progress = this.options.value + "%";
+            this.element.text( progress );
+            if ( this.options.value == 100 ) {
+                this._trigger( "holyshit", null, { value: 100 } );
+            }
+        },
+
+        somePublicMethod : function () {
+            debugger
+        },
+
+        _constrain: function( value ) {
+            if ( value > 100 ) {
+                value = 100;
+            }
+            if ( value < 0 ) {
+                value = 0;
+            }
+            return value;
+        }
+    });
+</script>
+
+<script>
+    var bar = $( "<div></div>" )
+            .appendTo( "body" )
+            .progressbar({
+                value : 40,
+                smell :27,
+                // callback name matches event being triggered and is called back
+                holyshit: function( event, data ) {
+                    console.log( "Callbacks are great!", event, data );
+                }
+            })
+            // event name is a combination of widget name and event being triggered.
+            .on( "progressbarholyshit", function( event, data ) {
+                console.log( "Events bubble and support many handlers for extreme flexibility." );
+                console.log( "The progress bar value is " + data.value );
+            });
+
+    // this is calling the option() method
+    bar.progressbar( "option", {value : 100, smell : 10} );
+    // this is also doing the same thing
+    bar.data("custom-progressbar").option({value :100, smell:100});
+
+    // you can call any public method this way
+    bar.progressbar('somePublicMethod')
+
+
+
+    // You can also create an instance without going through the plugin method,
+    // by calling the constructor directly, with the options and element arguments:
+    var another = $.custom.progressbar( {value:30}, $( "<div></div>" ).appendTo( "body") );
+
+    // Same result as before.
+    console.log( another.options.value );
+
+</script>
+</body>
+</html>

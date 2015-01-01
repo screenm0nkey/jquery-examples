@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Hover</title>
+    <style>
+        li.ui-state-hover { background-color: red }
+    </style>
+</head>
+<body>
+
+<p class="hover"></p>
+
+<script src="/public/js/jquery-1.11.2.js"></script>
+<script src="/public/js/jquery.ui.all-1.11.2.js"></script>
+<script>
+    (function ($) {
+
+        $.widget('custom.hoverman', {
+            options : {
+                items : []
+            },
+
+            _create : function () {
+                var $ul = $('<ul>')
+                        .attr('data-widget','custom.hoverman')
+                        .data('originalElement', this.element);
+
+                this.widgetElement = $ul;
+
+                $.each(this.options.items, function (i, item) {
+                    $('<li>').text(item).appendTo($ul);
+                });
+
+                this.element.hide().after($ul);
+                // this will automatically add a 'ui-state-hover' class
+                this._hoverable( $ul.find( "li" ) );
+
+                console.log($('ul[data-widget="custom.hoverman"]').data())
+                console.log($(':custom-hoverman').data());
+            },
+            // override the widget method so it returns the widget element and not the original hidden element
+            widget : function () {
+                return this.widgetElement;
+            }
+
+        });
+
+
+
+    })(jQuery);
+    $('p.hover').hoverman({items : ['nick', 'liz', 'pixie']});
+
+</script>
+</body>
+</html>
