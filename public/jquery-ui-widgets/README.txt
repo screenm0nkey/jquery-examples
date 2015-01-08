@@ -1,0 +1,1 @@
+For a good example of regular plugin pattert see nick-projects/loading-indicator or the angular-requirejs-seed-master in the angular examples folder
